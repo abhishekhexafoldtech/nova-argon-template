@@ -5,28 +5,27 @@
   >
     <ul class="navbar-nav">
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="D" text="Dashboards" />
+        <img src="@/assets/svg/dashboard_home_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Dashboards" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="D" text="Distributor" />
+        <img src="@/assets/svg/distributor_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Distributor" />
       </li>
-      
       <li class="nav-item">
         <SidenavCollapse
           collapse-ref="dashboardsExamples"
           nav-text="Support System"
+          class="gap-3"
           :class="getRoute === 'dashboards' ? 'active' : ''"
         >
           <template #icon>
-            <i class="ni ni-shop text-primary text-sm opacity-10"></i>
+            <img src="@/assets/svg/support_system_dashboard_icon.svg" class="" alt="">
           </template>
           <template #list>
             <ul class="nav ms-4">
               <SidenavItem
                 to="/dashboards"
-                mini-icon="D"
                 text="Default"
               />
             </ul>
@@ -34,32 +33,32 @@
         </SidenavCollapse>
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="C" text="Customers" />
+        <img src="@/assets/svg/customer_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Customers" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="D" text="Delivery Agents" />
+        <img src="@/assets/svg/delivery_agent_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Delivery Agents" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="P" text="Products" />
+        <img src="@/assets/svg/products_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Products" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="M" text="Manage Admins" />
+        <img src="@/assets/svg/manage_admin_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Manage Admins" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="Z" text="Zones" />
+        <img src="@/assets/svg/zones_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Zones" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="T" text="Transactions" />
+       <img src="@/assets/svg/transactions_dashboard_icon.png" alt="">
+        <SidenavItem to="/dashboards"    text="Transactions" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="R" text="Reports" />
+        <img src="@/assets/svg/report_admin_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Reports" />
       </li>
 
 
@@ -74,7 +73,7 @@
    
       <li class="nav-item d-flex align-items-center mx-4 px-2">
         <i class="ni ni-align-left-2 text-info text-sm opacity-10"></i>
-        <SidenavItem to="/applications/data-tables" mini-icon="D" text="Data Tables" />
+        <SidenavItem to="/applications/data-tables"    text="Data Tables" />
       </li> -->
      
       
@@ -83,8 +82,8 @@
       </li>
 
       <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
-        <SidenavItem to="/dashboards" mini-icon="S" text="Settings" />
+        <img src="@/assets/svg/settings_dashboard_icon.svg" alt="">
+        <SidenavItem to="/dashboards"    text="Settings" />
       </li>
 
     
@@ -113,3 +112,9 @@ defineProps({
   },
 });
 </script>
+<style scoped>
+#sidenav-collapse-main{
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+</style>
