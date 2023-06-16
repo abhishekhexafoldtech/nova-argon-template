@@ -1,7 +1,6 @@
 <template>
   <apexchart
     type="area"
-    :height="height"
     :options="chartOptions"
     :series="series"
   ></apexchart>

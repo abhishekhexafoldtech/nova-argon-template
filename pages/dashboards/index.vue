@@ -1,5 +1,13 @@
 <template>
   <div class="py-4 container-fluid">
+
+    <!-- Profile  -->
+    <div class="w-100 d-flex flex-gap-20 px-4 py-3">
+        <div>
+            <ProfileCard :profile-details="profileDetails" />
+        </div>
+    </div>
+
     <div class="row">
       <div class="col-lg-12">
         <div class="row">
@@ -31,11 +39,7 @@
           <div class="col-lg-6 mb-lg">
             <div class="card z-index-2">
               <div class="mb-0 pb-0 card-header">
-                <h6>Sales Overview</h6>
-                <p class="text-sm">
-                  <i class="fa fa-arrow-up text-success"></i>
-                  <span class="font-weight-bold ms-1">4% more</span> in 2021
-                </p>
+                <h6>Overall Sales</h6>
               </div>
               <div class="p-0 card-body">
                 <div class="chart">
@@ -79,49 +83,19 @@
           </div>
           <div class="col-lg-6 mb-lg">
             <div class="card z-index-2">
-              <div class="mb-0 pb-0 card-header">
-                <h6>Sales Overview</h6>
-                <p class="text-sm">
-                  <i class="fa fa-arrow-up text-success"></i>
-                  <span class="font-weight-bold ms-1">4% more</span> in 2021
-                </p>
-              </div>
               <div class="p-0 card-body">
                 <div class="chart">
-                  <GradientLineChart
-                    :chart-options="{
-                      chart: {
-                        type: 'area',
-                      },
-                      colors: ['#4BB543'],
-                      labels: [
-                        'Apr',
-                        'May',
-                        'Jun',
-                        'Jul',
-                        'Aug',
-                        'Sep',
-                        'Oct',
-                        'Nov',
-                        'Dec',
-                      ],
-                      dataLabels: {
-                        enabled: false,
-                      },
-                      stroke: {
-                        curve: 'smooth',
-                      },
-                      legend: {
-                        show: false,
-                      },
-                    }"
-                    :series="[
-                      {
-                        name: 'Mobile Apps',
-                        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                      },
-                    ]"
-                  />
+                   <BarChart
+                        title="Overall Sales"
+                        height="300"
+                        :chart="{
+                            labels: ['16-20', '21-25', '26-30', '31-36', '36-42', '42+'],
+                            datasets: {
+                            label: 'Sales by age',
+                            data: [15, 20, 12, 60, 20, 15],
+                            },
+                        }"
+                    />
                 </div>
               </div>
             </div>
@@ -186,6 +160,8 @@ import DE from "@/assets/img/icons/flags/DE.png";
 import GB from "@/assets/img/icons/flags/GB.png";
 import BR from "@/assets/img/icons/flags/BR.png";
 
+import ProfileCard from '@/components/cards/ProfileCard.vue'
+import BarChart from '@/components/charts/BarChart.vue';
 import CategoriesList from "@/components/cards/CategoriesList.vue";
 import MiniStatisticsCard from "@/components/cards/MiniStatisticsCard.vue";
 import GradientLineChart from "@/components/charts/GradientLineChart.vue";
@@ -202,6 +178,21 @@ import InfoCard from "@/components/dashboards/default/InfoCard.vue";
 definePageMeta({
   layout: "default",
 });
+const profileDetails = [
+  {
+    profile_image: "@/assets/img/team-1.jpg",
+    name: "Yaw Graham",
+    role: "Distributer",
+    status: "active",
+    user_id: "101",
+    joining: "2020/12/15",
+    phone: "9987654321",
+    zone: "Northen",
+    email: "demo@gmail.com",
+    subzone: "N12",
+    address: "Agbo-Ashongom Road"
+  }
+]
 const cardData = [
   {
     title: "Today's Money",
