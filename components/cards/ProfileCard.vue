@@ -27,13 +27,13 @@
                   Distributor
                 </span>
               </div>
-              <div class="mt-2 pt-2 text-sm d-flex">
+              <div class="mt-0  pt-2  text-sm d-flex">
                 <img
                   class="radio-icon-position"
                   src="@/assets/svg/active_item.svg"
                   alt=""
                 />
-                <span class="mt-2">Active</span>
+                <span class="mt-3">Active</span>
               </div>
             </div>
           </div>
