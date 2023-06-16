@@ -10,7 +10,7 @@
                 <div>
                   <img
                     src="@/assets/img/team-1.jpg"
-                    class="avatar avatar-sm me-3"
+                    class="avatar avatar-lg me-3"
                   />
                 </div>
               </div>
