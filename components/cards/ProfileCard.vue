@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="container overflow-hidden text-center">
-      <div class="row gap-4" >
+      <div class="row gap-4 " >
         <div class="col-3 mb-2 card">
           <div class="p-3 card-body">
             <!-- 1st  -->
-            <div class="d-flex flex-row p-3 justify-content-around flex-gap-20">
+            <div class="d-flex flex-row p-2 justify-content-around ">
               <div class="d-flex px-2 py-1">
                 <div>
                   <img

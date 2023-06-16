@@ -2,10 +2,10 @@
   <div class="py-4 container-fluid">
 
     <!-- Profile  -->
-    <div class="w-100 d-flex flex-gap-20 px-4 py-3">
-        <div>
+    <div class="w-100 d-flex py-3">
+
             <ProfileCard :profile-details="profileDetails" />
-        </div>
+  
     </div>
 
     <div class="row">
