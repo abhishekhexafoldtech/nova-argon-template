@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="container overflow-hidden text-center">
+    <div class="container overflow-hidden ">
       <div class="row gap-4 " >
-        <div class="col-3 mb-2 card">
+        <div class="col-4 mb-2 card">
           <div class="p-3 card-body">
             <!-- 1st  -->
             <div class="d-flex flex-row p-2 justify-content-around ">
@@ -33,7 +33,7 @@
                   src="@/assets/svg/active_item.svg"
                   alt=""
                 />
-                Active
+                <span class="mt-2">Active</span>
               </div>
             </div>
           </div>
