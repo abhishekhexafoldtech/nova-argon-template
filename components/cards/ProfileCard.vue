@@ -45,7 +45,7 @@
             <div class="text-md font-weight-bold">ID:101</div>
             <div class="row">
               <div class="col">
-                <span class="text-sm text-muted">joining since: </span>
+                <span class="text-sm text-muted">Joining since: </span>
                 <span class="text-sm font-weight-bold">2020/12/15</span>
               </div>
               <div class="col">
