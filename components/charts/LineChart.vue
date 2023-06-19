@@ -2,6 +2,7 @@
   <div class="card overflow-hidden">
     <div class="card-header p-3 pb-0">
       <p class="text-sm mb-0 text-capitalize font-weight-bold">{{ title }}</p>
+      <p class="text-sm mb-0 text-capitalize font-weight-bold">{{ subTitle }}</p>
       <h5 class="font-weight-bolder mb-0">
         {{ value.amount }}
         <span
@@ -26,6 +27,10 @@
 <script setup>
 defineProps({
   title: {
+    type: String,
+    default: "",
+  },
+  subTitle: {
     type: String,
     default: "",
   },
