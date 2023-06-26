@@ -1,0 +1,78 @@
+{
+  "products": [
+    {
+        "product":"3kg Steel cylinder",
+        "price":"25",
+        "stock":"1000",
+        "orderunit":"30",
+        "discount":"5",
+        "orderdate":"2023/0227 to 2023/02/28"
+        
+    },
+    {
+        "product":"3kg Steel cylinder",
+        "price":"25",
+        "stock":"1000",
+        "orderunit":"30",
+        "discount":"5",
+        "orderdate":"2023/0227 to 2023/02/28"
+        
+    },
+    {
+        "product":"3kg Steel cylinder",
+        "price":"25",
+        "stock":"1000",
+        "orderunit":"30",
+        "discount":"5",
+        "orderdate":"2023/0227 to 2023/02/28"
+        
+    },
+    {
+        "product":"3kg Steel cylinder",
+        "price":"25",
+        "stock":"1000",
+        "orderunit":"30",
+        "discount":"5",
+        "orderdate":"2023/0227 to 2023/02/28"
+        
+    },
+    {
+        "product":"3kg Steel cylinder",
+        "price":"25",
+        "stock":"1000",
+        "orderunit":"30",
+        "discount":"5",
+        "orderdate":"2023/0227 to 2023/02/28"
+        
+    },
+    {
+        "product":"3kg Steel cylinder",
+        "price":"25",
+        "stock":"1000",
+        "orderunit":"30",
+        "discount":"5",
+        "orderdate":"2023/0227 to 2023/02/28"
+        
+    },
+    {
+        "product":"3kg Steel cylinder",
+        "price":"25",
+        "stock":"1000",
+        "orderunit":"30",
+        "discount":"5",
+        "orderdate":"2023/0227 to 2023/02/28"
+        
+    }
+
+],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

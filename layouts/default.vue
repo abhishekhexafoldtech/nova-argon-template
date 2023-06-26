@@ -2,7 +2,7 @@
   <div v-if="$isDemo()">
     <Head>
       <Title itemprop="name">
-        Nuxt Argon Dashboard 2 by Creative Tim & UPDIVISION
+        Nova Gas
       </Title>
       <Meta name="twitter:card" content="summary" />
       <Meta name="twitter:card" content="summary_large_image" />
@@ -35,9 +35,9 @@
     <div class="min-height-300 position-absolute w-100 bg-dark" />
     <Sidenav />
     <main class="main-content position-relative max-height-vh-100 h-100">
-      <Navbar />
+      <Navbar/>
       <slot />
-      <Footer />
+      <!-- <Footer /> -->
       <Configurator />
     </main>
   </div>
@@ -54,6 +54,7 @@ import setTooltip from "@/assets/js/tooltip";
 
 const { $isDemo } = useNuxtApp();
 const navStore = useNavStore();
+
 const isCollapsed = computed(() => {
   return navStore.isSidenavCollapsed;
 });
@@ -68,6 +69,9 @@ onMounted(() => {
         /* empty */
       }
   }
+
+
+
 });
 useHead({
   bodyAttrs: {

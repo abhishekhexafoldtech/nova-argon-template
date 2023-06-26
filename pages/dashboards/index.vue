@@ -118,7 +118,7 @@
         
         <!-- Table  -->
           <div>
-            <DataTable />
+            <TablesData />
           </div>
       </div>
     </div>
@@ -135,7 +135,7 @@ import BarChart from '@/components/charts/BarChart.vue';
 import LineChart from "@/components/charts/LineChart.vue";
 import MiniStatisticsCard from "@/components/cards/MiniStatisticsCard.vue";
 import GradientLineChart from "@/components/charts/GradientLineChart.vue";
-import DataTable from "@/components/tables/DataTable.vue"
+// import DataTable from "@/components/tables/DataTable.vue"
 
 definePageMeta({
   layout: "default",
