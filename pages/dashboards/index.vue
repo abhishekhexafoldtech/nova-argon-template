@@ -168,6 +168,13 @@ definePageMeta({
 let tableConfig = reactive(
    [
         {
+          label: "Image",
+          prop: "file_list",
+          width: "",
+          sortable: "",
+          className: "redFont",
+        },
+        {
           label: "Name",
           prop: "name",
           width: "",
@@ -196,51 +203,91 @@ let listData = [
     price: "1",
     name: "Amm",
     address: "aaa",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "2",
     name: "Baa",
     address: "bb",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "3",
     name: "Caa",
     address: "cc",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "4",
     name: "Tom",
     address: "dd",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "5",
     name: "Daa",
     address: "ee",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "6",
     name: "Tom",
     address: "ff",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "7",
     name: "Tom",
     address: "gg",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "8",
     name: "Amm",
     address: "aaa",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "9",
     name: "Baa",
     address: "bb",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
   {
     price: "10",
     name: "Caa",
     address: "cc",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "http://localhost:8000/storage/menu/f1c8b75e3e535a44e93444e47fe2f77e.png"
+    }],
   },
 ];
 
