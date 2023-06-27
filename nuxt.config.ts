@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     "@/assets/css/nucleo-icons.css",
     "@/assets/scss/argon-dashboard.scss",
   ],
-  modules: ["@pinia/nuxt"],
+  modules: ["@pinia/nuxt","@element-plus/nuxt"],
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.API_BASE_URL,

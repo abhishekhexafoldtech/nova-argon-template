@@ -2,16 +2,27 @@ import { defineStore } from "pinia";
 
 
 
-export const getAllProducts=defineStore('productstable',{
+export const productStore=defineStore('productstable',{
 
     state:()=>({
-        data:[]
+        allproducts:[],
+        productType:true
     }),
 
     actions:{
         async getProducts(){
-            const data = await $fetch("/api/productdata");
-            this.data = data;
+            if(this.productType === true){
+
+                const data = await $fetch("/api/productdata");
+                this.allproducts = data;
+            }else if(this.productType === false){
+                const data = await $fetch("/api/accessoriesdata");
+                this.allproducts = data;
+
+            }
+        },
+        async addProduct(){
+            console.log("product added")
         }
     }
 

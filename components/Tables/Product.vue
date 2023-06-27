@@ -1,23 +1,25 @@
 <template>
-    <div class="container-fluid bg-white rounded-3  mt-5">
+    <div class="container-fluid bg-white rounded-3  mt-2">
+      <ProductHeader/>
       <div class="table-responsive">
         <div class="d-flex justify-content-between mt-3">
           <div class="">
             <!-- Card header -->
-            <div class="card-heade">
-              <h6 class="d-flex text-black" style="font-size: 20px;font-weight:600">All Products</h6>
+            <div class="card-heade mx-4">
+              <h6 class="d-flex text-black" style="font-size: 20px;font-weight:600">{{ allProducts.$state.productType ? 'All products' : 'All accessories' }}</h6>
               <p>Showing the available product list</p>
             </div>
           </div>
           <div class="d-flex">
             <div class="dropdown d-inline" >
+              <NuxtLink to="/products/add">
+
               <button class="btn d-flex text-white" style="background: rgb(102,108,228);
-background: linear-gradient(90deg, rgba(102,108,228,1) 0%, rgba(110,104,229,1) 35%, rgba(120,99,229,1) 100%);"> <IconsPlus/> &nbsp;  Add product</button>
+background: linear-gradient(90deg, rgba(102,108,228,1) 0%, rgba(110,104,229,1) 35%, rgba(120,99,229,1) 100%);" > <IconsPlus/> &nbsp;  Add product</button>
+              </NuxtLink>
             </div>
              &nbsp;
             <div class="dropdown d-inline">
-             
-            
             </div>
              &nbsp;
             <div class="dropdown d-inline">
@@ -28,7 +30,7 @@ background: linear-gradient(90deg, rgba(102,108,228,1) 0%, rgba(110,104,229,1) 3
   
         <table id="datatable-search" class="table table-flush">
           <thead class="thead-light">
-            <tr>
+            <tr class="text-sm">
               <th>PRODUCT</th>
               <th>Cyinder/price</th>
               <th>Stock Quality</th>
@@ -40,7 +42,7 @@ background: linear-gradient(90deg, rgba(102,108,228,1) 0%, rgba(110,104,229,1) 3
           </thead>
           <tbody>
            
-            <tr v-for="product in data">
+            <tr v-for="product in  allProducts.$state.allproducts ">
               <td class="text-sm font-weight-normal">{{ product.product }}</td>
               <td class="text-sm font-weight-normal">{{product.price}}</td>
               <td class="text-sm font-weight-normal">{{product.stock}}</td>
@@ -56,19 +58,18 @@ background: linear-gradient(90deg, rgba(102,108,228,1) 0%, rgba(110,104,229,1) 3
     
     <script>
   import { DataTable } from "simple-datatables";
-import { getAllProducts } from "~/stores/ProductStore";
+import { productStore } from "~/stores/ProductStore";
   
   export default {
     name: "UserOrderTable",
   
     data() {
       return {
-        data:[]
       };
     },
    async setup(){
 
-      const allProducts = getAllProducts();
+      const allProducts = productStore();
       
       return {
         allProducts
@@ -77,17 +78,14 @@ import { getAllProducts } from "~/stores/ProductStore";
 
     async created(){
       await this.allProducts.getProducts();
-      const data= this.allProducts.data;
-      this.data=data
-
+      
     },
     
     async mounted() {
       // eslint-disable-next-line no-unused-vars
+      await $fetch("/api/productdata");
 
-      let dat = await $fetch("/api/productdata")
-      this.data=dat;
-      console.log(this.data)
+
       const dataTableSearch = new DataTable("#datatable-search", {
         searchable: true,
         fixedHeight: true,

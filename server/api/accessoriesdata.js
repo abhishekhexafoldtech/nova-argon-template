@@ -1,10 +1,10 @@
 
-import { getAllProducts } from "../../api/products/allproducts"
+import { getAllAccessories } from "../../api/products/allproducts"
 
 
 export default defineEventHandler(async(event)=>{
             try{
-                const data = await getAllProducts();
+                const data = await getAllAccessories();
                 return data
             }catch(err){
                 return `${err}`

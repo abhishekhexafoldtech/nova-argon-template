@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "7.19.1",
+    "@element-plus/nuxt": "^1.0.5",
     "@fullcalendar/core": "5.11.3",
     "@fullcalendar/daygrid": "5.11.3",
     "@fullcalendar/interaction": "5.11.3",

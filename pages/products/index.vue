@@ -2,8 +2,12 @@
     <div class="py-4 container-fluid">
 
         <div>
-            <h1>Products Page</h1>
+            <!-- <ProductHeader/> -->
             <TablesProduct/>
         </div>
     </div>
 </template>
+
+<script >
+
+</script>
