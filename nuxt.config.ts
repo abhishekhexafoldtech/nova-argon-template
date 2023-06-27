@@ -44,9 +44,9 @@ export default defineNuxtConfig({
   css: [
     "@/assets/css/nucleo-svg.css",
     "@/assets/css/nucleo-icons.css",
-    "@/assets/scss/argon-dashboard.scss",
+    "@/assets/scss/index.scss",
   ],
-  modules: ["@pinia/nuxt"],
+  modules: ["@pinia/nuxt", '@element-plus/nuxt'],
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.API_BASE_URL,
