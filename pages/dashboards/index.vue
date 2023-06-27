@@ -120,6 +120,26 @@
           <div>
             <TablesData />
           </div>
+
+        <!-- Table  -->
+        <br><br>
+          <div>
+            <Table
+              tableHeading="All Products"
+              tableSubHeading="Showing available product list"
+              :addButtonVisibility="true"
+              addButtonText="Add Product"
+              :tableConfig="tableConfig"
+              :tableData="listData"
+              :tableQuery="listQuery"
+              @pagination="handlePagination()"
+              @add="handleAdd($event)"
+              @edit="handleEdit($event)"
+              @delete="handleDelete($event)"
+              :tableCheckBoxVisibility="true"
+              @multipleSelection="handleMultipleSelection($event)"
+            />
+          </div>
       </div>
     </div>
   </div>
@@ -135,11 +155,131 @@ import BarChart from '@/components/charts/BarChart.vue';
 import LineChart from "@/components/charts/LineChart.vue";
 import MiniStatisticsCard from "@/components/cards/MiniStatisticsCard.vue";
 import GradientLineChart from "@/components/charts/GradientLineChart.vue";
-// import DataTable from "@/components/tables/DataTable.vue"
+
 
 definePageMeta({
   layout: "default",
 });
+
+// table 
+
+
+let tableConfig = reactive(
+   [
+        {
+          label: "Name",
+          prop: "name",
+          width: "",
+          sortable: "sortable",
+          className: "redFont",
+        },
+        {
+          label: "Price",
+          prop: "price",
+          width: "",
+          sortable: "sortable",
+          className: "blueFont",
+        },
+        {
+          label: "Address",
+          prop: "address",
+          width: "",
+          sortable: "",
+          className: "blueFont",
+        },
+    ],
+)
+
+let listData = [
+  {
+    price: "1",
+    name: "Amm",
+    address: "aaa",
+  },
+  {
+    price: "2",
+    name: "Baa",
+    address: "bb",
+  },
+  {
+    price: "3",
+    name: "Caa",
+    address: "cc",
+  },
+  {
+    price: "4",
+    name: "Tom",
+    address: "dd",
+  },
+  {
+    price: "5",
+    name: "Daa",
+    address: "ee",
+  },
+  {
+    price: "6",
+    name: "Tom",
+    address: "ff",
+  },
+  {
+    price: "7",
+    name: "Tom",
+    address: "gg",
+  },
+  {
+    price: "8",
+    name: "Amm",
+    address: "aaa",
+  },
+  {
+    price: "9",
+    name: "Baa",
+    address: "bb",
+  },
+  {
+    price: "10",
+    name: "Caa",
+    address: "cc",
+  },
+];
+
+let  listQuery = {
+        page: 1,
+        limit: 10,
+        search: "",
+        searchJoin: "or",
+        orderBy: "created_at",
+        sortedBy: "desc",
+}
+
+// pagination 
+function handlePagination(data) {
+  getList();
+}
+
+// add 
+function handleAdd() {
+  console.log('add button')
+}
+
+// edit 
+function handleEdit(data) {
+  console.log(data)
+}
+
+// delete 
+function handleDelete(data) {
+  console.log(data)
+}
+
+// get list 
+function getList() {
+  // API CALL MADE
+}
+
+function handleMultipleSelection(data) {
+  console.log(data)
+}
 
 const profileDetails = [
   {

@@ -44,7 +44,7 @@ export default defineNuxtConfig({
   css: [
     "@/assets/css/nucleo-svg.css",
     "@/assets/css/nucleo-icons.css",
-    "@/assets/scss/argon-dashboard.scss",
+    "@/assets/scss/index.scss",
   ],
   modules: ["@pinia/nuxt","@element-plus/nuxt"],
   runtimeConfig: {

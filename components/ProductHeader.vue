@@ -6,10 +6,10 @@
         <div>
             <div>
 
-                <el-tabs  class="demo-tabs text-white" style="background-color: white;color:white;width:max-content"  @tab-click="handleClick" >
-        <el-tab-pane label="All products" name="first" style="color:white">
+                <el-tabs v-model="activeName" class="demo-tabs text-white" style="background-color: white;color:white;width:max-content"  @tab-click="handleClick" >
+        <el-tab-pane label="Cylinders" name="first" >
         </el-tab-pane>
-        <el-tab-pane label="All accessories" name="second" style=""></el-tab-pane>
+        <el-tab-pane label="Accessories" name="second" style=""></el-tab-pane>
       </el-tabs>
             </div>
             
@@ -22,8 +22,10 @@ import { productStore } from "~/stores/ProductStore"
 export default {
     setup(){
         const store = productStore();
+        const activeName = ref('first')
         return {
-            store
+            store,
+            activeName
         }
     },
     methods:{

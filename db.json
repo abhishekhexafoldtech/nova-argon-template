@@ -3,62 +3,62 @@
     {
       "product":"3kg Steel cylinder",
       "price":"25",
-      "stock":"1000",
+      "stock":"9000",
       "orderunit":"30",
       "discount":"5",
       "orderdate":"2023/0227 to 2023/02/28"
       
   },
   {
-      "product":"3kg Steel cylinder",
-      "price":"25",
-      "stock":"1000",
-      "orderunit":"30",
+      "product":"6kg Steel cylinder",
+      "price":"75",
+      "stock":"10000",
+      "orderunit":"40",
       "discount":"5",
       "orderdate":"2023/0227 to 2023/02/28"
       
   },
   {
-      "product":"3kg Steel cylinder",
-      "price":"25",
-      "stock":"1000",
-      "orderunit":"30",
+      "product":"12kg Steel cylinder",
+      "price":"115",
+      "stock":"4000",
+      "orderunit":"20",
       "discount":"5",
       "orderdate":"2023/0227 to 2023/02/28"
       
   },
   {
-      "product":"3kg Steel cylinder",
-      "price":"25",
-      "stock":"1000",
-      "orderunit":"30",
+      "product":"6kg Steel cylinder",
+      "price":"125",
+      "stock":"7000",
+      "orderunit":"150",
       "discount":"5",
       "orderdate":"2023/0227 to 2023/02/28"
       
   },
   {
-      "product":"3kg Steel cylinder",
-      "price":"25",
-      "stock":"1000",
-      "orderunit":"30",
+      "product":"12kg Comp cylinder",
+      "price":"55",
+      "stock":"3000",
+      "orderunit":"10",
       "discount":"5",
       "orderdate":"2023/0227 to 2023/02/28"
       
   },
   {
-      "product":"3kg Steel cylinder",
-      "price":"25",
-      "stock":"1000",
-      "orderunit":"30",
+      "product":"6kg Comp cylinder",
+      "price":"75",
+      "stock":"2000",
+      "orderunit":"35",
       "discount":"5",
       "orderdate":"2023/0227 to 2023/02/28"
       
   },
   {
-      "product":"3kg Steel cylinder",
+      "product":"12kg Comp cylinder",
       "price":"25",
       "stock":"1000",
-      "orderunit":"30",
+      "orderunit":"70",
       "discount":"5",
       "orderdate":"2023/0227 to 2023/02/28"
       

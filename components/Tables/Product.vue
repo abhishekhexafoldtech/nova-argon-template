@@ -6,8 +6,8 @@
           <div class="">
             <!-- Card header -->
             <div class="card-heade mx-4">
-              <h6 class="d-flex text-black" style="font-size: 20px;font-weight:600">{{ allProducts.$state.productType ? 'All products' : 'All accessories' }}</h6>
-              <p>Showing the available product list</p>
+              <h6 class="d-flex text-black" style="font-size: 20px;font-weight:600">{{ allProducts.$state.productType ? 'Cylinders' : 'Accessories' }}</h6>
+              <p>Showing the available {{ allProducts.$state.productType ? 'cylinders' : 'accessories' }} list</p>
             </div>
           </div>
           <div class="d-flex">
