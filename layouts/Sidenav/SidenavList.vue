@@ -42,7 +42,7 @@
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
         <img src="@/assets/svg/products_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Products" />
+        <SidenavItem to="/products"    text="Products" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
         <img src="@/assets/svg/manage_admin_dashboard_icon.svg" alt="">

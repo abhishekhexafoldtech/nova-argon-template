@@ -124,7 +124,7 @@
         <!-- Table  -->
         <br><br>
           <div>
-            <Table
+            <ProductTable
               tableHeading="All Products"
               tableSubHeading="Showing available product list"
               :addButtonVisibility="true"
@@ -156,7 +156,7 @@ import LineChart from "@/components/charts/LineChart.vue";
 import MiniStatisticsCard from "@/components/cards/MiniStatisticsCard.vue";
 import GradientLineChart from "@/components/charts/GradientLineChart.vue";
 import DataTable from "@/components/tables/DataTable.vue"
-import Table from "@/components/tables/Table.vue"
+import ProductTable from "@/components/tables/ProductTable.vue"
 
 definePageMeta({
   layout: "default",

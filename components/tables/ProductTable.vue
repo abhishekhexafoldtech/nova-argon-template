@@ -4,11 +4,17 @@
       <!-- Top heading  -->
       <el-row class="table-top-header">
         <el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
-          <h5>{{tableHeading}}</h5>
-          <p>{{tableSubHeading}}</p>
+          <h5>{{ tableHeading }}</h5>
+          <p>{{ tableSubHeading }}</p>
         </el-col>
         <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
-         <el-button v-if="addButtonVisibility" type="primary" @click="handleAdd">+ {{ addButtonText }}</el-button>
+          <el-button
+            v-if="addButtonVisibility"
+            type="primary"
+            style="border-radius: 10px; padding: 15px;"
+            @click="handleAdd"
+            >+ {{ addButtonText }}</el-button
+          >
         </el-col>
       </el-row>
 
@@ -29,19 +35,17 @@
       <br />
 
       <!-- Table -->
-      <el-table 
+      <el-table
         :data="tableDataItems"
         @selection-change="handleMultipleSelectionChange"
       >
-        
         <!-- CHECKBOX  -->
-         <el-table-column
+        <el-table-column
           v-if="tableCheckBoxVisibility"
           type="selection"
           :selectable="isTableCheckBoxVisibilityRowWise"
         >
         </el-table-column>
-
 
         <el-table-column
           v-for="(config, key) in props.tableConfig"
@@ -53,14 +57,37 @@
           :key="key"
         >
           <template #default="scope">
-            <div style="display: flex; align-items: center">
-              <span style="margin-left: 10px">{{
-                scope.row[config.prop]
-              }}</span>
-            </div>
+            <!-- FOR IMAGE  -->
+            <span v-if="typeof scope.row[config.prop] === 'object'">
+              <span
+                v-for="(item, index) in scope.row[config.prop]"
+                :key="index"
+              >
+                <span
+                  v-if="
+                    scope.row[config.prop] &&
+                    scope.row[config.prop].length &&
+                    'url' in scope.row[config.prop][0]
+                  "
+                >
+                  <span v-if="scope.row[config.prop][0].url">
+                    <span
+                      v-for="(item, index) in scope.row[config.prop]"
+                      :key="index"
+                    >
+                      <!-- <el-image class="medium" :src="item.url"> </el-image> -->
+                      <el-avatar shape="square" :size="50" :src="item.url" />
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+
+            <span v-else>
+              {{ scope.row[config.prop] }}
+            </span>
           </template>
         </el-table-column>
-        
 
         <!-- ACTIONS -->
         <el-table-column v-if="actionVisibility" label="Actions">
@@ -70,22 +97,22 @@
               size="small"
               type="default"
               @click="handleView(scope.row)"
-              ><i class="fa fa-eye" aria-hidden="true"></i></el-button
-            >
+              ><i class="fa fa-eye" aria-hidden="true"></i
+            ></el-button>
             <el-button
               v-if="editButtonVisibility"
               size="small"
               type="default"
               @click="handleEdit(scope.row)"
-              ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></el-button
-            >
+              ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+            ></el-button>
             <el-button
               v-if="deleteButtonVisibility"
               size="small"
               type="default"
               @click="handleDelete(scope.$index, scope.row)"
-              ><i class="fa fa-trash-o" aria-hidden="true"></i></el-button
-            >
+              ><i class="fa fa-trash-o" aria-hidden="true"></i
+            ></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -111,23 +138,21 @@ import { Search } from "@element-plus/icons-vue";
 
 let emit = defineEmits();
 
-let multipleSelection = reactive([])
+let multipleSelection = reactive([]);
 
 let props = defineProps({
-
   tableConfig: {},
   tableData: {},
   tableQuery: {},
 
-
   tableHeading: {
     type: String,
-    default: ""
+    default: "",
   },
 
   tableSubHeading: {
     type: String,
-    default: ""
+    default: "",
   },
 
   addButtonVisibility: {
@@ -137,7 +162,7 @@ let props = defineProps({
 
   addButtonText: {
     type: String,
-    default: "Add"
+    default: "Add",
   },
 
   tableSearchVisibility: {
@@ -173,8 +198,7 @@ let props = defineProps({
   tableSearchVisibility: {
     type: Boolean,
     default: true,
-  }
-
+  },
 });
 
 let tableDataItems = computed(() => {
