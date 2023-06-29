@@ -42,6 +42,7 @@ export default defineNuxtConfig({
     autoImport: true,
   },
   css: [
+    'bootstrap/dist/css/bootstrap.min.css',
     "@/assets/css/nucleo-svg.css",
     "@/assets/css/nucleo-icons.css",
     "@/assets/scss/index.scss",

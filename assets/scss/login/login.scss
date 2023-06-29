@@ -69,3 +69,19 @@
     width: 50px;
   }
   
+  .forget-error{
+    text-align: center;
+    width:350px;
+    padding:10px;
+  }
+
+
+
+  @media screen and (max-width:450px) {
+    .forget-error{
+      text-align: none;
+      width: 200px;
+      padding: none;
+    }
+  }
+
