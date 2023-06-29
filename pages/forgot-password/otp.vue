@@ -61,18 +61,15 @@
   </template>
   
   
-  <script >
+  <script setup>
 
-  export default {
-
-
-
-    updated(){
-      console.log("updated")
-    },
+ 
 
 
-    setup(){
+
+ 
+
+
   const one = ref("");
   const two= ref("");
   const three= ref("");
@@ -255,38 +252,9 @@
     layout: "",
   });
 
-   
 
-    return {
-      one,
-      two,
-      three,
-      four,
-      five,
-      six,
-      changeHandler,
-      resentOtpCount,
-      handleSubmit,
-      otpsuccess
-    }
-
-
-    }
-
-
-  }
-
-
-
-
-
-  
   </script>
   
   
-  <style scoped>
-  
-  
-  
-  </style>
+ 
     
