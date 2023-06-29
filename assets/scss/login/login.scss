@@ -74,6 +74,18 @@
     width:350px;
     padding:10px;
   }
+  .otp-input-form{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    padding-bottom: 20px;
+    margin-top: -20px;
+  }
+  .otp-input-form input{
+    width:50px;
+    padding: 10px;
+    text-align: center;
+  }
 
 
 

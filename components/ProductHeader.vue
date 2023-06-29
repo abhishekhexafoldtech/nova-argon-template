@@ -30,7 +30,7 @@ export default {
     },
     methods:{
         async handleClick(tab,event){
-
+            
             if(tab.props.name === 'first'){
                 this.store.$state.productType = true;
             }
