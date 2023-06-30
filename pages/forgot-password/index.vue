@@ -63,8 +63,13 @@ const inputPlaceHolder = ref("");
 const allowNext = ref(true);
 
 const handleSubmit = () =>{
+  if(!inputPlaceHolder.value){
+    return
+  }
   if(inputPlaceHolder.value ==="12345678"){
-    allowNext.value = true
+    allowNext.value = true;
+    const router=useRouter();
+    router.push("/forgot-password/otp")
   }else{
     allowNext.value = false
   }

@@ -123,11 +123,13 @@
   
  const handleSubmit = ()=>{
   otp.value = (one?.value+ two?.value+three?.value+four?.value+five?.value+six?.value);
-    if(otp.value != "123456"){
-      otpsuccess.value = false;
+    if(otp.value == "123456"){
+      otpsuccess.value = true;
+      const router=useRouter();
+      router.push("/forgot-password/new-password")
     }
     else{
-      otpsuccess.value = true;
+      otpsuccess.value = false;
     }
     
    

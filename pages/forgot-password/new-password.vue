@@ -22,10 +22,19 @@
                             <small>Confirm password</small>
                         </div>
                           
-                          <input type="password"  class="form-control" placeholder="New password" v-model="password"/>
+                        <div class="d-flex">
+
+                          <input :type="eyeNewPassword == 'true' ? 'text' : 'password'"   class="form-control" placeholder="New password" v-model="password"/>
+                          <IconsEye class="position-relative" :eye="eyeNewPassword" style="left:-2rem;top:5px;cursor: pointer;color: rgb(184, 184, 184);" @click="eyeNewPassword == 'true' ? eyeNewPassword = 'false' : eyeNewPassword = 'true'"/>
+                        </div>
+                          
                           <br/>
                           <small class="text-danger text-left">Must be atleast 8 charecters which contain both number and special charecter</small>
-                          <input type="password" name=""  class="form-control mt-4" id="" placeholder="Confirm password" v-model="confirmpassword"/>
+                          <div class="d-flex">
+                            <input :type="eyeConfirmPassword == 'true' ? 'text' : 'password'" name=""  class="form-control mt-4" id="" placeholder="Confirm password" v-model="confirmpassword"/>
+                            <IconsEye class="position-relative" :eye="eyeConfirmPassword" style="left:-2rem;top:30px;cursor: pointer;color: rgb(184, 184, 184);" @click="eyeConfirmPassword == 'true' ? eyeConfirmPassword = 'false' : eyeConfirmPassword = 'true'"/>
+
+                          </div>
                           <div class="mt-3">
 
                               <small class=" text-left" :class="passwordMatch ? 'text-success' : 'text-danger'">{{ passwordMatchContent }}</small>
@@ -64,7 +73,9 @@
 
   const password = ref("");
   const confirmpassword = ref("");
-  const passwordMatch = ref(false)
+  const passwordMatch = ref(false);
+  const eyeNewPassword = ref("false");
+  const eyeConfirmPassword = ref("false")
 
   const passwordMatchContent = ref("Both passwords must match");
 
