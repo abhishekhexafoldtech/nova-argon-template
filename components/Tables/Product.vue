@@ -72,7 +72,7 @@ import { productStore } from "~/stores/ProductStore";
       const allProducts = productStore();
       
       return {
-        allProducts
+        allProducts,
       }
     },
 

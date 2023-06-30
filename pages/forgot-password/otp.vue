@@ -49,7 +49,7 @@
             <div class="login-left">
               <div class="login-left-heading">
                 <div class="login-left-icon bg-light">
-                  <img src="@/assets//img/sign-in-password.png" class="rounded-3" style="padding: 140px;"/>
+                  <img src="@/assets/img/sign-in-password.png" class="rounded-3" style="padding: 140px;"/>
                 </div>
               </div>
             </div>

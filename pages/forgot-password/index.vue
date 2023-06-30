@@ -41,11 +41,11 @@
             </div>
         </el-col>
 
-        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12"  >
+        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12"  class="">
           <div class="login-left">
             <div class="login-left-heading">
               <div class="login-left-icon">
-                <img src="@/assets//img/banner/mask-group.png" />
+                <IconsForgotPassword class="mt-5"/>
               </div>
             </div>
           </div>
