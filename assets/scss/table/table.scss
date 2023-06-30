@@ -1,3 +1,47 @@
+.container-area {
+  text-align: left;
+  padding: 10px;
+  .table-top {
+    background-color: #073552;
+    span {
+    color: #fff;
+
+    }
+    .heading {
+      
+    }
+    .search-wrapper {
+
+    }
+    .btn-wrapper {
+      display: block;
+      text-align: right;
+      margin: 8px 15px 8px 8px;
+    }
+  }
+  
+
+
+  .table-area {
+    text-align: left;
+    
+    .btn-wrapper {
+      display: block;
+      text-align: right;
+      margin: 8px 15px 8px 8px;
+    }
+  }
+
+}
+
+.heading-table-top {
+  display: block;
+      text-align: right;
+
+}
+
+
+
 .table-component {
     padding: 12px;
   }

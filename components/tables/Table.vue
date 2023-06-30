@@ -18,12 +18,13 @@
       </el-row>
 
       <!-- Heading  -->
-      <el-row class="table-top">
+      <!-- <el-row class="heading-table-top">
         <el-col :sm="3" :md="3" :lg="3" :xl="3">
-          <!-- <el-pagination background layout="sizes" :total="1000" /> -->
+          <el-pagination background layout="sizes" :total="1000" />
         </el-col>
-        <el-col :sm="15" :md="15" :lg="15" :xl="15"> &nbsp; </el-col>
-        <el-col :sm="6" :md="6" :lg="6" :xl="6">
+        <el-col :sm="17" :md="17" :lg="17" :xl="17"> &nbsp; </el-col>
+        <el-col :sm="4" :md="4" :lg="4" :xl="4">
+          <br>
           <el-input
             v-if="tableSearchVisibility"
             v-model="input3"
@@ -31,7 +32,7 @@
           />
         </el-col>
       </el-row>
-      <br />
+      <br /> -->
 
       <!-- Table -->
       <el-table
@@ -122,7 +123,7 @@
         :total="tableDataTotal"
         :page-size="props.tableQuery.limit"
         v-model:current-page="props.tableQuery.page"
-        layout="prev, pager, next"
+        layout="prev, pager, next, sizes"
         @size-change="handlePagination()"
         @current-change="handlePagination()"
         background
