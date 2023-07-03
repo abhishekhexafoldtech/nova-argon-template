@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="master-login">
-      <el-row>
-        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+    <SignInOutLook>
+
+      <template #form>
             <div class="container">
                  <div class="login-form text-center">
                     <center><img src="@/assets/nova_logo.png" /></center>
@@ -39,20 +39,15 @@
                     
                 </div>
             </div>
-        </el-col>
+      
 
-        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12"  class="">
-          <div class="login-left">
-            <div class="login-left-heading">
-              <div class="login-left-icon">
-                <IconsForgotPassword class="mt-5"/>
-              </div>
-            </div>
-          </div>
-        </el-col>
+      </template>
 
-      </el-row>
-    </div>
+      <template #image>
+        <IconsForgotPassword class="py-5"/>
+      </template>
+    </SignInOutLook>
+
   </div>
 </template>
 
@@ -87,4 +82,17 @@ definePageMeta({
 });
 </script>
 
+
+<style scoped>
+
+
+
+@media screen and (max-width:750px) {
+ 
+  .container{
+    width: 100vw;
+  }
+}
+
+</style>
   

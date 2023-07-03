@@ -1,9 +1,9 @@
 <template>
     <div>
-      <div class="master-login">
-        <el-row>
-          <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-              <div class="container">
+
+      <SignInOutLook>
+        <template #form>
+          <div class="container">
                    <div class="login-form " style="height: max-content;">
                       <center><img src="@/assets/nova_logo.png" /></center>
                       <br>
@@ -51,20 +51,13 @@
  
                   </div>
               </div>
-          </el-col>
-  
-          <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12"  >
-            <div class="login-left">
-              <div class="login-left-heading">
-                <div class="login-left-icon">
-                  <img src="@/assets/img/sign-in-password.png" class="rounded-3" style="padding: 140px;"/>
-                </div>
-              </div>
-            </div>
-          </el-col>
-  
-        </el-row>
-      </div>
+        </template>
+
+        <template #image>
+          <img src="@/assets/img/sign-in-password.png" width="980"/>
+
+        </template>
+      </SignInOutLook>
     </div>
   </template>
   
@@ -93,6 +86,20 @@
     layout: "",
   });
   </script>
+
+
+<style scoped>
+
+@media screen and (max-width:750px) {
+ 
+ .container{
+   width: 100vw;
+ }
+ .login-form{
+      padding: 20px 10px 10px 15px;
+    }
+}
+</style>
   
   
  
