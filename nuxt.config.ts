@@ -55,6 +55,6 @@ export default defineNuxtConfig({
     }
   },
   build: {
-    transpile: ['maz-ui'], // ⚠️ important ⚠️
+    transpile: ['maz-ui'], //  ⚠️ important ⚠️
   },
 });
