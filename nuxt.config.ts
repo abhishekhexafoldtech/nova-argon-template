@@ -45,6 +45,7 @@ export default defineNuxtConfig({
     "@/assets/css/nucleo-svg.css",
     "@/assets/css/nucleo-icons.css",
     "@/assets/scss/index.scss",
+      'maz-ui/css/main.css',
   ],
   modules: ["@pinia/nuxt", '@element-plus/nuxt'],
   runtimeConfig: {
@@ -52,5 +53,8 @@ export default defineNuxtConfig({
       apiBaseUrl: process.env.API_BASE_URL,
       isDemo: process.env.IS_DEMO,
     }
-  }
+  },
+  build: {
+    transpile: ['maz-ui'], // ⚠️ important ⚠️
+  },
 });

@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "serve":"json-server --watch db.json --port=8080"
+    "serve": "json-server --watch db.json --port=8080"
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.5",
@@ -48,6 +48,8 @@
     "json-server": "^0.17.3",
     "jsona": "^1.11.0",
     "leaflet": "1.9.2",
+    "libphonenumber-js": "^1.10.37",
+    "maz-ui": "^3.9.0",
     "nuxt-leaflet": "0.0.27",
     "photoswipe": "5.3.3",
     "postcss": "^8.4.19",
