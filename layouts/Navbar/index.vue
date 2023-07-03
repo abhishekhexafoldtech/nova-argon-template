@@ -12,7 +12,6 @@
     data-scroll="true"
   >
     <div class="px-3 py-1 container-fluid">
-      <Breadcrumbs />
       <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none">
         <a
           href="#"
@@ -20,39 +19,20 @@
           @click.prevent="toggleSidenav"
         >
           <div class="sidenav-toggler-inner">
-            <i
-              class="sidenav-toggler-line"
-              :class="
-                navStore.navFixed && !navStore.darkMode
-                  ? 'opacity-8 bg-dark'
-                  : 'bg-white'
-              "
-            ></i>
-            <i
-              class="sidenav-toggler-line"
-              :class="
-                navStore.navFixed && !navStore.darkMode
-                  ? 'opacity-8 bg-dark'
-                  : 'bg-white'
-              "
-            ></i>
-            <i
-              class="sidenav-toggler-line"
-              :class="
-                navStore.navFixed && !navStore.darkMode
-                  ? 'opacity-8 bg-dark'
-                  : 'bg-white'
-              "
-            ></i>
+            <i class="fa fa-align-right" aria-hidden="true"></i>
           </div>
         </a>
       </div>
+       &nbsp; &nbsp;
+      <Breadcrumbs />
+
+      
       <div
         id="navbar"
         class="mt-2 collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4"
       >
         <div class="pe-md-3 d-flex align-items-center ms-md-auto">
-          <div class="input-group">
+          <!-- <div class="input-group">
             <span class="input-group-text text-body">
               <i class="fas fa-search"></i>
             </span>
@@ -61,83 +41,9 @@
               class="form-control"
               placeholder="Type here..."
             />
-          </div>
+          </div> -->
         </div>
         <ul class="navbar-nav justify-content-end">
-          <!-- <li class="nav-item dropdown d-flex align-items-center pe-2">
-            <a
-              id="dropdownMenuButton"
-              href="#"
-              :class="`p-0 nav-link text-white ${showProfile ? 'show' : ''}`"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              @click="showProfile = !showProfile"
-            >
-            <img :src="defaultAvatar" class="avatar rounded-circle mx-2" />
-            <span class="d-sm-inline d-none"></span>
-            </a>
-            <ul
-              class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4"
-              :class="showProfile ? 'show' : ''"
-              aria-labelledby="dropdownMenuButton"
-            >
-              <li class="mb-2 dropdown-item" @click.prevent="router.push({ path: '/examples/user-profile' })">
-                  <i class="fas fa-user me-sm-1"></i>
-                  <span class="d-sm-inline d-none mx-2">My Profile</span>
-              </li>
-              <li class="dropdown-item" @click.prevent="handleLogout()">
-                  <i class="ni ni-user-run me-sm-1"></i>
-                  <span class="d-sm-inline d-none mx-2">Logout</span>
-              </li>
-            </ul>
-          </li> -->
-          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-            <a
-              id="iconNavbarSidenav"
-              href="#"
-              class="p-0 nav-link text-white"
-              @click.prevent="toggleSidenav"
-            >
-              <div class="sidenav-toggler-inner">
-                <i
-                  class="sidenav-toggler-line"
-                  :class="
-                    navStore.navFixed && !navStore.darkMode
-                      ? 'opacity-8 bg-dark'
-                      : 'bg-white'
-                  "
-                ></i>
-                <i
-                  class="sidenav-toggler-line"
-                  :class="
-                    navStore.navFixed && !navStore.darkMode
-                      ? 'opacity-8 bg-dark'
-                      : 'bg-white'
-                  "
-                ></i>
-                <i
-                  class="sidenav-toggler-line"
-                  :class="
-                    navStore.navFixed && !navStore.darkMode
-                      ? 'opacity-8 bg-dark'
-                      : 'bg-white'
-                  "
-                ></i>
-              </div>
-            </a>
-          </li>
-          <li class="px-3 nav-item d-flex align-items-center">
-            <a class="p-0 nav-link" @click="toggleShowConfig">
-              <i
-                class="fas fa-cog pe-2 cursor-pointer fixed-plugin-button-nav"
-                :class="
-                  navStore.darkMode || !navStore.navFixed
-                    ? 'text-white'
-                    : 'text-dark opacity-8'
-                "
-              ></i>
-            </a>
-          </li>
           <li class="nav-item dropdown d-flex align-items-center pe-2">
             <a
               id="dropdownMenuButton"
@@ -147,14 +53,7 @@
               aria-expanded="false"
               @click="showMenu = !showMenu"
             >
-              <i
-                class="fas fa-bell cursor-pointer"
-                :class="
-                  navStore.darkMode || !navStore.navFixed
-                    ? 'text-white'
-                    : 'text-dark opacity-8'
-                "
-              ></i>
+              <i class="fas fa-bell cursor-pointer text-dark"></i>
             </a>
             <ul
               class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4"
@@ -264,6 +163,45 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item dropdown d-flex align-items-center pe-2">
+            <a
+              id="dropdownMenuButton"
+              href="#"
+              :class="`p-0 nav-link text-white ${showProfile ? 'show' : ''}`"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              @click="showProfile = !showProfile"
+            >
+            <!-- <img :src="defaultAvatar" class="avatar rounded-circle mx-2" /> -->
+              <img class="avatar rounded-circle mx-2"
+                src="@/assets/img/team-2.jpg"
+              />
+              <span class="text-dark" style="font-family: Open Sans;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 19px;
+                letter-spacing: 0em;
+                text-align: left;
+                ">Yew Graham</span>
+            <span class="d-sm-inline d-none"></span>
+            </a>
+            <ul
+              class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4"
+              :class="showProfile ? 'show' : ''"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <li class="mb-2 dropdown-item" @click.prevent="router.push({ path: '/examples/user-profile' })">
+                  <i class="fas fa-user me-sm-1"></i>
+                  <span class="d-sm-inline d-none mx-2">My Profile</span>
+              </li>
+              <li class="dropdown-item" @click.prevent="handleLogout()">
+                  <i class="ni ni-user-run me-sm-1"></i>
+                  <span class="d-sm-inline d-none mx-2">Logout</span>
+              </li>
+            </ul>
+          </li>
+        
+         
         </ul>
       </div>
     </div>

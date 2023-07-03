@@ -1,36 +1,7 @@
 <template>
   <nav aria-label="breadcrumb">
-    <ol
-      class="px-0 pt-1 pb-0 mb-0 bg-transparent breadcrumb"
-      :class="{ 'me-sm-6': !isRTL }"
-    >
-      <li class="text-sm breadcrumb-item">
-        <a :class="navStore.navFixed ? 'text-dark' : 'text-white'">
-          <i class="ni ni-box-2"></i>
-        </a>
-      </li>
-      <li
-        class="text-sm breadcrumb-item"
-        :class="navStore.navFixed ? 'text-dark' : 'text-white'"
-      >
-        <a
-          class="opacity-8"
-          :class="navStore.navFixed ? 'text-dark' : 'text-white'"
-          href="#"
-          >{{ currentRouteDirectory || currentDirectory }}</a
-        >
-      </li>
-      <li
-        class="text-sm breadcrumb-item active"
-        :class="navStore.navFixed ? 'text-dark' : 'text-white'"
-        aria-current="page"
-      >
-        {{ currentRouteName || currentPage }}
-      </li>
-    </ol>
     <h6
-      class="mb-0 font-weight-bolder"
-      :class="navStore.navFixed ? 'text-dark' : 'text-white'"
+      class="mb-0 font-weight-bolder text-dark"
     >
       {{ currentRouteName || currentPage }}
     </h6>

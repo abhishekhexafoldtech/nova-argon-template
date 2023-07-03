@@ -3,9 +3,9 @@
     <div class="row">
 
       <!-- User Profile  -->
-      <div class="w-100 d-flex py-3">
+      <!-- <div class="w-100 d-flex py-3">
         <ProfileCard :profile-details="profileDetails" />
-      </div>
+      </div> -->
 
       <div class="col-lg-12">
         <div class="row">
@@ -17,7 +17,7 @@
               icon: { component, background, shape },
             } of cardData"
             :key="title"
-            class="col-lg-3 col-md-6 col-12"
+            class="col-lg-3 col-md-6 col-12 pt-4"
           >
             <MiniStatisticsCard
               :title="title"
@@ -34,6 +34,25 @@
         
         <!-- Graphs and Chats  -->
         <div class="row">
+          <div class="col-lg-6 mb-lg">
+            <div class="card z-index-2">
+              <div class="p-0 card-body">
+                <div class="chart">
+                   <BarChart
+                        title="Overall Sales"
+                        height="300"
+                        :chart="{
+                            labels: ['16-20', '21-25', '26-30', '31-36', '36-42', '42+'],
+                            datasets: {
+                            label: 'Sales by age',
+                            data: [15, 20, 12, 60, 20, 15],
+                            },
+                        }"
+                    />
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-6 mb-lg">
             <div class="card z-index-2">
               <div class="mb-0 pb-0 card-header">
@@ -75,25 +94,6 @@
                       },
                     ]"
                   />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-lg">
-            <div class="card z-index-2">
-              <div class="p-0 card-body">
-                <div class="chart">
-                   <BarChart
-                        title="Overall Sales"
-                        height="300"
-                        :chart="{
-                            labels: ['16-20', '21-25', '26-30', '31-36', '36-42', '42+'],
-                            datasets: {
-                            label: 'Sales by age',
-                            data: [15, 20, 12, 60, 20, 15],
-                            },
-                        }"
-                    />
                 </div>
               </div>
             </div>

@@ -48,7 +48,7 @@
                 {{ percentage.value }}
               </span>
             </h5>
-            <p v-if="description" class="mt-2 mb-0" v-html="description"></p>
+            <!-- <p v-if="description" class="mt-2 mb-0" v-html="description"></p> -->
           </div>
         </div>
       </div>
