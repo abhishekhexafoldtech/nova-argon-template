@@ -70,7 +70,6 @@
   
   
   <script setup>
-
   const password = ref("");
   const confirmpassword = ref("");
   const passwordMatch = ref(false);

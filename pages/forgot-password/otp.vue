@@ -63,13 +63,6 @@
   
   <script setup>
 
- 
-
-
-
- 
-
-
   const one = ref("");
   const two= ref("");
   const three= ref("");
@@ -253,7 +246,6 @@
   definePageMeta({
     layout: "",
   });
-
 
   </script>
   
