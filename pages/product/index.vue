@@ -12,31 +12,53 @@
                 </div>
             </el-col>
             <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
-                <!-- <div class="btn-wrapper" > -->
                 <div class="btn-wrapper" style="display:flex">
                        <el-input placeholder="Search..."/> &nbsp;
-                <el-button type="button primary-add-btn" @click="handleCreate()"> + Add Product</el-button>
+                <el-button type="button primary-add-btn"  @click="handleCreate()"><span class="text-white">+ Add Product</span> </el-button>
                 </div>
             </el-col>
         </el-row>
 
-
-        <div class="table-area">
-            <Table
-                tableHeading="Cylinders"
-                tableSubHeading=""
-                :addButtonVisibility="false"
-                addButtonText="Add Product"
-                :tableConfig="tableConfig"
-                :tableData="listData"
-                :tableQuery="listQuery"
-                @pagination="handlePagination()"
-                @edit="handleEdit($event)"
-                @delete="handleDelete($event)"
-                :tableCheckBoxVisibility="true"
-                @multipleSelection="handleMultipleSelection($event)"
-            />
-        </div>
+        <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+          <el-tab-pane label="Cylinders(1)" name="first">
+            <div class="table-area">
+                <Table
+                    tableHeading="Cylinders"
+                    tableSubHeading=""
+                    :addButtonVisibility="false"
+                    addButtonText="Add Product"
+                    :tableConfig="tableConfig"
+                    :tableData="listData"
+                    :tableQuery="listQuery"
+                    @pagination="handlePagination()"
+                    @edit="handleEdit($event)"
+                    @delete="handleDelete($event)"
+                    :tableCheckBoxVisibility="true"
+                    @multipleSelection="handleMultipleSelection($event)"
+                />
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="Accessories(2)" name="second">
+            <div class="table-area">
+                <Table
+                    tableHeading="Accessories"
+                    tableSubHeading=""
+                    :addButtonVisibility="false"
+                    addButtonText="Add Product"
+                    :tableConfig="tableConfig"
+                    :tableData="listData"
+                    :tableQuery="listQuery"
+                    @pagination="handlePagination()"
+                    @edit="handleEdit($event)"
+                    @delete="handleDelete($event)"
+                    :tableCheckBoxVisibility="true"
+                    @multipleSelection="handleMultipleSelection($event)"
+                />
+            </div>
+          </el-tab-pane>
+          
+        </el-tabs>
+      
   </div>
 </template>
 
@@ -44,7 +66,7 @@
 import Table from "@/components/tables/Table.vue"
 import { useRouter } from 'vue-router'
 const router = useRouter()
-
+const activeName = ref('first')
 
 let tableConfig = reactive(
    [

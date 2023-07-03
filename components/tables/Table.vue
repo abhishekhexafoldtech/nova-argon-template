@@ -123,7 +123,7 @@
         :total="tableDataTotal"
         :page-size="props.tableQuery.limit"
         v-model:current-page="props.tableQuery.page"
-        layout="prev, pager, next, sizes"
+        layout="prev, pager, next"
         @size-change="handlePagination()"
         @current-change="handlePagination()"
         background

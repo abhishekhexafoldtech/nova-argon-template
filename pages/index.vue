@@ -1,4 +1,8 @@
 
-<script setup>
-await navigateTo("/dashboards");
+<script>
+  export default{
+    beforeCreate() {
+      this.$router.push("/login");
+    },
+  }   
 </script>

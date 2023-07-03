@@ -194,7 +194,7 @@
                   <i class="fas fa-user me-sm-1"></i>
                   <span class="d-sm-inline d-none mx-2">My Profile</span>
               </li>
-              <li class="dropdown-item" @click.prevent="handleLogout()">
+              <li class="dropdown-item" @click="logout()">
                   <i class="ni ni-user-run me-sm-1"></i>
                   <span class="d-sm-inline d-none mx-2">Logout</span>
               </li>
@@ -224,11 +224,17 @@ function toggleShowConfig() {
 const showMenu = ref(false);
 const showProfile = ref(false);
 
-const handleLogout = async () => {
-  try {
-    router.push({ path: "/" });
-  } catch (error) {
-    await useToast("error", error.message);
+
+function logout() {
+    navigateTo('/login')
+  
   }
-};
+
+// const handleLogout = async () => {
+//   try {
+//     router.push({ path: "/" });
+//   } catch (error) {
+//     await useToast("error", error.message);
+//   }
+// };
 </script>
