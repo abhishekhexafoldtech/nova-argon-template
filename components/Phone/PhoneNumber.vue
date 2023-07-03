@@ -18,5 +18,5 @@
     import { ref } from 'vue'
     const phoneNumber = ref()
     const results = ref()
-    
+
   </script>
