@@ -17,6 +17,6 @@
   <script setup>
     import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput' 
     import { ref } from 'vue'
-    const phoneNumber = ref()
+    const phoneNumber = ref()  //get the phone number
     const results = ref()
   </script>
