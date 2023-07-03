@@ -5,24 +5,24 @@
       :class="{ 'me-sm-6': !isRTL }"
     >
       <li class="text-sm breadcrumb-item">
-        <a :class="navStore.navFixed ? 'text-dark' : 'text-white'">
+        <a :class="navStore.navFixed ? 'text-white' : 'text-dark'">
           <i class="ni ni-box-2"></i>
         </a>
       </li>
       <li
         class="text-sm breadcrumb-item"
-        :class="navStore.navFixed ? 'text-dark' : 'text-white'"
+        :class="navStore.navFixed ? 'text-white' : 'text-dark'"
       >
         <a
           class="opacity-8"
-          :class="navStore.navFixed ? 'text-dark' : 'text-white'"
+          :class="navStore.navFixed ? 'text-white' : 'text-dark'"
           href="#"
           >{{ currentRouteDirectory || currentDirectory }}</a
         >
       </li>
       <li
         class="text-sm breadcrumb-item active"
-        :class="navStore.navFixed ? 'text-dark' : 'text-white'"
+        :class="navStore.navFixed ? 'text-white' : 'text-dark'"
         aria-current="page"
       >
         {{ currentRouteName || currentPage }}
@@ -30,7 +30,7 @@
     </ol>
     <h6
       class="mb-0 font-weight-bolder"
-      :class="navStore.navFixed ? 'text-dark' : 'text-white'"
+      :class="navStore.navFixed ? 'text-white' : 'text-dark'"
     >
       {{ currentRouteName || currentPage }}
     </h6>

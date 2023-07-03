@@ -95,7 +95,7 @@
             <a
               id="iconNavbarSidenav"
               href="#"
-              class="p-0 nav-link text-white"
+              class="p-0 nav-link"
               @click.prevent="toggleSidenav"
             >
               <div class="sidenav-toggler-inner">
@@ -132,8 +132,8 @@
                 class="fas fa-cog pe-2 cursor-pointer fixed-plugin-button-nav"
                 :class="
                   navStore.darkMode || !navStore.navFixed
-                    ? 'text-white'
-                    : 'text-dark opacity-8'
+                    ? 'text-dark opacity-8'
+                    : 'text-white'
                 "
               ></i>
             </a>
@@ -142,7 +142,7 @@
             <a
               id="dropdownMenuButton"
               href="#"
-              :class="`p-0 nav-link text-white ${showMenu ? 'show' : ''}`"
+              :class="`p-0 nav-link text-dark ${showMenu ? 'show' : ''}`"
               data-bs-toggle="dropdown"
               aria-expanded="false"
               @click="showMenu = !showMenu"
@@ -151,8 +151,8 @@
                 class="fas fa-bell cursor-pointer"
                 :class="
                   navStore.darkMode || !navStore.navFixed
-                    ? 'text-white'
-                    : 'text-dark opacity-8'
+                    ? 'text-dark opacity-8'
+                    : 'text-white'
                 "
               ></i>
             </a>

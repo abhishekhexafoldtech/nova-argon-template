@@ -12,12 +12,10 @@
   </div>
 </template>
 <script setup>
+import CylindersTable from "./CylindersTable.vue";
+import AccessoriesTable from "./AccessoriesTable.vue";
 
-import CylindersTable from "./CylindersTable.vue"
-import AccessoriesTable from "./AccessoriesTable.vue"
-
-const activeName = ref('cylinders')
-
+const activeName = ref("cylinders");
 </script>
 <style>
 .demo-tabs,
@@ -34,4 +32,5 @@ const activeName = ref('cylinders')
 
 .el-tabs__item:hover {
   color: white;
-}</style>
+}
+</style>

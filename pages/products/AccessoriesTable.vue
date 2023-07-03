@@ -14,7 +14,7 @@ import axios from 'axios';
 const productTableData = reactive({
   listData: [],
   tableConfig:
-  [
+    [
       {
         label: "Image",
         prop: "file_list",

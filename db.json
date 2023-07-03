@@ -1,22 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
-      "product": "3kg cylinder",
-      "cylinder_price": "GHs 25",
-      "stock_quantity": "100",
-      "minimum_order": "30",
-      "discount": "5%",
-      "offer_date": "2023/02/28 to 2023/03/28",
-      "file_list": [
-        {
-          "name": "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbOPbW5lXtD7GasYNDwoR4cKAv1oalaQfZSg&usqp=CAU"
-        }
-      ]
-    },
-    {
-      "id": 7,
+      "id": 2,
       "product": "3kg cylinder",
       "cylinder_price": "GHs 25",
       "stock_quantity": "100",
@@ -31,7 +16,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": 7,
       "product": "3kg cylinder",
       "cylinder_price": "GHs 25",
       "stock_quantity": "100",
@@ -46,7 +31,37 @@
       ]
     },
     {
-      "id": 1,
+      "id": 8,
+      "product": "3kg cylinder",
+      "cylinder_price": "GHs 25",
+      "stock_quantity": "100",
+      "minimum_order": "30",
+      "discount": "5%",
+      "offer_date": "2023/02/28 to 2023/03/28",
+      "file_list": [
+        {
+          "name": "f1c8b75e3e535a44e93444e47fe2f77e.png",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbOPbW5lXtD7GasYNDwoR4cKAv1oalaQfZSg&usqp=CAU"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "product": "3kg cylinder",
+      "cylinder_price": "GHs 25",
+      "stock_quantity": "100",
+      "minimum_order": "30",
+      "discount": "5%",
+      "offer_date": "2023/02/28 to 2023/03/28",
+      "file_list": [
+        {
+          "name": "f1c8b75e3e535a44e93444e47fe2f77e.png",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbOPbW5lXtD7GasYNDwoR4cKAv1oalaQfZSg&usqp=CAU"
+        }
+      ]
+    },
+    {
+      "id": 11,
       "product": "3kg cylinder",
       "cylinder_price": "GHs 25",
       "stock_quantity": "100",
