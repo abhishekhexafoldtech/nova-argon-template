@@ -38,10 +38,6 @@
             <div class="py-4">
               <NuxtLink to="/login"><u>Back to sign in</u></NuxtLink>
             </div>
-
-
-
-
           </div>
         </div>
       </template>
