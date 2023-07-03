@@ -110,7 +110,7 @@
               v-if="deleteButtonVisibility"
               size="small"
               type="default"
-              @click="handleDelete(scope.$index, scope.row)"
+              @click="handleDelete(scope.row)"
               ><i class="fa fa-trash-o" aria-hidden="true"></i
             ></el-button>
           </template>
