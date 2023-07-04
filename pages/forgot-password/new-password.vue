@@ -134,7 +134,7 @@
           "
         >
           <img
-            src="@/assets/img/sign-in-password.png"
+            src="@/assets/img/forgot.png"
             width="580"
             style="margin-top: 5rem"
           />

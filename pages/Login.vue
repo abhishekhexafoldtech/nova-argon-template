@@ -67,7 +67,11 @@
             );
           "
         >
-          <img src="../assets/img/forgot.png" />
+          <img
+            src="@/assets/img/sign-in-password.png"
+            width="580"
+            style="margin-top: 5rem"
+          />
         </div>
       </div>
     </div>
