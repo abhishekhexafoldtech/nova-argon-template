@@ -155,7 +155,7 @@
               <div class="p-0 card-body">
                 <div class="chart">
                    <BarChart
-                        title="Overall Sales"
+                        title="Top products revenue"
                         height="300"
                         :chart="{
                             labels: ['16-20', '21-25', '26-30', '31-36', '36-42', '42+'],
