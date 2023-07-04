@@ -1,6 +1,60 @@
 <template>
   <div>
-    <div class="master-login">
+
+
+    <div class="maincontainer bg-light">
+        <div>
+            <div class="signinform">
+                <!-- sign in form -->
+               
+            <div class="container">
+                 <div class="login-form">
+                    <center><img src="@/assets/nova_logo.png" /></center>
+                    <br>
+                    <h3>Sign In</h3>
+                    <br>
+                    <small>Enter your email and password to sign in</small>
+                    <br>
+                    <br>
+                    <el-form
+                        ref="formDataRef"
+                        :model="formData"
+                        :rules="loginRules"
+                        auto-complete="on"
+                        label-position="top"
+                    >
+                        <el-form-item label="Email/Phone number" prop="userName">
+                            <el-input autocomplete="off" v-model="formData.userName" placeholder="Email/Phone number"></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="Password" prop="password">
+                            <el-input type="password" v-model="formData.password" placeholder="Password" autocomplete="off"></el-input>
+                        </el-form-item>
+
+                        <NuxtLink to="/forgot-password"><p class="forgot-pass-txt">Forgot password</p> </NuxtLink>
+                        <NuxtLink to="/dashboards"><el-button class="login-btn" type="primary" @click="handleLogin" >Sign in</el-button> </NuxtLink>
+
+                    </el-form>
+                </div>
+            </div>
+       
+                
+                <!-- sign in form -->
+            </div>
+        </div>
+        <div >
+            <div class="image p-5" style="background: linear-gradient(124deg, rgba(122, 165, 191, 0.6) -1.8%, rgba(69, 105, 135, 0.6) 105.23%);">
+
+              <img src="../assets/img/forgot.png"  />
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- <div class="master-login">
       <el-row>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <div class="container">
@@ -38,16 +92,15 @@
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12"  >
           <div class="login-right">
             <div class="login-left-heading">
-              <div class="login-left-icon">
-                <img src="@/assets/img/forgot.png" class="rounded-3"  />
-                <!-- <img src="@/assets//img/banner/mask-group.png" /> -->
+              <div class="login-left-icon image">
+                <img src="@/assets/img/forgot.png" width="520px" />
               </div>
             </div>
           </div>
         </el-col>
 
       </el-row>
-    </div>
+    </div> -->
   </div>
 </template>
 

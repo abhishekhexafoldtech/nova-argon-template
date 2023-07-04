@@ -1,49 +1,67 @@
 <template>
   <div>
 
+
+    <div class="maincontainer bg-light">
+        <div>
+            <div class="signinform">
+                <!-- sign in form -->
+                    
+                <div class="container">
+                  <div class="login-form text-center">
+                    <center><img src="@/assets/nova_logo.png" /></center>
+                    <br>
+                    <h3>One time password</h3>
+                    <div style="width:80%;margin-left: 37px;">
+            
+                      <small class="text-center">Please enter the 6-digit one time password(OTP) sent to the phone </small>
+                    </div>
+                    <br>
+                    <br>
+                    <form @submit.prevent="handleSubmit">
+                      <div class="otp-input-form">
+                        <input type="text" class="form-control" maxlength="1" name="1" id="one" v-model="one" autocomplete="off"/>
+                        <input type="text" class="form-control" maxlength="1" name="1" id="two" v-model="two" autocomplete="off"/>
+                        <input type="text" class="form-control" maxlength="1" name="1" id="three" v-model="three" autocomplete="off"/>
+                        <input type="text" class="form-control" maxlength="1" name="1" id="four" v-model="four" autocomplete="off"/>
+                        <input type="text" class="form-control" maxlength="1" name="1" id="five" v-model="five" autocomplete="off"/>
+                        <input type="text" class="form-control" maxlength="1" name="1" id="six" @keydown="changeHandler('dsd')"
+                          v-model="six" autocomplete="off"/>
+                      </div>
+                      <div v-if="!otpsuccess">
+                        <small class="text-danger">
+                          Entered Otp is inavlid
+                        </small>
+                      </div>
+                      <div>
+                        Don't receive OTP code?
+                        <div class="fw-bold ">Resend in {{ resentOtpCount }}</div>
+                      </div>
+                      <input type="submit" class="btn w-100 btn-primary mt-2" value="Next" />
+                    </form>
+                    <div class="py-4">
+                      <NuxtLink to="/login"><u>Back to sign in</u></NuxtLink>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- sign in form -->
+            </div>
+        </div>
+        <div >
+            <div class="image p-5" style="background: linear-gradient(124deg, rgba(122, 165, 191, 0.6) -1.8%, rgba(69, 105, 135, 0.6) 105.23%);">
+
+              <img src="@/assets/img/sign-in-password.png"  width="520" style="margin-top: 5rem;"/>
+
+            </div>
+        </div>
+    </div>
+
     <SignInOutLook>
       <template #form>
-        <div class="container">
-          <div class="login-form text-center">
-            <center><img src="@/assets/nova_logo.png" /></center>
-            <br>
-            <h3>One time password</h3>
-            <div style="width:80%;margin-left: 37px;">
-
-              <small class="text-center">Please enter the 6-digit one time password(OTP) sent to the phone </small>
-            </div>
-            <br>
-            <br>
-            <form @submit.prevent="handleSubmit">
-              <div class="otp-input-form">
-                <input type="text" class="form-control" maxlength="1" name="1" id="one" v-model="one" />
-                <input type="text" class="form-control" maxlength="1" name="1" id="two" v-model="two" />
-                <input type="text" class="form-control" maxlength="1" name="1" id="three" v-model="three" />
-                <input type="text" class="form-control" maxlength="1" name="1" id="four" v-model="four" />
-                <input type="text" class="form-control" maxlength="1" name="1" id="five" v-model="five" />
-                <input type="text" class="form-control" maxlength="1" name="1" id="six" @keydown="changeHandler('dsd')"
-                  v-model="six" />
-              </div>
-              <div v-if="!otpsuccess">
-                <small class="text-danger">
-                  Entered Otp is inavlid
-                </small>
-              </div>
-              <div>
-                Don't receive OTP code?
-                <div class="fw-bold ">Resend in {{ resentOtpCount }}</div>
-              </div>
-              <input type="submit" class="btn w-100 btn-primary mt-2" value="Next" />
-            </form>
-            <div class="py-4">
-              <NuxtLink to="/login"><u>Back to sign in</u></NuxtLink>
-            </div>
-          </div>
-        </div>
       </template>
 
       <template #image>
-        <img src="@/assets/img/sign-in-password.png" class="rounded-3" width="920" />
       </template>
     </SignInOutLook>
 
