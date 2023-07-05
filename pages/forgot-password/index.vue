@@ -25,7 +25,7 @@
                     margin-top: -15px;
                   "
                   class="mx-4"
-                  v-if="inputPlaceHolder"
+                  v-if="form.mobileNo"
                 >
                   <small>Phone number</small>
                 </div>

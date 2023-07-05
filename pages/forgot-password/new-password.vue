@@ -16,7 +16,7 @@
               <br>
               <form style="margin-top: -30px;" @submit.prevent="">
                 <div style="position:absolute;width:max-content;background: white;margin-top: -15px;" class="mx-4"
-                  v-if="password">
+                  v-if="form.password">
                   <small>New password</small>
                 </div>
                 <div class="d-flex">
@@ -33,7 +33,7 @@
                   <input :type="eyeConfirmPassword == 'true' ? 'text' : 'password'" name="" class="form-control mt-4"
                     id="" placeholder="Confirm password" v-model="form.confirmpassword" />
                   <div style="position:absolute;width:max-content;background: white;margin-top: 9px;"
-                    v-if="confirmpassword" class="mx-3">
+                    v-if="form.confirmpassword" class="mx-3">
                     <small>Confirm password</small>
                   </div>
                   <IconsEye class="position-relative" :eye="eyeConfirmPassword"
