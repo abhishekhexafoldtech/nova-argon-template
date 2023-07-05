@@ -32,7 +32,7 @@
           </div>
         </div>
         
-        <!-- Graphs and Chats  -->
+        <!-- Graphs and Table  -->
         <div class="row">
           <div class="col-lg-6 mb-lg">
             <div class="card z-index-2">
@@ -54,7 +54,55 @@
             </div>
           </div>
           <div class="col-lg-6 mb-lg">
-            <div class="card z-index-2">
+            <div class="card">
+                  <div class="p-3 pb-0 card-header">
+                      <div class="d-flex justify-content-between">
+                          <h6 class="mb-2">Distributer stock request</h6>
+                      </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table align-items-center">
+                        <tbody>
+                            <tr
+                              v-for="({ flag, name, zone, quantity, date }, index ) in sales"  :key="index">
+                                <td class="w-30">
+                                    <div class="px-2 py-1 d-flex align-items-center">
+                                        <div>
+                                            <img :src="flag" alt="Country flag" />
+                                        </div>
+                                        <div class="ms-4">
+                                            <p class="mb-0 text-xs font-weight-bold">
+                                                Name:
+                                            </p>
+                                            <h6 class="mb-0 text-sm">{{ name }}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="mb-0 text-xs font-weight-bold">Zone:</p>
+                                        <h6 class="mb-0 text-sm">{{ zone }}</h6>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="mb-0 text-xs font-weight-bold">Quantity:</p>
+                                        <h6 class="mb-0 text-sm">{{ quantity }}</h6>
+                                    </div>
+                                </td>
+                                <td class="text-sm align-middle">
+                                    <div class="text-center col">
+                                        <p class="mb-0 text-xs font-weight-bold">Date:</p>
+                                        <h6 class="mb-0 text-sm">{{ date }}</h6>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+
+              </div>     
+            <!-- <div class="card z-index-2">
               <div class="mb-0 pb-0 card-header">
                 <h6>Overall Sales</h6>
               </div>
@@ -96,50 +144,37 @@
                   />
                 </div>
               </div>
+            </div> -->
+          </div>
+        </div>
+
+      <!-- Graphs-2 and Table-2  -->
+        <div class="row mt-4">
+          <div class="col-lg-8 mb-lg">
+            <div class="card z-index-2">
+              <div class="p-0 card-body">
+                <div class="chart">
+                   <BarChart
+                        title="Top products revenue"
+                        height="300"
+                        :chart="{
+                            labels: ['16-20', '21-25', '26-30', '31-36', '36-42', '42+'],
+                            datasets: {
+                            label: 'Sales by age',
+                            data: [15, 20, 12, 60, 20, 15],
+                            },
+                        }"
+                    />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Mini Graph -->
-        <div class="row mt-4">
-          <div v-for="o in 4" :key="o"
-            class="col-lg-3 col-md-6 col-12"
-          >
-            <LineChart
-              title="Sales"
-              subTitle="3kg|Steel"
-              :value="{
-                amount: 'GHS 1500',
-                percentage: { value: '+90%', color: 'success' },
-              }"
-            />
+          <div class="col-lg-4 mb-lg">
+            <CategoriesList :categories="categories" />    
           </div>
         </div>
-        
-        <!-- Table  -->
-          <div>
-            <DataTable />
-          </div>
 
-        <!-- Table  -->
-        <br><br>
-          <div>
-            <Table
-              tableHeading="All Products"
-              tableSubHeading="Showing available product list"
-              :addButtonVisibility="true"
-              addButtonText="Add Product"
-              :tableConfig="tableConfig"
-              :tableData="listData"
-              :tableQuery="listQuery"
-              @pagination="handlePagination()"
-              @add="handleAdd($event)"
-              @edit="handleEdit($event)"
-              @delete="handleDelete($event)"
-              :tableCheckBoxVisibility="true"
-              @multipleSelection="handleMultipleSelection($event)"
-            />
-          </div>
+      
       </div>
     </div>
   </div>
@@ -149,20 +184,24 @@ import US from "@/assets/img/icons/flags/US.png";
 import DE from "@/assets/img/icons/flags/DE.png";
 import GB from "@/assets/img/icons/flags/GB.png";
 import BR from "@/assets/img/icons/flags/BR.png";
+import TI1 from "@/assets/img/ti1.png";
+import TI2 from "@/assets/img/ti2.png";
+import TI3 from "@/assets/img/ti3.png";
+import TI4 from "@/assets/img/ti4.png";
 
-import ProfileCard from '@/components/cards/ProfileCard.vue'
+
+
+// import ProfileCard from '@/components/cards/ProfileCard.vue'
 import BarChart from '@/components/charts/BarChart.vue';
-import LineChart from "@/components/charts/LineChart.vue";
 import MiniStatisticsCard from "@/components/cards/MiniStatisticsCard.vue";
-import GradientLineChart from "@/components/charts/GradientLineChart.vue";
-import DataTable from "@/components/tables/DataTable.vue"
 import Table from "@/components/tables/Table.vue"
+import CategoriesList from "@/components/cards/CategoriesList.vue";
+
 
 definePageMeta({
   layout: "default",
 });
 
-// table 
 
 
 let tableConfig = reactive(
@@ -398,33 +437,81 @@ const cardData = [
 
 const sales = {
   us: {
-    country: "United States",
-    sale: 2500,
-    value: "$230,900",
-    bounce: "29.9%",
+    name: "Yaw Graham",
+    zone: "Northern",
+    quantity: "60",
+    date: "2023/05/01",
     flag: US,
   },
   germany: {
-    country: "Germany",
-    sale: "3.900",
-    value: "$440,000",
-    bounce: "40.22%",
+    name: "Derrick Nwafor",
+    zone: "Northern",
+    quantity: "50",
+    date: "2023/05/02",
     flag: DE,
   },
   britain: {
-    country: "Great Britain",
-    sale: "1.400",
-    value: "$190,700",
-    bounce: "23.44%",
+    name: "Yaw Boafo",
+    zone: "Western",
+    quantity: "41",
+    date: "2023/05/03",
     flag: GB,
   },
   brasil: {
-    country: "Brasil",
-    sale: "562",
-    value: "$143,960",
-    bounce: "32.14%",
+    name: "Kamaldeen Sulley",
+    zone: "Western",
+    quantity: "30",
+    date: "2023/05/05",
     flag: BR,
   },
+  us1: {
+    name: "Yaw Graham",
+    zone: "Northern",
+    quantity: "60",
+    date: "2023/05/01",
+    flag: US,
+  },
+  germany2: {
+    name: "Derrick Nwafor",
+    zone: "Northern",
+    quantity: "50",
+    date: "2023/05/02",
+    flag: DE,
+  },
 };
+
+const categories= [
+                    {
+                        url: TI1,
+                        label: '3kg Steel cyliner',
+                        description: '<strong>Ghs 95</strong>',
+                    },
+                    {
+                        url: TI2,
+                        label: '6kg Steel cyliner',
+                        description: '<strong>Ghs 95</strong>',
+                    },
+                    {
+                        url: TI3,
+                        label: '12kg Steel cyliner',
+                        description: '<strong>Ghs 95</strong>',
+                    },
+                    {
+                        url: TI4,
+                        label: 'LPG Hose',
+                        description: '<strong>Ghs 95</strong>',
+                    },
+                    {
+                        url: TI1,
+                        label: '3kg Steel cyliner',
+                        description: '<strong>Ghs 95</strong>',
+                    },
+                    {
+                        url: TI2,
+                        label: '6kg Steel cyliner',
+                        description: '<strong>Ghs 95</strong>',
+                    },
+                   
+];
 </script>
   
