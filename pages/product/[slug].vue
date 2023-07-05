@@ -25,6 +25,7 @@
             :rules="formValidationRules"
             style="max-width: 100%; border-radius: 15px; height: 760px"
             class="bg-white px-5 py-4 rounded-5"
+            ref="formRef"
           >
             <el-col :span="24">
               <h6 class="fw-bold pb-4" style="font-family: 'open', 'sans'">
@@ -143,9 +144,12 @@
               </h6>
               <MultiFileUpload
                 @image-uploaded="handleImageUploaded"
-                :imageUrls="imageUrls"
+                :imageUrls="formData.imageUrls"
               />
             </el-col>
+            <span v-if="showErrorMessage" class="error-message">
+              Please upload all images before submitting the form.
+            </span>
           </div>
         </div>
         <div class="col-12 mt-5 d-flex gap-2 flex-row-reverse d-sm-block">
@@ -156,12 +160,13 @@
             >Save</el-button
           >
           <RouterLink to="/product">
-          <el-button
-            class="float-end me-sm-3 px-5 border-1 shadow"
-            style="border-color: #626aef"
-            color="#edf2f7"
-            >Cancel</el-button
-          ></RouterLink>
+            <el-button
+              class="float-end me-sm-3 px-5 border-1 shadow"
+              style="border-color: #626aef"
+              color="#edf2f7"
+              >Cancel</el-button
+            ></RouterLink
+          >
         </div>
       </div>
     </div>
@@ -170,7 +175,7 @@
 
 <script setup>
 import MultiFileUpload from "@/components/upload/MultiFileUpload.vue";
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 const formData = reactive({
   imageUrls: [],
   productName: "",
@@ -182,10 +187,11 @@ const formData = reactive({
   minimumOrderUnit: "",
   offerDate: "",
 });
+const showErrorMessage = ref(false);
+const formRef = ref(null);
 
 const handleImageUploaded = (boxes) => {
   // Access the updated data from the child component
-  // console.log('Updated Data:', JSON.stringify(boxes));
   // You can update the imageUrls array here with the updated data
   formData.imageUrls = boxes.map((box) => box.image);
 };
@@ -249,19 +255,48 @@ const formValidationRules = reactive({
     },
   ],
 });
-//handle save
 
-async function handleSave() {
-  console.log(JSON.stringify(formData));
-  // console.log("form data", formData);
-  // formData.v((valid) => {
-  //   if (valid) {
-  //     // Form is valid, perform further actions
-  //     console.log("form data", formData);
-  //   } else {
-  //     // Form is invalid, handle error cases
-  //     console("something wrong");
-  //   }
-  // });
-}
+//handle save
+const handleSave = () => {
+  formRef.value.validate((valid) => {
+    let val = showErrorMessage.value;
+    console.log(val);
+    if (valid && val === false) {
+      // Form is valid, do something with the data
+      console.log("Form submitted:", JSON.stringify(formData));
+    }
+  });
+
+  if (
+    formData.imageUrls.length === 0 ||
+    formData.imageUrls.some((url) => !url)
+  ) {
+    showErrorMessage.value = true;
+    return false;
+  } else {
+    // At least one image is missing
+    showErrorMessage.value = false;
+  }
+};
+
+watch(
+  () => formData.imageUrls,
+  (newImageUrls) => {
+    const isAllImagesUploaded = newImageUrls.every((url) => url);
+    if (isAllImagesUploaded) {
+      // All images have been uploaded
+      showErrorMessage.value = false;
+    } else {
+      // At least one image is missing
+      showErrorMessage.value = true;
+    }
+  }
+);
 </script>
+<style>
+.error-message {
+  color: red;
+  position: absolute;
+  right: 15px;
+}
+</style>

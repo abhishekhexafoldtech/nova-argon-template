@@ -6,7 +6,13 @@
         :key="box.id"
         class="col-6 col-md-6 p-0 d-flex align-items-center flex-column"
       >
-        <label :class="['image-box', 'image-preview', { 'top-box': box.type === 'top' }]">
+        <label
+          :class="[
+            'image-box',
+            'image-preview',
+            { 'top-box': box.type === 'top' },
+          ]"
+        >
           <input
             type="file"
             :ref="`fileInput${box.id}`"
@@ -25,6 +31,8 @@
 </template>
 
 <script>
+import { ref, watch } from "vue";
+
 export default {
   props: {
     imageUrls: {
@@ -35,10 +43,10 @@ export default {
   data() {
     return {
       boxes: [
-        { id: 1, type: 'top', image: null },
-        { id: 2, type: 'top', image: null },
-        { id: 3, type: 'bottom', image: null },
-        { id: 4, type: 'bottom', image: null },
+        { id: 1, type: "top", image: null },
+        { id: 2, type: "top", image: null },
+        { id: 3, type: "bottom", image: null },
+        { id: 4, type: "bottom", image: null },
       ],
     };
   },
@@ -65,7 +73,7 @@ export default {
         if (box) {
           box.image = imageSrc;
         }
-        this.$emit('image-uploaded', this.boxes);
+        this.$emit("image-uploaded", this.boxes);
       };
       reader.readAsDataURL(file);
     },
@@ -97,7 +105,6 @@ export default {
   border-radius: 15px;
 }
 
-
 .image-box img {
   max-width: 100%;
   max-height: 100%;
@@ -112,6 +119,7 @@ export default {
   font-size: 14px;
   color: #666;
 }
+
 .image-preview {
   background-color: #f8f8f8;
   background-size: cover;
