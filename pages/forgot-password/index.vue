@@ -3,7 +3,7 @@
     <div class="maincontainer bg-light">
       <div>
         <div class="signinform">
-          <!-- sign in form -->
+          <!--  form -->
           <div class="container">
             <div class="login-form text-center">
               <center><img src="@/assets/nova_logo.png" /></center>
@@ -36,7 +36,7 @@
               </div>
             </div>
           </div>
-          <!-- sign in form -->
+          <!--  form -->
         </div>
       </div>
       <div>

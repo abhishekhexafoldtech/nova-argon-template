@@ -5,7 +5,7 @@
     <div class="maincontainer bg-light">
         <div>
             <div class="signinform">
-                <!-- sign in form -->
+                <!-- form -->
                     
                 <div class="container">
                   <div class="login-form text-center">
@@ -45,7 +45,7 @@
                   </div>
                 </div>
                 
-                <!-- sign in form -->
+                <!--  form -->
             </div>
         </div>
         <div >
@@ -64,13 +64,6 @@
       <template #image>
       </template>
     </SignInOutLook>
-
-
-
-
-
-
-
 
   </div>
 </template>
@@ -177,12 +170,6 @@ const changeHandler = (data) => {
     document.querySelector("#six").focus();
 
   }
-
-
-
-
-
-
 
 }
 
