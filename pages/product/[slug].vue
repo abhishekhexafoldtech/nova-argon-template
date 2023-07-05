@@ -5,8 +5,7 @@
         <h4 class="heading">
           <span>Add Product </span>
         </h4>
-
-        <span class="ms-3">Adding details of product </span>
+        <!-- <span class="ms-3">Adding details of product </span> -->
       </el-col>
 
       <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
@@ -16,7 +15,7 @@
       <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6"> &nbsp; </el-col>
     </el-row>
 
-    <div class="container-fluid mt-md-5 px-3 table-area">
+    <div class="container-fluid mt-md-1 px-3 table-area">
       <div class="row">
         <div class="col-12 col-md-6">
           <el-form
@@ -150,20 +149,19 @@
           </div>
         </div>
         <div class="col-12 mt-5 d-flex gap-2 flex-row-reverse d-sm-block">
-          <!-- <button>Save</button> -->
           <el-button
             class="float-end me-sm-3 px-5 shadow"
             color="#626aef"
             @click="handleSave"
             >Save</el-button
           >
-          <!-- <button>Cancel</button> -->
+          <RouterLink to="/product">
           <el-button
             class="float-end me-sm-3 px-5 border-1 shadow"
             style="border-color: #626aef"
             color="#edf2f7"
             >Cancel</el-button
-          >
+          ></RouterLink>
         </div>
       </div>
     </div>

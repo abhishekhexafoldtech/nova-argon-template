@@ -38,8 +38,8 @@
     <main class="main-content position-relative max-height-vh-100 h-100">
       <Navbar />
       <slot />
-      <Footer />
-      <Configurator />
+      <!-- <Footer /> -->
+      <!-- <Configurator /> -->
     </main>
   </div>
 </template>
@@ -47,8 +47,8 @@
 <script setup>
 import Sidenav from "@/layouts/Sidenav";
 import Navbar from "@/layouts/Navbar";
-import Footer from "@/layouts/Footer";
-import Configurator from "@/layouts/Configurator";
+// import Footer from "@/layouts/Footer";
+// import Configurator from "@/layouts/Configurator";
 
 import { useNavStore } from "@/stores/NavStore";
 import setTooltip from "@/assets/js/tooltip";
