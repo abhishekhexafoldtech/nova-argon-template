@@ -3,7 +3,7 @@
     <div class="maincontainer bg-light">
       <div>
         <div class="signinform">
-          <!-- sign in form -->
+          <!--  form -->
           <div class="container">
             <div class="login-form text-center">
               <center><img src="@/assets/nova_logo.png" /></center>
@@ -25,7 +25,7 @@
                     margin-top: -15px;
                   "
                   class="mx-4"
-                  v-if="inputPlaceHolder"
+                  v-if="form.mobileNo"
                 >
                   <small>Phone number</small>
                 </div>
@@ -34,8 +34,8 @@
                     type="text"
                     class="form-control"
                     placeholder="Phone Number"
-                    v-model="inputPlaceHolder"
-                  />
+                    v-model="form.mobileNo"
+                  required/>
                 </div>
                 <div class="forget-error" v-if="!allowNext && inputPlaceHolder">
                   <small class="text-danger"
@@ -45,20 +45,18 @@
                 <div v-if="allowNext">
                   <br />
                 </div>
-                <NuxtLink to="/forgot-password/otp">
-                  <input
-                    type="submit"
-                    class="btn w-100 btn-primary"
-                    value="Next"
-                  />
-                </NuxtLink>
+                <div >
+
+                  <button  class="btn w-100 btn-primary" @click="handleSubmit">Next</button>
+                </div>
+                
               </form>
               <div class="py-5">
                 <NuxtLink to="/login"><u>Back to sign in</u></NuxtLink>
               </div>
             </div>
           </div>
-          <!-- sign in form -->
+          <!--  form -->
         </div>
       </div>
       <div>
@@ -85,24 +83,24 @@
 
 
 <script setup>
-const inputPlaceHolder = ref("");
+const form = reactive({
+  mobileNo:null
+})
 const allowNext = ref(true);
 
 const handleSubmit = () => {
-  if (!inputPlaceHolder.value) {
+  if (!form.mobileNo) {
     return;
   }
-  if (inputPlaceHolder.value === "12345678") {
-    allowNext.value = true;
-    const router = useRouter();
-    router.push("/forgot-password/otp");
-  } else {
-    allowNext.value = false;
-  }
+  console.log("submited")
+
+  const router = useRouter();
+  router.push("/forgot-password/otp")
+  
 };
 
-watch(inputPlaceHolder, () => {
-  if (inputPlaceHolder.value === "") {
+watch(form, () => {
+  if (form.mobileNo === "") {
     allowNext.value = true;
     console.log(allowNext);
   }
