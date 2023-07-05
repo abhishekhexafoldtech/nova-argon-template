@@ -1,7 +1,7 @@
 <template>
     <div class="container-area">
         <el-row class="table-top">
-            <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
+            <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
                 <h4 class="heading">
                 <span>List of Products </span>
                 </h4>
@@ -11,9 +11,9 @@
                     &nbsp;
                 </div>
             </el-col>
-            <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
+            <el-col :xs="24" :sm="4" :md="4" :lg="4" :xl="4">
                 <div class="btn-wrapper" style="display:flex">
-                       <el-input placeholder="Search..."/> &nbsp;
+                       <!-- <el-input placeholder="Search..."/> &nbsp; -->
                 <el-button type="button primary-add-btn"  @click="handleCreate()"><span class="text-white">+ Add Product</span> </el-button>
                 </div>
             </el-col>

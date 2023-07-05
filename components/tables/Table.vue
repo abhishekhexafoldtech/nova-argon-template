@@ -8,12 +8,17 @@
           <p>{{ tableSubHeading }}</p>
         </el-col>
         <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
-          <el-button
+          <el-input
+            v-if="tableSearchVisibility"
+            v-model="input3"
+            placeholder="Search..."
+          />
+          <!-- <el-button
             v-if="addButtonVisibility"
             type="primary"
             @click="handleAdd"
             >+ {{ addButtonText }}</el-button
-          >
+          > -->
         </el-col>
       </el-row>
 
