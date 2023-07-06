@@ -55,7 +55,7 @@ p {
 @media screen and (min-width: 768px) {
   .main-container {
     position: relative;
-    bottom: 50px;
+    bottom: 55px;
   }
 }
 </style>
