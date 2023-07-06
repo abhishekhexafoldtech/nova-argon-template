@@ -50,7 +50,7 @@
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
         <img src="@/assets/svg/zones_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Zones" />
+        <SidenavItem to="/zones"    text="Zones" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
        <img src="@/assets/svg/transactions_dashboard_icon.png" alt="">
