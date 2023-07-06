@@ -78,44 +78,37 @@ const form = reactive({
 const passwordMatch = ref(false);
 const eyeNewPassword = ref("false");
 const eyeConfirmPassword = ref("false")
-
 const passwordMatchContent = ref("Both passwords must match");
-
-
 watch(form, () => {
   console.log(form)
   if (form.password === form.confirmpassword && form.password) {
     passwordMatch.value = true;
   } else {
-
     passwordMatch.value = false;
   }
   passwordMatch.value ? passwordMatchContent.value = "Both passwords are matched" : 'Both passwords must match'
 });
-
 const handleSubmit = () => {
   if (passwordMatch && form.password.length >= 8) {
     const router = useRouter();
     router.push("/dashboards")
   }
 }
-
 definePageMeta({
   layout: "",
 });
 </script>
+
 
 <style scoped>
 @media screen and (max-width: 750px) {
   .container {
     width: 100vw;
   }
-
   .login-form {
     padding: 20px 10px 10px 15px;
   }
 }
-
 @media screen and (max-width: 450px) {
   .login-form {
     padding: 30px 10px 30px 10px;

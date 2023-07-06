@@ -67,7 +67,6 @@
   
   
 <script setup>
-
 const one = ref("");
 const two = ref("");
 const three = ref("");
@@ -78,7 +77,6 @@ const otp = ref("");
 const resentOtpCount = ref(60);
 const otpsuccess = ref(true);
 const resendotp = ref(false);
-
 watch(six, (cur, pre) => {
   if (pre && !cur) {
     changeHandler("five");
@@ -115,7 +113,6 @@ watch(two, (cur, pre) => {
 watch(one, (cur, pre) => {
   changeHandler();
 });
-
 const handleSubmit = () => {
   otp.value =
     one?.value +
@@ -132,13 +129,11 @@ const handleSubmit = () => {
     otpsuccess.value = false;
   }
 };
-
 const changeHandler = (data) => {
   if (data) {
     document.querySelector(`#${data}`).focus();
     return;
   }
-
   // forward
   if (one.value == "") {
     document.querySelector("#one").focus();
@@ -158,9 +153,7 @@ const changeHandler = (data) => {
   } else if (six.value == "") {
     document.querySelector("#six").focus();
   }
-
 }
-
 function handletimer() {
   const timer =
     resentOtpCount.value > 0 &&
@@ -169,12 +162,9 @@ function handletimer() {
     clearInterval(timer);
   }, 60000);
 }
-
 onMounted(() => {
   handletimer();
-
   document.querySelector("#one").focus();
-
   const sixi = document.querySelector("#six");
   sixi.addEventListener("keydown", function (event) {
     if (event.keyCode === 8 && six.value == "") {
@@ -224,11 +214,11 @@ onMounted(() => {
     }
   });
 });
-
 definePageMeta({
   layout: "",
 });
 </script>
+
 
 <style scoped>
 @media screen and (max-width: 750px) {

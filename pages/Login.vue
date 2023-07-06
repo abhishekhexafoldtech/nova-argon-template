@@ -1,6 +1,3 @@
-
-
-
 <template>
   <div class="maincontainer bg-light">
     <!-- Left container -->
@@ -88,41 +85,35 @@ definePageMeta({
 });
 </script>
 
+
 <style scoped>
 .eye {
   left: 19rem;
 }
-
 @media screen and (max-width:850px) {
   .eye {
     left: 14rem;
   }
 }
-
 @media screen and (max-width: 750px) {
   .container {
     width: 100vw;
   }
-
   .eye {
     left: 22rem;
   }
-
   .login-form {
     padding: 20px 10px 10px 15px;
   }
 }
-
 @media screen and (max-width: 450px) {
   .login-form {
     padding: 30px 10px 30px 10px;
   }
-
   .eye {
     left: 19rem;
   }
 }
-
 @media screen and (max-width:375px) {
   .eye {
     left: 16rem;

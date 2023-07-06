@@ -66,25 +66,20 @@ const form = reactive({
   mobileNo: null
 })
 const allowNext = ref(true);
-
 const handleSubmit = () => {
   if (!form.mobileNo) {
     return;
   }
   console.log("submited")
-
   const router = useRouter();
   router.push("/forgot-password/otp")
-
 };
-
 watch(form, () => {
   if (form.mobileNo === "") {
     allowNext.value = true;
     console.log(allowNext);
   }
 });
-
 definePageMeta({
   layout: "",
 });
@@ -97,7 +92,6 @@ definePageMeta({
     width: 100vw;
   }
 }
-
 @media screen and (max-width: 450px) {
   .login-form {
     padding: 30px 10px 10px 10px;
