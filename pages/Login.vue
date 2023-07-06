@@ -43,7 +43,7 @@
                   <small class="text-left text-danger" style="position: relative;top:-20px" v-if="error" > Please provide valid details</small>
                 </div>
                 <div class="p-3 w-100 text-end pointer" role="button" style="margin-top: -30px;">
-                  Forgot password
+                  <NuxtLink to="/forgot-password">Forgot password</NuxtLink>
                 </div>
                 <button class="btn w-100 btn-primary " @click="handleSubmit">
                   Next
