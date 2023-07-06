@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blanckPage" class="container-area">
+  <div class="container-area">
     <el-row class="table-top">
       <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
         <h4 class="heading">
@@ -171,18 +171,10 @@
       </div>
     </div>
   </div>
-  <div v-else>
-    <BlankPage
-      title="Product"
-      buttonText="Add Product"
-      :handleBlankPage="handleBlankPage"
-    />
-  </div>
 </template>
 
 <script setup>
 import MultiFileUpload from "@/components/upload/MultiFileUpload.vue";
-import BlankPage from "@/components/BlankPage.vue";
 import { reactive, watch } from "vue";
 const formData = reactive({
   imageUrls: [],
@@ -197,12 +189,6 @@ const formData = reactive({
 });
 const showErrorMessage = ref(false);
 const formRef = ref(null);
-
-//handleBlank Page
-const blanckPage = ref(false);
-const handleBlankPage = () => {
-  blanckPage.value = true;
-};
 
 const handleImageUploaded = (boxes) => {
   // Access the updated data from the child component
