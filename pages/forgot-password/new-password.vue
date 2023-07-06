@@ -45,7 +45,7 @@
                     passwordMatchContent }}</small>
                 </div>
                 <br />
-                <button class="btn w-95 btn-primary my-2" @click="handleSubmit">
+                <button class="btn w-95 btn-primary my-2" @click.pre="handleSubmit">
                   Next
                 </button>
               <!-- <input type="submit"  value="Next" /> -->
@@ -85,8 +85,8 @@ const passwordMatchContent = ref("Both passwords must match");
 
 
 watch(form, () => {
-  console.log(":scsc")
-  if (form.password === form.confirmpassword && form.password && form.confirmpassword) {
+  console.log(form)
+  if (form.password === form.confirmpassword && form.password ) {
     passwordMatch.value = true;
   } else {
 
