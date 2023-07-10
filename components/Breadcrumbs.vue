@@ -31,10 +31,7 @@ const currentRouteName = computed(() => {
 
   const file = route.path.split("/").slice(-1)[0];
   const name = file.split("-");
-  for (const i in name) {
-    name[i] = name[i][0]?.toUpperCase() + name[i].substring(1);
-  }
-  const fulllRouteName = name.join(" ");
+  const fulllRouteName = name[0].charAt(0).toUpperCase()+name[0].slice(1)
   return fulllRouteName;
 });
 

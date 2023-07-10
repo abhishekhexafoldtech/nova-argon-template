@@ -3,7 +3,7 @@
     <el-row class="table-top">
       <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
         <h4 class="heading">
-          <span>Add Product </span>
+          <span> {{ currentRouteName}} Product </span>
         </h4>
         <!-- <span class="ms-3">Adding details of product </span> -->
       </el-col>
@@ -176,6 +176,16 @@
 <script setup>
 import MultiFileUpload from "@/components/upload/MultiFileUpload.vue";
 import { reactive, watch } from "vue";
+
+//get dynamic url name
+const currentRouteName = computed(() => {
+  const route = useRoute();
+  const file = route.path.split("/").slice(-1)[0];
+  const name = file.split("-");
+  const fulllRouteName = name[0].charAt(0).toUpperCase()+name[0].slice(1)
+  return fulllRouteName;
+});
+
 const formData = reactive({
   imageUrls: [],
   productName: "",
