@@ -47,7 +47,7 @@
                     :addButtonVisibility="false"
                     addButtonText="Add Product"
                     :tableConfig="tableConfig"
-                    :tableData="listData"
+                    :tableData="items"
                     :tableQuery="listQuery"
                     @pagination="handlePagination()"
                     @edit="handleEdit($event)"
