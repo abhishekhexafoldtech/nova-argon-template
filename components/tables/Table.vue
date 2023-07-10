@@ -10,7 +10,7 @@
         <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
           <el-input
             v-if="tableSearchVisibility"
-            v-model="input3"
+            v-model="search"
             placeholder="Search..."
           />
           <!-- <el-button
@@ -145,6 +145,8 @@ let emit = defineEmits();
 
 let multipleSelection = reactive([]);
 
+let search = ref('');
+
 let props = defineProps({
   tableConfig: {},
   tableData: {},
@@ -213,6 +215,14 @@ let tableDataItems = computed(() => {
 let tableDataTotal = computed(() => {
   return props.tableData ? props.tableData.length : 0;
 });
+
+watch(search,()=>{
+  handleSearch();
+})
+
+function handleSearch(){
+  emit("search",search)
+}
 
 function handlePagination() {
   emit("pagination");

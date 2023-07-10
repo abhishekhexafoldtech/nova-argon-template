@@ -28,13 +28,14 @@
                     :addButtonVisibility="false"
                     addButtonText="Add Product"
                     :tableConfig="tableConfig"
-                    :tableData="listData"
+                    :tableData="items"
                     :tableQuery="listQuery"
                     @pagination="handlePagination()"
                     @edit="handleEdit($event)"
                     @delete="handleDelete($event)"
                     :tableCheckBoxVisibility="true"
                     @multipleSelection="handleMultipleSelection($event)"
+                    @search = "handleSearch($event)"
                 />
             </div>
           </el-tab-pane>
@@ -194,6 +195,99 @@ let listData = [
   },
 ];
 
+let items= reactive([
+{
+    price: "1",
+    name: "Amm",
+    address: "aaa",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "2",
+    name: "Baa",
+    address: "bb",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "3",
+    name: "Caa",
+    address: "cc",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "4",
+    name: "Tom",
+    address: "dd",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "5",
+    name: "Daa",
+    address: "ee",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "6",
+    name: "Tom",
+    address: "ff",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "7",
+    name: "Tom",
+    address: "gg",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "8",
+    name: "Amm",
+    address: "aaa",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "9",
+    name: "Baa",
+    address: "bb",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+  {
+    price: "10",
+    name: "Caa",
+    address: "cc",
+    file_list: [{
+      name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
+      url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+    }],
+  },
+])
+
 let  listQuery = {
         page: 1,
         limit: 10,
@@ -201,6 +295,23 @@ let  listQuery = {
         searchJoin: "or",
         orderBy: "created_at",
         sortedBy: "desc",
+}
+
+
+function handleSearch(data){
+  const filterData = listData.filter((e)=>{
+    if(e.address.includes(data.value.toLowerCase()) || e.price.includes(data.value) || e.name.includes(data.value.toLowerCase())){
+      return e
+    }
+  });
+
+  if(filterData.length == 0){
+    items=listData;
+  }
+
+  items = filterData;
+
+  console.log(items)
 }
 
 // pagination 
