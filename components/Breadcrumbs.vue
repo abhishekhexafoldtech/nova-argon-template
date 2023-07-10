@@ -1,7 +1,7 @@
 <template>
   <nav aria-label="breadcrumb">
     <h6
-      class="mb-0 font-weight-bolder text-dark"
+      class="text-dark"
     >
       {{ currentRouteName || currentPage }}
     </h6>

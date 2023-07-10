@@ -33,7 +33,7 @@
   </div>
   <div id="app-layout" :class="[isCollapsed && 'g-sidenav-hidden']">
     <!-- <div class="min-height-100 position-absolute w-100 bg-dark" /> -->
-    <div class="min-height-100 position-absolute w-100" style="border-bottom: 1.5px solid #E9ECEF"  />
+    <div class="header_wrap"  />
     <Sidenav />
     <main class="main-content position-relative max-height-vh-100 h-100">
       <Navbar />
