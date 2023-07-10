@@ -145,7 +145,7 @@ let emit = defineEmits();
 
 let multipleSelection = reactive([]);
 
-let search = ref('');
+let search = ref('')
 
 let props = defineProps({
   tableConfig: {},
@@ -223,6 +223,7 @@ watch(search,()=>{
 function handleSearch(){
   emit("search",search)
 }
+
 
 function handlePagination() {
   emit("pagination");
