@@ -81,7 +81,13 @@
                       :key="index"
                     >
                       <!-- <el-image class="medium" :src="item.url"> </el-image> -->
-                      <el-avatar shape="square" :size="50" :src="item.url" />
+                      <!-- <el-avatar shape="square" :size="30" :src="item.url" /> -->
+                      <el-image
+                          style="width: 35px; height: 35px; border-radius:10px"
+                          :src="item.url"
+                          :preview-src-list="[item.url]"
+                        >
+                        </el-image>
                     </span>
                   </span>
                 </span>
