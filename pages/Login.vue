@@ -1,6 +1,5 @@
 <template>
-  <div class="maincontainer bg-light">
-    <!-- Left container -->
+  <!-- <div class="maincontainer bg-light">
     <div>
       <div class="signinform">
         <div class="container">
@@ -52,16 +51,54 @@
         </div>
       </div>
     </div>
-    <!-- Left Container -->
-    <!-- Right container -->
     <div>
       <div class="image p-5"
         style="background: linear-gradient(124deg, rgba(122, 165, 191, 0.6) -1.8%, rgba(69, 105, 135, 0.6) 105.23%);">
         <img src="@/assets/img/sign-in-password.png" width="580" style="margin-top: 5rem;" />
       </div>
     </div>
-    <!-- Right container -->
-  </div>
+  </div> -->
+
+  <section class="login_wrap">
+    <div class="login_inner">
+      <el-row>
+        <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <div class="login_left">
+            <div class="login_form">
+              <img class="logo" src="@/assets/nova_logo2.png" />
+              <form class="form_inner" @submit.prevent="">
+                <h3>Sign In</h3>
+                <p>Enter your email and password to sign in</p>
+                <div class="fieldrow">
+                  <input type="text" class="form_input" v-model="form.userId" required />
+                  <label class="form_label">Email / Phone Number</label>
+                </div>
+                <div class="fieldrow">
+                  <input :type="eyePassword == 'true' ? 'text' : 'password'" name="" class="form_input password" id="" v-model="form.password" required />
+                  <label class="form_label">Password</label>
+                  <IconsEye class="view_pass" :eye="eyePassword" @click="eyePassword == 'true' ? eyePassword = 'false' : eyePassword = 'true'" />
+                </div>
+                <div class="fieldrow text-right">
+                  <NuxtLink to="/forgot-password">Forgot password</NuxtLink>
+                </div>
+                <small v-if="error">Incorrect email or password combination</small>
+                <div class="fieldrow">
+                  <button class="btn w-100 btn-primary" @click="handleSubmit">
+                    Sign In
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <div class="login_right">
+            <img src="@/assets/img/sign-in-password.png" />
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+  </section>
 </template>
   
   
@@ -84,42 +121,6 @@ definePageMeta({
   layout: "",
 });
 </script>
-
-
-<style scoped>
-.eye {
-  left: 19rem;
-}
-@media screen and (max-width:850px) {
-  .eye {
-    left: 14rem;
-  }
-}
-@media screen and (max-width: 750px) {
-  .container {
-    width: 100vw;
-  }
-  .eye {
-    left: 22rem;
-  }
-  .login-form {
-    padding: 20px 10px 10px 15px;
-  }
-}
-@media screen and (max-width: 450px) {
-  .login-form {
-    padding: 30px 10px 30px 10px;
-  }
-  .eye {
-    left: 19rem;
-  }
-}
-@media screen and (max-width:375px) {
-  .eye {
-    left: 16rem;
-  }
-}
-</style>
   
   
  
