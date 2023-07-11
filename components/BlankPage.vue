@@ -2,7 +2,7 @@
   <div class="container main-container">
     <div class="row main-section">
       <img
-        src="../assets/svg/empty_product.svg"
+        src="@/assets/svg/empty_product.svg"
         class="blank-image w-40 w-md-20"
         alt="Blank0"
       />
