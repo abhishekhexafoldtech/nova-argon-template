@@ -1,64 +1,4 @@
 <template>
-  <!-- <div class="maincontainer bg-light">
-    <div>
-      <div class="signinform">
-        <div class="container">
-          <div class="login-form text-center " style="height: max-content;">
-            <center><img src="@/assets/nova_logo.png" /></center>
-            <br>
-            <h3>Sign in</h3>
-            <div style="width:80%;margin-left: 37px;" class="text-center">
-              <small class="text-center">Enter your email and password to sign in </small>
-            </div>
-            <br>
-            <br>
-            <form style="margin-top: -30px;" @submit.prevent="">
-              <div style="position:absolute;width:max-content;background: white;margin-top: -15px;" class="mx-4"
-                v-if="form.userId">
-                <small>Email/Phone number</small>
-              </div>
-              <div class="">
-                <input type="text" class="form-control " placeholder="Email/Phone number" v-model="form.userId"
-                  required />
-              </div>
-              <small class="text-danger text-left" v-if="!passwordMatch || !password > 8"></small>
-              <div class="">
-                <input :type="eyePassword == 'true' ? 'text' : 'password'" name="" class="form-control mt-4" id=""
-                  placeholder="Password" v-model="form.password" required />
-                <div style="position:absolute;width:max-content;background: white;margin-top: -55px;" v-if="form.password"
-                  class="mx-4">
-                  <small>password</small>
-                </div>
-                <IconsEye class="position-relative eye text-align-left" :eye="eyePassword"
-                  style="top:-33px;cursor: pointer;color: rgb(184, 184, 184);width:22px"
-                  @click="eyePassword == 'true' ? eyePassword = 'false' : eyePassword = 'true'" />
-              </div>
-              <div class="mt-3">
-                <small class="text-left text-danger" style="position: relative;top:-20px" v-if="error"> Please provide
-                  valid details</small>
-              </div>
-              <div class="p-3 w-100 text-end pointer" role="button" style="margin-top: -30px;">
-                <NuxtLink to="/forgot-password">Forgot password</NuxtLink>
-              </div>
-              <button class="btn w-100 btn-primary " @click="handleSubmit">
-                Next
-              </button>
-            </form>
-            <div class="text-center pt-4">
-              <NuxtLink to="/login"><u>Back to sign in</u></NuxtLink>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="image p-5"
-        style="background: linear-gradient(124deg, rgba(122, 165, 191, 0.6) -1.8%, rgba(69, 105, 135, 0.6) 105.23%);">
-        <img src="@/assets/img/sign-in-password.png" width="580" style="margin-top: 5rem;" />
-      </div>
-    </div>
-  </div> -->
-
   <section class="login_wrap">
     <div class="login_inner">
       <el-row>
@@ -70,11 +10,21 @@
                 <h3>Sign In</h3>
                 <p>Enter your email and password to sign in</p>
                 <div class="fieldrow">
-                  <input type="text" class="form_input" v-model="form.userId" required />
+                  <input 
+                    type="text" 
+                    class="form_input" :class="form.userId ?  'has_value' : ''" 
+                    v-model="form.userId" 
+                    required />
                   <label class="form_label">Email / Phone Number</label>
                 </div>
                 <div class="fieldrow">
-                  <input :type="eyePassword == 'true' ? 'text' : 'password'" name="" class="form_input password" id="" v-model="form.password" required />
+                  <input 
+                    :type="eyePassword == 'true' ? 'text' : 'password'" 
+                    class="form_input password" 
+                    :class="form.password ?  'has_value' : ''"
+                    v-model="form.password" 
+                    required 
+                    />
                   <label class="form_label">Password</label>
                   <IconsEye class="view_pass" :eye="eyePassword" @click="eyePassword == 'true' ? eyePassword = 'false' : eyePassword = 'true'" />
                 </div>
