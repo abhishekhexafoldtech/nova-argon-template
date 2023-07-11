@@ -209,7 +209,6 @@ let  listQuery = {
 // search
 
 function handleSearch(data){
-  console.log(data.value)
   const filter = listData.filter((e)=>{
         if(e.name.toLowerCase().includes(data.value.toLowerCase()) || e.price.includes(data.value) || e.address.toLowerCase().includes(data.value.toLowerCase())){
             return e
