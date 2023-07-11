@@ -7,18 +7,38 @@
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="Cylinders(1)" name="first">
           <div class="table-area">
-            <Table tableHeading="Cylinders" tableSubHeading="" :addButtonVisibility="false" addButtonText="Add Product"
-              :tableConfig="tableConfig" :tableData="listData" :tableQuery="listQuery" @pagination="handlePagination()"
-              @edit="handleEdit($event)" @delete="handleDelete($event)" :tableCheckBoxVisibility="true"
-              @multipleSelection="handleMultipleSelection($event)" />
+            <Table 
+              tableHeading="Cylinders" 
+              tableSubHeading="" 
+              :addButtonVisibility="false" 
+              addButtonText="Add Product"
+              :tableConfig="tableConfig" 
+              :tableData="listData" 
+              :tableQuery="listQuery" 
+              @pagination="handlePagination()"
+              @edit="handleEdit($event)" 
+              @delete="handleDelete($event)" 
+              :tableCheckBoxVisibility="true"
+              @multipleSelection="handleMultipleSelection($event)" 
+            />
           </div>
         </el-tab-pane>
         <el-tab-pane label="Accessories(2)" name="second">
           <div class="table-area">
-            <Table tableHeading="Accessories" tableSubHeading="" :addButtonVisibility="false" addButtonText="Add Product"
-              :tableConfig="tableConfig" :tableData="listData" :tableQuery="listQuery" @pagination="handlePagination()"
-              @edit="handleEdit($event)" @delete="handleDelete($event)" :tableCheckBoxVisibility="true"
-              @multipleSelection="handleMultipleSelection($event)" />
+            <Table 
+              tableHeading="Accessories" 
+              tableSubHeading="" 
+              :addButtonVisibility="false" 
+              addButtonText="Add Product"
+              :tableConfig="tableConfig" 
+              :tableData="listData" 
+              :tableQuery="listQuery" 
+              @pagination="handlePagination()"
+              @edit="handleEdit($event)" 
+              @delete="handleDelete($event)" 
+              :tableCheckBoxVisibility="true"
+              @multipleSelection="handleMultipleSelection($event)" 
+            />
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -28,6 +48,7 @@
 
 <script setup>
 import Table from "@/components/tables/Table.vue";
+import useToast from "@/composables/useToast";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const activeName = ref("first");
@@ -206,6 +227,7 @@ function handleEdit(data) {
 
 // delete
 function handleDelete(data) {
+  useToast("warning", "You are not allowed to change data of default user");
   console.log(data);
 }
 

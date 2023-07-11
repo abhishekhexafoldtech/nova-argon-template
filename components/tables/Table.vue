@@ -1,6 +1,7 @@
 <template>
   <el-card>
-    <div class="table-component">
+    <el-skeleton :throttle="100" :loading="tableLoadingStatus" :rows="10" animated/>
+    <div v-show="!tableLoadingStatus" class="table-component">
       <!-- Top heading  -->
       <el-row class="table-top-header">
         <el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
@@ -81,7 +82,13 @@
                       :key="index"
                     >
                       <!-- <el-image class="medium" :src="item.url"> </el-image> -->
-                      <el-avatar shape="square" :size="50" :src="item.url" />
+                      <!-- <el-avatar shape="square" :size="30" :src="item.url" /> -->
+                      <el-image
+                          style="width: 35px; height: 35px; border-radius:10px"
+                          :src="item.url"
+                          :preview-src-list="[item.url]"
+                        >
+                        </el-image>
                     </span>
                   </span>
                 </span>
@@ -139,7 +146,6 @@
 
 
 <script setup >
-import { Search } from "@element-plus/icons-vue";
 
 let emit = defineEmits();
 
@@ -155,6 +161,11 @@ let props = defineProps({
     default: "",
   },
 
+  tableLoadingStatus: {
+      type: Boolean,
+      default: false,
+  },
+  
   tableSubHeading: {
     type: String,
     default: "",
