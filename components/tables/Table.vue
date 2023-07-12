@@ -93,12 +93,12 @@
               ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
             ></span>
             <span
-              class="table-icon"
+              class="table-icon delete_btn"
               v-if="deleteButtonVisibility"
               @click="handleDelete(scope.$index, scope.row)"
               ><i class="fa fa-trash-o" aria-hidden="true"></i
             ></span>
-            <el-dropdown class="table-icon" v-if="moreActionsVisibility">
+            <el-dropdown class="table-icon more_btn" v-if="moreActionsVisibility">
               <span class="el-dropdown-link">
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
               </span>
