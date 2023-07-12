@@ -202,9 +202,47 @@
 
 .el-table .el-table__cell {
   z-index: auto !important;
+
+  .table-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #8392AB;
+    transition: all 250ms ease-in-out;
+    outline: none;
+
+    &:hover {
+      color: var(--violet);
+    }
+
+    &.delete_btn {
+      &:hover {
+        color: #FB1E1E;
+      }
+    }
+
+    &.more_btn {
+      line-height: 27px;
+      font-size: 14px;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
 }
 
 .el-button--small {
   --el-button-size: auto !important;
   padding: 7px !important;
+}
+
+@media (max-width: 768px) {
+  .el-tabs__nav-wrap {
+    min-width: 225px;
+  }
 }
