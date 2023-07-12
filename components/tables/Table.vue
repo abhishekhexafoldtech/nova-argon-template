@@ -14,31 +14,9 @@
             v-model="input3"
             placeholder="Search..."
           />
-          <!-- <el-button
-            v-if="addButtonVisibility"
-            type="primary"
-            @click="handleAdd"
-            >+ {{ addButtonText }}</el-button
-          > -->
         </el-col>
       </el-row>
 
-      <!-- Heading  -->
-      <!-- <el-row class="heading-table-top">
-        <el-col :sm="3" :md="3" :lg="3" :xl="3">
-          <el-pagination background layout="sizes" :total="1000" />
-        </el-col>
-        <el-col :sm="17" :md="17" :lg="17" :xl="17"> &nbsp; </el-col>
-        <el-col :sm="4" :md="4" :lg="4" :xl="4">
-          <br>
-          <el-input
-            v-if="tableSearchVisibility"
-            v-model="input3"
-            placeholder="Search..."
-          />
-        </el-col>
-      </el-row>
-      <br /> -->
 
       <!-- Table -->
       <el-table
@@ -81,8 +59,6 @@
                       v-for="(item, index) in scope.row[config.prop]"
                       :key="index"
                     >
-                      <!-- <el-image class="medium" :src="item.url"> </el-image> -->
-                      <!-- <el-avatar shape="square" :size="30" :src="item.url" /> -->
                       <el-image
                           style="width: 35px; height: 35px; border-radius:10px"
                           :src="item.url"
@@ -104,29 +80,38 @@
         <!-- ACTIONS -->
         <el-table-column v-if="actionVisibility" label="Actions">
           <template #default="scope">
-            <el-button
+            <span
+              class="table-icon"
               v-if="viewButtonVisibility"
-              size="small"
-              type="default"
               @click="handleView(scope.row)"
               ><i class="fa fa-eye" aria-hidden="true"></i
-            ></el-button>
-            <el-button
+            ></span>
+            <span 
+              class="table-icon"
               v-if="editButtonVisibility"
-              size="small"
-              type="default"
               @click="handleEdit(scope.row)"
               ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
-            ></el-button>
-            <el-button
+            ></span>
+            <span
+              class="table-icon"
               v-if="deleteButtonVisibility"
-              size="small"
-              type="default"
               @click="handleDelete(scope.$index, scope.row)"
               ><i class="fa fa-trash-o" aria-hidden="true"></i
-            ></el-button>
+            ></span>
+            <el-dropdown class="table-icon" v-if="moreActionsVisibility">
+              <span class="el-dropdown-link">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item v-if="resetPasswordVisibility">Reset password</el-dropdown-item>
+                  <el-dropdown-item v-if="roleAndPermissionVisibility">Assign roles & permissions</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </template>
         </el-table-column>
+        
       </el-table>
 
       <!-- // PAGINATION -->
@@ -202,6 +187,19 @@ let props = defineProps({
   },
 
   deleteButtonVisibility: {
+    type: Boolean,
+    default: true,
+  },
+  
+  moreActionsVisibility: {
+    type: Boolean,
+    default: true,
+  },
+  resetPasswordVisibility: {
+    type: Boolean,
+    default: true,
+  },
+  roleAndPermissionVisibility: {
     type: Boolean,
     default: true,
   },
