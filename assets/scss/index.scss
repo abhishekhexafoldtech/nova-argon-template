@@ -11,13 +11,16 @@
 @import "form/form.scss";
 
 @import "header/header.scss";
+
 @import "blank-page.scss";
 
+@import "user/user.scss";
+
 strong {
-    color:blue
+    color: blue
 }
 
-:root{
+:root {
     --grey-bg: #F5F7F8;
     --white: #FFF;
     --black: #000;
@@ -33,4 +36,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.el-tabs__item.is-active{
+    color: var(--violet) !important;
+}
+.el-tabs__active-bar{
+    background-color: var(--violet) !important;
 }
