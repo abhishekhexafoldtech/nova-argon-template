@@ -2,7 +2,7 @@
   <div class="container main-container">
     <div class="row main-section">
       <img
-        src="@/assets/svg/empty_product.svg"
+        :src="blankImage"
         class="blank-image w-40 w-md-20"
         alt="Blank0"
       />
@@ -21,6 +21,7 @@
 </template>
 <script setup>
 import { defineProps } from "vue";
+import image from "@/assets/svg/empty_product.svg"
 defineProps({
   title: {
     type: String,
@@ -33,6 +34,10 @@ defineProps({
   handleBlankPage: {
     type: Function,
   },
+  blankImage:{
+    type: String,
+    default:image
+  }
 });
 </script>
 <style scoped>
