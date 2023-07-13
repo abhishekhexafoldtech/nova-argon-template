@@ -2,7 +2,7 @@
   <div class="blank_page">
     <div class="bp_inner">
       <div class="bp_box">
-        <img src="@/assets/svg/empty_product.svg" alt="Blank0" />
+        <img :src="blankImage" alt="Blank0" />
         <h3>No {{ title }} added</h3>
         <p>You haven't added any {{ title }}.<br/>Start by adding first {{ title }}</p>
         <button class="btn w-100 btn-primary" @click="handleBlankPage">
@@ -14,6 +14,7 @@
 </template>
 <script setup>
 import { defineProps } from "vue";
+import image from "@/assets/svg/empty_product.svg"
 defineProps({
   title: {
     type: String,
@@ -26,5 +27,9 @@ defineProps({
   handleBlankPage: {
     type: Function,
   },
+  blankImage:{
+    type: String,
+    default:image
+  }
 });
 </script>
