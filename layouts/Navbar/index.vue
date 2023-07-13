@@ -190,7 +190,7 @@
               :class="showProfile ? 'show' : ''"
               aria-labelledby="dropdownMenuButton"
             >
-              <li class="mb-2 dropdown-item" @click.prevent="router.push({ path: '/examples/user-profile' })">
+              <li class="mb-2 dropdown-item" @click.prevent="router.push({ path: '/user' })">
                   <i class="fas fa-user me-sm-1"></i>
                   <span class="d-sm-inline d-none mx-2">My Profile</span>
               </li>

@@ -193,7 +193,7 @@ let props = defineProps({
   
   moreActionsVisibility: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   resetPasswordVisibility: {
     type: Boolean,
