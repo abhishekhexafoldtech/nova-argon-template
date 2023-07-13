@@ -46,7 +46,7 @@
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
         <img src="@/assets/svg/manage_admin_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Manage Admins" />
+        <SidenavItem to="/onboarding"    text="Manage Admins" />
       </li>
       <li class="nav-item d-flex align-items-center mx-4 px-2">
         <img src="@/assets/svg/zones_dashboard_icon.svg" alt="">

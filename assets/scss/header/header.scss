@@ -13,10 +13,14 @@ nav {
     }
 }
 
-.page_heading{
+.page_heading {
     font-size: 20px;
     font-weight: 600;
     color: #000;
     margin: 0;
     margin-bottom: 5px;
+}
+
+.navbar-vertical.navbar-expand-xs {
+    z-index: 9;
 }

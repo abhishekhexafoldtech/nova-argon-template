@@ -1,69 +1,34 @@
 <template>
-    <div class="container-area">
-        <el-row class="table-top">
-            <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8">
-                <h4 class="heading">
-                <span>List of Products </span>
-                </h4>
-            </el-col>
-            <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                <div class="search-wrapper">
-                    &nbsp;
-                </div>
-            </el-col>
-            <el-col :xs="24" :sm="4" :md="4" :lg="4" :xl="4">
-                <div class="btn-wrapper" style="display:flex">
-                       <!-- <el-input placeholder="Search..."/> &nbsp; -->
-                <el-button type="button primary-add-btn"  @click="handleCreate()"><span class="text-white">+ Add Product</span> </el-button>
-                </div>
-            </el-col>
-        </el-row>
-
-        <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-          <el-tab-pane label="Cylinders(1)" name="first">
-            <div class="table-area">
-                <Table
-                    tableHeading="Cylinders"
-                    tableSubHeading=""
-                    :addButtonVisibility="false"
-                    addButtonText="Add Product"
-                    :tableConfig="tableConfig"
-                    :tableData="listData"
-                    :tableQuery="listQuery"
-                    @pagination="handlePagination()"
-                    @edit="handleEdit($event)"
-                    @delete="handleDelete($event)"
-                    :tableCheckBoxVisibility="true"
-                    @multipleSelection="handleMultipleSelection($event)"
-                />
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label="Accessories(2)" name="second">
-            <div class="table-area">
-                <Table
-                    tableHeading="Accessories"
-                    tableSubHeading=""
-                    :addButtonVisibility="false"
-                    addButtonText="Add Product"
-                    :tableConfig="tableConfig"
-                    :tableData="listData"
-                    :tableQuery="listQuery"
-                    @pagination="handlePagination()"
-                    @edit="handleEdit($event)"
-                    @delete="handleDelete($event)"
-                    :tableCheckBoxVisibility="true"
-                    @multipleSelection="handleMultipleSelection($event)"
-                />
-            </div>
-          </el-tab-pane>
-          
-        </el-tabs>
-      
+  <div class="container-area">
+    <h4 class="page_heading">List of Products</h4>
+    <div class="table_header">
+      <el-button type="button" class="btn_add" @click="handleCreate()"><span class="text-white"><i>+</i>Add Product</span>
+      </el-button>
+      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+        <el-tab-pane label="Cylinders(1)" name="first">
+          <div class="table-area">
+            <Table tableHeading="Cylinders" tableSubHeading="" :addButtonVisibility="false" addButtonText="Add Product"
+              :tableConfig="tableConfig" :tableData="listData" :tableQuery="listQuery" @pagination="handlePagination()"
+              @edit="handleEdit($event)" @delete="handleDelete($event)" :tableCheckBoxVisibility="true"
+              @multipleSelection="handleMultipleSelection($event)" />
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="Accessories(2)" name="second">
+          <div class="table-area">
+            <Table tableHeading="Accessories" tableSubHeading="" :addButtonVisibility="false" addButtonText="Add Product"
+              :tableConfig="tableConfig" :tableData="listData" :tableQuery="listQuery" @pagination="handlePagination()"
+              @edit="handleEdit($event)" @delete="handleDelete($event)" :tableCheckBoxVisibility="true"
+              @multipleSelection="handleMultipleSelection($event)" />
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
   </div>
 </template>
 
 <script setup>
 import Table from "@/components/tables/Table.vue";
+import useToast from "@/composables/useToast";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const activeName = ref("first");
@@ -244,6 +209,7 @@ function handleEdit(data) {
 
 // delete
 function handleDelete(data) {
+  useToast("warning", "You are not allowed to change data of default user");
   console.log(data);
 }
 
