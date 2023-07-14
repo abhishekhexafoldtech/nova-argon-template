@@ -13,6 +13,7 @@
                                 message: 'Please input role name here',
                                 trigger: 'blur',
                             },
+                            { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
                         ]">
                             <el-input v-model="form.rollName" style="height:50px" />
                         </el-form-item>
@@ -24,7 +25,7 @@
                             <div class="flex flex-column lh-base">
                                 <div for="" class="mx-1 text-dark" v-if="form.value1.length > 0">Dashboard</div>
                                 <el-select v-model="form.value1" multiple placeholder="Dashboard" style="width: 240px">
-                                    <el-form-item prop="text1" :rules="form.value1 ? null : [
+                                    <el-form-item prop="text1" rules="[
                                         {
                                             required: true,
                                             message: 'Please input role name here',
@@ -87,7 +88,7 @@
                                 class="bottom-button">Cancel</el-button>
                         </div>
                         <div style="margin-left: 220px;">
-                            <el-button @click="handleOnboarding('save')" class="text-white bottom-button"
+                            <el-button @click="submitForm()" class="text-white bottom-button"
                                 style="background-color: rgba(94, 114, 228, 1);position: relative;top:-41px">Save</el-button>
                         </div>
                     </div>
@@ -100,10 +101,8 @@
 
 
 <script setup>
-
-
 const form = reactive({
-    rollName: '',
+    rollName: null,
     value1: [],
     value2: [],
     value3: [],
@@ -112,18 +111,17 @@ const form = reactive({
     value6: [],
     value7: []
 });
-
 const validate = () => {
     if (form.rollName) return true;
     return false;
 }
-
 const handleOnboarding = () => {
     const valid = validate();
     if (!valid) { return };
     console.log("form", form)
-    // navigateTo("/onboarding")
+    navigateTo("/onboarding")
 }
+
 onBeforeRouteLeave((to, from, next) => {
     const router = useRouter();
     router.previousRoute = 'role'
