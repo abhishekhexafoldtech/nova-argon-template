@@ -16,6 +16,8 @@
 
 @import "user/user.scss";
 
+@import "onboarding/onboarding.scss";
+
 strong {
     color: blue
 }
@@ -38,9 +40,26 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.el-tabs__item.is-active{
+.el-tabs__item.is-active {
     color: var(--violet) !important;
 }
-.el-tabs__active-bar{
+
+.el-tabs__active-bar {
     background-color: var(--violet) !important;
+}
+
+.btn-default {
+    border: 1px solid #5E72E4 !important;
+    color: var(--violet) !important;
+}
+
+.el-overlay-dialog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.el-dialog{    
+    margin: auto !important;
 }
