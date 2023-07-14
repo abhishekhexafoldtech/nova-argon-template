@@ -55,7 +55,8 @@
             >
               <i class="fas fa-bell cursor-pointer text-dark"></i>
             </a>
-            <ul
+            <MiniNotificationCard />
+            <!-- <ul
               class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4"
               :class="showMenu ? 'show' : ''"
               aria-labelledby="dropdownMenuButton"
@@ -161,7 +162,7 @@
                   </div>
                 </a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <li class="nav-item dropdown d-flex align-items-center pe-2">
             <a
@@ -172,7 +173,6 @@
               aria-expanded="false"
               @click="showProfile = !showProfile"
             >
-            <!-- <img :src="defaultAvatar" class="avatar rounded-circle mx-2" /> -->
               <img class="avatar rounded-circle mx-2"
                 src="@/assets/img/team-2.jpg"
               />
@@ -209,7 +209,7 @@
 </template>
 <script setup>
 import Breadcrumbs from "@/components/Breadcrumbs";
-import defaultAvatar from "../../assets/img/default_avatar.jpeg";
+import MiniNotificationCard from "@/components/cards/MiniNotificationCard.vue";
 import { useNavStore } from "@/stores/NavStore";
 import { useRouter } from "vue-router";
 const router = useRouter();
