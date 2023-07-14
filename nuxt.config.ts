@@ -18,6 +18,10 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css",
         },
+        {
+          rel: "stylesheet",
+          href: "https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css",
+        },
       ],
       script: [
         {
