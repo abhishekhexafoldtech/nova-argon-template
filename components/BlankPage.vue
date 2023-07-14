@@ -6,10 +6,10 @@
         class="blank-image w-40 w-md-20"
         alt="Blank0"
       />
-      <h4 class="fw-bolder mb-3">No {{ title }} added</h4>
+      <h4 class="fw-bolder mb-3">{{ mainTitle }}</h4>
       <br />
-      <p>You haven't added any {{ title }}.</p>
-      <p>Start by adding first {{ title }}</p>
+      <p>{{ title }}</p>
+      <p>{{ subTitle }}</p>
       <button
         class="btn w-70 w-sm-40 w-lg-25 btn-primary mt-3"
         @click="handleBlankPage"
@@ -23,9 +23,15 @@
 import { defineProps } from "vue";
 import image from "@/assets/svg/empty_product.svg"
 defineProps({
-  title: {
+  mainTitle: {
     type: String,
     default: "Product",
+  },
+  title:{
+    type: String,
+  },
+  subTitle:{
+    type: String,
   },
   buttonText: {
     type: String,

@@ -5,8 +5,8 @@
         :show-file-list="false" 
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload">
-          <img v-if="reactivePropertyName" :src="reactivePropertyName" class="avatar" />
-          <el-icon v-else class="avatar-uploader-icon">
+          <img v-if="reactivePropertyName" :src="reactivePropertyName"  :class="iconClass" class="avatar img-fluid" />
+          <el-icon v-else class="avatar-uploader-icon" :class="iconClass">
             <Plus />
           </el-icon>
       </el-upload>
@@ -18,6 +18,9 @@
   
   const props = defineProps({
     class: {
+      type: String,
+    },
+    iconClass: {
       type: String,
     },
     reactivePropertyName: {
@@ -33,6 +36,7 @@
   const handleAvatarSuccess = (response, uploadFile) => {
     let image = URL.createObjectURL(uploadFile.raw)
     emit('getImage', image)
+    console.log(image)
   }
   
   const beforeAvatarUpload = (rawFile) => {
@@ -49,8 +53,8 @@
   </script>
   <style scoped>
   .avatar-uploader .avatar {
-    width: 320px;
-    height: 320px;
+    /* width: 320px;
+    height: 320px; */
     display: block;
     border: none;
   }
@@ -73,8 +77,6 @@
   .el-icon.avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
-    width: 320px;
-    height: 320px;
     text-align: center;
     border: 1px solid rgb(249, 247, 247);
     border-radius: 12px;

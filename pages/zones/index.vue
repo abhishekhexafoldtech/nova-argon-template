@@ -1,7 +1,9 @@
 <template>
   <div>
     <BlankPage
-      title="Product"
+      mainTitle="No Product Added"
+      title="You haven't added any Product."
+      subTitle="Start by adding first Product"
       buttonText="Add Product"
       :handleBlankPage="handleBlankPage"
       :blankImage="productBlankImage"
@@ -10,12 +12,9 @@
 </template>
 <script setup>
 import BlankPage from "@/components/BlankPage.vue";
-import productBlankImage from "@/assets/svg/empty_product.svg"
+import productBlankImage from "@/assets/svg/empty_product.svg";
 
 //handleBlank Page
-const handleBlankPage = () => {
-
-};
+const handleBlankPage = () => {};
 </script>
-<style>
-</style>
+<style></style>
