@@ -1,6 +1,9 @@
 <template>
   <div>
     <ul class="dropdown-menu dropdown-menu-end mini_not_box" aria-labelledby="dropdownMenuButton">
+      <button class="close_not">
+        <i class="ri-close-line"></i>
+      </button>
 
       <div class="box_header">
         <h4>Notification</h4>
