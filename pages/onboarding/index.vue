@@ -254,6 +254,13 @@
     console.log(data);
   }
   
+  onMounted(()=>{
+    const route = useRouter();
+    if(route.previousRoute && route.previousRoute === 'role'){
+      activeName.value = 'second'
+    }
+  })
+
   definePageMeta({
     layout: "default",
   });
