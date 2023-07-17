@@ -22,14 +22,15 @@
                 tableSubHeading="" 
                 :moreActionsVisibility="true" 
                 :addButtonVisibility="false" 
-                :tableConfig="tableConfig" 
-                :tableData="listData" 
+                :tableConfig="adminTableConfig" 
+                :tableData="showAdminListData" 
                 :tableQuery="listQuery" 
                 @pagination="handlePagination()"
                 @edit="handleEdit($event)" 
                 @delete="handleDelete($event)" 
                 :tableCheckBoxVisibility="true"
                 @multipleSelection="handleMultipleSelection($event)" 
+                @search="handleAdminSearch($event)"
               />
             </div>
           </el-tab-pane>
@@ -38,15 +39,17 @@
               <Table 
                 tableHeading="List Role" 
                 tableSubHeading="" 
+                :moreActionsVisibility="true"
                 :addButtonVisibility="false" 
-                :tableConfig="tableConfig" 
-                :tableData="listData" 
+                :tableConfig="roleTableConfig" 
+                :tableData="showRoleListData" 
                 :tableQuery="listQuery" 
                 @pagination="handlePagination()"
                 @edit="handleEdit($event)" 
                 @delete="handleDelete($event)" 
                 :tableCheckBoxVisibility="true"
                 @multipleSelection="handleMultipleSelection($event)" 
+                @search="hanldeRoleSearch($event)"
               />
             </div>
           </el-tab-pane>
@@ -61,151 +64,93 @@
   import { useRouter } from "vue-router";
   const router = useRouter();
   const activeName = ref("first");
-  
-  let tableConfig = reactive([
+  let roleListData = [
     {
-      label: "Image",
-      prop: "file_list",
-      width: "",
-      sortable: "",
-      className: "redFont",
+      serial_number:1,
+      role:"Distributor",
     },
     {
-      label: "Name",
-      prop: "name",
-      width: "",
-      sortable: "sortable",
-      className: "redFont",
+      serial_number:2,
+      role:"Delivery agents"
     },
-    {
-      label: "Price",
-      prop: "price",
-      width: "",
-      sortable: "sortable",
-      className: "blueFont",
-    },
-    {
-      label: "Address",
-      prop: "address",
-      width: "",
-      sortable: "",
-      className: "blueFont",
-    },
-  ]);
-  
-  let listData = [
-    {
-      price: "1",
-      name: "Amm",
-      address: "aaa",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "2",
-      name: "Baa",
-      address: "bb",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "3",
-      name: "Caa",
-      address: "cc",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "4",
-      name: "Tom",
-      address: "dd",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "5",
-      name: "Daa",
-      address: "ee",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "6",
-      name: "Tom",
-      address: "ff",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "7",
-      name: "Tom",
-      address: "gg",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "8",
-      name: "Amm",
-      address: "aaa",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "9",
-      name: "Baa",
-      address: "bb",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
-    {
-      price: "10",
-      name: "Caa",
-      address: "cc",
-      file_list: [
-        {
-          name: "f1c8b75e3e535a44e93444e47fe2f77e.png",
-          url: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        },
-      ],
-    },
+    
   ];
-  
+  let adminTableData = [
+    {
+      id:"01",
+      admin_name:"Yaw Graham",
+      phone_number:"0224465884",
+      user_name:"yawgraham@gmail.com",
+      assigned_role:"-"
+    },
+    {
+      id:"02",
+      admin_name:"Kiran Kumar",
+      phone_number:"02243546584",
+      user_name:"kirankumar@gmail.com",
+      assigned_role:"Agent"
+    },
+
+  ];
+  const showRoleListData = ref(roleListData);
+  const showAdminListData = ref(adminTableData);
+
+
+  let roleTableConfig = reactive([
+    {
+      label:"SR.NO",
+      prop:"serial_number",
+      width:"",
+      sortable:true,
+      className:"redFont"
+    },
+    {
+      label:"ROLE NAME",
+      prop:"role",
+      width:"",
+      sortable:true,
+      className:"redFont"
+    },
+    
+  ])
+  let adminTableConfig = reactive([
+    {
+      label:"ADMIN ID",
+      prop:"id",
+      width:"",
+      sortable:true,
+      className:"redFont"
+    },
+    {
+      label:"ADMIN NAME",
+      prop:"admin_name",
+      width:"",
+      sortable:true,
+      className:"redFont"
+    },
+    {
+      label:"PHOONE NUMBER",
+      prop:"phone_number",
+      width:"",
+      sortable:true,
+      className:"redFont"
+    },
+    {
+      label:"USER NAME",
+      prop:"user_name",
+      width:"",
+      sortable:true,
+      className:"redFont"
+    },
+    {
+      label:"ASSIGNED ROLE",
+      prop:"assigned_role",
+      width:"",
+      sortable:true,
+      className:"redFont"
+    },
+    
+  ]);  
   let listQuery = {
     page: 1,
     limit: 10,
@@ -214,6 +159,36 @@
     orderBy: "created_at",
     sortedBy: "desc",
   };
+
+  // admin search
+
+  function handleAdminSearch(data){
+  const filter = adminTableData.filter((e)=>{
+        if(e.admin_name.toLowerCase().includes(data.value.toLowerCase()) || e.phone_number.toLowerCase().includes(data.value.toLowerCase()) || e.user_name.toLowerCase().includes(data.value.toLowerCase()) || e.assigned_role.toLowerCase().includes(data.value.toLowerCase())){
+            return e
+        }
+    })
+    if(filter.length === 0){
+        showAdminListData.value = adminTableData;
+    }else{
+        showAdminListData.value = filter;
+    }
+  }
+
+  // role search
+
+  function hanldeRoleSearch(data){
+    const filter = roleListData.filter((e)=>{
+        if(e.role.toLowerCase().includes(data.value.toLowerCase())){
+            return e
+        }
+    })
+    if(filter.length === 0){
+        showRoleListData.value = roleListData;
+    }else{
+        showRoleListData.value = filter;
+    }
+  }
   
   // pagination
   function handlePagination(data) {
@@ -253,6 +228,13 @@
   function handleMultipleSelection(data) {
     console.log(data);
   }
+
+  onMounted(()=>{
+    const route = useRouter();
+    if(route.previousRoute && route.previousRoute === 'role'){
+      activeName.value = 'second'
+    }
+  })
   
   definePageMeta({
     layout: "default",
