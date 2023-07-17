@@ -44,7 +44,9 @@
             {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}
           </div>
 
-          <nuxt-link class="text-danger" v-show="resendTimer === 0" to="/other">Resend</nuxt-link>
+          <nuxt-link class="text-danger" v-show="resendTimer === 0" to="/other"
+            >Resend</nuxt-link
+          >
           <br /><br />
           <div class="col col-md-6">
             <!-- Verify button -->
@@ -100,116 +102,114 @@
   </div>
 </template>
 
-<script>
-import { ref } from "vue";
-export default {
-  data() {
-    return {
-      mobileOtp: ["", "", "", "", "", ""], // Array to hold mobile OTP values
-      emailOtp: ["", "", "", "", "", ""], // Array to hold email OTP values
-      resendTimer: 60, // Timer for OTP resend (initially set to 60 seconds)
-      minutes: 0, // Remaining minutes
-      seconds: 0, // Remaining seconds
-      resendIntervalId: null, // Interval ID for the resend timer
-      centerDialogVisible: ref(false),
-    };
-  },
-  computed: {
-    isOtpComplete() {
-      return (
-        this.mobileOtp.every((value) => value !== "") &&
-        this.emailOtp.every((value) => value !== "")
-      );
-    },
-  },
-  methods: {
-    handleWithOnboarding() {
-      this.centerDialogVisible = false;
-      this.$router.push("/onboarding/complete-onboarding");
-    },
-    handleWithEmail() {
-      this.centerDialogVisible = false;
-      this.$router.push("/onboarding");
-    },
-    onMobileOtpInput(index) {
-      if (this.mobileOtp[index] !== "") {
-        if (index < 5) {
-          setTimeout(() => {
-            const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
-            nextInputField.focus();
-          }, 50);
-        }
-      } else {
-        setTimeout(() => {
-          // Clear the current OTP value if more than one character is entered
-          this.mobileOtp[index] = "";
-        }, 50);
-      }
-    },
-    onMobileOtpKeyDown(index, event) {
-      if (event.key === "Backspace" && index >= 0) {
-        if (index > 0 && this.mobileOtp[index] === "") {
-          // Clear the previous OTP value
-          this.mobileOtp[index - 1] = "";
-          this.$refs[`mobileOtpInput${index - 1}`][0].focus();
-        }
-      }
-    },
-    onEmailOtpInput(index) {
-      if (this.emailOtp[index] !== "") {
-        if (index < 5) {
-          setTimeout(() => {
-            const nextInputField = this.$refs[`emailOtpInput${index + 1}`][0];
-            nextInputField.focus();
-          }, 50);
-        }
-      } else {
-        setTimeout(() => {
-          // Clear the current OTP value if more than one character is entered
-          this.emailOtp[index] = "";
-        }, 50);
-      }
-    },
-    onEmailOtpKeyDown(index, event) {
-      if (event.key === "Backspace" && index >= 0) {
-        if (index > 0 && this.emailOtp[index] === "") {
-          // Clear the previous OTP value
-          this.emailOtp[index - 1] = "";
-          const previousInputField = this.$refs[`emailOtpInput${index - 1}`][0];
-          previousInputField.focus();
-        }
-      }
-    },
-    handleVerifyData() {
-      const mobileOtpValue = this.mobileOtp.join("");
-      const emailOtpValue = this.emailOtp.join("");
-      console.log("Mobile OTP:", mobileOtpValue);
-      console.log("Email OTP:", emailOtpValue);
-      this.centerDialogVisible = true;
-    },
-    startResendTimer() {
-      this.resendTimer = 60; // Reset the timer to 60 seconds
-      this.minutes = Math.floor(this.resendTimer / 60); // Calculate initial minutes
-      this.seconds = this.resendTimer % 60; // Calculate initial seconds
+<script setup>
+import { ref, reactive, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const mobileOtp = reactive(["", "", "", "", "", ""]); // Array to hold mobile OTP values
+const emailOtp = reactive(["", "", "", "", "", ""]); // Array to hold email OTP values
+const resendTimer = ref(60); // Timer for OTP resend (initially set to 60 seconds)
+const minutes = ref(0); // Remaining minutes
+const seconds = ref(0); // Remaining seconds
+let resendIntervalId = null; // Interval ID for the resend timer
+const centerDialogVisible = ref(false);
 
-      this.resendIntervalId = setInterval(() => {
-        this.resendTimer--;
-        this.minutes = Math.floor(this.resendTimer / 60); // Update remaining minutes
-        this.seconds = this.resendTimer % 60; // Update remaining seconds
+const isOtpComplete = computed(() => {
+  return (
+    mobileOtp.every((value) => value !== "") &&
+    emailOtp.every((value) => value !== "")
+  );
+});
 
-        if (this.resendTimer === 0) {
-          clearInterval(this.resendIntervalId);
-        }
-      }, 1000);
-    },
-  },
-  mounted() {
-    this.startResendTimer();
-  },
-  beforeUnmount() {
-    clearInterval(this.resendIntervalId);
-  },
+const handleWithOnboarding = () => {
+  centerDialogVisible.value = false;
+  router.push("/onboarding/complete-onboarding");
 };
+
+const handleWithEmail = () => {
+  centerDialogVisible.value = false;
+  router.push("/onboarding");
+};
+
+const onMobileOtpInput = (index) => {
+  if (mobileOtp[index] !== "") {
+    if (index < 5) {
+      const nextInputField = $refs[`mobileOtpInput${index + 1}`][0];
+      nextTick(() => {
+        nextInputField.focus();
+      });
+    }
+  }
+};
+
+const onMobileOtpKeyDown = (index, event) => {
+  if (event.key === "Backspace" && index >= 0) {
+    if (index > 0 && mobileOtp[index] === "") {
+      // Clear the previous OTP value
+      mobileOtp[index - 1] = "";
+      const previousInputField = $refs[`mobileOtpInput${index - 1}`][0];
+      nextTick(() => {
+        previousInputField.focus();
+      });
+    }
+  }
+};
+
+const onEmailOtpInput = (index) => {
+  if (emailOtp[index] !== "") {
+    if (index < 5) {
+      const nextInputField = $refs[`emailOtpInput${index + 1}`][0];
+      nextTick(() => {
+        nextInputField.focus();
+      });
+    }
+  }
+};
+
+const onEmailOtpKeyDown = (index, event) => {
+  if (event.key === "Backspace" && index >= 0) {
+    if (index > 0 && emailOtp[index] === "") {
+      // Clear the previous OTP value
+      emailOtp[index - 1] = "";
+      const previousInputField = $refs[`emailOtpInput${index - 1}`][0];
+      nextTick(() => {
+        previousInputField.focus();
+      });
+    }
+  }
+};
+
+const handleVerifyData = () => {
+  const mobileOtpValue = mobileOtp.join("");
+  const emailOtpValue = emailOtp.join("");
+  console.log("Mobile OTP:", mobileOtpValue);
+  console.log("Email OTP:", emailOtpValue);
+  centerDialogVisible.value = true;
+};
+
+const startResendTimer = () => {
+  resendTimer.value = 60;
+  minutes.value = Math.floor(resendTimer.value / 60);
+  seconds.value = resendTimer.value % 60;
+
+  resendIntervalId = setInterval(() => {
+    resendTimer.value--;
+    minutes.value = Math.floor(resendTimer.value / 60);
+    seconds.value = resendTimer.value % 60;
+
+    if (resendTimer.value === 0) {
+      clearInterval(resendIntervalId);
+    }
+  }, 1000);
+};
+
+onMounted(() => {
+  startResendTimer();
+});
+
+onBeforeUnmount(() => {
+  clearInterval(resendIntervalId);
+});
 </script>
 
 <style>
