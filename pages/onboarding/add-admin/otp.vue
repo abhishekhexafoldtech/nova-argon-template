@@ -134,25 +134,34 @@ export default {
       this.$router.push("/onboarding");
     },
     onMobileOtpInput(index) {
-      if (this.mobileOtp[index] !== "") {
-        if (index < 5) {
-          const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
-          nextInputField.focus();
-        }
-      } else {
-        // Clear the current OTP value if more than one character is entered
-        this.mobileOtp[index] = this.mobileOtp[index].slice(-1);
-      }
-    },
-    onMobileOtpKeyDown(index, event) {
-      if (event.key === "Backspace" && index >= 0) {
-        if (index > 0 && this.mobileOtp[index] === "") {
-          // Clear the previous OTP value
-          this.mobileOtp[index - 1] = "";
-          this.$refs[`mobileOtpInput${index - 1}`][0].focus();
-        }
-      }
-    },
+  if (this.mobileOtp[index] !== "") {
+    if (index < 5) {
+      const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
+      nextInputField.focus();
+    }
+  } else {
+    // Clear the current OTP value if more than one character is entered
+    this.mobileOtp[index] = this.mobileOtp[index].slice(-1);
+  }
+},
+onMobileOtpKeyDown(index, event) {
+  if (event.key === "Backspace" && index >= 0) {
+    if (index > 0 && this.mobileOtp[index] === "") {
+      // Clear the previous OTP value
+      this.mobileOtp[index - 1] = "";
+      this.$nextTick(() => {
+        const previousInputField = this.$refs[`mobileOtpInput${index - 1}`][0];
+        previousInputField.focus();
+      });
+    }
+  }
+},
+onMobileOtpKeyUp(index, event) {
+  if (event.key === "Backspace" && index === 0 && this.mobileOtp[index] === "") {
+    // Clear the current OTP value
+    this.mobileOtp[index] = "";
+  }
+},
     onEmailOtpInput(index) {
       if (this.emailOtp[index] !== "") {
         if (index < 5) {
