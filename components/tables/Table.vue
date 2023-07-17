@@ -11,7 +11,7 @@
         <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
           <el-input
             v-if="tableSearchVisibility"
-            v-model="input3"
+            v-model="search"
             placeholder="Search..."
           />
         </el-col>
@@ -132,9 +132,20 @@
 
 <script setup >
 
+
 let emit = defineEmits();
 
 let multipleSelection = reactive([]);
+
+let search = ref("");
+
+watch(search,()=>{
+  handleSearch();
+});
+
+function handleSearch(){
+   emit("search",search)
+}
 
 let props = defineProps({
   tableConfig: {},
