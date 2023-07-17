@@ -5,7 +5,7 @@
                 <h3>Add New Role</h3>
                 <p>Adding New Role</p>
             </div>
-            <el-form :model="form">
+            <el-form :model="form" ref="formRef">
                 <p class="sec_subtitle mb-2">Role Name</p>
                 <div class="fieldrow w455">
                     <el-form-item prop="text" :rules="form.rollName ? null : [
@@ -21,6 +21,9 @@
                 </div>
                 <div class="perm_sec">
                     <p class="sec_subtitle">Set Permissions</p>
+                    <div class="text-small text-danger p-2" v-if="formError">
+                        Please provide all the details.
+                    </div>
                     <div class="perm_inner">
                         <h4>Action and sub action</h4>
                         <div class="perm_box">
@@ -85,8 +88,8 @@
                     </div>
 
                     <div class="perm_footer">
-                        <el-button class="btn btn-default" @click="handleOnboarding('cancel')">Cancel</el-button>
-                        <el-button class="btn btn-primary" @click="submitForm()">Save</el-button>
+                        <el-button class="btn btn-default" @click="handleCancel()">Cancel</el-button>
+                        <el-button class="btn btn-primary" @click="submitForm(formRef)">Save</el-button>
                     </div>
                 </div>
             </el-form>
@@ -107,14 +110,30 @@ const form = reactive({
     value6: [],
     value7: []
 });
+const formRef = ref();
+const formError = ref(false)
 const validate = () => {
-    if (form.rollName) return true;
-    return false;
+    if ( !form.value1.length ||  !form.value2.length || !form.value3.length || !form.value4.length || !form.value5.length || !form.value6.length || !form.value7.length){ return false };
+    return true;
 }
-const handleOnboarding = () => {
-    const valid = validate();
-    if (!valid) { return };
-    console.log("form", form)
+const submitForm = (formEl) => {
+    if (!formEl) {return};
+   
+    formEl.validate((valid) => {
+    if (valid && validate()) {
+      console.log('submit!',form);
+      formError.value= false;
+      navigateTo("/onboarding")
+    } else {
+      console.log('error submit!');
+      if(!validate()){
+          formError.value = true;
+      }
+      return false
+    }
+  })
+}
+const handleCancel=()=>{
     navigateTo("/onboarding")
 }
 onBeforeRouteLeave((to, from, next) => {
