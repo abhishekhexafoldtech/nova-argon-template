@@ -14,9 +14,9 @@
             v-model="mobileOtp[index]"
             maxlength="1"
             @input="onMobileOtpInput(index)"
+            @keydown="onMobileOtpKeyDown(index, $event)"
             style="width: 11%; margin: 10px 10px 0px 0px"
           ></el-input>
-
           <div>
             <!-- Resend OTP countdown -->
             <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
@@ -135,14 +135,18 @@ export default {
     },
     onMobileOtpInput(index) {
       if (this.mobileOtp[index] !== "") {
-        if (index < 5) {
-          const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
-          nextInputField.focus();
-        }
-      } else {
-        // Clear the current OTP value if more than one character is entered
-        this.mobileOtp[index] = "";
-      }
+    if (index < 5) {
+      setTimeout(() => {
+        const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
+        nextInputField.focus();
+      }, 50);
+    }
+  } else {
+    setTimeout(() => {
+      // Clear the current OTP value if more than one character is entered
+      this.mobileOtp[index] = "";
+    }, 50);
+  }
     },
     onMobileOtpKeyDown(index, event) {
       if (event.key === "Backspace" && index >= 0) {
