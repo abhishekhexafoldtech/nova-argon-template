@@ -135,7 +135,8 @@ const handleOnboarding = (formEl) => {
    
     formEl.validate((valid) => {
     if (valid && validate()) {
-      console.log('submit!')
+      console.log('submit!',form);
+      navigateTo("/onboarding")
     } else {
       console.log('error submit!');
       formError.value = true;
