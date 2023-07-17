@@ -44,9 +44,7 @@
             {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}
           </div>
 
-          <nuxt-link class="text-danger" v-show="resendTimer === 0" to="/other"
-            >Resend</nuxt-link
-          >
+          <nuxt-link class="text-danger" v-show="resendTimer === 0" to="/other">Resend</nuxt-link>
           <br /><br />
           <div class="col col-md-6">
             <!-- Verify button -->
@@ -135,18 +133,18 @@ export default {
     },
     onMobileOtpInput(index) {
       if (this.mobileOtp[index] !== "") {
-    if (index < 5) {
-      setTimeout(() => {
-        const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
-        nextInputField.focus();
-      }, 50);
-    }
-  } else {
-    setTimeout(() => {
-      // Clear the current OTP value if more than one character is entered
-      this.mobileOtp[index] = "";
-    }, 50);
-  }
+        if (index < 5) {
+          setTimeout(() => {
+            const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
+            nextInputField.focus();
+          }, 50);
+        }
+      } else {
+        setTimeout(() => {
+          // Clear the current OTP value if more than one character is entered
+          this.mobileOtp[index] = "";
+        }, 50);
+      }
     },
     onMobileOtpKeyDown(index, event) {
       if (event.key === "Backspace" && index >= 0) {
@@ -160,8 +158,16 @@ export default {
     onEmailOtpInput(index) {
       if (this.emailOtp[index] !== "") {
         if (index < 5) {
-          this.$refs[`emailOtpInput${index + 1}`][0].focus();
+          setTimeout(() => {
+            const nextInputField = this.$refs[`emailOtpInput${index + 1}`][0];
+            nextInputField.focus();
+          }, 50);
         }
+      } else {
+        setTimeout(() => {
+          // Clear the current OTP value if more than one character is entered
+          this.emailOtp[index] = "";
+        }, 50);
       }
     },
     onEmailOtpKeyDown(index, event) {
@@ -174,7 +180,6 @@ export default {
         }
       }
     },
-
     handleVerifyData() {
       const mobileOtpValue = this.mobileOtp.join("");
       const emailOtpValue = this.emailOtp.join("");
