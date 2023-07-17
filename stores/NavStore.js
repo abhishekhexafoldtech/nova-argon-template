@@ -11,6 +11,7 @@ export const useNavStore = defineStore("NavStore", {
       sidenavType: 'bg-white',
       navFixed: false,
       darkMode: false,
+      miniNotification: false,
     };
   },
 

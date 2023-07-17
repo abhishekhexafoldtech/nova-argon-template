@@ -48,10 +48,10 @@
             <a
               id="dropdownMenuButton"
               href="#"
-              :class="`p-0 nav-link text-white ${showMenu ? 'show' : ''}`"
+              :class="`p-0 nav-link text-white ${navStore.miniNotification ? 'show' : ''}`"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              @click="showMenu = !showMenu"
+              @click="navStore.miniNotification = !navStore.miniNotification"
             >
               <i class="fas fa-bell cursor-pointer text-dark"></i>
             </a>

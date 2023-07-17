@@ -58,11 +58,14 @@ function handleChildClose() {
 function handleChildFormData(data) {
     console.log(data)
     dialogVisible.value = false
+    const router = useRouter();
+    router.push("/notification")
 }
 
 // submit approv form data 
 function handleApprove() {
-
+    const router = useRouter();
+    router.push("/notification")
 }
 
 </script>
