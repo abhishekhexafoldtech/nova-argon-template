@@ -139,6 +139,9 @@ export default {
           const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
           nextInputField.focus();
         }
+      } else {
+        // Clear the current OTP value if more than one character is entered
+        this.mobileOtp[index] = this.mobileOtp[index].slice(-1);
       }
     },
     onMobileOtpKeyDown(index, event) {
