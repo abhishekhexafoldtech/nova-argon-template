@@ -14,9 +14,9 @@
             v-model="mobileOtp[index]"
             maxlength="1"
             @input="onMobileOtpInput(index)"
-            @keydown="onMobileOtpKeyDown(index, $event)"
             style="width: 11%; margin: 10px 10px 0px 0px"
           ></el-input>
+
           <div>
             <!-- Resend OTP countdown -->
             <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
@@ -134,36 +134,25 @@ export default {
       this.$router.push("/onboarding");
     },
     onMobileOtpInput(index) {
-      if (this.mobileOtp[index].length > 1) {
-    // Keep only the first character and remove the rest
-    this.mobileOtp[index] = this.mobileOtp[index][0];
-  }
-
-  if (this.mobileOtp[index] !== "") {
-    if (index < 5) {
-      const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
-      nextInputField.focus();
-    }
-  }
-},
-onMobileOtpKeyDown(index, event) {
-  if (event.key === "Backspace" && index >= 0) {
-    if (index > 0 && this.mobileOtp[index] === "") {
-      // Clear the previous OTP value
-      this.mobileOtp[index - 1] = "";
-      this.$nextTick(() => {
-        const previousInputField = this.$refs[`mobileOtpInput${index - 1}`][0];
-        previousInputField.focus();
-      });
-    }
-  }
-},
-onMobileOtpKeyUp(index, event) {
-  if (event.key === "Backspace" && index === 0 && this.mobileOtp[index] === "") {
-    // Clear the current OTP value
-    this.mobileOtp[index] = "";
-  }
-},
+      if (this.mobileOtp[index] !== "") {
+        if (index < 5) {
+          const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
+          nextInputField.focus();
+        }
+      } else {
+        // Clear the current OTP value if more than one character is entered
+        this.mobileOtp[index] = "";
+      }
+    },
+    onMobileOtpKeyDown(index, event) {
+      if (event.key === "Backspace" && index >= 0) {
+        if (index > 0 && this.mobileOtp[index] === "") {
+          // Clear the previous OTP value
+          this.mobileOtp[index - 1] = "";
+          this.$refs[`mobileOtpInput${index - 1}`][0].focus();
+        }
+      }
+    },
     onEmailOtpInput(index) {
       if (this.emailOtp[index] !== "") {
         if (index < 5) {
