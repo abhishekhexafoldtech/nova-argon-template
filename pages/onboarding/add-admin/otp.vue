@@ -134,14 +134,16 @@ export default {
       this.$router.push("/onboarding");
     },
     onMobileOtpInput(index) {
+      if (this.mobileOtp[index].length > 1) {
+    // Keep only the first character and remove the rest
+    this.mobileOtp[index] = this.mobileOtp[index][0];
+  }
+
   if (this.mobileOtp[index] !== "") {
     if (index < 5) {
       const nextInputField = this.$refs[`mobileOtpInput${index + 1}`][0];
       nextInputField.focus();
     }
-  } else {
-    // Clear the current OTP value if more than one character is entered
-    this.mobileOtp[index] = this.mobileOtp[index].slice(-1);
   }
 },
 onMobileOtpKeyDown(index, event) {
