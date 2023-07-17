@@ -165,7 +165,7 @@
 .decline_popup {
     width: 95% !important;
     max-width: 550px;
-    border-radius: 15px !important;    
+    border-radius: 15px !important;
 
     .el-dialog__headerbtn {
         top: 15px;
@@ -221,6 +221,194 @@
             button {
                 padding: 6px 32px;
                 margin: 0;
+            }
+        }
+    }
+}
+
+
+/**** Style for Add New Role ****/
+.edit_mang_wrap {
+    padding: 35px 25px;
+
+    .mang_inner {
+        background-color: var(--white);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+        padding: 25px;
+        min-height: calc(100vh - 145px);
+
+        .mang_title {
+            margin-bottom: 30px;
+
+            h3 {
+                color: var(--black);
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 27px;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            p {
+                color: var(--black);
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 17px;
+                margin: 0;
+            }
+        }
+
+        .sec_subtitle {
+            color: var(--black);
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+            margin-bottom: 15px;
+        }
+
+        .perm_sec {
+            margin-top: 36px;
+            width: 100%;
+            max-width: 955px;
+
+            .perm_inner {
+                padding: 25px;
+                padding-top: 20px;
+                border-radius: 15px;
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
+                h4 {
+                    color: var(--black);
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 22px;
+                    margin: 0;
+                }
+
+                .perm_box {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 15px;
+                    margin-top: 20px;
+
+                    .perm_item {
+                        width: 100%;
+
+                        .el-select {
+                            width: 100%;
+
+                            .el-input {
+                                min-height: 42px;
+                            }
+
+                            .el-input__wrapper {
+                                font-size: 14px;
+                                --el-input-placeholder-color: var(--black);
+                            }
+
+                            .el-input__inner {
+                                font-weight: 600;
+                            }
+                        }
+
+                        .perm_data {
+                            color: var(--black);
+                            font-size: 14px;
+                            font-weight: 600;
+                            line-height: 24px;
+                            display: block;
+                            margin-bottom: 3px;
+                        }
+                    }
+                }
+            }
+
+            .perm_footer {
+                margin-top: 65px;
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+
+                button {
+                    min-width: 210px;
+                    margin: 0;
+                    padding: 12px 32px;
+                    height: auto;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0;
+
+                    &.btn-primary {
+                        background-color: var(--violet);
+                        color: var(--white);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.el-form-item {
+    margin: 0 !important;
+}
+
+.el-form-item__content {
+    display: block !important;
+}
+
+.fieldrow {
+    position: relative;
+
+    .el-form-item {
+        margin: 0;
+    }
+
+    &.w455 {
+        width: 100%;
+        max-width: 455px;
+    }
+
+    .el-input__wrapper {
+        display: block;
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 22px;
+        color: #495057;
+        background-color: transparent;
+        appearance: none;
+        border-radius: 0.5rem;
+        transition: box-shadow 0.15s ease, border-color 0.15s ease;
+        outline: none !important;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .edit_mang_wrap {
+        padding: 25px 15px;
+
+        .mang_inner {
+            min-height: auto;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .edit_mang_wrap {
+        padding: 25px 15px;
+
+        .mang_inner {
+            min-height: auto;
+
+            .perm_sec .perm_inner .perm_box {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
             }
         }
     }
