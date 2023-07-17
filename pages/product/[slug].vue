@@ -174,8 +174,9 @@
 </template>
 
 <script setup>
-import MultiFileUpload from "@/components/upload/MultiFileUpload.vue";
 import { reactive, watch } from "vue";
+import MultiFileUpload from "@/components/upload/MultiFileUpload.vue";
+import { flashNotification } from "@/composables/useNotification"
 
 //get dynamic url name
 const currentRouteName = computed(() => {
@@ -274,6 +275,11 @@ const handleSave = () => {
     if (valid && val === false) {
       // Form is valid, do something with the data
       console.log("Form submitted:", JSON.stringify(formData));
+      if(true) {
+        flashNotification('success','Add Successfully')
+      } else {
+        flashNotification('error','Something went wrong')
+      }
     }
   });
 
