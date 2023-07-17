@@ -1,61 +1,47 @@
 <template>
-    <div>
-        <section>
-            <h3>Approval onboarding</h3>
-            <el-card class="box-card">
-                <template #header>
-                <div class="card-header">
-                    <span><el-avatar shape="square" :size="size" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" /></span>
-                    Yaw graham
-                    <br>
-                    admin
+    <section class="onboarding_wrap">
+        <h3 class="ob_title">Approval onboarding</h3>
+        <div class="ob_box w768">
+            <div class="prof_header">
+                <img src="../../../assets/img/team-3.jpg" alt="">
+                <div class="prof_con">
+                    <h4>Yaw graham</h4>
+                    <p>Admin</p>
                 </div>
-                </template>
-                <div class="text item">
-                    <el-row>
-                        <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                            Full Name: Yaw graham
-                            <br>
-                            Phone #: 9987654321
-                            <br>
-                            Email: dummy@gmaiil.com
-                        </el-col>
-                        <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-                            Voter's ID
-                            <br/>
-                            <img
-                                class="radio-icon-position"
-                                src="@/assets/img/vr-bg.jpg"
-                                alt=""
-                                style="height: 150px;width:400px;"
-                                />
-                        </el-col>
-                    </el-row>
-                </div>
-                <div >
-                    <hr>
-                    <button class="btn btn-default" @click="handleDeclineDialog">decline</button>
-                    <button class="btn btn-primary" @click="handleApprove">approve</button>
-                </div>
-            </el-card>
-         
-        </section>
+            </div>
+            <div class="prof_info">
+                <el-row>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <ul>
+                            <li><span>Full Name:</span>Yaw graham</li>
+                            <li><span>Phone number:</span>9987654321</li>
+                            <li><span>Email:</span>dummy@gmaiil.com</li>
+                            <li><span>Date of Birth</span>2023/11/15</li>
+                            <li><span>Address:</span>GL-044-1541, second rangoon close elwak stadium, la dade kotopon</li>
+                        </ul>
+                    </el-col>
+                    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+                        <p>Voter's ID</p>
+                        <img class="id_img" src="@/assets/img/vr-bg.jpg" alt="" />
+                    </el-col>
+                </el-row>
+            </div>
+            <div class="prof_footer">
+                <button class="btn btn-default" @click="handleDeclineDialog">Decline</button>
+                <button class="btn btn-primary" @click="handleApprove">Approve</button>
+            </div>
+        </div>
 
-        <DeclineDialog
-            :dialogVisible="dialogVisible"
-            :form-data="formData"
-            @getChildFormData="handleChildFormData($event)"
-            @childClose="handleChildClose()"
-        />
-
-    </div>
+        <DeclineDialog :dialogVisible="dialogVisible" :form-data="formData" @getChildFormData="handleChildFormData($event)"
+            @childClose="handleChildClose()" />
+    </section>
 </template>
 
 <script setup>
 import DeclineDialog from "@/pages/onboarding/dialog-box/DeclineDialgo"
 let dialogVisible = ref(false)
 var formData = reactive({
-  name: ''
+    name: ''
 })
 
 // open dialog 
