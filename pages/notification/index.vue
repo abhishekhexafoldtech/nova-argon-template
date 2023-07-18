@@ -20,8 +20,8 @@
                                 <p>Approve onboarding request for <a href="#">Yaw graham</a></p>
                                 <span>4 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -54,8 +54,8 @@
                                 <p><a href="#">Derrick nwafor</a> require new stock.</p>
                                 <span>8 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -75,8 +75,8 @@
                                 <p>Approve onboarding request for <a href="#">Yaw graham</a></p>
                                 <span>5 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -109,8 +109,8 @@
                                 <p><a href="#">Derrick nwafor</a> require new stock.</p>
                                 <span>8 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -130,8 +130,8 @@
                                 <p>Approve onboarding request for <a href="#">Yaw graham</a></p>
                                 <span>6 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -164,8 +164,8 @@
                                 <p><a href="#">Derrick nwafor</a> require new stock.</p>
                                 <span>8 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -185,8 +185,8 @@
                                 <p>Approve onboarding request for <a href="#">Yaw graham</a></p>
                                 <span>7 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -219,8 +219,8 @@
                                 <p><a href="#">Derrick nwafor</a> require new stock.</p>
                                 <span>8 hrs ago</span>
                                 <div class="box_act">
-                                    <button>Decline</button>
-                                    <button class="accept_btn">Approve</button>
+                                    <button @click="handleDecline">Decline</button>
+                                    <button @click="handleApprove" class="accept_btn">Approve</button>
                                 </div>
                             </div>
                             <button class="not_delete">
@@ -230,12 +230,43 @@
                     </div>
                 </el-tab-pane>
             </el-tabs>
+
+            <DeclineDialog 
+                :dialogVisible="dialogVisible" 
+                :form-data="formData" 
+                @getChildFormData="handleChildFormData($event)"
+                @childClose="handleChildClose()" 
+            />
         </div>
     </section>
 </template>
 
 <script setup>
-const activeName = ref("all");
+import DeclineDialog from "@/pages/onboarding/dialog-box/DeclineDialgo"
 
+let dialogVisible = ref(false)
+const activeName = ref("all");
+var formData = reactive({
+    name: ''
+})
+
+// open dialog 
+function handleDecline() {
+    dialogVisible.value = true
+}
+
+// close dialog 
+function handleChildClose() {
+    dialogVisible.value = false
+}
+
+function handleChildFormData() {
+    dialogVisible.value = false
+}
+
+function handleApprove() {
+    const router = useRouter();
+    router.push("/onboarding/approval-onboarding")
+}
 
 </script>

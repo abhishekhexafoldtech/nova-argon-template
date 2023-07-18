@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="dropdown-menu dropdown-menu-end mini_not_box" aria-labelledby="dropdownMenuButton">
-      <button class="close_not">
+      <button class="close_not" @click="navStore.miniNotification = !navStore.miniNotification">
         <i class="ri-close-line"></i>
       </button>
 
@@ -22,8 +22,8 @@
                 <p>Approve onboarding request for <a href="#">Yaw graham</a></p>
                 <span>5 hrs ago</span>
                 <div class="box_act">
-                  <button>Decline</button>
-                  <button class="accept_btn">Approve</button>
+                  <button @click="handleViewDialog">Decline</button>
+                  <button @click="handleViewDialog" class="accept_btn">Approve</button>
                 </div>
               </div>
             </div>
@@ -47,8 +47,8 @@
                 <p><a href="#">Derrick nwafor</a> require new stock.</p>
                 <span>8 hrs ago</span>
                 <div class="box_act">
-                  <button>Decline</button>
-                  <button class="accept_btn">Approve</button>
+                  <button @click="handleViewDialog" >Decline</button>
+                  <button @click="handleViewDialog" class="accept_btn">Approve</button>
                 </div>
               </div>
             </div>
@@ -131,15 +131,33 @@
         </el-tab-pane>
       </el-tabs>
 
-      <div class="box_footer">
-        <NuxtLink to="/">View all notifications</NuxtLink>
+      <div class="box_footer" >
+        <NuxtLink @click="handleAllNotification">View all notifications</NuxtLink>
+        <!-- <p @click="handleAllNotification">View all notifications</p> -->
       </div>
     </ul>
   </div>
 </template>
 
 <script setup>
+import { useNavStore } from "@/stores/NavStore";
+
+const navStore = useNavStore();
+
 const activeName = ref("all");
+
+function handleAllNotification() {
+  navStore.miniNotification = !navStore.miniNotification
+  const router = useRouter();
+    router.push("/notification")
+}
+
+function handleViewDialog() {
+  const router = useRouter();
+  router.push("/onboarding/approval-onboarding")
+  navStore.miniNotification = !navStore.miniNotification
+}
+
 </script>
 
 <style scope>

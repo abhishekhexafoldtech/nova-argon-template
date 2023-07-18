@@ -21,7 +21,7 @@
                 </div>
                 <div class="perm_sec">
                     <p class="sec_subtitle">Set Permissions</p>
-                    <div class="text-small text-danger p-2" v-if="formError">
+                    <div class="text-small p-2" style="color:#F56C6C" v-if="formError">
                         Please provide all the details.
                     </div>
                     <div class="perm_inner">
