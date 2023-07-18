@@ -20,7 +20,7 @@
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="Profile Details" name="profile">
           <el-card>
-            profile
+            <Profile />
           </el-card>
         </el-tab-pane>
         <el-tab-pane label="Address" name="address">
@@ -56,6 +56,7 @@
 </template>
   
 <script setup>
+import Profile from "@/pages/user/profile/index.vue"
 import ResetPassword from "@/pages/user/reset-password/ResetPassword"
 import Otp from "@/pages/user/reset-password/Otp"
 import NewPassword from "@/pages/user/reset-password/NewPassword"

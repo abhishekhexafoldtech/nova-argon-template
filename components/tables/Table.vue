@@ -104,7 +104,7 @@
               </span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item v-if="resetPasswordVisibility">Reset password</el-dropdown-item>
+                  <el-dropdown-item v-if="resetPasswordVisibility" @click="handleResetPassword(scope.row)">Reset password</el-dropdown-item>
                   <el-dropdown-item v-if="roleAndPermissionVisibility" @click="handleAssignRolesAndPermissions(scope.row)">Assign roles & permissions</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
@@ -167,15 +167,6 @@ let props = defineProps({
     default: "",
   },
 
-  addButtonVisibility: {
-    type: Boolean,
-    default: true,
-  },
-
-  addButtonText: {
-    type: String,
-    default: "Add",
-  },
 
   tableSearchVisibility: {
     type: Boolean,
@@ -233,6 +224,10 @@ let tableDataItems = computed(() => {
 let tableDataTotal = computed(() => {
   return props.tableData ? props.tableData.length : 0;
 });
+
+function handleResetPassword(row){
+  emit("resetPassword",row)
+}
 
 function handleAssignRolesAndPermissions(row){
   emit("rolePermission",row)

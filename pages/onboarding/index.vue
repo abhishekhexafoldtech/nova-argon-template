@@ -11,20 +11,35 @@
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="Admins" name="first">
           <div class="table-area">
-            <Table tableHeading="List Admin" tableSubHeading="" :moreActionsVisibility="true" :addButtonVisibility="false"
-              :tableConfig="adminTableConfig" :tableData="showAdminListData" :tableQuery="listQuery"
-              @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)"
-              :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)"
-              @search="handleAdminSearch($event)" @rolePermission="handleAssignRoleAndPermission($event)" />
+            <Table tableHeading="List Admin" tableSubHeading="" 
+              :moreActionsVisibility="true" 
+              :tableConfig="adminTableConfig" 
+              :tableData="showAdminListData" 
+              :tableQuery="listQuery"
+              :tableCheckBoxVisibility="true" 
+              @pagination="handlePagination()" 
+              @edit="handleEditAdmin($event)" 
+              @delete="handleDelete($event)"
+              @multipleSelection="handleMultipleSelection($event)"
+              @search="handleAdminSearch($event)" 
+              @rolePermission="handleAssignRoleAndPermission($event)"
+              @resetPassword="handleResetPassword($event)"
+            />
           </div>
         </el-tab-pane>
         <el-tab-pane label="Roles" name="second">
           <div class="table-area">
-            <Table tableHeading="List Role" tableSubHeading="" :moreActionsVisibility="true" :addButtonVisibility="false"
-              :tableConfig="roleTableConfig" :tableData="showRoleListData" :tableQuery="listQuery"
-              @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)"
-              :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)"
-              @search="hanldeRoleSearch($event)" />
+            <Table tableHeading="List Role" 
+              :tableConfig="roleTableConfig" 
+              :tableData="showRoleListData" 
+              :tableQuery="listQuery"
+              :tableCheckBoxVisibility="true" 
+              @pagination="handlePagination()" 
+              @edit="handleEditRole($event)" 
+              @delete="handleDelete($event)"
+              @multipleSelection="handleMultipleSelection($event)"
+              @search="hanldeRoleSearch($event)" 
+              />
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -55,14 +70,14 @@ let adminTableData = [
     admin_name: "Yaw Graham",
     phone_number: "0224465884",
     user_name: "yawgraham@gmail.com",
-    assigned_role: "-"
+    assigned_role: "N/A"
   },
   {
     id: "02",
     admin_name: "Kiran Kumar",
     phone_number: "02243546584",
     user_name: "kirankumar@gmail.com",
-    assigned_role: "Agent"
+    assigned_role: "N/A"
   },
 
 ];
@@ -71,17 +86,17 @@ const showAdminListData = ref(adminTableData);
 
 
 let roleTableConfig = reactive([
+  // {
+  //   label: "Sr.No",
+  //   prop: "serial_number",
+  //   width: "",
+  //   sortable: true,
+  //   className: "redFont"
+  // },
   {
-    label: "Sr.No",
-    prop: "serial_number",
-    width: "",
-    sortable: true,
-    className: "redFont"
-  },
-  {
-    label: "Role name",
+    label: "Role Name",
     prop: "role",
-    width: "",
+    width: "900",
     sortable: true,
     className: "redFont"
   },
@@ -89,35 +104,35 @@ let roleTableConfig = reactive([
 ])
 let adminTableConfig = reactive([
   {
-    label: "Admin-id",
+    label: "ID",
     prop: "id",
-    width: "",
+    width: "100",
     sortable: true,
     className: "redFont"
   },
   {
-    label: "Admin name",
+    label: "Name",
     prop: "admin_name",
     width: "",
     sortable: true,
     className: "redFont"
   },
   {
-    label: "Phone number",
+    label: "Phone #",
     prop: "phone_number",
     width: "",
     sortable: true,
     className: "redFont"
   },
   {
-    label: "User name",
+    label: "User Name",
     prop: "user_name",
     width: "",
     sortable: true,
     className: "redFont"
   },
   {
-    label: "Roles",
+    label: "Role",
     prop: "assigned_role",
     width: "",
     sortable: true,
@@ -134,15 +149,18 @@ let listQuery = {
   sortedBy: "desc",
 };
 
-// assign-rol-admin
+// reset password 
+function handleResetPassword() {
+  router.push("/user")
+}
 
+// assign-rol-admin
 function handleAssignRoleAndPermission(data) {
   router.adminName=data.admin_name
   navigateTo("/onboarding/assign-role-permission");
 }
 
 // admin search
-
 function handleAdminSearch(data) {
   const filter = adminTableData.filter((e) => {
     if (e.admin_name.toLowerCase().includes(data.value.toLowerCase()) || e.phone_number.toLowerCase().includes(data.value.toLowerCase()) || e.user_name.toLowerCase().includes(data.value.toLowerCase()) || e.assigned_role.toLowerCase().includes(data.value.toLowerCase())) {
@@ -188,10 +206,13 @@ function handleCreateRole() {
   router.push(`onboarding/${r}`);
 }
 
-// edit
-function handleEdit(data) {
-  // console.log(data);
-  // console.log(router.currentRoute.value.path.replace("/",""))
+// edit role
+function handleEditAdmin(data) {
+  handleCreateAdmin()
+}
+// edit role
+function handleEditRole(data) {
+  handleCreateRole()
 }
 
 // delete
