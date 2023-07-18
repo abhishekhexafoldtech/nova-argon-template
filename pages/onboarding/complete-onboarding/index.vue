@@ -380,4 +380,3 @@ const handleCancel = () => {
   height: 225px;
 }
 </style>
-
