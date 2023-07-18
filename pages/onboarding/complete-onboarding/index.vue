@@ -196,51 +196,6 @@
       </div>
     </div>
     <div class="row">
-      <!-- Dialog box code -->
-      <SuccessDialog
-        leftButtonName="Cancel"
-        rightButtonName="Send email"
-        dialogTitle="Admin added successfully"
-        :dialogImage="admin_mail"
-        dialogText="Send temporary logic credentials to admin"
-        @handleLeftButton="handleCancel"
-        @handleRightButton="handleWithEmail"
-        @dialogVisible="dialogVisible"
-        :dialogVisible="centerDialogVisible"
-      />
-
-      <!-- Dialog box code
-      <el-dialog
-        v-model="centerDialogVisible"
-        title="Send login credentials"
-        center
-        class="rounded-3 shadow fw-bold w-75 w-md-25"
-      >
-        <div class="d-flex justify-content-center">
-          <img src="../../../assets/svg/admin_mail.svg" alt="Mail" />
-        </div>
-        <span class="d-flex justify-content-center mt-4">
-          Send temporary logic credentials to admin
-        </span>
-
-        <template #footer>
-          <span class="dialog-footer d-flex">
-            <div class="col-6">
-              <button
-                class="btn border border-primary w-75"
-                @click="handleCancel"
-              >
-                Cancel
-              </button>
-            </div>
-            <div class="col-6">
-              <button class="btn btn-primary w-75" @click="handleWithEmail">
-                Send email
-              </button>
-            </div>
-          </span>
-        </template>
-      </el-dialog> -->
     </div>
   </div>
 </template>

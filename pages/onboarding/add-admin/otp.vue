@@ -74,42 +74,6 @@
         @handleRightButton="handleWithOnboarding"
         @dialogVisible="dialogVisible"
       />
-
-      <!-- <el-dialog
-        v-model="centerDialogVisible"
-        title="Admin added successfully"
-        center
-        class="rounded-3 shadow fw-bold w-75 w-md-30"
-      >
-        <div class="d-flex justify-content-center">
-          <img src="../../../assets/svg/admin_mail.svg" alt="Mail" />
-        </div>
-        <span>
-          Yaw Graham has been added successfully. Do you want to send the
-          temporary login credentials or do you want to continue with onboarding
-        </span>
-
-        <template #footer>
-          <span class="dialog-footer d-flex">
-            <div class="col-6">
-              <button
-                class="btn border border-primary w-75"
-                @click="handleWithEmail"
-              >
-                Send email
-              </button>
-            </div>
-            <div class="col-6">
-              <button
-                class="btn btn-primary w-100"
-                @click="handleWithOnboarding"
-              >
-                Continue onboarding
-              </button>
-            </div>
-          </span>
-        </template>
-      </el-dialog> -->
     </div>
   </div>
 </template>
