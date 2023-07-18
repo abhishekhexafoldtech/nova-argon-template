@@ -100,6 +100,7 @@
 
 
 <script setup>
+import { flashNotification } from "@/composables/useNotification.js"
 const form = reactive({
     rollName: null,
     value1: [],
@@ -124,6 +125,7 @@ const submitForm = (formEl) => {
       console.log('submit!',form);
       formError.value= false;
       navigateTo("/onboarding")
+      flashNotification('success', 'Role Added successfully')
     } else {
       console.log('error submit!');
       if(!validate()){

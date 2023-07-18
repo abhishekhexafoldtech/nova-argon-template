@@ -215,6 +215,7 @@
 <script setup>
 import { reactive, watch } from "vue";
 import { useRouter } from "vue-router";
+import { flashNotification } from "@/composables/useNotification.js"
 import SingleFileUpload from "~/components/upload/SingleFileUpload.vue";
 import admin_mail from "@/assets/svg/admin_mail.svg";
 import SuccessDialog from "../dialog-box/SuccessDialog.vue";
@@ -349,8 +350,11 @@ const handleContinue = () => {
     if (valid) {
       console.log(JSON.stringify(formData));
       centerDialogVisible.value = true;
+      flashNotification('success', 'Admin Added successfully')
     } else {
       // ElMessage.error("Please fill in all the required fields");
+      flashNotification('warning', 'Please fill required fields')
+
     }
   });
 };
