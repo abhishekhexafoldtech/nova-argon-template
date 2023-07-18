@@ -197,6 +197,19 @@
     </div>
     <div class="row">
       <!-- Dialog box code -->
+      <SuccessDialog
+        leftButtonName="Cancel"
+        rightButtonName="Send email"
+        dialogTitle="Admin added successfully"
+        :dialogImage="admin_mail"
+        dialogText="Send temporary logic credentials to admin"
+        @handleLeftButton="handleCancel"
+        @handleRightButton="handleWithEmail"
+        @dialogVisible="dialogVisible"
+        :dialogVisible="centerDialogVisible"
+      />
+
+      <!-- Dialog box code
       <el-dialog
         v-model="centerDialogVisible"
         title="Send login credentials"
@@ -227,7 +240,7 @@
             </div>
           </span>
         </template>
-      </el-dialog>
+      </el-dialog> -->
     </div>
   </div>
 </template>
@@ -236,6 +249,8 @@
 import { reactive, watch } from "vue";
 import { useRouter } from "vue-router";
 import SingleFileUpload from "~/components/upload/SingleFileUpload.vue";
+import admin_mail from "@/assets/svg/admin_mail.svg";
+import SuccessDialog from "../dialog-box/SuccessDialog.vue";
 const router = useRouter();
 const centerDialogVisible = ref(false);
 //radio button
@@ -263,19 +278,24 @@ const formData = reactive({
     post_code: "",
   },
   gps_address: "",
-  id:{
-    ghanaCard:"",
-    voterId:"",
+  id: {
+    ghanaCard: "",
+    voterId: "",
     face_recognition: "",
-  }
+  },
 });
 const formRef = ref(null);
 //get id and face
 const getId = (image) => {
-  formData.id.voterId=image
+  formData.id.voterId = image;
 };
 const getFace = (image) => {
-  formData.id.face_recognition=image
+  formData.id.face_recognition = image;
+};
+
+//dialogVisible called
+const dialogVisible = () => {
+  centerDialogVisible.value = false;
 };
 
 // validation
@@ -357,14 +377,15 @@ const formValidationRules = reactive({
 
 //handle save
 const handleContinue = () => {
-  formRef.value.validate((valid) => {
-    if (valid) {
-      console.log(JSON.stringify(formData));
-      centerDialogVisible.value = true;
-    } else {
-      ElMessage.error("Please fill in all the required fields");
-    }
-  });
+  centerDialogVisible.value = true;
+  // formRef.value.validate((valid) => {
+  //   if (valid) {
+  //     console.log(JSON.stringify(formData));
+  //     centerDialogVisible.value = true;
+  //   } else {
+  //     // ElMessage.error("Please fill in all the required fields");
+  //   }
+  // });
 };
 const handleWithEmail = () => {
   router.push("/onboarding");

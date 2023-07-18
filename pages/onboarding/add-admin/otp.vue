@@ -63,7 +63,19 @@
     </div>
     <div class="row">
       <!-- Dialog box code -->
-      <el-dialog
+      <SuccessDialog
+       :dialogVisible="centerDialogVisible"
+        leftButtonName="Send email"
+        rightButtonName="Continue onboarding"
+        dialogTitle="Admin added successfully"
+        :dialogImage="admin_mail"
+        dialogText="Mail Yaw Graham has been added successfully. Do you want to send the temporary login credentials or do you want to continue with onboarding "
+        @handleLeftButton="handleWithEmail"
+        @handleRightButton="handleWithOnboarding"
+        @dialogVisible="dialogVisible"
+      />
+
+      <!-- <el-dialog
         v-model="centerDialogVisible"
         title="Admin added successfully"
         center
@@ -97,15 +109,24 @@
             </div>
           </span>
         </template>
-      </el-dialog>
+      </el-dialog> -->
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import {
+  ref,
+  reactive,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+  nextTick,
+} from "vue";
+import admin_mail from "@/assets/svg/admin_mail.svg"
+import { useRouter } from "vue-router";
+import SuccessDialog from "../dialog-box/SuccessDialog.vue";
+const router = useRouter();
 const mobileOtp = reactive(["", "", "", "", "", ""]); // Array to hold mobile OTP values
 const emailOtp = reactive(["", "", "", "", "", ""]); // Array to hold email OTP values
 const resendTimer = ref(60); // Timer for OTP resend (initially set to 60 seconds)
@@ -129,6 +150,11 @@ const handleWithOnboarding = () => {
 const handleWithEmail = () => {
   centerDialogVisible.value = false;
   router.push("/onboarding");
+};
+
+//dialogVisible called
+const dialogVisible = () => {
+  centerDialogVisible.value = false;
 };
 
 const onMobileOtpInput = (index) => {
