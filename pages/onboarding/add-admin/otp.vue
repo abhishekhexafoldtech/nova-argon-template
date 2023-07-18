@@ -79,14 +79,7 @@
 </template>
 
 <script setup>
-import {
-  ref,
-  reactive,
-  computed,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
-} from "vue";
+import {ref,reactive,computed, onMounted, onBeforeUnmount, nextTick,} from "vue";
 import admin_mail from "@/assets/svg/admin_mail.svg"
 import { useRouter } from "vue-router";
 import SuccessDialog from "../dialog-box/SuccessDialog.vue";

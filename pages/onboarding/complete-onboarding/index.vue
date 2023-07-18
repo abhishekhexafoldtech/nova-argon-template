@@ -135,7 +135,7 @@
                 </el-form-item>
               </el-col>
               <div>
-                <img src="../../../assets/svg/ghanapost.svg" alt="" />
+                <img :src="ghanapost" alt="ghanapost" />
               </div>
             </el-form>
           </div>
@@ -196,6 +196,18 @@
       </div>
     </div>
     <div class="row">
+      <!-- Dialog box code -->
+      <SuccessDialog
+        leftButtonName="Cancel"
+        rightButtonName="Send email"
+        dialogTitle="Admin added successfully"
+        :dialogImage="admin_mail"
+        dialogText="Send temporary logic credentials to admin"
+        @handleLeftButton="handleCancel"
+        @handleRightButton="handleWithEmail"
+        @dialogVisible="dialogVisible"
+        :dialogVisible="centerDialogVisible"
+      />
     </div>
   </div>
 </template>
@@ -206,6 +218,7 @@ import { useRouter } from "vue-router";
 import SingleFileUpload from "~/components/upload/SingleFileUpload.vue";
 import admin_mail from "@/assets/svg/admin_mail.svg";
 import SuccessDialog from "../dialog-box/SuccessDialog.vue";
+import ghanapost from "@/assets/svg/ghanapost.svg"
 const router = useRouter();
 const centerDialogVisible = ref(false);
 //radio button
