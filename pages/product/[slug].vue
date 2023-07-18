@@ -277,6 +277,8 @@ const handleSave = () => {
       console.log("Form submitted:", JSON.stringify(formData));
       if(true) {
         flashNotification('success','Add Successfully')
+        const router = useRouter();
+        router.push("/product")
       } else {
         flashNotification('error','Something went wrong')
       }
