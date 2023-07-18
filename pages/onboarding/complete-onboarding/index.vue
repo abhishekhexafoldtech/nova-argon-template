@@ -345,15 +345,14 @@ const formValidationRules = reactive({
 
 //handle save
 const handleContinue = () => {
-  centerDialogVisible.value = true;
-  // formRef.value.validate((valid) => {
-  //   if (valid) {
-  //     console.log(JSON.stringify(formData));
-  //     centerDialogVisible.value = true;
-  //   } else {
-  //     // ElMessage.error("Please fill in all the required fields");
-  //   }
-  // });
+  formRef.value.validate((valid) => {
+    if (valid) {
+      console.log(JSON.stringify(formData));
+      centerDialogVisible.value = true;
+    } else {
+      // ElMessage.error("Please fill in all the required fields");
+    }
+  });
 };
 const handleWithEmail = () => {
   router.push("/onboarding");

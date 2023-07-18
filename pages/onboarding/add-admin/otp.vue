@@ -193,6 +193,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   clearInterval(resendIntervalId);
 });
+
 </script>
 
 <style>
