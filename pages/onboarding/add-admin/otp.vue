@@ -10,7 +10,7 @@
           <el-input
             v-for="(value, index) in mobileOtp"
             :key="index"
-            :ref="`mobileOtpInput${index}`"
+            ref="mobileOtpInput"
             v-model="mobileOtp[index]"
             maxlength="1"
             @input="onMobileOtpInput(index)"
@@ -30,7 +30,7 @@
           <el-input
             v-for="(value, index) in emailOtp"
             :key="index"
-            :ref="`emailOtpInput${index}`"
+            ref="emailOtpInput"
             v-model="emailOtp[index]"
             maxlength="1"
             @input="onEmailOtpInput(index)"
@@ -91,7 +91,8 @@ const minutes = ref(0); // Remaining minutes
 const seconds = ref(0); // Remaining seconds
 let resendIntervalId = null; // Interval ID for the resend timer
 const centerDialogVisible = ref(false);
-
+const mobileOtpInput = ref()
+const emailOtpInput = ref()
 const isOtpComplete = computed(() => {
   return (
     mobileOtp.every((value) => value !== "") &&
@@ -117,9 +118,10 @@ const dialogVisible = () => {
 const onMobileOtpInput = (index) => {
   if (mobileOtp[index] !== "") {
     if (index < 5) {
-      const nextInputField = $refs[`mobileOtpInput${index + 1}`][0];
+      // const nextInputField = $refs[`mobileOtpInput${index + 1}`][0];
       nextTick(() => {
-        nextInputField.focus();
+        // nextInputField.focus();
+        mobileOtpInput.value[index + 1].input.focus()
       });
     }
   }
@@ -130,9 +132,11 @@ const onMobileOtpKeyDown = (index, event) => {
     if (index > 0 && mobileOtp[index] === "") {
       // Clear the previous OTP value
       mobileOtp[index - 1] = "";
-      const previousInputField = $refs[`mobileOtpInput${index - 1}`][0];
+      // const previousInputField = $refs[`mobileOtpInput${index - 1}`][0];
       nextTick(() => {
-        previousInputField.focus();
+        // previousInputField.focus();
+        mobileOtpInput.value[index - 1].input.focus()
+
       });
     }
   }
@@ -141,9 +145,10 @@ const onMobileOtpKeyDown = (index, event) => {
 const onEmailOtpInput = (index) => {
   if (emailOtp[index] !== "") {
     if (index < 5) {
-      const nextInputField = $refs[`emailOtpInput${index + 1}`][0];
+      // const nextInputField = $refs[`emailOtpInput${index + 1}`][0];
       nextTick(() => {
-        nextInputField.focus();
+        // nextInputField.focus();
+        emailOtpInput.value[index + 1].input.focus()
       });
     }
   }
@@ -154,9 +159,10 @@ const onEmailOtpKeyDown = (index, event) => {
     if (index > 0 && emailOtp[index] === "") {
       // Clear the previous OTP value
       emailOtp[index - 1] = "";
-      const previousInputField = $refs[`emailOtpInput${index - 1}`][0];
+      // const previousInputField = $refs[`emailOtpInput${index - 1}`][0];
       nextTick(() => {
-        previousInputField.focus();
+        // previousInputField.focus();
+        emailOtpInput.value[index - 1].input.focus()
       });
     }
   }
