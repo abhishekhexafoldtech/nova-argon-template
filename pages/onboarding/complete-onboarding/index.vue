@@ -1,21 +1,22 @@
 <template>
-    <div class="container-area">
-      <el-row class="table-top">
-        <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
-          <h4 class="heading">
-            <span> {{ currentRouteName}} onboarding </span>
-          </h4>
-          <!-- <span class="ms-3">Adding details of product </span> -->
-        </el-col>
-  
-        <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-          <div class="search-wrapper">&nbsp;</div>
-        </el-col>
-  
-        <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6"> &nbsp; </el-col>
-      </el-row>
-  
-      <div class="container-fluid mt-md-1 px-3 table-area">
+  <div class="container-area">
+    <el-row class="table-top">
+      <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
+        <h4 class="heading">
+          <span> {{ currentRouteName }} onboarding </span>
+        </h4>
+        <!-- <span class="ms-3">Adding details of product </span> -->
+      </el-col>
+
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+        <div class="search-wrapper">&nbsp;</div>
+      </el-col>
+
+      <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6"> &nbsp; </el-col>
+    </el-row>
+
+    <div class="container-fluid mt-md-1 px-2">
+      <div class="row bg-white mx-1 pb-5 rounded-3">
         <div class="row">
           <div class="col-12 col-md-6">
             <el-form
@@ -23,141 +24,164 @@
               label-width="100px"
               :model="formData"
               :rules="formValidationRules"
-              style="max-width: 100%; border-radius: 15px; height: 760px"
-              class="bg-white px-5 py-4 rounded-5"
+              style="max-width: 100%; border-radius: 15px; height: auto"
+              class="bg-white px-4 py-4 rounded-5"
               ref="formRef"
             >
               <el-col :span="24">
-                <h6 class="fw-bold pb-4" style="font-family: 'open', 'sans'">
-                    onboarding Information
+                <h6 class="pb-2 fw-bold">
+                  Please fill the following details to complete onboarding
+                  process
                 </h6>
               </el-col>
-  
+              <p>Enter personal details</p>
               <el-col :span="24">
-                <el-form-item label="Product name" prop="productName">
+                <el-form-item label="Name" prop="name">
+                  <el-input placeholder="Name" v-model="formData.name" />
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="24">
+                <el-form-item label="Phone number" prop="phone">
                   <el-input
-                    placeholder="Enter product name"
-                    v-model="formData.productName"
+                    placeholder="Phone number"
+                    v-model="formData.phone"
                   />
                 </el-form-item>
               </el-col>
-  
+
               <el-col :span="24">
                 <el-form-item
-                  class="fw-bolder"
-                  label="Product type"
-                  prop="productType"
-                >
-                  <el-select
-                    style="width: 100%"
-                    v-model="formData.productType"
-                    placeholder="Select product type"
-                  >
-                    <el-option label="Zone one" value="shanghai" />
-                    <el-option label="Zone two" value="beijing" />
-                  </el-select>
-                </el-form-item>
-              </el-col>
-  
-              <el-col :span="24">
-                <el-form-item
-                  class="fw-bolder"
-                  label="Product category"
-                  prop="productCategory"
-                >
-                  <el-select
-                    style="width: 100%"
-                    v-model="formData.productCategory"
-                    placeholder="Select product category"
-                  >
-                    <el-option label="Zone one" value="shanghai" />
-                    <el-option label="Zone two" value="beijing" />
-                  </el-select>
-                </el-form-item>
-              </el-col>
-  
-              <el-col :span="24">
-                <el-form-item label="Discount" prop="discount">
-                  <el-input
-                    class=""
-                    v-model="formData.discount"
-                    placeholder="Enter discount"
-                  />
-                </el-form-item>
-              </el-col>
-  
-              <el-col :span="24">
-                <el-form-item label="Product/price" prop="productPrice">
-                  <el-input
-                    class=""
-                    v-model="formData.productPrice"
-                    placeholder="Enter product/price"
-                  />
-                </el-form-item>
-              </el-col>
-  
-              <el-col :span="24">
-                <el-form-item label="Stock quantity" prop="stockQuantity">
-                  <el-input
-                    class=""
-                    v-model="formData.stockQuantity"
-                    placeholder="Enter stock quantity"
-                  />
-                </el-form-item>
-              </el-col>
-  
-              <el-col :span="24">
-                <el-form-item label="Minimum order unit" prop="minimumOrderUnit">
-                  <el-input
-                    class=""
-                    v-model="formData.minimumOrderUnit"
-                    placeholder="Enter minimum order unit"
-                  />
-                </el-form-item>
-              </el-col>
-  
-              <el-col :span="24">
-                <el-form-item
-                  label="Offer date"
-                  class="fw-bolder"
-                  prop="offerDate"
+                  class=""
+                  label="Date of Birth"
+                  prop="date_of_birth"
                 >
                   <el-date-picker
-                    v-model="formData.offerDate"
-                    type="daterange"
-                    range-separator="To"
-                    start-placeholder="Start date"
-                    end-placeholder="End date"
+                    v-model="formData.date_of_birth"
+                    type="date"
+                    placeholder="Pick a day"
+                    size="default"
+                    class="w-100"
                   />
                 </el-form-item>
               </el-col>
+
+              <el-col :span="24">
+                <el-form-item label="Enter email" prop="email">
+                  <el-input placeholder="Email" v-model="formData.email" />
+                </el-form-item>
+              </el-col>
+
+              <div class="mt-4">
+                <p class="text-dark fw-bold">Address</p>
+              </div>
+
+              <el-col :span="24">
+                <el-form-item
+                  label="House no/ street"
+                  prop="address.house_number"
+                >
+                  <el-input
+                    class=""
+                    v-model="formData.address.house_number"
+                    placeholder="House no.,Street"
+                  />
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="24">
+                <el-form-item label="Area" prop="address.area">
+                  <el-input
+                    class=""
+                    v-model="formData.address.area"
+                    placeholder="Area"
+                  />
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="24">
+                <el-form-item label="Region" prop="address.region">
+                  <el-input
+                    class=""
+                    v-model="formData.address.region"
+                    placeholder="Region"
+                  />
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="24">
+                <el-form-item label="Post code" prop="address.post_code">
+                  <el-input
+                    class=""
+                    v-model="formData.address.post_code"
+                    placeholder="Post code"
+                  />
+                </el-form-item>
+              </el-col>
+
+              <div class="mt-4">
+                <p class="text-dark fw-bold">
+                  Enter your location’s GPS address
+                </p>
+              </div>
+
+              <el-col :span="24">
+                <el-form-item label="GPS address" prop="gps_address">
+                  <el-input
+                    class=""
+                    v-model="formData.gps_address"
+                    placeholder="GPS address"
+                  />
+                </el-form-item>
+              </el-col>
+              <div>
+                <img :src="ghanapost" alt="ghanapost" />
+              </div>
             </el-form>
           </div>
+
           <div class="col-12 col-md-6 p-0">
             <div
-              class="product-image py-4"
-              style="background-color: #edf2f7; border-radius: 15px; height: auto"
+              class="product-image p-4"
+              style="background-color: #ffff; border-radius: 15px; height: auto"
             >
-              <el-col :span="24">
-                <h6 class="fw-bold pb-4 ms-4" style="font-family: 'open', 'sans'">
-                  Product Image
-                </h6>
-                <MultiFileUpload
-                  @image-uploaded="handleImageUploaded"
-                  :imageUrls="formData.imageUrls"
-                />
-              </el-col>
-              <span v-if="showErrorMessage" class="error-message">
-                Please upload all images before submitting the form.
-              </span>
+              <div class="row">
+                <div class="col">
+                  <p class="mt-md-4 pt-2">Details of national ID</p>
+                  <p class="mt-3">Select ID type</p>
+                  <el-radio-group v-model="radio">
+                    <el-radio :label="3">Ghana card</el-radio>
+                    <el-radio :label="6">Voter's ID</el-radio>
+                  </el-radio-group>
+
+                  <div class=" ">
+                    <SingleFileUpload
+                      iconClass="iconClass"
+                      class="avatar-uploader"
+                      @getImage="getId"
+                      :reactivePropertyName="formData.id.voterId"
+                      :value="formData.id.ghanaCard"
+                    />
+                    <p class="mt-5 mb-5">Face recognization</p>
+                    <SingleFileUpload
+                      iconClass="iconClass"
+                      class="avatar-uploader"
+                      @getImage="getFace"
+                      :reactivePropertyName="formData.id.face_recognition"
+                      :value="formData.id.face_recognition"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="col-12 mt-5 d-flex gap-2 flex-row-reverse d-sm-block">
             <el-button
               class="float-end me-sm-3 px-5 shadow"
               color="#626aef"
-              @click="handleSave"
-              >Save</el-button
+              @click="handleContinue"
+              >Continue</el-button
             >
             <RouterLink to="/onboarding">
               <el-button
@@ -170,147 +194,189 @@
           </div>
         </div>
       </div>
-        <el-dialog v-model="centerDialogVisible" title="Warning" width="30%" center>
-            <span>
-            It should be noted that the content will not be aligned in center by
-            default
-            </span>
-            <template #footer>
-            <span class="dialog-footer">
-                <el-button @click="centerDialogVisible = false">Cancle</el-button>
-
-                <el-button type="primary" @click="handleWithEmail">
-                    send email
-                </el-button>
-            </span>
-            </template>
-        </el-dialog>
     </div>
-  </template>
-  
-  <script setup>
-  import MultiFileUpload from "@/components/upload/MultiFileUpload.vue";
-  import { reactive, watch } from "vue";
-  import { useRouter } from "vue-router";
-  const router = useRouter();
-  const centerDialogVisible = ref(false)
-  
-  //get dynamic url name
-  const currentRouteName = computed(() => {
-    const route = useRoute();
-    const file = route.path.split("/").slice(-1)[0];
-    const name = file.split("-");
-    const fulllRouteName = name[0].charAt(0).toUpperCase()+name[0].slice(1)
-    return fulllRouteName;
-  });
-  
-  const formData = reactive({
-    imageUrls: [],
-    productName: "",
-    productType: "",
-    productCategory: "",
-    discount: "",
-    productPrice: "",
-    stockQuantity: "",
-    minimumOrderUnit: "",
-    offerDate: "",
-  });
-  const showErrorMessage = ref(false);
-  const formRef = ref(null);
-  
-  const handleImageUploaded = (boxes) => {
-    // Access the updated data from the child component
-    // You can update the imageUrls array here with the updated data
-    formData.imageUrls = boxes.map((box) => box.image);
-  };
-  
-  // validation
-  const formValidationRules = reactive({
-    productName: [
+    <div class="row">
+      <!-- Dialog box code -->
+      <SuccessDialog
+        leftButtonName="Cancel"
+        rightButtonName="Send email"
+        dialogTitle="Admin added successfully"
+        :dialogImage="admin_mail"
+        dialogText="Send temporary logic credentials to admin"
+        @handleLeftButton="handleCancel"
+        @handleRightButton="handleWithEmail"
+        @dialogVisible="dialogVisible"
+        :dialogVisible="centerDialogVisible"
+      />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { reactive, watch } from "vue";
+import { useRouter } from "vue-router";
+import SingleFileUpload from "~/components/upload/SingleFileUpload.vue";
+import admin_mail from "@/assets/svg/admin_mail.svg";
+import SuccessDialog from "../dialog-box/SuccessDialog.vue";
+import ghanapost from "@/assets/svg/ghanapost.svg"
+const router = useRouter();
+const centerDialogVisible = ref(false);
+//radio button
+const radio = ref(3);
+
+//get dynamic url name
+const currentRouteName = computed(() => {
+  const route = useRoute();
+  const file = route.path.split("/").slice(-1)[0];
+  const name = file.split("-");
+  const fulllRouteName = name[0].charAt(0).toUpperCase() + name[0].slice(1);
+  return fulllRouteName;
+});
+
+const formData = reactive({
+  name: "",
+  phone: "",
+  date_of_birth: "",
+  email: "",
+  address: {
+    house_number: "",
+    area: "",
+    region: "",
+    district: "",
+    post_code: "",
+  },
+  gps_address: "",
+  id: {
+    ghanaCard: "",
+    voterId: "",
+    face_recognition: "",
+  },
+});
+const formRef = ref(null);
+//get id and face
+const getId = (image) => {
+  formData.id.voterId = image;
+};
+const getFace = (image) => {
+  formData.id.face_recognition = image;
+};
+
+//dialogVisible called
+const dialogVisible = () => {
+  centerDialogVisible.value = false;
+};
+
+// validation
+const formValidationRules = reactive({
+  name: [
+    {
+      required: true,
+      message: "Please enter name",
+      trigger: "blur",
+    },
+  ],
+  phone: [
+    {
+      required: true,
+      message: "Please enter phone",
+      trigger: "blur",
+    },
+  ],
+  email: [
+    {
+      required: true,
+      type: "email",
+      message: "Please enter email",
+      trigger: "blur",
+    },
+  ],
+  date_of_birth: [
+    {
+      required: true,
+      message: "Please enter date of birth",
+      trigger: "blur",
+    },
+  ],
+  gps_address: [
+    {
+      required: true,
+      message: "Please enter gps address",
+      trigger: "blur",
+    },
+  ],
+  address: {
+    house_number: [
       {
         required: true,
-        message: "Please enter product name",
+        message: "Please enter house number",
         trigger: "blur",
       },
     ],
-    productType: [
+    area: [
       {
         required: true,
-        message: "Please enter product type",
+        message: "Please enter area",
         trigger: "blur",
       },
     ],
-    productCategory: [
+    region: [
       {
         required: true,
-        message: "Please enter product category",
+        message: "Please enter region",
         trigger: "blur",
       },
     ],
-    discount: [
+    district: [
       {
         required: true,
-        message: "Please enter discount",
+        message: "Please enter district",
         trigger: "blur",
       },
     ],
-    productPrice: [
+    post_code: [
       {
         required: true,
-        message: "Please enter product price",
+        message: "Please enter post code",
         trigger: "blur",
       },
     ],
-    stockQuantity: [
-      {
-        required: true,
-        message: "Please enter stock quantity",
-        trigger: "blur",
-      },
-    ],
-    minimumOrderUnit: [
-      {
-        required: true,
-        message: "Please enter minimum order unit",
-        trigger: "blur",
-      },
-    ],
-    offerDate: [
-      {
-        required: true,
-        message: "Please enter offer date",
-        trigger: "blur",
-      },
-    ],
-  });
-  
-  //handle save
-  const handleSave = () => {
-    centerDialogVisible.value = true
-  };
-  const handleWithEmail = () => {
-    router.push("/onboarding")
-  };
-  
-  watch(
-    () => formData.imageUrls,
-    (newImageUrls) => {
-      const isAllImagesUploaded = newImageUrls.every((url) => url);
-      if (isAllImagesUploaded) {
-        // All images have been uploaded
-        showErrorMessage.value = false;
-      } else {
-        // At least one image is missing
-        showErrorMessage.value = true;
-      }
+  },
+});
+
+//handle save
+const handleContinue = () => {
+  formRef.value.validate((valid) => {
+    if (valid) {
+      console.log(JSON.stringify(formData));
+      centerDialogVisible.value = true;
+    } else {
+      // ElMessage.error("Please fill in all the required fields");
     }
-  );
-  </script>
-  <style>
-  .error-message {
-    color: red;
-    position: absolute;
-    right: 15px;
-  }
-  </style>
-  
+  });
+};
+const handleWithEmail = () => {
+  router.push("/onboarding");
+};
+const handleCancel = () => {
+  router.push("/onboarding");
+};
+</script>
+<style>
+.error-message {
+  color: red;
+  position: absolute;
+  right: 15px;
+}
+.avatar-uploader {
+  width: 321px;
+  border: 1px solid rgb(247, 246, 246);
+  border-radius: 15px;
+  box-shadow: 0px 0px 4px 1px rgb(233, 228, 228);
+  padding: 20px;
+  margin-top: 20px;
+}
+.iconClass {
+  width: 280px;
+  height: 225px;
+}
+</style>
