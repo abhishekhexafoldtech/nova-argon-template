@@ -1,4 +1,5 @@
 <template>
+  <div>
   <section class="edit_mang_wrap">
     <div class="mang_inner">
       <div class="mang_title">
@@ -29,9 +30,9 @@
             </p>
       </div>
       <div class="otp_footer">
-        <button :disabled="!isOtpComplete" class="btn btn-primary" @click="handleVerifyData">
+        <el-button :disabled="!isOtpComplete" type="primary" @click="handleVerifyData">
           Verify & Proceed
-        </button>
+        </el-button>
       </div>
     </div>
   </section>
@@ -42,78 +43,8 @@
       dialogText="Mail Yaw Graham has been added successfully. Do you want to send the temporary login credentials or do you want to continue with onboarding "
       @handleLeftButton="handleWithEmail" @handleRightButton="handleWithOnboarding" @dialogVisible="dialogVisible" />
   </div>
+</div>
 
-  <!-- <div class="container p-4 mt-3">
-    <div class="row bg-white rounded-3 otp-page m-1">
-      <div class="col col-md-5 ms-3 mt-3">
-        <h5>OTP verification</h5>
-        <div>
-          <small>Please enter the 6-digit OTP sent to the phone number</small>
-          <br />
-          <el-input
-            v-for="(value, index) in mobileOtp"
-            :key="index"
-            ref="mobileOtpInput"
-            v-model="mobileOtp[index]"
-            maxlength="1"
-            @input="onMobileOtpInput(index)"
-            @keydown="onMobileOtpKeyDown(index, $event)"
-            style="width: 11%; margin: 10px 10px 0px 0px"
-          ></el-input>
-          <div>
-            <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
-            {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}
-          </div>
-
-          <br />
-          <small>Please enter the 6-digit OTP sent to your email</small> <br />
-
-          <el-input
-            v-for="(value, index) in emailOtp"
-            :key="index"
-            ref="emailOtpInput"
-            v-model="emailOtp[index]"
-            maxlength="1"
-            @input="onEmailOtpInput(index)"
-            @keydown="onEmailOtpKeyDown(index, $event)"
-            style="width: 11%; margin: 10px 10px 5px 0px"
-          ></el-input>
-          <br />
-          <div>
-            <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
-            {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}
-          </div>
-
-          <nuxt-link class="text-danger" v-show="resendTimer === 0" to="/other"
-            >Resend</nuxt-link
-          >
-          <br /><br />
-          <div class="col col-md-6">
-            <button
-              :disabled="!isOtpComplete"
-              class="btn btn-primary w-100"
-              @click="handleVerifyData"
-            >
-              Verify & Proceed
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <SuccessDialog
-       :dialogVisible="centerDialogVisible"
-        leftButtonName="Send email"
-        rightButtonName="Continue onboarding"
-        dialogTitle="Admin added successfully"
-        :dialogImage="admin_mail"
-        dialogText="Mail Yaw Graham has been added successfully. Do you want to send the temporary login credentials or do you want to continue with onboarding "
-        @handleLeftButton="handleWithEmail"
-        @handleRightButton="handleWithOnboarding"
-        @dialogVisible="dialogVisible"
-      />
-    </div>
-  </div> -->
 </template>
 
 <script setup>

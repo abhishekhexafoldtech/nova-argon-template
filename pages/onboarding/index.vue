@@ -11,11 +11,11 @@
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="Admins" name="first">
           <div class="table-area">
-            <Table tableHeading="List Admin" tableSubHeading="" 
-              :moreActionsVisibility="true" 
+            <Table tableHeading="List Admin" 
               :tableConfig="adminTableConfig" 
               :tableData="showAdminListData" 
               :tableQuery="listQuery"
+              :moreActionsVisibility="true" 
               :tableCheckBoxVisibility="true" 
               @pagination="handlePagination()" 
               @edit="handleEditAdmin($event)" 
@@ -39,7 +39,7 @@
               @delete="handleDelete($event)"
               @multipleSelection="handleMultipleSelection($event)"
               @search="hanldeRoleSearch($event)" 
-              />
+            />
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -53,6 +53,8 @@ import useToast from "@/composables/useToast";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const activeName = ref("first");
+
+
 let roleListData = [
   {
     serial_number: 1,
@@ -86,13 +88,6 @@ const showAdminListData = ref(adminTableData);
 
 
 let roleTableConfig = reactive([
-  // {
-  //   label: "Sr.No",
-  //   prop: "serial_number",
-  //   width: "",
-  //   sortable: true,
-  //   className: "redFont"
-  // },
   {
     label: "Role Name",
     prop: "role",
@@ -102,6 +97,7 @@ let roleTableConfig = reactive([
   },
 
 ])
+
 let adminTableConfig = reactive([
   {
     label: "ID",
@@ -140,6 +136,7 @@ let adminTableConfig = reactive([
   },
 
 ]);
+
 let listQuery = {
   page: 1,
   limit: 10,
@@ -175,7 +172,6 @@ function handleAdminSearch(data) {
 }
 
 // role search
-
 function hanldeRoleSearch(data) {
   const filter = roleListData.filter((e) => {
     if (e.role.toLowerCase().includes(data.value.toLowerCase())) {

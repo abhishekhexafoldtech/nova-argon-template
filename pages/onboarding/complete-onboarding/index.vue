@@ -1,110 +1,113 @@
 <template>
-  <section class="edit_mang_wrap">
-    <div class="mang_inner comp_inner">
-      <div class="mang_title mb-3">
-        <h3>Please fill the following details to complete onboarding process</h3>
-      </div>
-      <el-row>
-        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-          <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules" ref="formRef">
-            <div class="comp_form_box">
-              <h5 class="cf_title">Enter Personal Details</h5>
-              <div class="fieldrow">
-                <el-form-item label="Name" prop="name">
-                  <el-input placeholder="Name" v-model="formData.name" />
-                </el-form-item>
+  <div>
+    <section class="edit_mang_wrap">
+      <div class="mang_inner comp_inner">
+        <div class="mang_title mb-3">
+          <h3>Please fill the following details to complete onboarding process</h3>
+        </div>
+        <el-row>
+          <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+            <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules" ref="formRef">
+              <div class="comp_form_box">
+                <h5 class="cf_title">Enter Personal Details</h5>
+                <div class="fieldrow">
+                  <el-form-item label="Name" prop="name">
+                    <el-input placeholder="Name" v-model="formData.name" />
+                  </el-form-item>
+                </div>
+                <div class="fieldrow">
+                  <el-form-item label="Phone number" prop="phone">
+                    <el-input placeholder="Phone number" v-model="formData.phone" />
+                  </el-form-item>
+                </div>
+                <div class="fieldrow">
+                  <el-form-item label="Date of Birth" prop="date_of_birth">
+                    <el-date-picker v-model="formData.date_of_birth" type="date" placeholder="Pick a day" size="default" />
+                  </el-form-item>
+                </div>
+                <div class="fieldrow">
+                  <el-form-item label="Enter email" prop="email">
+                    <el-input placeholder="Email" v-model="formData.email" />
+                  </el-form-item>
+                </div>
               </div>
-              <div class="fieldrow">
-                <el-form-item label="Phone number" prop="phone">
-                  <el-input placeholder="Phone number" v-model="formData.phone" />
-                </el-form-item>
+              <div class="comp_form_box">
+                <h5 class="cf_title">Address</h5>
+                <div class="fieldrow">
+                  <el-form-item label="House no/ street" prop="address.house_number">
+                    <el-input class="" v-model="formData.address.house_number" placeholder="House no.,Street" />
+                  </el-form-item>
+                </div>
+                <div class="fieldrow">
+                  <el-form-item label="Area" prop="address.area">
+                    <el-input class="" v-model="formData.address.area" placeholder="Area" />
+                  </el-form-item>
+                </div>
+                <div class="fieldrow">
+                  <el-form-item label="Region" prop="address.region">
+                    <el-input class="" v-model="formData.address.region" placeholder="Region" />
+                  </el-form-item>
+                </div>
+                <div class="fieldrow">
+                  <el-form-item label="Post code" prop="address.post_code">
+                    <el-input class="" v-model="formData.address.post_code" placeholder="Post code" />
+                  </el-form-item>
+                </div>
               </div>
-              <div class="fieldrow">
-                <el-form-item label="Date of Birth" prop="date_of_birth">
-                  <el-date-picker v-model="formData.date_of_birth" type="date" placeholder="Pick a day" size="default" />
-                </el-form-item>
+              <div class="comp_form_box">
+                <h5 class="cf_title">Enter your location’s GPS address</h5>
+                <div class="fieldrow">
+                  <el-form-item label="GPS address" prop="gps_address">
+                    <el-input class="" v-model="formData.gps_address" placeholder="GPS address" />
+                  </el-form-item>
+                </div>
+                <img class="gh_post" :src="ghanapost" alt="ghanapost" />
               </div>
+            </el-form>
+          </el-col>
+          <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+            <div class="comp_form_box w355">
+              <h5 class="cf_title">Details of national ID</h5>
               <div class="fieldrow">
-                <el-form-item label="Enter email" prop="email">
-                  <el-input placeholder="Email" v-model="formData.email" />
-                </el-form-item>
+                <p>Select ID type</p>
+                <el-radio-group v-model="radio">
+                  <el-radio :label="3">Ghana card</el-radio>
+                  <el-radio :label="6">Voter's ID</el-radio>
+                </el-radio-group>
+                <SingleFileUpload iconClass="iconClass" @getImage="getId" :reactivePropertyName="formData.id.voterId"
+                  :value="formData.id.ghanaCard" />
               </div>
             </div>
-            <div class="comp_form_box">
-              <h5 class="cf_title">Address</h5>
+            <div class="comp_form_box w355">
               <div class="fieldrow">
-                <el-form-item label="House no/ street" prop="address.house_number">
-                  <el-input class="" v-model="formData.address.house_number" placeholder="House no.,Street" />
-                </el-form-item>
-              </div>
-              <div class="fieldrow">
-                <el-form-item label="Area" prop="address.area">
-                  <el-input class="" v-model="formData.address.area" placeholder="Area" />
-                </el-form-item>
-              </div>
-              <div class="fieldrow">
-                <el-form-item label="Region" prop="address.region">
-                  <el-input class="" v-model="formData.address.region" placeholder="Region" />
-                </el-form-item>
-              </div>
-              <div class="fieldrow">
-                <el-form-item label="Post code" prop="address.post_code">
-                  <el-input class="" v-model="formData.address.post_code" placeholder="Post code" />
-                </el-form-item>
+                <p>Face recognization</p>
+                <SingleFileUpload iconClass="iconClass" @getImage="getFace"
+                  :reactivePropertyName="formData.id.face_recognition" :value="formData.id.face_recognition" />
               </div>
             </div>
-            <div class="comp_form_box">
-              <h5 class="cf_title">Enter your location’s GPS address</h5>
-              <div class="fieldrow">
-                <el-form-item label="GPS address" prop="gps_address">
-                  <el-input class="" v-model="formData.gps_address" placeholder="GPS address" />
-                </el-form-item>
-              </div>
-              <img class="gh_post" :src="ghanapost" alt="ghanapost" />
-            </div>
-          </el-form>
-        </el-col>
-        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-          <div class="comp_form_box w355">
-            <h5 class="cf_title">Details of national ID</h5>
-            <div class="fieldrow">
-              <p>Select ID type</p>
-              <el-radio-group v-model="radio">
-                <el-radio :label="3">Ghana card</el-radio>
-                <el-radio :label="6">Voter's ID</el-radio>
-              </el-radio-group>
-              <SingleFileUpload iconClass="iconClass" @getImage="getId" :reactivePropertyName="formData.id.voterId"
-                :value="formData.id.ghanaCard" />
-            </div>
-          </div>
-          <div class="comp_form_box w355">
-            <div class="fieldrow">
-              <p>Face recognization</p>
-              <SingleFileUpload iconClass="iconClass" @getImage="getFace"
-                :reactivePropertyName="formData.id.face_recognition" :value="formData.id.face_recognition" />
-            </div>
-          </div>
-        </el-col>
-      </el-row>
+          </el-col>
+        </el-row>
 
 
-      <div class="comp_footer">
-        <nuxt-link class="btn btn-default" to="/onboarding">Cancel</nuxt-link>
-        <el-button class="btn btn-primary" @click="handleContinue">Continue</el-button>
+        <div class="comp_footer">
+          <nuxt-link class="btn btn-default" to="/onboarding">Cancel</nuxt-link>
+          <el-button class="btn btn-primary" @click="handleContinue">Continue</el-button>
+        </div>
       </div>
+    </section>
+
+    <div class="row">
+      <!-- Dialog box code -->
+      <SuccessDialog leftButtonName="Cancel" rightButtonName="Send email" dialogTitle="Admin added successfully"
+        :dialogImage="admin_mail" dialogText="Send temporary logic credentials to admin" @handleLeftButton="handleCancel"
+        @handleRightButton="handleWithEmail" @dialogVisible="dialogVisible" :dialogVisible="centerDialogVisible" />
     </div>
-  </section>
-
-  <div class="row">
-    <!-- Dialog box code -->
-    <SuccessDialog leftButtonName="Cancel" rightButtonName="Send email" dialogTitle="Admin added successfully"
-      :dialogImage="admin_mail" dialogText="Send temporary logic credentials to admin" @handleLeftButton="handleCancel"
-      @handleRightButton="handleWithEmail" @dialogVisible="dialogVisible" :dialogVisible="centerDialogVisible" />
   </div>
+
 </template>
 
 <script setup>
-import { reactive, watch } from "vue";
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { flashNotification } from "@/composables/useNotification.js"
 import SingleFileUpload from "~/components/upload/SingleFileUpload.vue";
@@ -116,14 +119,6 @@ const centerDialogVisible = ref(false);
 //radio button
 const radio = ref(3);
 
-//get dynamic url name
-const currentRouteName = computed(() => {
-  const route = useRoute();
-  const file = route.path.split("/").slice(-1)[0];
-  const name = file.split("-");
-  const fulllRouteName = name[0].charAt(0).toUpperCase() + name[0].slice(1);
-  return fulllRouteName;
-});
 
 const formData = reactive({
   name: "",
@@ -144,11 +139,14 @@ const formData = reactive({
     face_recognition: "",
   },
 });
+
 const formRef = ref(null);
+
 //get id and face
 const getId = (image) => {
   formData.id.voterId = image;
 };
+
 const getFace = (image) => {
   formData.id.face_recognition = image;
 };
@@ -243,15 +241,16 @@ const handleContinue = () => {
       centerDialogVisible.value = true;
       flashNotification('success', 'Admin Added successfully')
     } else {
-      // ElMessage.error("Please fill in all the required fields");
       flashNotification('warning', 'Please fill required fields')
 
     }
   });
 };
+
 const handleWithEmail = () => {
   router.push("/onboarding");
 };
+
 const handleCancel = () => {
   router.push("/onboarding");
 };

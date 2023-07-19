@@ -127,7 +127,7 @@ const submitForm = (formEl) => {
       navigateTo("/onboarding")
       flashNotification('success', 'Role Added successfully')
     } else {
-      console.log('error submit!');
+      flashNotification('warning', 'Please fill required fields')
       if(!validate()){
           formError.value = true;
       }

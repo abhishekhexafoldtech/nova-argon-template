@@ -104,6 +104,8 @@
 
 
 <script setup>
+import { flashNotification } from "@/composables/useNotification.js"
+
 const form = reactive({
     roles: [],
     adminName: null,
@@ -137,6 +139,7 @@ const submitForm = (formEl) => {
             navigateTo("/onboarding")
         } else {
             console.log('error submit!');
+            flashNotification('warning', 'Please fill required fields')
             if (!validate()) {
                 formError.value = true;
             }
@@ -152,11 +155,6 @@ onBeforeRouteLeave((to, from, next) => {
     router.previousRoute = ''
     next();
 });
-
-onMounted(() => {
-    const router = useRouter();
-    form.adminName = router.adminName;
-})
 
 
 
@@ -330,4 +328,9 @@ const select = reactive({
         ]
     }
 });
+
+onMounted(() => {
+    const router = useRouter();
+    form.adminName = router.adminName;
+})
 </script>
