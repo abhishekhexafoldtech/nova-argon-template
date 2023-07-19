@@ -162,6 +162,7 @@
     }
 }
 
+/*** Style for Decline Modal ***/
 .decline_popup {
     width: 95% !important;
     max-width: 550px;
@@ -406,6 +407,7 @@
     }
 }
 
+/*** Style for Add Admin ***/
 .add_admin {
     .mar15 {
         margin-bottom: 15px;
@@ -420,11 +422,13 @@
         display: block;
         margin-bottom: 5px;
     }
-    .el-input--large .el-input__wrapper{
+
+    .el-input--large .el-input__wrapper {
         padding: 6px 20px;
     }
 }
 
+/*** Style for OTP ****/
 .otp_wrap {
     width: 100%;
     max-width: 455px;
@@ -468,6 +472,157 @@
 
     }
 }
+
+/*** Style for Complete Onboarding ***/
+.comp_inner {
+
+    .el-form--large.el-form--label-top .el-form-item .el-form-item__label,
+    .el-form--default.el-form--label-top .el-form-item .el-form-item__label {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--black);
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .el-date-editor.el-input {
+        height: 50px;
+        width: 100%;
+    }
+
+    .el-input__inner {
+        display: block;
+    }
+
+    .el-input__prefix {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        height: 30px;
+    }
+
+    .el-input__suffix {
+        position: absolute;
+        top: 1px;
+        right: 45px;
+    }
+
+    .comp_form_box {
+        width: 100%;
+        max-width: 455px;
+        margin-bottom: 30px;
+
+        &.w355 {
+            max-width: 355px;
+        }
+
+        .cf_title {
+            color: var(--black);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        .fieldrow {
+            margin-bottom: 15px;
+        }
+
+        .gh_post {
+            width: 80px;
+            height: 40px;
+            object-fit: contain;
+            object-position: left;
+        }
+
+        p {
+            color: var(--black);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        .el-radio__inner {
+            width: 16px;
+            height: 16px;
+        }
+
+        .el-radio__input.is-checked .el-radio__inner {
+            border-color: var(--violet);
+            background-color: var(--violet);
+        }
+
+        .el-radio__label {
+            color: var(--black);
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .el-radio__input.is-checked+.el-radio__label {
+            color: var(--black);
+        }
+        .el-radio__inner::after{
+            width: 0;
+            height: 0;
+        }
+
+        .el-radio-group {
+            margin-bottom: 15px;
+        }
+
+        .el-upload {
+            width: 100%;
+            border-radius: 15px;
+            background: #FFF;
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.09);
+            padding: 20px;
+
+            .el-icon.avatar-uploader-icon {
+                width: 100%;
+                height: 200px;
+                border: 1px solid #8392AB;
+                border-radius: 15px;
+            }
+
+            .avatar {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+
+    .comp_footer {
+        margin-top: 20px;
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+
+        button,
+        a {
+            min-width: 210px;
+            margin: 0;
+            padding: 12px 32px;
+            height: 41px;
+            font-size: 14px;
+            line-height: 15px;
+            font-weight: 700;
+            letter-spacing: 0;
+
+            &.btn-primary {
+                background-color: var(--violet);
+                color: var(--white);
+            }
+        }
+    }
+}
+
 
 @media (max-width: 1200px) {
     .edit_mang_wrap {

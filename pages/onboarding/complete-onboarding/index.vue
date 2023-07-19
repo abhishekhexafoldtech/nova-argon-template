@@ -1,214 +1,105 @@
 <template>
-  <div class="container-area">
-    <el-row class="table-top">
-      <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
-        <h4 class="heading">
-          <span> {{ currentRouteName }} onboarding </span>
-        </h4>
-        <!-- <span class="ms-3">Adding details of product </span> -->
-      </el-col>
-
-      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <div class="search-wrapper">&nbsp;</div>
-      </el-col>
-
-      <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6"> &nbsp; </el-col>
-    </el-row>
-
-    <div class="container-fluid mt-md-1 px-2">
-      <div class="row bg-white mx-1 pb-5 rounded-3">
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <el-form
-              label-position="top"
-              label-width="100px"
-              :model="formData"
-              :rules="formValidationRules"
-              style="max-width: 100%; border-radius: 15px; height: auto"
-              class="bg-white px-4 py-4 rounded-5"
-              ref="formRef"
-            >
-              <el-col :span="24">
-                <h6 class="pb-2 fw-bold">
-                  Please fill the following details to complete onboarding
-                  process
-                </h6>
-              </el-col>
-              <p>Enter personal details</p>
-              <el-col :span="24">
+  <section class="edit_mang_wrap">
+    <div class="mang_inner comp_inner">
+      <div class="mang_title mb-3">
+        <h3>Please fill the following details to complete onboarding process</h3>
+      </div>
+      <el-row>
+        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+          <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules" ref="formRef">
+            <div class="comp_form_box">
+              <h5 class="cf_title">Enter Personal Details</h5>
+              <div class="fieldrow">
                 <el-form-item label="Name" prop="name">
                   <el-input placeholder="Name" v-model="formData.name" />
                 </el-form-item>
-              </el-col>
-
-              <el-col :span="24">
+              </div>
+              <div class="fieldrow">
                 <el-form-item label="Phone number" prop="phone">
-                  <el-input
-                    placeholder="Phone number"
-                    v-model="formData.phone"
-                  />
+                  <el-input placeholder="Phone number" v-model="formData.phone" />
                 </el-form-item>
-              </el-col>
-
-              <el-col :span="24">
-                <el-form-item
-                  class=""
-                  label="Date of Birth"
-                  prop="date_of_birth"
-                >
-                  <el-date-picker
-                    v-model="formData.date_of_birth"
-                    type="date"
-                    placeholder="Pick a day"
-                    size="default"
-                    class="w-100"
-                  />
+              </div>
+              <div class="fieldrow">
+                <el-form-item label="Date of Birth" prop="date_of_birth">
+                  <el-date-picker v-model="formData.date_of_birth" type="date" placeholder="Pick a day" size="default" />
                 </el-form-item>
-              </el-col>
-
-              <el-col :span="24">
+              </div>
+              <div class="fieldrow">
                 <el-form-item label="Enter email" prop="email">
                   <el-input placeholder="Email" v-model="formData.email" />
                 </el-form-item>
-              </el-col>
-
-              <div class="mt-4">
-                <p class="text-dark fw-bold">Address</p>
-              </div>
-
-              <el-col :span="24">
-                <el-form-item
-                  label="House no/ street"
-                  prop="address.house_number"
-                >
-                  <el-input
-                    class=""
-                    v-model="formData.address.house_number"
-                    placeholder="House no.,Street"
-                  />
-                </el-form-item>
-              </el-col>
-
-              <el-col :span="24">
-                <el-form-item label="Area" prop="address.area">
-                  <el-input
-                    class=""
-                    v-model="formData.address.area"
-                    placeholder="Area"
-                  />
-                </el-form-item>
-              </el-col>
-
-              <el-col :span="24">
-                <el-form-item label="Region" prop="address.region">
-                  <el-input
-                    class=""
-                    v-model="formData.address.region"
-                    placeholder="Region"
-                  />
-                </el-form-item>
-              </el-col>
-
-              <el-col :span="24">
-                <el-form-item label="Post code" prop="address.post_code">
-                  <el-input
-                    class=""
-                    v-model="formData.address.post_code"
-                    placeholder="Post code"
-                  />
-                </el-form-item>
-              </el-col>
-
-              <div class="mt-4">
-                <p class="text-dark fw-bold">
-                  Enter your location’s GPS address
-                </p>
-              </div>
-
-              <el-col :span="24">
-                <el-form-item label="GPS address" prop="gps_address">
-                  <el-input
-                    class=""
-                    v-model="formData.gps_address"
-                    placeholder="GPS address"
-                  />
-                </el-form-item>
-              </el-col>
-              <div>
-                <img :src="ghanapost" alt="ghanapost" />
-              </div>
-            </el-form>
-          </div>
-
-          <div class="col-12 col-md-6 p-0">
-            <div
-              class="product-image p-4"
-              style="background-color: #ffff; border-radius: 15px; height: auto"
-            >
-              <div class="row">
-                <div class="col">
-                  <p class="mt-md-4 pt-2">Details of national ID</p>
-                  <p class="mt-3">Select ID type</p>
-                  <el-radio-group v-model="radio">
-                    <el-radio :label="3">Ghana card</el-radio>
-                    <el-radio :label="6">Voter's ID</el-radio>
-                  </el-radio-group>
-
-                  <div class=" ">
-                    <SingleFileUpload
-                      iconClass="iconClass"
-                      class="avatar-uploader"
-                      @getImage="getId"
-                      :reactivePropertyName="formData.id.voterId"
-                      :value="formData.id.ghanaCard"
-                    />
-                    <p class="mt-5 mb-5">Face recognization</p>
-                    <SingleFileUpload
-                      iconClass="iconClass"
-                      class="avatar-uploader"
-                      @getImage="getFace"
-                      :reactivePropertyName="formData.id.face_recognition"
-                      :value="formData.id.face_recognition"
-                    />
-                  </div>
-                </div>
               </div>
             </div>
+            <div class="comp_form_box">
+              <h5 class="cf_title">Address</h5>
+              <div class="fieldrow">
+                <el-form-item label="House no/ street" prop="address.house_number">
+                  <el-input class="" v-model="formData.address.house_number" placeholder="House no.,Street" />
+                </el-form-item>
+              </div>
+              <div class="fieldrow">
+                <el-form-item label="Area" prop="address.area">
+                  <el-input class="" v-model="formData.address.area" placeholder="Area" />
+                </el-form-item>
+              </div>
+              <div class="fieldrow">
+                <el-form-item label="Region" prop="address.region">
+                  <el-input class="" v-model="formData.address.region" placeholder="Region" />
+                </el-form-item>
+              </div>
+              <div class="fieldrow">
+                <el-form-item label="Post code" prop="address.post_code">
+                  <el-input class="" v-model="formData.address.post_code" placeholder="Post code" />
+                </el-form-item>
+              </div>
+            </div>
+            <div class="comp_form_box">
+              <h5 class="cf_title">Enter your location’s GPS address</h5>
+              <div class="fieldrow">
+                <el-form-item label="GPS address" prop="gps_address">
+                  <el-input class="" v-model="formData.gps_address" placeholder="GPS address" />
+                </el-form-item>
+              </div>
+              <img class="gh_post" :src="ghanapost" alt="ghanapost" />
+            </div>
+          </el-form>
+        </el-col>
+        <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+          <div class="comp_form_box w355">
+            <h5 class="cf_title">Details of national ID</h5>
+            <div class="fieldrow">
+              <p>Select ID type</p>
+              <el-radio-group v-model="radio">
+                <el-radio :label="3">Ghana card</el-radio>
+                <el-radio :label="6">Voter's ID</el-radio>
+              </el-radio-group>
+              <SingleFileUpload iconClass="iconClass" @getImage="getId" :reactivePropertyName="formData.id.voterId"
+                :value="formData.id.ghanaCard" />
+            </div>
           </div>
+          <div class="comp_form_box w355">
+            <div class="fieldrow">
+              <p>Face recognization</p>
+              <SingleFileUpload iconClass="iconClass" @getImage="getFace"
+                :reactivePropertyName="formData.id.face_recognition" :value="formData.id.face_recognition" />
+            </div>
+          </div>
+        </el-col>
+      </el-row>
 
-          <div class="col-12 mt-5 d-flex gap-2 flex-row-reverse d-sm-block">
-            <el-button
-              class="float-end me-sm-3 px-5 shadow"
-              color="#626aef"
-              @click="handleContinue"
-              >Continue</el-button
-            >
-            <RouterLink to="/onboarding">
-              <el-button
-                class="float-end me-sm-3 px-5 border-1 shadow"
-                style="border-color: #626aef"
-                color="#edf2f7"
-                >Cancel</el-button
-              ></RouterLink
-            >
-          </div>
-        </div>
+
+      <div class="comp_footer">
+        <nuxt-link class="btn btn-default" to="/onboarding">Cancel</nuxt-link>
+        <el-button class="btn btn-primary" @click="handleContinue">Continue</el-button>
       </div>
     </div>
-    <div class="row">
-      <!-- Dialog box code -->
-      <SuccessDialog
-        leftButtonName="Cancel"
-        rightButtonName="Send email"
-        dialogTitle="Admin added successfully"
-        :dialogImage="admin_mail"
-        dialogText="Send temporary logic credentials to admin"
-        @handleLeftButton="handleCancel"
-        @handleRightButton="handleWithEmail"
-        @dialogVisible="dialogVisible"
-        :dialogVisible="centerDialogVisible"
-      />
-    </div>
+  </section>
+
+  <div class="row">
+    <!-- Dialog box code -->
+    <SuccessDialog leftButtonName="Cancel" rightButtonName="Send email" dialogTitle="Admin added successfully"
+      :dialogImage="admin_mail" dialogText="Send temporary logic credentials to admin" @handleLeftButton="handleCancel"
+      @handleRightButton="handleWithEmail" @dialogVisible="dialogVisible" :dialogVisible="centerDialogVisible" />
   </div>
 </template>
 
@@ -365,22 +256,3 @@ const handleCancel = () => {
   router.push("/onboarding");
 };
 </script>
-<style>
-.error-message {
-  color: red;
-  position: absolute;
-  right: 15px;
-}
-.avatar-uploader {
-  width: 321px;
-  border: 1px solid rgb(247, 246, 246);
-  border-radius: 15px;
-  box-shadow: 0px 0px 4px 1px rgb(233, 228, 228);
-  padding: 20px;
-  margin-top: 20px;
-}
-.iconClass {
-  width: 280px;
-  height: 225px;
-}
-</style>
