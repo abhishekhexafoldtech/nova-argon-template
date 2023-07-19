@@ -21,16 +21,15 @@
                 </div>
                 <div>
                     <p class="sec_subtitle mb-2 mt-4">Role Name </p>
-                    <p></p>
                 </div>
-                <div class=" w-50">
-                    <div>
-                        <el-select v-model="form.roles" multiple placeholder="Roles" :style="!roleInputError && !form.roles.length ? 'border:1px solid #F56C6C;' : ''">
-                            <el-option v-for="item in select.roles.data" :key="item.value" :label="item.option"
-                                :value="item.value" />
-                        </el-select>
-                    </div>
-                    <small style="font-size:12px;color:#F56C6C" v-if="!form.roles.length && !roleInputError">Please select something.</small>
+                <div class="fieldrow w455 form_select">
+                    <el-select v-model="form.roles" multiple placeholder="Roles"
+                        :style="!roleInputError && !form.roles.length ? 'border:1px solid #F56C6C;' : ''">
+                        <el-option v-for="item in select.roles.data" :key="item.value" :label="item.option"
+                            :value="item.value" />
+                    </el-select>
+                    <small style="font-size:12px;color:#F56C6C" v-if="!form.roles.length && !roleInputError">Please select
+                        something.</small>
                 </div>
                 <div class="perm_sec">
                     <p class="sec_subtitle">Set Permissions</p>
@@ -118,13 +117,14 @@ const form = reactive({
 });
 const formRef = ref();
 const formError = ref(false);
-const roleInputError= ref(true);
+const roleInputError = ref(true);
 const validate = () => {
-    if(!form.roles.length){
+    if (!form.roles.length) {
         roleInputError.value = false;
     }
-    if (!form.value1.length || !form.value2.length || !form.value3.length || !form.value4.length || !form.value5.length || !form.value6.length || !form.value7.length || !form.roles.length || !form.adminName) { 
-        return false };
+    if (!form.value1.length || !form.value2.length || !form.value3.length || !form.value4.length || !form.value5.length || !form.value6.length || !form.value7.length || !form.roles.length || !form.adminName) {
+        return false
+    };
     return true;
 }
 const submitForm = (formEl) => {
