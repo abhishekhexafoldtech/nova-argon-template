@@ -1,7 +1,6 @@
 <template>
   <div class="container-area">
     <h4 class="page_heading">Profile</h4>
-
     <div class="prof_card">
       <figure>
         <img src="@/assets/img/blank_profile.png" alt="">
