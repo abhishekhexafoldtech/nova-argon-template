@@ -246,6 +246,112 @@
             text-align: left;
         }
     }
+
+    .profile_det {
+        width: 100%;
+        max-width: 1155px;
+
+        .el-row {
+            margin: -10px -15px;
+
+            .el-col {
+                padding: 10px 15px;
+            }
+        }
+
+        .fieldrow {
+            width: 100%;
+
+            .form_label {
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--black);
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .el-date-editor.el-input {
+                height: 50px;
+                width: 100%;
+            }
+
+            .el-input__inner {
+                display: block;
+            }
+
+            .el-input__prefix {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                height: 30px;
+            }
+
+            .el-input__suffix {
+                position: absolute;
+                top: 1px;
+                right: 45px;
+            }
+
+            .el-radio {
+                margin-left: 0;
+            }
+
+            .el-radio__inner {
+                width: 16px;
+                height: 16px;
+            }
+
+            .el-radio__input.is-checked .el-radio__inner {
+                border-color: var(--violet);
+                background-color: var(--violet);
+            }
+
+            .el-radio__label {
+                color: var(--black);
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            .el-radio__input.is-checked+.el-radio__label {
+                color: var(--black);
+            }
+
+            .el-radio__inner::after {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        .prof_det_footer {
+            margin-top: 40px;
+
+            .el-button-group {
+                text-align: right;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+
+                button {
+                    min-width: 210px;
+                    margin: 0;
+                    padding: 12px 32px;
+                    height: auto;
+                    font-size: 14px;
+                    font-weight: 700;
+                    letter-spacing: 0;
+                    border-radius: 8px;
+                    margin-left: 15px;
+
+                    &.btn-primary {
+                        background-color: var(--violet);
+                        color: var(--white);
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 575px) {

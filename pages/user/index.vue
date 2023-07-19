@@ -18,9 +18,9 @@
 
       <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
         <el-tab-pane label="Profile Details" name="profile">
-          <el-card>
+          <div class="prof_form">
             <Profile />
-          </el-card>
+          </div>
         </el-tab-pane>
         <el-tab-pane label="Address" name="address">
           <el-card>
