@@ -1,5 +1,42 @@
 <template>
-    <div class="container p-4 mt-3">
+  <section class="edit_mang_wrap">
+    <div class="mang_inner add_admin">
+      <div class="mang_title">
+        <h3>Add New Admin</h3>
+        <p>Enter your details</p>
+      </div>
+      <el-form
+            ref="form"
+            label-position="top"
+            label-width="100px"
+            :model="newAdminForm"
+            size="large"
+            :rules="formRules"
+          >
+        <div class="fieldrow w455 mar15">
+          <el-form-item label="Name" prop="name">
+              <el-input class="form_input" v-model="newAdminForm.name" placeholder="Name" />
+            </el-form-item>
+        </div>
+        <div class="fieldrow w455 mar15">
+          <el-form-item label="Phone number" prop="phone_number">
+              <el-input class="form_input" v-model="newAdminForm.phone_number" placeholder="Phone number" />
+            </el-form-item>
+        </div>
+        <div class="fieldrow w455">
+          <el-form-item label="Email" prop="email">
+              <el-input class="form_input" v-model="newAdminForm.email" placeholder="Email" />
+            </el-form-item>
+        </div>
+      </el-form>
+      <div class="perm_footer">
+        <el-button class="btn btn-default" @click="handleCancel">Cancel</el-button>
+        <el-button class="btn btn-primary" @click="handleSubmit">Continue</el-button>
+      </div>
+    </div>
+  </section>
+
+    <!-- <div class="container p-4 mt-3">
       <div class="row bg-white rounded-3 admin-form m-1">
         <div class="col col-md-4 ms-3 mt-3">
           <h5>Add new admin</h5>
@@ -36,7 +73,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </template>
   
   <script setup>
