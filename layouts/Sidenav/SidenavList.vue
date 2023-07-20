@@ -2,51 +2,41 @@
   <div id="sidenav-collapse-main" class="collapse navbar-collapse">
     <ul class="navbar-nav">
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-dashboard-line"></i>
-        <SidenavItem to="/dashboards" text="Dashboards" />
+        <SidenavItem to="/dashboards" text="Dashboards" icon="ri-dashboard-line"/>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-group-2-line"></i>
-        <SidenavItem to="/dashboards" text="Distributor" />
+        <SidenavItem to="/dashboards" text="Distributor" icon="ri-group-2-line"/>
       </li>
       <li class="nav-item">
         <SidenavCollapse collapse-ref="dashboardsExamples" nav-text="Support System"
           :class="getRoute === 'dashboards' ? 'active' : ''">
-          <i class="ri-customer-service-line"></i>
           <template #list>
             <ul class="nav ms-4">
-              <SidenavItem to="/dashboards" text="Default" />
+              <SidenavItem to="/dashboards" text="Default" icon="ri-customer-service-line"/>
             </ul>
           </template>
         </SidenavCollapse>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-group-line"></i>
-        <SidenavItem to="/dashboards" text="Customers" />
+        <SidenavItem to="/dashboards" text="Customers" icon="ri-group-line"/>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-truck-line"></i>
-        <SidenavItem to="/dashboards" text="Delivery Agents" />
+        <SidenavItem to="/dashboards" text="Delivery Agents" icon="ri-truck-line"/>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-shopping-bag-3-line"></i>
-        <SidenavItem to="/product" text="Products" />
+        <SidenavItem to="/product" text="Products" icon="ri-shopping-bag-3-line"/>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-shield-user-line"></i>
-        <SidenavItem to="/onboarding" text="Manage Admins" />
+        <SidenavItem to="/onboarding" text="Manage Admins" icon="ri-shield-user-line"/>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-map-pin-5-line"></i>
-        <SidenavItem to="/zones" text="Zones" />
+        <SidenavItem to="/zones" text="Zones" icon="ri-map-pin-5-line" />
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-secure-payment-line"></i>
-        <SidenavItem to="/dashboards" text="Transactions" />
+        <SidenavItem to="/dashboards" text="Transactions" icon="ri-secure-payment-line"/>
       </li>
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-file-chart-line"></i>
-        <SidenavItem to="/dashboards" text="Reports" />
+        <SidenavItem to="/dashboards" text="Reports" icon="ri-file-chart-line"/>
       </li>
 
 
@@ -70,8 +60,7 @@
       </li>
 
       <li class="nav-item d-flex align-items-center">
-        <i class="ri-settings-5-line"></i>
-        <SidenavItem to="/dashboards" text="Settings" />
+        <SidenavItem to="/dashboards" text="Settings" icon="ri-settings-5-line"/>
       </li>
 
 

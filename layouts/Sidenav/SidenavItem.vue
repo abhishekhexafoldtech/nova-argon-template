@@ -1,6 +1,6 @@
 <template>
   <NuxtLink class="nav-link" :to="to">
-    <i class="ri-dashboard-line"></i>
+    <i :class="icon"></i>
     <span class="sidenav-normal"> {{ text }} </span>
   </NuxtLink>
 </template>
@@ -15,6 +15,10 @@ defineProps({
     required: true,
   },
   text: {
+    type: String,
+    required: true,
+  },
+  icon: {
     type: String,
     required: true,
   },
