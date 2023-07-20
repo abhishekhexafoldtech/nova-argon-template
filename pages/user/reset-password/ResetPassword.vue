@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="form_inner" @submit.prevent="">
+    <form class="form_inner" @submit.prevent="handleFormSubmit">
       <div class="from_prof_header">
         <h3>Reset password</h3>
         <p>Please enter you phone number to receive a verification code</p>

@@ -28,7 +28,7 @@
                   @click="eyeConfirmPassword == 'true' ? eyeConfirmPassword = 'false' : eyeConfirmPassword = 'true'" />
               </div>
               <div class="fieldrow">
-                <button class="btn w-100 btn-primary">
+                <button class="btn w-100 btn-primary" @click="handleSubmit">
                   Continue
                 </button>
               </div>
@@ -37,6 +37,8 @@
 </template>
 
 <script setup>
+import { flashNotification } from "@/composables/useNotification.js"
+
 import IconsEye from "@/components/icons/Eye.vue";
 const eyeOldPassword = ref("false");
 const eyeNewPassword = ref("false");
@@ -49,7 +51,9 @@ const form = reactive({
 })
 
 
-
+function handleSubmit() {
+  flashNotification('success', 'Passward updated successfully')
+}
 
 
 </script>
