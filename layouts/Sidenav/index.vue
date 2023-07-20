@@ -1,8 +1,8 @@
 <template>
   <aside
     id="sidenav-main"
-    class="sidenav navbar navbar-vertical navbar-expand-xs  border-0 border-radius-xl my-3"
-    :class="`fixed-start ms-3 ${navStore.sidenavType}`"
+    class="sidenav navbar navbar-vertical navbar-expand-xs"
+    :class="`fixed-start ${navStore.sidenavType}`"
   >
     <div class="sidenav-header">
       <!-- <i
@@ -10,8 +10,8 @@
         class="top-0 p-3 cursor-pointer fas fa-times text-secondary opacity-5 position-absolute end-0 d-none d-xl-none"
         aria-hidden="true"
       ></i> -->
-      <NuxtLink class="m-0 navbar-brand d-flex justify-content-center" to="/">
-        <img :src="logo" class="navbar-brand-img " alt="main_logo" />
+      <NuxtLink class="navbar-brand" to="/">
+        <img src="../../assets/nova_logo_white.png" class="navbar-brand-img " alt="main_logo" />
 
         <span
           class="ms-2 font-weight-bold h6"

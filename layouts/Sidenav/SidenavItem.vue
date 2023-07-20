@@ -1,10 +1,8 @@
 <template>
-  <li class="nav-item">
-    <NuxtLink class="nav-link" :to="to">
-      <span class="sidenav-mini-icon"> {{ miniIcon }} </span>
-      <span class="sidenav-normal"> {{ text }} </span>
-    </NuxtLink>
-  </li>
+  <NuxtLink class="nav-link" :to="to">
+    <i class="ri-dashboard-line"></i>
+    <span class="sidenav-normal"> {{ text }} </span>
+  </NuxtLink>
 </template>
 <script setup>
 defineProps({

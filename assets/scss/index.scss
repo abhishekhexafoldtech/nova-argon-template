@@ -20,6 +20,10 @@
 
 @import "all-notification/all-notification.scss";
 
+@import "sidenav/sidenav.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700;800&display=swap');
+
 strong {
     color: blue
 }
@@ -30,6 +34,7 @@ strong {
     --black: #000;
     --grey: #8392AB;
     --violet: #5E72E4;
+    --sidemenu-bg: #1f304f;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -55,13 +60,13 @@ input[type="number"] {
     color: var(--violet) !important;
 }
 
-.el-overlay-dialog{
+.el-overlay-dialog {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.el-dialog{    
+.el-dialog {
     margin: auto !important;
 }

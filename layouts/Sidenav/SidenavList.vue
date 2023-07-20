@@ -1,64 +1,52 @@
 <template>
-  <div
-    id="sidenav-collapse-main"
-    class="collapse navbar-collapse w-auto h-auto h-100"
-  >
+  <div id="sidenav-collapse-main" class="collapse navbar-collapse">
     <ul class="navbar-nav">
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/dashboard_home_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Dashboards" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-dashboard-line"></i>
+        <SidenavItem to="/dashboards" text="Dashboards" />
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/distributor_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Distributor" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-group-2-line"></i>
+        <SidenavItem to="/dashboards" text="Distributor" />
       </li>
       <li class="nav-item">
-        <SidenavCollapse
-          collapse-ref="dashboardsExamples"
-          nav-text="Support System"
-          class="gap-3"
-          :class="getRoute === 'dashboards' ? 'active' : ''"
-        >
-          <template #icon>
-            <img src="@/assets/svg/support_system_dashboard_icon.svg" class="" alt="">
-          </template>
+        <SidenavCollapse collapse-ref="dashboardsExamples" nav-text="Support System"
+          :class="getRoute === 'dashboards' ? 'active' : ''">
+          <i class="ri-customer-service-line"></i>
           <template #list>
             <ul class="nav ms-4">
-              <SidenavItem
-                to="/dashboards"
-                text="Default"
-              />
+              <SidenavItem to="/dashboards" text="Default" />
             </ul>
           </template>
         </SidenavCollapse>
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/customer_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Customers" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-group-line"></i>
+        <SidenavItem to="/dashboards" text="Customers" />
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/delivery_agent_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Delivery Agents" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-truck-line"></i>
+        <SidenavItem to="/dashboards" text="Delivery Agents" />
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/products_dashboard_icon.svg" alt="">
-        <SidenavItem to="/product"    text="Products" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-shopping-bag-3-line"></i>
+        <SidenavItem to="/product" text="Products" />
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/manage_admin_dashboard_icon.svg" alt="">
-        <SidenavItem to="/onboarding"    text="Manage Admins" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-shield-user-line"></i>
+        <SidenavItem to="/onboarding" text="Manage Admins" />
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/zones_dashboard_icon.svg" alt="">
-        <SidenavItem to="/zones"    text="Zones" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-map-pin-5-line"></i>
+        <SidenavItem to="/zones" text="Zones" />
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-       <img src="@/assets/svg/transactions_dashboard_icon.png" alt="">
-        <SidenavItem to="/dashboards"    text="Transactions" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-secure-payment-line"></i>
+        <SidenavItem to="/dashboards" text="Transactions" />
       </li>
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/report_admin_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Reports" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-file-chart-line"></i>
+        <SidenavItem to="/dashboards" text="Reports" />
       </li>
 
 
@@ -71,25 +59,24 @@
         </h6>
       </li>
    
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
+      <li class="nav-item d-flex align-items-center">
         <i class="ni ni-align-left-2 text-info text-sm opacity-10"></i>
-        <SidenavItem to="/applications/data-tables"    text="Data Tables" />
+        <SidenavItem to="/applications/data-tables" text="Data Tables" />
       </li> -->
-     
-      
+
+
       <li class="mt-3 nav-item">
         <hr class="mt-0 horizontal dark" />
       </li>
 
-      <li class="nav-item d-flex align-items-center mx-4 px-2">
-        <img src="@/assets/svg/settings_dashboard_icon.svg" alt="">
-        <SidenavItem to="/dashboards"    text="Settings" />
+      <li class="nav-item d-flex align-items-center">
+        <i class="ri-settings-5-line"></i>
+        <SidenavItem to="/dashboards" text="Settings" />
       </li>
 
-    
+
     </ul>
   </div>
- 
 </template>
 <script setup>
 import SidenavCollapse from "./SidenavCollapse.vue";
@@ -113,7 +100,7 @@ defineProps({
 });
 </script>
 <style scoped>
-#sidenav-collapse-main{
+#sidenav-collapse-main {
   overflow-y: hidden !important;
   overflow-x: hidden !important;
 }

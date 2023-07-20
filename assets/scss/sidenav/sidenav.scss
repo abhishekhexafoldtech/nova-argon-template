@@ -1,0 +1,64 @@
+.navbar-vertical.navbar-expand-xs {
+    background-color: var(--sidemenu-bg) !important;
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+    height: auto;
+    padding: 0 10px;
+}
+
+.sidenav-header {
+    height: auto;
+}
+
+.sidenav .navbar-brand {
+    padding: 15px;
+    margin: auto;
+    width: 100%;
+    height: 75px;
+}
+
+.navbar-vertical .navbar-brand>img,
+.navbar-vertical .navbar-brand-img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+hr.horizontal.dark {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
+}
+
+.navbar .nav-link {
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-nav>.nav-item {
+    margin: 0;
+    color: var(--white);
+    padding: 10px;
+}
+.navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item i{
+    font-size: 20px;
+    font-weight: normal;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-nav .nav-link {
+    color: inherit;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+.router-link-exact-active {
+    color: inherit !important;
+    font-weight: normal !important;
+}
+.navbar-vertical.bg-white .navbar-nav > .nav-item .nav-link.active{
+    display: flex !important;
+    background-color: transparent;
+}
