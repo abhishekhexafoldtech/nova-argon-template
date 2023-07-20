@@ -1,18 +1,8 @@
 <template>
-  <a
-    :data-bs-toggle="collapse ? 'collapse' : ''"
-    :href="collapse ? `#${collapseRef}` : collapseRef"
-    :aria-controls="collapseRef"
-    :aria-expanded="isExpanded"
-    class="nav-link"
-    v-bind="$attrs"
-    @click="isExpanded = !isExpanded"
-  >
-    <div
-      class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center"
-    >
-      <slot name="icon"></slot>
-    </div>
+  <a :data-bs-toggle="collapse ? 'collapse' : ''" :href="collapse ? `#${collapseRef}` : collapseRef"
+    :aria-controls="collapseRef" :aria-expanded="isExpanded" class="nav-link" v-bind="$attrs"
+    @click="isExpanded = !isExpanded">
+    <i class="ri-customer-service-line"></i>
     <span class="nav-link-text">{{ navText }}</span>
   </a>
   <div :class="isExpanded ? 'collapse show' : 'collapse'">

@@ -3,7 +3,7 @@
 }
 
 .navbar-vertical.navbar-expand-xs .navbar-collapse {
-    height: auto;
+    height: calc(100vh - 175px);
     padding: 0 10px;
 }
 
@@ -37,28 +37,91 @@ hr.horizontal.dark {
 
 .navbar-vertical.navbar-expand-xs .navbar-nav>.nav-item {
     margin: 0;
-    color: var(--white);
-    padding: 10px;
-}
-.navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item i{
-    font-size: 20px;
-    font-weight: normal;
-    vertical-align: middle;
-    margin-right: 15px;
 }
 
 .navbar-vertical.navbar-expand-xs .navbar-nav .nav-link {
-    color: inherit;
-    padding: 0 !important;
     margin: 0 !important;
     display: block !important;
+    color: var(--white) !important;
+    padding: 10px !important;
+    position: relative;
+    font-weight: normal !important;
+    border-radius: 5px;
+    transition: all 250ms ease-in-out;
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-nav .nav-link i {
+    font-size: 20px;
+    font-weight: normal;
+    vertical-align: bottom;
+    margin-right: 20px;
 }
 
 .router-link-exact-active {
     color: inherit !important;
     font-weight: normal !important;
 }
-.navbar-vertical.bg-white .navbar-nav > .nav-item .nav-link.active{
-    display: flex !important;
-    background-color: transparent;
+
+.navbar-vertical.bg-white .navbar-nav>.nav-item .nav-link:hover,
+.navbar-vertical.bg-white .navbar-nav>.nav-item .nav-link.active,
+.navbar-vertical.bg-white .navbar-nav>.nav-item .nav-link.router-link-active {
+    display: block !important;
+    background-color: #3f6aaa;
+}
+
+.navbar-vertical .navbar-nav .nav-link[data-bs-toggle=collapse]:after {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color: inherit;
+}
+
+.navbar-vertical .navbar-nav .nav-link[data-bs-toggle=collapse][aria-expanded=true]:after {
+    color: inherit;
+}
+
+.bootom_nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 10px;
+    padding-bottom: 10px;
+
+    ul {
+        padding-inline-start: 0;
+        margin: 0;
+
+        li {
+            display: block;
+
+            a {
+                font-family: 'Inter', sans-serif;
+                display: block;
+                font-size: 14px;
+                font-weight: normal;
+                color: var(--white);
+                padding: 6px 10px;
+                border-radius: 5px;
+                transition: all 250ms ease-in-out;
+
+                i {
+                    font-size: 20px;
+                    font-weight: normal;
+                    vertical-align: middle;
+                    margin-right: 20px;
+                }
+
+                &:hover,
+                &.active {
+                    background-color: #3f6aaa;
+                }
+            }
+        }
+    }
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-nav>.nav-item .sub_menu {
+    padding-inline-start: 15px;
+    margin: 0;
 }
