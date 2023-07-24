@@ -1,6 +1,7 @@
 <template>
   <NuxtLink class="nav-link" :to="to">
-    <i :class="icon"></i>
+    <!-- <i :class="icon"></i> -->
+    <img :src="iconImg" style="height: 10px;width:10px;" />
     <span class="sidenav-normal"> {{ text }} </span>
   </NuxtLink>
 </template>
@@ -19,6 +20,10 @@ defineProps({
     required: true,
   },
   icon: {
+    type: String,
+    required: true,
+  },
+  iconImg: {
     type: String,
     required: true,
   },
