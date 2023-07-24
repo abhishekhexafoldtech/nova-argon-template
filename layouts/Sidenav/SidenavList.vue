@@ -10,10 +10,10 @@
       </li>
       <li class="nav-item">
         <SidenavCollapse collapse-ref="dashboardsExamples" nav-text="Support System"
-          :class="getRoute === 'dashboards' ? 'active' : ''">          
+          :class="getRoute === 'dashboards' ? 'active' : ''" :icon-img="iconImgCollapseSupportSystem" icon="ri-group-2-line">          
           <template #list>
             <ul class="sub_menu">
-              <SidenavItem to="/dashboards" text="Default"/>
+              <SidenavItem to="/dashboards" text="Default" :icon-img="iconImgDefault" icon="ri-group-2-line"/>
             </ul>
           </template>
         </SidenavCollapse>
@@ -57,6 +57,8 @@ import { useNavStore } from "@/stores/NavStore";
 const navStore = useNavStore();
 
 import iconImgDashboard from '@/assets/img/team-2.jpg'
+import iconImgCollapseSupportSystem from '@/assets/img/team-2.jpg'
+import iconImgDefault from '@/assets/img/team-2.jpg'
 import iconImgDistributor from '@/assets/img/team-2.jpg'
 import iconImgCustomer from '@/assets/img/team-2.jpg'
 import iconImgDeliveryAgent from '@/assets/img/team-2.jpg'

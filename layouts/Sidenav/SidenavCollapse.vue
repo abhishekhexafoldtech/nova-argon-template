@@ -2,7 +2,9 @@
   <a :data-bs-toggle="collapse ? 'collapse' : ''" :href="collapse ? `#${collapseRef}` : collapseRef"
     :aria-controls="collapseRef" :aria-expanded="isExpanded" class="nav-link" v-bind="$attrs"
     @click="isExpanded = !isExpanded">
-    <i class="ri-customer-service-line"></i>
+    <!-- <i class="ri-customer-service-line"></i> -->
+     <!-- <i :class="icon"></i> -->
+    <img :src="iconImg" style="height: 10px;width:10px;" />
     <span class="nav-link-text">{{ navText }}</span>
   </a>
   <div :class="isExpanded ? 'collapse show' : 'collapse'">
@@ -22,6 +24,14 @@ defineProps({
   collapse: {
     type: Boolean,
     default: true,
+  },
+  icon: {
+    type: String,
+    required: true,
+  },
+  iconImg: {
+    type: String,
+    required: true,
   },
 });
 
