@@ -5,88 +5,91 @@
                 <h3>Assign roles & permissions</h3>
                 <p>Permission assign to admin</p>
             </div>
-            <el-form :model="form" ref="formRef">
+            <el-form :model="assignRoleForm" ref="formRef" :rules="assignRoleFormRules">
                 <p class="sec_subtitle mb-2">Admin name</p>
                 <div class="fieldrow w455">
-                    <el-form-item prop="text" :rules="form.adminName ? null : [
-                        {
-                            required: true,
-                            message: 'Please input role name here',
-                            trigger: 'blur',
-                        },
-                        { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
-                    ]">
-                        <el-input v-model="form.adminName" placeholder="Admin name" />
+                    <el-form-item prop="adminName">
+                        <el-input v-model="assignRoleForm.adminName" placeholder="Admin name" />
                     </el-form-item>
                 </div>
                 <div>
                     <p class="sec_subtitle mb-2 mt-4">Role Name </p>
                 </div>
                 <div class="fieldrow w455 form_select">
-                    <el-select v-model="form.roles" multiple placeholder="Roles"
-                        :style="!roleInputError && !form.roles.length ? 'border:1px solid #F56C6C;' : ''">
+                    <el-form-item prop="roles">
+                    <el-select v-model="assignRoleForm.roles" multiple placeholder="Roles">
                         <el-option v-for="item in select.roles.data" :key="item.value" :label="item.option"
                             :value="item.value" />
                     </el-select>
-                    <small style="font-size:12px;color:#F56C6C" v-if="!form.roles.length && !roleInputError">Please select
-                        something.</small>
+                    </el-form-item>
                 </div>
                 <div class="perm_sec">
                     <p class="sec_subtitle">Set Permissions</p>
-                    <div class="text-small p-2" style="color:#F56C6C" v-if="formError">
-                        Please provide all the details.
-                    </div>
                     <div class="perm_inner">
                         <h4>Action and sub action</h4>
                         <div class="perm_box">
                             <div class="perm_item">
-                                <div class="perm_data" v-if="form.value1.length > 0">Dashboard</div>
-                                <el-select v-model="form.value1" multiple placeholder="Dashboard">
+                                <div class="perm_data" v-if="assignRoleForm.value1.length > 0">Dashboard</div>
+                                <el-form-item prop="value1">
+                                <el-select v-model="assignRoleForm.value1" multiple placeholder="Dashboard">
                                     <el-option v-for="item in select.dashboard.data" :key="item.value" :label="item.option"
                                         :value="item.value" />
                                 </el-select>
+                                </el-form-item>
                             </div>
                             <div class="perm_item">
-                                <div class="perm_data" v-if="form.value2.length > 0">Complaints</div>
-                                <el-select v-model="form.value2" multiple placeholder="Complaints">
+                                <div class="perm_data" v-if="assignRoleForm.value2.length > 0">Complaints</div>
+                                <el-form-item prop="value2">
+                                <el-select v-model="assignRoleForm.value2" multiple placeholder="Complaints">
                                     <el-option v-for="item in select.complaints.data" :key="item" :label="item.option"
                                         :value="item.value" />
                                 </el-select>
+                                </el-form-item>
                             </div>
                             <div class="perm_item">
-                                <div class="perm_data" v-if="form.value3.length > 0">Customer</div>
-                                <el-select v-model="form.value3" multiple placeholder="Customer">
+                                <div class="perm_data" v-if="assignRoleForm.value3.length > 0">Customer</div>
+                                <el-form-item prop="value3">
+                                <el-select v-model="assignRoleForm.value3" multiple placeholder="Customer">
                                     <el-option v-for="item in select.Customer.data" :key="item" :label="item.option"
                                         :value="item.value" />
                                 </el-select>
+                                </el-form-item>
                             </div>
                             <div class="perm_item">
-                                <div class="perm_data" v-if="form.value4.length > 0">Support system</div>
-                                <el-select v-model="form.value4" multiple placeholder="Support system">
+                                <div class="perm_data" v-if="assignRoleForm.value4.length > 0">Support system</div>
+                                <el-form-item prop="value4">
+                                <el-select v-model="assignRoleForm.value4" multiple placeholder="Support system">
                                     <el-option v-for="item in select.support_system.data" :key="item" :label="item.option"
                                         :value="item.value" />
                                 </el-select>
+                                </el-form-item>
                             </div>
                             <div class="perm_item">
-                                <div class="perm_data" v-if="form.value5.length > 0">Distributor</div>
-                                <el-select v-model="form.value5" multiple placeholder="Distributor">
+                                <div class="perm_data" v-if="assignRoleForm.value5.length > 0">Distributor</div>
+                                <el-form-item prop="value5">
+                                <el-select v-model="assignRoleForm.value5" multiple placeholder="Distributor">
                                     <el-option v-for="item in select.distributor.data" :key="item" :label="item.option"
                                         :value="item.value" />
                                 </el-select>
+                                </el-form-item>
                             </div>
                             <div class="perm_item">
-                                <div class="perm_data" v-if="form.value6.length > 0">Delivery agents</div>
-                                <el-select v-model="form.value6" multiple placeholder="Delivery agents">
+                                <div class="perm_data" v-if="assignRoleForm.value6.length > 0">Delivery agents</div>
+                                <el-form-item prop="value6">
+                                <el-select v-model="assignRoleForm.value6" multiple placeholder="Delivery agents">
                                     <el-option v-for="item in select.delivery_agents.data" :key="item" :label="item.option"
                                         :value="item.value" />
                                 </el-select>
+                                </el-form-item>
                             </div>
                             <div class="perm_item">
-                                <div class="perm_data" v-if="form.value7.length > 0">Transactions</div>
-                                <el-select v-model="form.value7" multiple placeholder="Transactions">
+                                <div class="perm_data" v-if="assignRoleForm.value7.length > 0">Transactions</div>
+                                <el-form-item prop="value7">
+                                <el-select v-model="assignRoleForm.value7" multiple placeholder="Transactions">
                                     <el-option v-for="item in select.transactions.data" :key="item" :label="item.option"
                                         :value="item.value" />
                                 </el-select>
+                                </el-form-item>
                             </div>
                         </div>
                     </div>
@@ -106,7 +109,7 @@
 <script setup>
 import { flashNotification } from "@/composables/useNotification.js"
 
-const form = reactive({
+const assignRoleForm = reactive({
     roles: [],
     adminName: null,
     value1: [],
@@ -117,32 +120,37 @@ const form = reactive({
     value6: [],
     value7: []
 });
+const assignRoleFormRules = reactive({
+    adminName: [{ required: true, message:'Please provide admin name.', trigger: ['blur','change'] }],
+    roles: [{ required: true, message:'Please provide role name.', trigger: ['blur','change'] }],
+    value1: [{ required: true,message:'Please provide options from dashboard.',  trigger: ['blur','change'] }],
+    value2: [{ required: true,message:'Please provide options from complaints.',  trigger: ['blur','change'] }],
+    value3: [{ required: true,message:'Please provide options from customer.',  trigger: ['blur','change'] }],
+    value4: [{ required: true,message:'Please provide options from support system.',  trigger: ['blur','change'] }],
+    value5: [{ required: true,message:'Please provide options from distributor.', trigger: ['blur','change'] }],
+    value6: [{ required: true,message:'Please provide options from delivery agents.',  trigger: ['blur','change'] }],
+    value7: [{ required: true,message:'Please provide options from transactins.',  trigger: ['blur','change'] }],
+  });
 const formRef = ref();
-const formError = ref(false);
 const roleInputError = ref(true);
 const validate = () => {
-    if (!form.roles.length) {
+    if (!assignRoleForm.roles.length) {
         roleInputError.value = false;
     }
-    if (!form.value1.length || !form.value2.length || !form.value3.length || !form.value4.length || !form.value5.length || !form.value6.length || !form.value7.length || !form.roles.length || !form.adminName) {
+    if (!assignRoleForm.value1.length || !assignRoleForm.value2.length || !assignRoleForm.value3.length || !assignRoleForm.value4.length || !assignRoleForm.value5.length || !assignRoleForm.value6.length || !assignRoleForm.value7.length || !assignRoleForm.roles.length || !assignRoleForm.adminName) {
         return false
     };
     return true;
 }
 const submitForm = (formEl) => {
     if (!formEl) { return };
-
     formEl.validate((valid) => {
         if (valid && validate()) {
-            console.log('submit!', form);
-            formError.value = false;
+            console.log('submit!', assignRoleForm);
             navigateTo("/onboarding")
         } else {
-            console.log('error submit!');
+            console.log('error submit!',assignRoleForm.roles);
             flashNotification('warning', 'Please fill required fields')
-            if (!validate()) {
-                formError.value = true;
-            }
             return false
         }
     })
@@ -331,6 +339,8 @@ const select = reactive({
 
 onMounted(() => {
     const router = useRouter();
-    form.adminName = router.adminName;
+    if(router.adminName){
+        assignRoleForm.adminName = router.adminName;
+    }
 })
 </script>
