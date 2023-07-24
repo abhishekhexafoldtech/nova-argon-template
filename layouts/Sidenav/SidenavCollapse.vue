@@ -4,7 +4,7 @@
     @click="isExpanded = !isExpanded">
     <!-- <i class="ri-customer-service-line"></i> -->
      <!-- <i :class="icon"></i> -->
-    <img :src="iconImg" style="height: 10px;width:10px;" />
+    <img :src="iconImg" />
     <span class="nav-link-text">{{ navText }}</span>
   </a>
   <div :class="isExpanded ? 'collapse show' : 'collapse'">

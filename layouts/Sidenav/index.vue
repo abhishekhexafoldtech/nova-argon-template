@@ -8,7 +8,8 @@
         aria-hidden="true"
       ></i> -->
       <NuxtLink class="navbar-brand" to="/">
-        <img src="../../assets/nova_logo2.png" class="navbar-brand-img " alt="main_logo" />
+        <img src="../../assets/nova_logo_white.png" class="navbar-brand-img big_logo" alt="main_logo" />
+        <img src="../../assets/nova_logo_small.png" class="navbar-brand-img small_logo" alt="main_logo" />
 
         <span class="ms-2 font-weight-bold h6" :class="navStore.sidenavType === 'bg-default bg-transparent' && 'text-white'
           "></span>
@@ -20,19 +21,18 @@
 
     <SidenavList />
 
-    <div class="mt-3 nav-item">
-      <hr class="mt-0 horizontal dark" />
-    </div>
     <div class="bootom_nav">
       <div class="bn_left">
-        <img src="../../assets/img/team-2.jpg" alt="">
+        <figure class="online">
+          <img src="../../assets/img/team-2.jpg" alt="">
+        </figure>
         <div class="bn_left_con">
-          <h5>John Doe</h5>
-          <p>johndoe@gmail.com</p>
+          <h5>Yew Graham</h5>
+          <p>yewgraham@gmail.com</p>
         </div>
       </div>
       <NuxtLink class="setting_btn" to="/">
-        <i class="ri-settings-4-fill"></i>
+        <i class="ri-more-2-fill"></i>
       </NuxtLink>
     </div>
   </aside>
