@@ -11,8 +11,8 @@
         <img src="../../assets/nova_logo_white.png" class="navbar-brand-img big_logo" alt="main_logo" />
         <img src="../../assets/nova_logo_small.png" class="navbar-brand-img small_logo" alt="main_logo" />
 
-        <span class="ms-2 font-weight-bold h6" :class="navStore.sidenavType === 'bg-default bg-transparent' && 'text-white'
-          "></span>
+        <!-- <span class="ms-2 font-weight-bold h6" :class="navStore.sidenavType === 'bg-default bg-transparent' && 'text-white'
+          "></span> -->
       </NuxtLink>
       <NuxtLink class="nav_admin" to="">
         Admin
