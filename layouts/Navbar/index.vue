@@ -165,6 +165,11 @@
             </ul> -->
           </li>
           <li class="nav-item dropdown d-flex align-items-center pe-2">
+            <a :class="`p-0 nav-link text-white ${navStore.miniNotification ? 'show' : ''}`">
+              &nbsp;<i class="fa fa-cog cursor-pointer text-dark" aria-hidden="true"></i>
+            </a>
+          </li>
+          <!-- <li class="nav-item dropdown d-flex align-items-center pe-2">
             <a
               id="dropdownMenuButton"
               href="#"
@@ -199,7 +204,7 @@
                   <span class="d-sm-inline d-none mx-2">Logout</span>
               </li>
             </ul>
-          </li>
+          </li> -->
         
          
         </ul>

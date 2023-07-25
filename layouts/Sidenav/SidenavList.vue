@@ -5,23 +5,23 @@
         <SidenavItem to="/dashboards" text="Dashboards" :icon-img="iconImgDashboard" icon="ri-dashboard-line" />
       </li>
       <li class="nav-item">
-        <SidenavItem to="/dashboards" text="Distributor" :icon-img="iconImgDistributor" icon="ri-group-2-line" />
+        <SidenavItem to="/distributor" text="Distributor" :icon-img="iconImgDistributor" icon="ri-group-2-line" />
       </li>
       <li class="nav-item">
-        <SidenavItem to="/dashboards" text="Customers" :icon-img="iconImgCustomer" icon="ri-group-line" />
+        <SidenavItem to="/customers" text="Customers" :icon-img="iconImgCustomer" icon="ri-group-line" />
       </li>
       <li class="nav-item">
-        <SidenavItem to="/dashboards" text="Delivery Agents" :icon-img="iconImgDeliveryAgent" icon="ri-truck-line" />
+        <SidenavItem to="/agents" text="Delivery Agents" :icon-img="iconImgDeliveryAgent" icon="ri-truck-line" />
       </li>
     </ul>
 
     <h4 class="menu_title">Analytics</h4>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <SidenavItem to="/dashboards" text="Reports" :icon-img="iconImgReport" icon="ri-file-chart-line" />
+        <SidenavItem to="/reports" text="Reports" :icon-img="iconImgReport" icon="ri-file-chart-line" />
       </li>
       <li class="nav-item">
-        <SidenavItem to="/dashboards" text="Transactions" :icon-img="iconImgTransaction" icon="ri-secure-payment-line" />
+        <SidenavItem to="/transactions" text="Transactions" :icon-img="iconImgTransaction" icon="ri-secure-payment-line" />
       </li>
     </ul>
 
@@ -35,11 +35,11 @@
       </li>
       <li class="nav-item">
         <SidenavCollapse collapse-ref="dashboardsExamples" nav-text="Support System"
-          :class="getRoute === 'dashboards' ? 'active' : ''" :icon-img="iconImgCollapseSupportSystem"
+          :class="getRoute === 'support-system' ? 'active' : ''" :icon-img="iconImgCollapseSupportSystem"
           icon="ri-group-2-line">
           <template #list>
             <ul class="sub_menu">
-              <SidenavItem to="/dashboards" text="Default" :icon-img="iconImgDefault" icon="ri-group-2-line" />
+              <SidenavItem to="/default" text="Default" :icon-img="iconImgDefault" icon="ri-group-2-line" />
             </ul>
           </template>
         </SidenavCollapse>
