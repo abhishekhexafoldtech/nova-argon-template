@@ -7,14 +7,14 @@
         class="top-0 p-3 cursor-pointer fas fa-times text-secondary opacity-5 position-absolute end-0 d-none d-xl-none"
         aria-hidden="true"
       ></i> -->
-      <NuxtLink class="navbar-brand" to="/">
+      <NuxtLink class="navbar-brand" to="/dashboards">
         <img src="../../assets/nova_logo_white.png" class="navbar-brand-img big_logo" alt="main_logo" />
         <img src="../../assets/nova_logo_small.png" class="navbar-brand-img small_logo" alt="main_logo" />
 
         <span class="ms-2 font-weight-bold h6" :class="navStore.sidenavType === 'bg-default bg-transparent' && 'text-white'
           "></span>
       </NuxtLink>
-      <NuxtLink class="nav_admin" to="/">
+      <NuxtLink class="nav_admin" to="">
         Admin
       </NuxtLink>
     </div>
@@ -35,11 +35,11 @@
         <i class="ri-more-2-fill"></i>
       </NuxtLink>
       <ul class="dropdown-menu sidemenu_account" aria-labelledby="dropdownMenuButton" :class="showProfile ? 'show' : ''">
-        <li>
+        <li @click.prevent="router.push({ path: '/user' })">
           <i class="fas fa-user"></i>
           <span>My Profile</span>
         </li>
-        <li>
+        <li @click="logout()">
           <i class="ni ni-user-run"></i>
           <span>Logout</span>
         </li>
@@ -50,7 +50,14 @@
 
 <script setup>
 import SidenavList from "./SidenavList.vue";
-import logo from "@/assets/nova_logo2.png";
+import { useRouter } from "vue-router";
+const router = useRouter();
 import { useNavStore } from "@/stores/NavStore";
 const navStore = useNavStore();
+
+function logout() {
+    navigateTo('/login')
+  }
+
+
 </script>

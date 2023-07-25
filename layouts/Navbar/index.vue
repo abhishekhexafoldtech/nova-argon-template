@@ -230,11 +230,6 @@ const showMenu = ref(false);
 const showProfile = ref(false);
 
 
-function logout() {
-    navigateTo('/login')
-  
-  }
-
 // const handleLogout = async () => {
 //   try {
 //     router.push({ path: "/" });
