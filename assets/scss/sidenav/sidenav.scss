@@ -247,6 +247,43 @@ hr.horizontal.dark {
             background: var(--sidemenu-bg);
         }
     }
+
+    .dropdown-menu.sidemenu_account {
+        top: auto;
+        bottom: 80px;
+        left: auto;
+        right: 20px;
+        border-radius: 5px;
+        background-color: var(--hover-bg);
+        margin: 0;
+        padding: 0;
+        border: solid 1px #5F5858;
+
+        li {
+            display: block;
+            color: var(--white);
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: normal;
+            margin: 2px 0;
+            position: relative;
+            font-family: var(--primary-font);
+            letter-spacing: 0;
+            cursor: pointer;
+            transition: all 150ms ease-in-out;
+
+            i{
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+
+            &:hover {
+                background: var(--sidemenu-bg);
+                font-weight: 600;
+            }
+        }
+    }
 }
 
 .g-sidenav-hidden .navbar-vertical {
