@@ -31,9 +31,19 @@
           <p>yewgraham@gmail.com</p>
         </div>
       </div>
-      <NuxtLink class="setting_btn" to="/">
+      <NuxtLink id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" :class="`setting_btn ${showProfile ? 'show' : ''}`" @click="showProfile = !showProfile">
         <i class="ri-more-2-fill"></i>
       </NuxtLink>
+      <ul class="dropdown-menu sidemenu_account" aria-labelledby="dropdownMenuButton" :class="showProfile ? 'show' : ''">
+        <li>
+          <i class="fas fa-user"></i>
+          <span>My Profile</span>
+        </li>
+        <li>
+          <i class="ni ni-user-run"></i>
+          <span>Logout</span>
+        </li>
+      </ul>
     </div>
   </aside>
 </template>
