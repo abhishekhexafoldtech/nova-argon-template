@@ -4,6 +4,7 @@
     margin: 10px;
     margin-right: 0;
     overflow: hidden;
+    max-width: 260px !important;
 }
 
 .navbar-vertical.navbar-expand-xs .navbar-collapse {
@@ -45,7 +46,7 @@
     justify-content: space-between;
     padding: 20px;
     padding-bottom: 5px;
-    height: auto;
+    height: 65px;
 }
 
 .sidenav .navbar-brand {
@@ -272,7 +273,7 @@ hr.horizontal.dark {
             cursor: pointer;
             transition: all 150ms ease-in-out;
 
-            i{
+            i {
                 display: inline-block;
                 vertical-align: middle;
                 margin-right: 10px;
@@ -287,41 +288,14 @@ hr.horizontal.dark {
 }
 
 .g-sidenav-hidden .navbar-vertical {
-    .bootom_nav {
-        .bn_left {
-            .bn_left_con {
-                width: 0;
-                opacity: 0;
-                padding: 0;
-            }
-        }
-    }
-
-    .setting_btn {
-        width: 0;
-        opacity: 0;
-    }
-
-    &:hover {
-        .bootom_nav {
-            .bn_left {
-                .bn_left_con {
-                    width: calc(100% - 50px);
-                    opacity: 1;
-                    padding: 0 8px;
-                }
-            }
-
-            .setting_btn {
-                width: 25px;
-                opacity: 1;
-            }
-        }
+    .sidenav-header {
+        display: block;
     }
 
     &.sidenav {
         .navbar-brand {
             width: 40px;
+            margin: 0 auto;
 
             .big_logo {
                 display: none;
@@ -335,6 +309,7 @@ hr.horizontal.dark {
         &:hover {
             .navbar-brand {
                 width: 90px;
+                margin-left: 0;
 
                 .big_logo {
                     display: block;
@@ -346,25 +321,92 @@ hr.horizontal.dark {
             }
         }
     }
+
+    .navbar-nav .nav-link {
+        text-align: center;
+
+        img {
+            margin: 0;
+        }
+
+        .sidenav-normal,
+        .nav-link-text {
+            display: none;
+        }
+    }
+
+    .nav-item .nav-link[data-bs-toggle=collapse]:after {
+        content: none;
+    }
+
+    .bootom_nav {
+        display: block;
+        text-align: center;
+
+        .bn_left {
+            .bn_left_con {
+                display: none;
+            }
+        }
+
+        .setting_btn {
+            width: 0;
+            opacity: 0;
+        }
+    }
+
+    &:hover {
+        .sidenav-header {
+            display: flex;
+        }
+
+        .navbar-nav .nav-link {
+            text-align: left;
+
+            img {
+                margin-right: 15px;
+            }
+
+            .sidenav-normal,
+            .nav-link-text {
+                display: inline-block;
+            }
+        }
+
+        .nav-item .nav-link[data-bs-toggle=collapse]:after {
+            content: "\ea4e" !important;
+        }
+
+        .bootom_nav {
+            display: flex;
+            text-align: left;
+
+            .bn_left {
+                .bn_left_con {
+                    display: inline-block;
+                }
+            }
+
+            .setting_btn {
+                width: 25px;
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .g-sidenav-hidden .navbar-vertical {
 
     .nav_admin,
     .menu_title {
-        width: 0;
-        opacity: 0;
+        display: none;
     }
 
     &:hover {
-        .nav_admin {
-            width: 70px;
-            opacity: 1;
-        }
 
+        .nav_admin,
         .menu_title {
-            width: 100%;
-            opacity: 1;
+            display: block;
         }
     }
 }
@@ -372,4 +414,14 @@ hr.horizontal.dark {
 .navbar-vertical.navbar-expand-xs .navbar-nav>.nav-item .sub_menu {
     padding-inline-start: 15px;
     margin: 0;
+}
+
+@media (min-width: 1200px) {
+    .g-sidenav-hidden .navbar-vertical {
+        max-width: 5rem !important;
+    }
+
+    .g-sidenav-hidden .navbar-vertical.fixed-start+.main-content {
+        margin-left: 6rem;
+    }
 }
