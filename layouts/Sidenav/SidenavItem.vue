@@ -1,10 +1,9 @@
 <template>
-  <li class="nav-item">
-    <NuxtLink class="nav-link" :to="to">
-      <span class="sidenav-mini-icon"> {{ miniIcon }} </span>
-      <span class="sidenav-normal"> {{ text }} </span>
-    </NuxtLink>
-  </li>
+  <NuxtLink class="nav-link" :to="to">
+    <!-- <i :class="icon"></i> -->
+    <img :src="iconImg" />
+    <span class="sidenav-normal"> {{ text }} </span>
+  </NuxtLink>
 </template>
 <script setup>
 defineProps({
@@ -17,6 +16,14 @@ defineProps({
     required: true,
   },
   text: {
+    type: String,
+    required: true,
+  },
+  icon: {
+    type: String,
+    required: true,
+  },
+  iconImg: {
     type: String,
     required: true,
   },
