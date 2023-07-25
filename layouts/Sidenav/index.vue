@@ -22,7 +22,7 @@
     <SidenavList />
 
     <div class="bootom_nav">
-      <div class="bn_left">
+      <div class="bn_left" @click.prevent="router.push({ path: '/user' })">
         <figure class="online">
           <img src="../../assets/img/team-2.jpg" alt="">
         </figure>
