@@ -12,17 +12,17 @@
                 <h5 class="cf_title">Enter Personal Details</h5>
                 <div class="fieldrow">
                   <el-form-item label="First Name" prop="firstName">
-                    <el-input placeholder="First Name" v-model="formData.firstName" />
+                    <el-input placeholder="First name" v-model="formData.firstName" />
                   </el-form-item>
                 </div>
                 <div class="fieldrow">
                   <el-form-item label="Last Name" prop="lastName">
-                    <el-input placeholder="Last Name" v-model="formData.lastName" />
+                    <el-input placeholder="Last name" v-model="formData.lastName" />
                   </el-form-item>
                 </div>
                 <div class="fieldrow">
                   <el-form-item label="Phone Number" prop="phoneNumber">
-                    <el-input placeholder="Phone Number number" v-model="formData.phoneNumber" />
+                    <el-input placeholder="Phone  number" v-model="formData.phoneNumber" />
                   </el-form-item>
                 </div>
                 <div class="fieldrow">
@@ -54,7 +54,7 @@
                   </el-form-item>
                 </div>
                 <div class="fieldrow">
-                  <el-form-item label="Post code" prop="address.post_code">
+                  <el-form-item label="Post Code" prop="address.post_code">
                     <el-input class="" v-model="formData.address.post_code" placeholder="Post code" />
                   </el-form-item>
                 </div>
@@ -62,7 +62,7 @@
               <div class="comp_form_box">
                 <h5 class="cf_title">Enter your location’s GPS address</h5>
                 <div class="fieldrow">
-                  <el-form-item label="GPS address" prop="gps_address">
+                  <el-form-item label="GPS Address" prop="gps_address">
                     <el-input class="" v-model="formData.gps_address" placeholder="GPS address" />
                   </el-form-item>
                 </div>

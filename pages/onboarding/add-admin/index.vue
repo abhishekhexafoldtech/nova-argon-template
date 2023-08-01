@@ -8,16 +8,16 @@
       <el-form ref="form" label-position="top" label-width="100px" :model="formData" size="large" :rules="formRules">
         <div class="fieldrow w455 mar15">
           <el-form-item label="First Name" prop="firstName">
-            <el-input class="form_input" v-model="formData.firstName" placeholder="firstName" />
+            <el-input class="form_input" v-model="formData.firstName" placeholder="First name" />
           </el-form-item>
         </div>
         <div class="fieldrow w455 mar15">
           <el-form-item label="Last Name" prop="lastName">
-            <el-input class="form_input" v-model="formData.lastName" placeholder="lastName" />
+            <el-input class="form_input" v-model="formData.lastName" placeholder="Last name" />
           </el-form-item>
         </div>
         <div class="fieldrow w455 mar15">
-          <el-form-item label="Phone number" prop="phone_number">
+          <el-form-item label="Phone Number" prop="phone_number">
             <el-input class="form_input" v-model="formData.phone_number" placeholder="Phone number" />
           </el-form-item>
         </div>
