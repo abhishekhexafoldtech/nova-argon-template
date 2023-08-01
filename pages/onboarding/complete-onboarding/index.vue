@@ -11,22 +11,27 @@
               <div class="comp_form_box">
                 <h5 class="cf_title">Enter Personal Details</h5>
                 <div class="fieldrow">
-                  <el-form-item label="Name" prop="name">
-                    <el-input placeholder="Name" v-model="formData.name" />
+                  <el-form-item label="First Name" prop="firstName">
+                    <el-input placeholder="First Name" v-model="formData.firstName" />
                   </el-form-item>
                 </div>
                 <div class="fieldrow">
-                  <el-form-item label="Phone number" prop="phone">
-                    <el-input placeholder="Phone number" v-model="formData.phone" />
+                  <el-form-item label="Last Name" prop="lastName">
+                    <el-input placeholder="Last Name" v-model="formData.lastName" />
                   </el-form-item>
                 </div>
                 <div class="fieldrow">
-                  <el-form-item label="Date of Birth" prop="date_of_birth">
-                    <el-date-picker v-model="formData.date_of_birth" type="date" placeholder="Pick a day" size="default" />
+                  <el-form-item label="Phone Number" prop="phoneNumber">
+                    <el-input placeholder="Phone Number number" v-model="formData.phoneNumber" />
                   </el-form-item>
                 </div>
                 <div class="fieldrow">
-                  <el-form-item label="Enter email" prop="email">
+                  <el-form-item label="Date of Birth" prop="dateOfBirth">
+                    <el-date-picker v-model="formData.dateOfBirth" type="date" placeholder="Pick a day" size="default" />
+                  </el-form-item>
+                </div>
+                <div class="fieldrow">
+                  <el-form-item label="Email" prop="email">
                     <el-input placeholder="Email" v-model="formData.email" />
                   </el-form-item>
                 </div>
@@ -74,7 +79,7 @@
                   <el-radio :label="3">Ghana card</el-radio>
                   <el-radio :label="6">Voter's ID</el-radio>
                 </el-radio-group>
-                <SingleFileUpload iconClass="iconClass" @getImage="getId" :reactivePropertyName="formData.id.voterId"
+                <SingleFileUpload iconClass="iconClass" @getImage="getId" :reactivePropertyfirstName="formData.id.voterId"
                   :value="formData.id.ghanaCard" />
               </div>
             </div>
@@ -82,13 +87,11 @@
               <div class="fieldrow">
                 <p>Face recognization</p>
                 <SingleFileUpload iconClass="iconClass" @getImage="getFace"
-                  :reactivePropertyName="formData.id.face_recognition" :value="formData.id.face_recognition" />
+                  :reactivePropertyfirstName="formData.id.face_recognition" :value="formData.id.face_recognition" />
               </div>
             </div>
           </el-col>
         </el-row>
-
-
         <div class="comp_footer">
           <nuxt-link class="btn btn-default" to="/onboarding">Cancel</nuxt-link>
           <el-button class="btn btn-primary" @click="handleContinue">Continue</el-button>
@@ -112,7 +115,7 @@ import { useRouter } from "vue-router";
 import { flashNotification } from "@/composables/useNotification.js"
 import SingleFileUpload from "~/components/upload/SingleFileUpload.vue";
 import admin_mail from "@/assets/svg/admin_mail.svg";
-import SuccessDialog from "../dialog-box/SuccessDialog.vue";
+import SuccessDialog from "@/pages/onboarding/dialog-box/SuccessDialog.vue";
 import ghanapost from "@/assets/svg/ghanapost.svg"
 const router = useRouter();
 const centerDialogVisible = ref(false);
@@ -121,9 +124,10 @@ const radio = ref(3);
 
 
 const formData = reactive({
-  name: "",
-  phone: "",
-  date_of_birth: "",
+  firstName: "",
+  lastName:"",
+  phoneNumber: "",
+  dateOfBirth: "",
   email: "",
   address: {
     house_number: "",
@@ -158,17 +162,31 @@ const dialogVisible = () => {
 
 // validation
 const formValidationRules = reactive({
-  name: [
+  firstName: [
     {
       required: true,
-      message: "Please enter name",
+      message: "Please enter firstName",
       trigger: "blur",
     },
   ],
-  phone: [
+  lastName:[
+    {
+      required:true,
+      message:"Please enter lastName",
+      trigger:"blur"
+    }
+  ],
+  phoneNumber: [
     {
       required: true,
-      message: "Please enter phone",
+      message: "Please enter phoneNumber",
+      trigger: "blur",
+    },
+  ],
+  dateOfBirth: [
+    {
+      required: true,
+      message: "Please enter date of birth",
       trigger: "blur",
     },
   ],
@@ -177,13 +195,6 @@ const formValidationRules = reactive({
       required: true,
       type: "email",
       message: "Please enter email",
-      trigger: "blur",
-    },
-  ],
-  date_of_birth: [
-    {
-      required: true,
-      message: "Please enter date of birth",
       trigger: "blur",
     },
   ],
