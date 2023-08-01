@@ -49,16 +49,22 @@
           </div>
 
         </el-tab-pane>
+        <el-tab-pane label="Request KYC updation" name="kyc">
+          <el-card>
+            <KycUpdate @handleKyc="handleKyc"/>
+          </el-card>
+        </el-tab-pane>
       </el-tabs>
     </div>
   </div>
 </template>
   
 <script setup>
-import Profile from "@/pages/user/profile/index.vue"
-import ResetPassword from "@/pages/user/reset-password/ResetPassword"
-import Otp from "@/pages/user/reset-password/Otp"
-import NewPassword from "@/pages/user/reset-password/NewPassword"
+import Profile from "@/pages/user/components/Profile.vue"
+import ResetPassword from "@/pages/user/components/reset-password/ResetPassword"
+import Otp from "@/pages/user/components/reset-password/Otp"
+import NewPassword from "@/pages/user/components/reset-password/NewPassword"
+import KycUpdate from "./components/KycUpdate.vue"
 const activeName = ref("password");
 var resetPasswardVisibility = ref(true);
 var otpVisibility = ref(false);
@@ -75,6 +81,10 @@ function handleOtpdChildFormData(data) {
   resetPasswardVisibility.value = false
   otpVisibility.value = false
   newPasswordVisibility.value = true
+}
+
+function handleKyc(){
+  activeName.value = "profile"
 }
 
 definePageMeta({
