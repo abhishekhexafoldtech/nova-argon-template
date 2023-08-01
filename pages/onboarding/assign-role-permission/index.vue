@@ -17,15 +17,167 @@
                 </div>
                 <div class="fieldrow w455 form_select">
                     <el-form-item prop="roles">
-                    <el-select v-model="assignRoleForm.roles" multiple placeholder="Roles">
-                        <el-option v-for="item in select.roles.data" :key="item.value" :label="item.option"
-                            :value="item.value" />
-                    </el-select>
+                        <el-select v-model="assignRoleForm.roles" multiple placeholder="Roles">
+                            <el-option v-for="item in select.roles.data" :key="item.value" :label="item.option"
+                                :value="item.value" />
+                        </el-select>
                     </el-form-item>
                 </div>
                 <div class="perm_sec">
                     <p class="sec_subtitle">Set Permissions</p>
-                    <div class="perm_inner">
+                    <div class="perm_table">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Module</th>
+                                    <th>Permission</th>
+                                    <th>Assign</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="3"><b>Dashboard</b></td>
+                                    <td class="border_left">View</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can see own data</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr class="border_bottom">
+                                    <td class="border_left">Can see others data</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="4"><b>Customer</b></td>
+                                    <td class="border_left">View all customer(Including added by others)</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">View only customer added by you</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Edit</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr class="border_bottom">
+                                    <td class="border_left">Delete</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="6"><b>Distributor</b></td>
+                                    <td class="border_left">View</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can add new distributor</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can edit details of any distributor</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can edit details of distributor added by them</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can delete any distributor</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr class="border_bottom">
+                                    <td class="border_left">Can delete distributor added by them</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="6"><b>Transactions</b></td>
+                                    <td class="border_left">Can view all transactions</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can view only their transactions</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can provide refunds</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can request for remaining payments</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Download receipts of transactions</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr class="border_bottom">
+                                    <td class="border_left">Download receipts of your transactions only</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="5"><b>Complaints</b></td>
+                                    <td class="border_left">Can view all complaints</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can view complaints related to them</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can take action on all complaints</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can take actions on complaints related to them</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr class="border_bottom">
+                                    <td class="border_left">Can transfer complaints to other admin</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="5"><b>Support system</b></td>
+                                    <td class="border_left">Handling general queries</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Handling complaints coming to support team</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Promotional updates</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Handling support team</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr class="border_bottom">
+                                    <td class="border_left">Handling product and technical issues</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="4"><b>Delivery agents</b></td>
+                                    <td class="border_left">Can view all delivery agents</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can view delivery agents added by them</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can edit details of all agents</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_left">Can edit details of agents added by them</td>
+                                    <td><el-checkbox v-model="checked1" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <div class="perm_inner">
                         <h4>Action and sub action</h4>
                         <div class="perm_box">
                             <div class="perm_item">
@@ -92,7 +244,7 @@
                                 </el-form-item>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="perm_footer">
                         <el-button class="btn btn-default" @click="handleCancel()">Cancel</el-button>
@@ -121,16 +273,16 @@ const assignRoleForm = reactive({
     value7: []
 });
 const assignRoleFormRules = reactive({
-    adminName: [{ required: true, message:'Please provide admin name.', trigger: ['blur','change'] }],
-    roles: [{ required: true, message:'Please provide role name.', trigger: ['blur','change'] }],
-    value1: [{ required: true,message:'Please provide options from dashboard.',  trigger: ['blur','change'] }],
-    value2: [{ required: true,message:'Please provide options from complaints.',  trigger: ['blur','change'] }],
-    value3: [{ required: true,message:'Please provide options from customer.',  trigger: ['blur','change'] }],
-    value4: [{ required: true,message:'Please provide options from support system.',  trigger: ['blur','change'] }],
-    value5: [{ required: true,message:'Please provide options from distributor.', trigger: ['blur','change'] }],
-    value6: [{ required: true,message:'Please provide options from delivery agents.',  trigger: ['blur','change'] }],
-    value7: [{ required: true,message:'Please provide options from transactins.',  trigger: ['blur','change'] }],
-  });
+    adminName: [{ required: true, message: 'Please provide admin name.', trigger: ['blur', 'change'] }],
+    roles: [{ required: true, message: 'Please provide role name.', trigger: ['blur', 'change'] }],
+    value1: [{ required: true, message: 'Please provide options from dashboard.', trigger: ['blur', 'change'] }],
+    value2: [{ required: true, message: 'Please provide options from complaints.', trigger: ['blur', 'change'] }],
+    value3: [{ required: true, message: 'Please provide options from customer.', trigger: ['blur', 'change'] }],
+    value4: [{ required: true, message: 'Please provide options from support system.', trigger: ['blur', 'change'] }],
+    value5: [{ required: true, message: 'Please provide options from distributor.', trigger: ['blur', 'change'] }],
+    value6: [{ required: true, message: 'Please provide options from delivery agents.', trigger: ['blur', 'change'] }],
+    value7: [{ required: true, message: 'Please provide options from transactins.', trigger: ['blur', 'change'] }],
+});
 const formRef = ref();
 const roleInputError = ref(true);
 const validate = () => {
@@ -149,7 +301,7 @@ const submitForm = (formEl) => {
             console.log('submit!', assignRoleForm);
             navigateTo("/onboarding")
         } else {
-            console.log('error submit!',assignRoleForm.roles);
+            console.log('error submit!', assignRoleForm.roles);
             flashNotification('warning', 'Please fill required fields')
             return false
         }
@@ -339,7 +491,7 @@ const select = reactive({
 
 onMounted(() => {
     const router = useRouter();
-    if(router.adminName){
+    if (router.adminName) {
         assignRoleForm.adminName = router.adminName;
     }
 })
