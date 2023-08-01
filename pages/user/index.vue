@@ -50,9 +50,9 @@
 
         </el-tab-pane>
         <el-tab-pane label="Request KYC updation" name="kyc">
-          <el-card>
+          <div class="prof_form">
             <KycUpdate @handleKyc="handleKyc"/>
-          </el-card>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>

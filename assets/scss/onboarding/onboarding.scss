@@ -532,6 +532,14 @@
     .el-input--large .el-input__wrapper {
         padding: 6px 20px;
     }
+
+    .el-select {
+        display: block;
+
+        .el-input__wrapper {
+            display: flex;
+        }
+    }
 }
 
 /*** Style for OTP ****/

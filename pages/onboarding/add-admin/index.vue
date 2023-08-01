@@ -21,14 +21,14 @@
             <el-input class="form_input" v-model="formData.phone_number" placeholder="Phone number" />
           </el-form-item>
         </div>
-        <div class="fieldrow w455">
+        <div class="fieldrow w455 mar15">
           <el-form-item label="Email" prop="email">
             <el-input class="form_input" v-model="formData.email" placeholder="Email" />
           </el-form-item>
         </div>
-        <div class="w455 mar15">
+        <div class="fieldrow w455">
           <el-form-item label="Role" prop="role">
-            <el-select v-model="formData.role" placeholder="Plese select role" style="width: 41%">
+            <el-select  class="form_input" v-model="formData.role" placeholder="Plese select role">
               <el-option label="Admin role" value="admin_role" />
               <el-option label="Super Admin Role" value="super_admin" />
             </el-select>
