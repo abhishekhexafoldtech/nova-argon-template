@@ -6,34 +6,46 @@
         <p>Enter your details</p>
       </div>
       <el-form ref="form" label-position="top" label-width="100px" :model="formData" size="large" :rules="formRules">
-        <div class="fieldrow w455 mar15">
-          <el-form-item label="First Name" prop="firstName">
-            <el-input class="form_input" v-model="formData.firstName" placeholder="First name" />
-          </el-form-item>
-        </div>
-        <div class="fieldrow w455 mar15">
-          <el-form-item label="Last Name" prop="lastName">
-            <el-input class="form_input" v-model="formData.lastName" placeholder="Last name" />
-          </el-form-item>
-        </div>
-        <div class="fieldrow w455 mar15">
-          <el-form-item label="Phone Number" prop="phone_number">
-            <el-input class="form_input" v-model="formData.phone_number" placeholder="Phone number" />
-          </el-form-item>
-        </div>
-        <div class="fieldrow w455 mar15">
-          <el-form-item label="Email" prop="email">
-            <el-input class="form_input" v-model="formData.email" placeholder="Email" />
-          </el-form-item>
-        </div>
-        <div class="fieldrow w455">
-          <el-form-item label="Role" prop="role">
-            <el-select  class="form_input" v-model="formData.role" placeholder="Plese select role">
-              <el-option label="Admin role" value="admin_role" />
-              <el-option label="Super Admin Role" value="super_admin" />
-            </el-select>
-          </el-form-item>
-        </div>
+        <el-row>
+          <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow w455 mar15">
+              <el-form-item label="First Name" prop="firstName">
+                <el-input class="form_input" v-model="formData.firstName" placeholder="First name" />
+              </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow w455 mar15">
+              <el-form-item label="Last Name" prop="lastName">
+                <el-input class="form_input" v-model="formData.lastName" placeholder="Last name" />
+              </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow w455 mar15">
+              <el-form-item label="Phone Number" prop="phone_number">
+                <el-input class="form_input" v-model="formData.phone_number" placeholder="Phone number" />
+              </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow w455 mar15">
+                <el-form-item label="Email" prop="email">
+                  <el-input class="form_input" v-model="formData.email" placeholder="Email" />
+                </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow w455">
+              <el-form-item label="Role" prop="role">
+                <el-select  class="form_input" v-model="formData.role" placeholder="Plese select role">
+                  <el-option label="Admin role" value="admin_role" />
+                  <el-option label="Super Admin Role" value="super_admin" />
+                </el-select>
+              </el-form-item>
+            </div>
+          </el-col>
+        </el-row>
       </el-form>
       <div class="perm_footer"><el-button class="btn btn-default" @click="handleCancel">Cancel</el-button>
         <el-button class="btn btn-primary" @click="handleSubmit">Continue</el-button>
