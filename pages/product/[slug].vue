@@ -30,16 +30,16 @@
             <div class="fieldrow">
               <el-form-item label="Product type" prop="productType">
                 <el-select v-model="formData.productType" placeholder="Select product type">
-                  <el-option label="Zone one" value="shanghai" />
-                  <el-option label="Zone two" value="beijing" />
+                  <el-option label="Steel" value="steel" />
+                  <el-option label="Composite" value="composite" />
                 </el-select>
               </el-form-item>
             </div>
             <div class="fieldrow">
               <el-form-item label="Product category" prop="productCategory">
                 <el-select v-model="formData.productCategory" placeholder="Select product category">
-                  <el-option label="Zone one" value="shanghai" />
-                  <el-option label="Zone two" value="beijing" />
+                  <el-option label="Cylinder" value="cylinder" />
+                  <el-option label="Accessories" value="accessories" />
                 </el-select>
               </el-form-item>
             </div>
