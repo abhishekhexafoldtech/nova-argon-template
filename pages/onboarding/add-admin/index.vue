@@ -46,6 +46,11 @@
             </div>
           </el-col>
         </el-row>
+      
+      
+      
+       
+      
       </el-form>
       <div class="perm_footer"><el-button class="btn btn-default" @click="handleCancel">Cancel</el-button>
         <el-button class="btn btn-primary" @click="handleSubmit">Continue</el-button>

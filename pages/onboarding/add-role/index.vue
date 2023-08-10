@@ -166,76 +166,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- <div class="perm_inner">
-                        <h4>Action and sub action</h4>
-                        <div class="perm_box">
-                            <div class="perm_item">
-                                <div class="perm_data" v-if="newRoleForm.value1.length > 0">Dashboard</div>
-                                <el-form-item prop="value1" >
-                                <el-select v-model="newRoleForm.value1" multiple placeholder="Dashboard">
-                                        <el-option v-for="item in select.dashboard.data" :key="item.value"
-                                            :label="item.option" :value="item.value" />
-                                </el-select>
-                                </el-form-item>
-                            </div>
-                            <div class="perm_item">
-                                <div class="perm_data" v-if="newRoleForm.value2.length > 0">Complaints</div>
-                                <el-form-item prop="value2" >
-                                <el-select v-model="newRoleForm.value2" multiple placeholder="Complaints">
-                                    <el-option v-for="item in select.complaints.data" :key="item" :label="item.option"
-                                        :value="item.value" />
-                                </el-select>
-                            </el-form-item>
-                            </div>
-                            <div class="perm_item">
-                                <div class="perm_data" v-if="newRoleForm.value3.length > 0">Customer</div>
-                                <el-form-item prop="value3" >
-                                <el-select v-model="newRoleForm.value3" multiple placeholder="Customer">
-                                    <el-option v-for="item in select.Customer.data" :key="item" :label="item.option"
-                                        :value="item.value" />
-                                </el-select>
-                                </el-form-item>
-                            </div>
-                            <div class="perm_item">
-                                <div class="perm_data" v-if="newRoleForm.value4.length > 0">Support system</div>
-                                <el-form-item prop="value4" >
-                                <el-select v-model="newRoleForm.value4" multiple placeholder="Support system">
-                                    <el-option v-for="item in select.support_system.data" :key="item" :label="item.option"
-                                        :value="item.value" />
-                                </el-select>
-                                </el-form-item>
-                            </div>
-                            <div class="perm_item">
-                                <div class="perm_data" v-if="newRoleForm.value5.length > 0">Distributor</div>
-                                <el-form-item prop="value5" >
-                                <el-select v-model="newRoleForm.value5" multiple placeholder="Distributor">
-                                    <el-option v-for="item in select.distributor.data" :key="item" :label="item.option"
-                                        :value="item.value" />
-                                </el-select>
-                                </el-form-item>
-                            </div>
-                            <div class="perm_item">
-                                <div class="perm_data" v-if="newRoleForm.value6.length > 0">Delivery agents</div>
-                                <el-form-item prop="value6" >
-                                <el-select v-model="newRoleForm.value6" multiple placeholder="Delivery agents">
-                                    <el-option v-for="item in select.delivery_agents.data" :key="item" :label="item.option"
-                                        :value="item.value" />
-                                </el-select>
-                                </el-form-item>
-                            </div>
-                            <div class="perm_item">
-                                <div class="perm_data" v-if="newRoleForm.value7.length > 0">Transactions</div>
-                                <el-form-item prop="value7" >
-                                <el-select v-model="newRoleForm.value7" multiple placeholder="Transactions">
-                                    <el-option v-for="item in select.transactions.data" :key="item" :label="item.option"
-                                        :value="item.value" />
-                                </el-select>
-                                </el-form-item>
-                            </div>
-                        </div>
-                    </div> -->
+                    
 
-                    <div class="perm_footer">
+                    <div class="perm_footer" >
                         <el-button class="btn btn-default" @click="handleCancel()">Cancel</el-button>
                         <el-button class="btn btn-primary" @click="submitForm(formRef)">Save</el-button>
                     </div>
