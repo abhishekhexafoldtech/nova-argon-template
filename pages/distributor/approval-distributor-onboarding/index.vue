@@ -1,13 +1,29 @@
 <template>
     <section class="onboarding_wrap">
         <h3 class="ob_title">Approval distributor onboarding</h3>
-        <div class="ob_box w768">
-         
+        <div class="ob_box w1377 approval_distributor">
             <div class="prof_info">
-              <p>Please go through the following link where you find all onboarding details of distributor</p>
-
-              <p>Phase 2 detais</p>
-              <p>Phase 3 detais</p>
+                <p>Please go through the following link where you find all onboarding details of distributor</p>
+                <div class="phase_det">
+                    <div class="phase_det_item">
+                        <div class="ph_status active">
+                            <i class="ri-check-line"></i>
+                        </div>
+                        <figure>
+                            <i class="ri-file-list-3-line"></i>
+                        </figure>
+                        Phase 2 details
+                    </div>
+                    <div class="phase_det_item">
+                        <div class="ph_status">
+                            <i class="ri-check-line"></i>
+                        </div>
+                        <figure>
+                            <i class="ri-file-list-3-line"></i>
+                        </figure>
+                        Phase 3 details
+                    </div>
+                </div>
             </div>
             <div class="prof_footer">
                 <button class="btn btn-default" @click="handleDeclineDialog">Decline</button>
@@ -52,3 +68,7 @@ function handleApprove() {
 }
 
 </script>
+
+<style scoped>
+.prof_info p {}
+</style>
