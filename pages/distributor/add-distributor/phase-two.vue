@@ -341,17 +341,6 @@
   </div>
 </template>
 <script setup>
-// import { useRouter } from "vue-router";
-// const router = useRouter();
-
-// function handleSubmit() {
-//     let r = "phase-three";
-//     router.push(`${r}`);
-// }
-
-// definePageMeta({
-//   layout: "default",
-// });
 import { ref, reactive, watch } from "vue";
 import { useRouter } from "vue-router";
 import { flashNotification } from "@/composables/useNotification.js";
@@ -534,4 +523,7 @@ const handleWithEmail = () => {
 const handleCancel = () => {
   router.push("/onboarding");
 };
+definePageMeta({
+  layout: "default",
+});
 </script>
