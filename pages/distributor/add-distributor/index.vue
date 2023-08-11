@@ -1,36 +1,58 @@
 <template>
-  <div class="pt-5 mx-4">
-    <el-card class="rounded-3">
-      <div class="p-2">
+  <section class="edit_mang_wrap">
+    <div class="mang_inner add_admin">
+      <div class="mang_title">
         <h4>Add distributor</h4>
         <p>Enter your details</p>
-        <el-form class="" :model="newDistributorForm" :rules="newDistributorFormRoles" ref="formRef">
-          <el-form-item prop="first_name">
-            <el-input placeholder="First name" v-model="newDistributorForm.first_name" />
-          </el-form-item>
-          <el-form-item prop="last_name">
-            <el-input placeholder="Last name" v-model="newDistributorForm.last_name" />
-          </el-form-item>
-          <el-form-item prop="phone_number">
-            <el-input type="number" placeholder="Phone number" v-model="newDistributorForm.phone_number" />
-          </el-form-item>
-          <el-form-item prop="email">
-            <el-input type="email" placeholder="Email" v-model="newDistributorForm.email" />
-          </el-form-item>
-          <el-form-item prop="role">
-            <el-select class="form_input" placeholder="Plese select role" v-model="newDistributorForm.role">
-              <el-option label="Admin role" value="admin_role" />
-              <el-option label="Super Admin Role" value="super_admin" />
-            </el-select>
-          </el-form-item>
-        </el-form>
-        <div class="d-flex w-100 justify-content-end mt-4 ">
-          <el-button @click="handleCancel">Cancel</el-button>
-          <el-button class="btn btn-primary" type="primary" @click="handleSubmit(formRef)">Continue</el-button>
-        </div>
       </div>
-    </el-card>
-  </div>
+      <el-form :model="newDistributorForm" :rules="newDistributorFormRoles" ref="formRef" label-position="top" label-width="100px" size="large">
+        <el-row :gutter="25">
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow mar15">
+              <el-form-item label="First Name" prop="first_name">
+                <el-input placeholder="First name" v-model="newDistributorForm.first_name" />
+              </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow mar15">
+              <el-form-item label="Last Name" prop="last_name">
+                <el-input placeholder="Last name" v-model="newDistributorForm.last_name" />
+              </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow mar15">
+              <el-form-item label="Phone Number" prop="phone_number">
+                <el-input type="number" placeholder="Phone number" v-model="newDistributorForm.phone_number" />
+              </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow mar15">
+              <el-form-item label="Email" prop="email">
+                <el-input type="email" placeholder="Email" v-model="newDistributorForm.email" />
+              </el-form-item>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+            <div class="fieldrow mar15">
+              <el-form-item label="Role" prop="role">
+                <el-select class="form_input" placeholder="Plese select role" v-model="newDistributorForm.role">
+                  <el-option label="Admin role" value="admin_role" />
+                  <el-option label="Super Admin Role" value="super_admin" />
+                </el-select>
+              </el-form-item>
+            </div>
+          </el-col>
+        </el-row>
+      </el-form>
+      <div class="perm_footer">
+        <el-button class="btn btn-default" @click="handleCancel">Cancel</el-button>
+        <el-button class="btn btn-primary" type="primary" @click="handleSubmit(formRef)">Continue</el-button>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -62,7 +84,7 @@ function handleSubmit(formEl) {
 };
 function handleCancel() {
   const form = newDistributorForm
-  if(form.first_name.length || form.last_name.length || form.phone_number || form.email || form.role.length){
+  if (form.first_name.length || form.last_name.length || form.phone_number || form.email || form.role.length) {
     flashNotification('warning', 'Entered data for new distributor is lost.');
   }
   router.push("/")
