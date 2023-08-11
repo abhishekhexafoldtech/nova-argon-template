@@ -278,14 +278,14 @@
             </div>
             <!-- 3rd col -->
           </el-col>
-          <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-            <div class="comp_form_box add_dist_up w355 ms-md-5">
+          <el-col :xs="24" :sm="24" :md="12" :lg="7" :xl="7">
+            <div class="comp_form_box add_dist_up w355">
               <h5 class="cf_title">Proof of ownership of property</h5>
               <div class="fieldrow">
                 <p>Upload certificates</p>
                 <el-radio-group v-model="selectedPropertyType" :default="3" >
-                  <el-radio :label="3" >Owned Prop</el-radio>
-                  <el-radio :label="6">Rented Prop</el-radio>
+                  <el-radio :label="3" >Owned Property</el-radio>
+                  <el-radio :label="6">Rented Property</el-radio>
                 </el-radio-group>
                 <SingleFileUpload
                   iconClass="iconClass"
@@ -294,7 +294,7 @@
                 />
               </div>
             </div>
-            <div class="comp_form_box add_dist_up w355 ms-md-5">
+            <div class="comp_form_box add_dist_up w355">
               <div class="fieldrow">
                 <p>Certificate of Commencement</p>
                 <SingleFileUpload
@@ -303,7 +303,7 @@
                 />
               </div>
             </div>
-            <div class="comp_form_box add_dist_up w355 ms-md-5">
+            <div class="comp_form_box add_dist_up w355">
               <div class="fieldrow">
                 <p>Fire Proof/safety Protocol Certificate</p>
                 <SingleFileUpload
