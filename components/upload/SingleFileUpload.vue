@@ -1,56 +1,63 @@
 <template>
   <div>
-    <el-upload 
-      :class="class" 
-      :show-file-list="false" 
+    <el-upload
+      :class="class"
+      :show-file-list="false"
       :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload">
-        <img v-if="reactivePropertyName" :src="reactivePropertyName"  :class="iconClass" class="avatar img-fluid" />
-        <el-icon v-else class="avatar-uploader-icon" :class="iconClass">
-          <Plus />
-        </el-icon>
+      :before-upload="beforeAvatarUpload"
+      @change="clearValidationError"
+    >
+      <img v-if="pre_img" :src="pre_img" :class="iconClass" class="avatar img-fluid" />
+      <el-icon v-else class="avatar-uploader-icon" :class="iconClass">
+        <Plus />
+      </el-icon>
     </el-upload>
+    <p v-if="validationError"><span class="error-message">{{ validationError }}</span></p>
   </div>
 </template>
+
 <script setup>
-import { ElMessage } from 'element-plus'
-import { Plus } from '@element-plus/icons-vue'
+import { Plus } from '@element-plus/icons-vue';
+import { ref } from 'vue';
 
 const props = defineProps({
-  class: {
-    type: String,
-  },
-  iconClass: {
-    type: String,
-  },
-  reactivePropertyName: {
-    type: [String, null]
-  },
-  value: {
-    type: [String, null]
-  },
-})
+  class: String,
+  iconClass: String,
+  reactivePropertyName: [String, null],
+  value: [String, null]
+});
+const pre_img = ref("");
+const validationError = ref('');
 
-//image processing
-const emit = defineEmits(["getImage"])
+const emit = defineEmits(['getImage']);
+
 const handleAvatarSuccess = (response, uploadFile) => {
-  let image = URL.createObjectURL(uploadFile.raw)
-  emit('getImage', image)
-  console.log(image)
-}
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const base64Image = event.target.result;
+    pre_img.value = base64Image;
+    emit('getImage', base64Image);
+  };
+  reader.readAsDataURL(uploadFile.raw);
+};
 
 const beforeAvatarUpload = (rawFile) => {
   if (rawFile.type !== 'image/jpeg') {
-    ElMessage.error('Avatar picture must be JPG format!')
-    return false
+    validationError.value = 'Avatar picture must be in JPG format.';
+    return false;
   } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('Avatar picture size can not exceed 2MB!')
-    return false
+    validationError.value = 'Avatar picture size cannot exceed 2MB.';
+    return false;
   }
-  return true
-}
+  validationError.value = '';
+  return true;
+};
 
+const clearValidationError = () => {
+  validationError.value = '';
+};
 </script>
+
 <style scoped>
 .avatar-uploader .avatar {
   /* width: 320px;
@@ -83,17 +90,3 @@ const beforeAvatarUpload = (rawFile) => {
 }
 </style>
 
-<!-- ////////////////////////// -->
-
-<!-- call -->
-        <!-- single -->
-        <!-- <SingleFileUpload
-        class="avatar-uploader shadow-sm"
-        @getImage="singleData"
-        :reactivePropertyName="formData.productImage"
-        :value="formData.productImage"
-      /> -->
-<!-- get data -->
-      <!-- const singleData = (image) => {
-          formData.productImage = image;
-        }; -->
