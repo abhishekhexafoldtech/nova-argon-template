@@ -247,7 +247,7 @@
                     />
                   </el-form-item>
                 </div>
-                <img class="gh_post" :src="ghanapost" alt="ghanapost" />
+                <img class="gh_post" :src="ghanaPost" alt="ghanaPost" />
               </div>
             </el-form>
           </el-col>
@@ -269,7 +269,7 @@
             </div>
             <div class="comp_form_box w355">
               <div class="fieldrow">
-                <p>Certificate of registration</p>
+                <p>Certificate of Registration</p>
                 <SingleFileUpload
                   iconClass="iconClass"
                   @getImage="getCertificateOfregistration"
@@ -296,7 +296,7 @@
             </div>
             <div class="comp_form_box w355 ms-md-5">
               <div class="fieldrow">
-                <p>Certificate of commencement</p>
+                <p>Certificate of Commencement</p>
                 <SingleFileUpload
                   iconClass="iconClass"
                   @getImage="getCertificateOfCommencement"
@@ -305,7 +305,7 @@
             </div>
             <div class="comp_form_box w355 ms-md-5">
               <div class="fieldrow">
-                <p>Fire proof/safety protocol certificate</p>
+                <p>Fire Proof/safety Protocol Certificate</p>
                 <SingleFileUpload
                   iconClass="iconClass"
                   @getImage="getCertificateOfFiresafty"
@@ -330,7 +330,7 @@
         leftButtonName="Cancel"
         rightButtonName="Send email"
         dialogTitle="Admin added successfully"
-        :dialogImage="admin_mail"
+        :dialogImage="adminMail"
         dialogText="Send temporary logic credentials to admin"
         @handleLeftButton="handleCancel"
         @handleRightButton="handleWithEmail"
@@ -346,8 +346,8 @@ import { useRouter } from "vue-router";
 import { flashNotification } from "@/composables/useNotification.js";
 import SingleFileUpload from "~/components/upload/SingleFileUpload.vue";
 import SuccessDialog from "@/pages/onboarding/dialog-box/SuccessDialog.vue";
-import admin_mail from "@/assets/svg/admin_mail.svg";
-import ghanapost from "@/assets/svg/ghanapost.svg";
+import adminMail from "@/assets/svg/admin_mail.svg";
+import ghanaPost from "@/assets/svg/ghanapost.svg";
 
 const router = useRouter();
 const formRef = ref(null);
