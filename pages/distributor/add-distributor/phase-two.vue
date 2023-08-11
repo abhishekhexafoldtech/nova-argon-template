@@ -252,7 +252,7 @@
             </el-form>
           </el-col>
           <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-            <div class="comp_form_box w355">
+            <div class="comp_form_box add_dist_up w355">
               <h5 class="cf_title">Details of national ID</h5>
               <div class="fieldrow">
                 <p>Select ID type</p>
@@ -267,7 +267,7 @@
                 />
               </div>
             </div>
-            <div class="comp_form_box w355">
+            <div class="comp_form_box add_dist_up w355">
               <div class="fieldrow">
                 <p>Certificate of Registration</p>
                 <SingleFileUpload
@@ -279,7 +279,7 @@
             <!-- 3rd col -->
           </el-col>
           <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-            <div class="comp_form_box w355 ms-md-5">
+            <div class="comp_form_box add_dist_up w355 ms-md-5">
               <h5 class="cf_title">Proof of ownership of property</h5>
               <div class="fieldrow">
                 <p>Upload certificates</p>
@@ -294,7 +294,7 @@
                 />
               </div>
             </div>
-            <div class="comp_form_box w355 ms-md-5">
+            <div class="comp_form_box add_dist_up w355 ms-md-5">
               <div class="fieldrow">
                 <p>Certificate of Commencement</p>
                 <SingleFileUpload
@@ -303,7 +303,7 @@
                 />
               </div>
             </div>
-            <div class="comp_form_box w355 ms-md-5">
+            <div class="comp_form_box add_dist_up w355 ms-md-5">
               <div class="fieldrow">
                 <p>Fire Proof/safety Protocol Certificate</p>
                 <SingleFileUpload
