@@ -1,6 +1,6 @@
 <template>
     <div class="main-container">
-        <div style="text-align: center;">
+        <div style="text-align: center;width:350px" >
             <img :src="icon" alt="">
             <h4 class="mt-2">{{ heading }}</h4>
             <small>{{ description }}</small>
@@ -40,7 +40,7 @@ function doSomething(){
 <style scoped>
 .main-container {
     width: 98%;
-    height:85vh;
+    height:100vh;
     top: 118px;
     margin-left: auto;
     margin-right: auto;
