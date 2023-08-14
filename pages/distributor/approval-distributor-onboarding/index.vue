@@ -6,7 +6,7 @@
                 <p>Please go through the following link where you find all onboarding details of distributor</p>
                 <div class="phase_det">
                     <div class="phase_det_item" @click="handleDetailsDialog('phaseOne')">
-                        <div class="ph_status" :class="phaseTwoRead ? 'active' : ''">
+                        <div class="ph_status" :class="phaseOneRead ? 'active' : ''">
                             <i class="ri-check-line"></i>
                         </div>
                         <figure>
@@ -15,7 +15,7 @@
                         Phase 2 details
                     </div>
                     <div class="phase_det_item" @click="handleDetailsDialog('phaseTwo')">
-                        <div class="ph_status">
+                        <div class="ph_status" :class="phaseTwoRead ? 'active' : ''">
                             <i class="ri-check-line"></i>
                         </div>
                         <figure>
@@ -27,13 +27,12 @@
             </div>
             <div class="prof_footer">
                 <button class="btn btn-default" @click="handleDeclineDialog">Decline</button>
-                <button class="btn btn-primary" @click="handleApprove">Approve</button>
+                <el-button type="primary" @click="handleApprove" size="large" style="background-color: #5e72e4;" :disabled="!phaseOneRead && !phaseTwoRead"><b>Approve</b></el-button>
             </div>
         </div>
 
         <ApprovalDetailsDialog 
             :dialogVisible="detailsDialogVisible" 
-            :dialogTitle="dialogTitle"
             :dialogType="dialogType"
             :form-data="formData" 
             @getChildFormData="handleChildFormData($event)"
@@ -75,10 +74,11 @@ var router = useRouter();
 var detailsDialogVisible = ref(false)
 var declineDialgoVisible = ref(false)
 var successDialogVisible = ref(false);
+var phaseOne = ref(false)
+var phaseTwo = ref(false)
+var phaseOneRead = ref(false)
 var phaseTwoRead = ref(false)
-var phaseThreeRead = ref(false)
 
-var dialogTitle = ref(null)
 var dialogType = ref(null)
 
 var formData = reactive({
@@ -89,7 +89,6 @@ var formData = reactive({
 function handleDetailsDialog(type) {
     dialogType.value = type 
     detailsDialogVisible.value = true
-    dialogTitle.value = "Phase Two Details"
 }
 
 // close details dialog 
@@ -133,13 +132,13 @@ function handleSuccessDialogClose() {
 }
 
 function handleMarkAsRead(data) {
-    successDialogVisible.value = false;
-    console.log('data',data)
-    phaseTwoRead.value = true
+    if(data == "phaseOne") {
+        phaseOneRead.value = true
+    } else {
+        phaseTwoRead.value = true
+    }
+    detailsDialogVisible.value = false
 }
 
 </script>
 
-<style scoped>
-
-</style>

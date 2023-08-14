@@ -1,7 +1,7 @@
 <template>
-  <el-dialog class="dd_modal" v-model="props.dialogVisible" :title="dialogTitle" @close="handleCloseDialog()">
+  <el-dialog class="dd_modal"  v-model="props.dialogVisible" :title="dialogType == 'phaseOne' ? 'Phase Two Details' : 'Phase Three Details'" @close="handleCloseDialog()">
     <!-- Phase 2 Details -->
-    <div class="dd_body d-none">
+    <div class="dd_body" v-if="props.dialogType == 'phaseOne'">
       <el-row>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
           <h4 class="dd_title">Distributor’s Company Details</h4>
@@ -80,7 +80,7 @@
     </div>
 
     <!-- Phase 3 Details -->
-    <div class="dd_body">
+    <div class="dd_body" v-else>
       <el-row>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
           <h4 class="dd_title">Insurance details</h4>
@@ -158,7 +158,6 @@ function handleCloseDialog() {
 }
 
 function handleMarkAsRead(type) {
-  console.log('one', type)
   emit('markAsRead', type)
 }
 

@@ -4,24 +4,21 @@
     <el-dialog
       v-model="props.dialogVisible"
       @close="handleCloseDialog()"
-      :title="dialogTitle"
       center
       class="rounded-3 shadow fw-bold w-75 w-md-30"
     >
+      <header style="text-align: center;"><h4><b>{{ dialogTitle }}</b></h4></header>
       <div class="d-flex justify-content-center">
         <img :src="dialogImage" alt="Mail" />
       </div>
       <span>
-        {{ dialogText }}
+        <p style="text-align: center;"> {{ dialogText }}</p>
       </span>
 
       <template #footer>
         <span class="dialog-footer d-flex">
           <div class="col-6">
-            <button
-              class="btn border border-primary w-75"
-              @click="handleCloseDialog"
-            >
+            <button class="btn border border-primary w-75" @click="handleCloseDialog">
               {{ leftButtonName }}
             </button>
           </div>
