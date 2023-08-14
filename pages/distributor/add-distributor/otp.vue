@@ -43,6 +43,8 @@
 <script setup>
 import { flashNotification } from "@/composables/useNotification.js"
 import admin_mail from "@/assets/svg/admin_mail.svg"
+import { useRouter } from "vue-router";
+var router = useRouter();
 const mobileOtp = reactive(["", "", "", "", "", ""]); // Array to hold mobile OTP values
 const emailOtp = reactive(["", "", "", "", "", ""]); // Array to hold email OTP values
 const resendTimer = ref(60); // Timer for OTP resend (initially set to 60 seconds)
@@ -152,6 +154,7 @@ function handleSendEMail(){
 }
 function handleContinueOnboarding(){
   console.log("Continuing with onboarding!");
+  router.push("/distributor/add-distributor/phase-two")
   successDialog.status = false;
 };
 function handleCloseDialog(){

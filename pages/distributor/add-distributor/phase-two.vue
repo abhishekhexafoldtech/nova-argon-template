@@ -478,8 +478,8 @@ const getCertificateOfFiresafty = (image) => {
 
 const handleContinue = () => {
   console.log(JSON.stringify(formData));
-      let r = "phase-three";
-    router.push(`${r}`);
+    // let r = "phase-three";
+    // router.push(`${r}`);
   formRef.value.validate(async (valid) => {
     if (isUploaded &&valid) {
       isUploaded.value = false;
