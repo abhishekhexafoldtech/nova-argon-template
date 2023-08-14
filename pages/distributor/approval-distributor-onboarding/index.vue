@@ -5,8 +5,8 @@
             <div class="prof_info">
                 <p>Please go through the following link where you find all onboarding details of distributor</p>
                 <div class="phase_det">
-                    <div class="phase_det_item">
-                        <div class="ph_status active">
+                    <div class="phase_det_item" @click="handleDetailsDialog('phaseOne')">
+                        <div class="ph_status" :class="phaseTwoRead ? 'active' : ''">
                             <i class="ri-check-line"></i>
                         </div>
                         <figure>
@@ -14,7 +14,7 @@
                         </figure>
                         Phase 2 details
                     </div>
-                    <div class="phase_det_item">
+                    <div class="phase_det_item" @click="handleDetailsDialog('phaseTwo')">
                         <div class="ph_status">
                             <i class="ri-check-line"></i>
                         </div>
@@ -31,44 +31,115 @@
             </div>
         </div>
 
-        <DeclineDialog :dialogVisible="dialogVisible" :form-data="formData" @getChildFormData="handleChildFormData($event)"
-            @childClose="handleChildClose()" />
+        <ApprovalDetailsDialog 
+            :dialogVisible="detailsDialogVisible" 
+            :dialogTitle="dialogTitle"
+            :dialogType="dialogType"
+            :form-data="formData" 
+            @getChildFormData="handleChildFormData($event)"
+            @childClose="handleDetailsDialogClose()" 
+            @markAsRead="handleMarkAsRead($event)"
+        />
+
+        <DeclineDialgo
+            :dialogVisible="declineDialgoVisible" 
+            :form-data="formData" 
+            @getChildFormData="handleDeclineFormData($event)"
+            @childClose="handleDeclineDialogClose()" 
+        />
+
+        <SuccessDialog 
+            leftButtonName="Cancel" 
+            rightButtonName="Send email" 
+            dialogTitle="Admin added successfully"
+            dialogText="Send temporary logic credentials to distributor" 
+            :dialogImage="adminMailImg" 
+            :dialogVisible="successDialogVisible" 
+            @childClose="handleSuccessDialogClose"
+            @handleSendEmail="handleSendEmail" 
+            @dialogVisible="successDialogVisible" 
+        />
+
     </section>
 </template>
 
 <script setup>
-import DeclineDialog from "@/pages/onboarding/dialog-box/DeclineDialgo"
-let dialogVisible = ref(false)
+import ApprovalDetailsDialog from "@/pages/distributor/dialog-box/ApprovalDetailsDialog"
+import DeclineDialgo from "@/pages/distributor/dialog-box/DeclineDialgo";
+import SuccessDialog from "@/pages/distributor/dialog-box/SuccessDialog.vue";
+import adminMailImg from "@/assets/svg/admin_mail.svg";
+import { flashNotification } from "@/composables/useNotification.js"
+import { useRouter } from "vue-router";
+var router = useRouter();
+
+var detailsDialogVisible = ref(false)
+var declineDialgoVisible = ref(false)
+var successDialogVisible = ref(false);
+var phaseTwoRead = ref(false)
+var phaseThreeRead = ref(false)
+
+var dialogTitle = ref(null)
+var dialogType = ref(null)
+
 var formData = reactive({
     name: ''
 })
 
-// open dialog 
-function handleDeclineDialog() {
-    dialogVisible.value = true
+// open details dialog 
+function handleDetailsDialog(type) {
+    dialogType.value = type 
+    detailsDialogVisible.value = true
+    dialogTitle.value = "Phase Two Details"
 }
 
-// close dialog 
-function handleChildClose() {
-    dialogVisible.value = false
+// close details dialog 
+function handleDetailsDialogClose() {
+    detailsDialogVisible.value = false
 }
+
+
+// open Decline dialog 
+function handleDeclineDialog() {
+    declineDialgoVisible.value = true
+}
+
+// close Decline dialog 
+function handleDeclineDialogClose() {
+    declineDialgoVisible.value = false
+}
+
 
 // submit decline form data 
-function handleChildFormData(data) {
+function handleDeclineFormData(data) {
     console.log(data)
-    dialogVisible.value = false
-    const router = useRouter();
-    router.push("/notification")
+    declineDialgoVisible.value = false
+    router.push("/distributor")
 }
 
 // submit approv form data 
 function handleApprove() {
-    const router = useRouter();
-    router.push("/notification")
+    successDialogVisible.value = true;
+}
+
+
+function handleSendEmail() {
+    successDialogVisible.value = false;
+    router.push("/distributor")
+    flashNotification('success', 'Distributor Added successfully')
+}
+
+function handleSuccessDialogClose() {
+    successDialogVisible.value = false;
+}
+
+function handleMarkAsRead(data) {
+    successDialogVisible.value = false;
+    console.log('data',data)
+    phaseTwoRead.value = true
 }
 
 </script>
 
 <style scoped>
-.prof_info p {}
+
 </style>
