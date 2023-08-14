@@ -717,6 +717,26 @@
                 object-position: center;
             }
         }
+
+        &.add_dist_up {
+            .el-upload {
+                max-width: 165px;
+                padding: 12px;
+
+                .el-icon.avatar-uploader-icon {
+                    height: 100px;
+                    border-radius: 12px;
+                }
+
+                .avatar {
+                    height: 100px;
+                }
+            }
+
+            .el-radio__label {
+                font-size: 14px;
+            }
+        }
     }
 
     .comp_footer {
