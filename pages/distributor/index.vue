@@ -1,11 +1,12 @@
 <template>
-    <div class="pt-5">
-        <h1>Distributor</h1>
-        <el-button type="primary" @click="handleCreate()">Add</el-button>
+    <div class="pt-4" >
+        <empty-manager heading="No distributor added yet" description="You haven't added any distributor. Start by adding first distributor" button="+ Add distributor" :icon="emptySection" @doSomething="handleCreate" class="rounded-3"/>
     </div>
 </template>
 
 <script setup>
+import emptySection from "@/assets/svg/empty-section.svg"
+import EmptyManager from "~/components/cards/EmptyManager.vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 // add 
