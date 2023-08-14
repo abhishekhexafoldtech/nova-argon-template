@@ -5,7 +5,7 @@
         <h3>OTP Verification</h3>
       </div>
       <div class="otp_wrap">
-        <p class="form_text">Please enter the 6-digit OTP sent to the phone number</p>
+        <p class="form_text">Please enter the 6-digit (OTP) sent to the phone number</p>
         <div class="fieldrow">
           <el-input v-for="(value, index) in mobileOtp" :key="index" ref="mobileOtpInput" v-model="mobileOtp[index]"
             maxlength="1" @input="onMobileOtpInput(index)" @keydown="onMobileOtpKeyDown(index, $event)"></el-input>
@@ -16,7 +16,7 @@
           <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
           {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}</p>
 
-            <p class="form_text">Please enter the 6-digit OTP sent to your email</p>
+            <p class="form_text">Please enter the 6-digit (OTP) sent to your email</p>
 
             <div class="fieldrow">
               <el-input v-for="(value, index) in emailOtp" :key="index" ref="emailOtpInput" v-model="emailOtp[index]"
@@ -31,7 +31,7 @@
             </p>
       </div>
       <div class="otp_footer">
-        <el-button :disabled="!isOtpComplete" type="primary" @click="handleSubmitOtp">
+        <el-button :disabled="!isOtpComplete" type="primary" size="large" style="background-color: #5e72e4;" @click="handleSubmitOtp">
           Verify & Proceed
         </el-button>
       </div>
