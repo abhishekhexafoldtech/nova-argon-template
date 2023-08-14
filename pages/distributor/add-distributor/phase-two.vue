@@ -253,7 +253,7 @@
           </el-col>
           <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
             <div class="comp_form_box add_dist_up w355">
-              <h5 class="cf_title">Details of national ID</h5>
+              <p><b>Details of National ID</b></p>
               <div class="fieldrow">
                 <p>Select ID type</p>
                 <el-radio-group v-model="selectedIdType">
@@ -269,7 +269,7 @@
             </div>
             <div class="comp_form_box add_dist_up w355">
               <div class="fieldrow">
-                <p>Certificate of Registration</p>
+                <p><b>Certificate of Registration</b></p>
                 <SingleFileUpload
                   iconClass="iconClass"
                   @getImage="getCertificateOfregistration"
@@ -280,7 +280,7 @@
           </el-col>
           <el-col :xs="24" :sm="24" :md="12" :lg="7" :xl="7">
             <div class="comp_form_box add_dist_up w355">
-              <h5 class="cf_title">Proof of ownership of property</h5>
+               <p><b>Proof of Ownership of Property</b></p>
               <div class="fieldrow">
                 <p>Upload certificates</p>
                 <el-radio-group v-model="selectedPropertyType" :default="3" >
@@ -296,7 +296,7 @@
             </div>
             <div class="comp_form_box add_dist_up w355">
               <div class="fieldrow">
-                <p>Certificate of Commencement</p>
+                <p><b>Certificate of Commencement</b></p>
                 <SingleFileUpload
                   iconClass="iconClass"
                   @getImage="getCertificateOfCommencement"
@@ -305,7 +305,7 @@
             </div>
             <div class="comp_form_box add_dist_up w355">
               <div class="fieldrow">
-                <p>Fire Proof/safety Protocol Certificate</p>
+                <p><b>Fire Proof/safety Protocol Certificate</b></p>
                 <SingleFileUpload
                   iconClass="iconClass"
                   @getImage="getCertificateOfFiresafty"
@@ -316,9 +316,9 @@
           </el-col>
         </el-row>
         <div class="comp_footer">
-          <nuxt-link class="btn btn-default" to="/onboarding">Cancel</nuxt-link>
-          <el-button class="btn btn-primary" @click="handleContinue"
-            >Continue</el-button
+          <nuxt-link class="btn btn-default" to="/distributor">Cancel</nuxt-link>
+          <button class="btn btn-primary" @click="handleSave"
+            >Save</button
           >
         </div>
       </div>
@@ -476,20 +476,17 @@ const getCertificateOfFiresafty = (image) => {
   formData.fire_proof_protocol_certificate = image;
 };
 
-const handleContinue = () => {
+const handleSave = () => {
   console.log(JSON.stringify(formData));
-    // let r = "phase-three";
-    // router.push(`${r}`);
   formRef.value.validate(async (valid) => {
     if (isUploaded &&valid) {
       isUploaded.value = false;
     
       try {
         // Perform data submission logic here
-        // centerDialogVisible.value = true;
         let r = "phase-three";
         router.push(`${r}`);
-        flashNotification("success", "Phase two successfully");
+        flashNotification("success", "Phase two added successfully");
       } catch (error) {
         flashNotification("error", "An error occurred. Please try again.");
       }
