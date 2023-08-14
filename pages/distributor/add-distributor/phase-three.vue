@@ -68,7 +68,7 @@
       </el-form>
       <div class="comp_footer">
         <nuxt-link class="btn btn-default" to="/distributor">Cancel</nuxt-link>
-        <el-button class="btn btn-primary" @click="handleContinue">Save</el-button>
+        <el-button class="btn btn-primary" @click="handleSave">Save</el-button>
       </div>
     </div>
   </section>
@@ -173,12 +173,12 @@ const getInsurenceCard = (image) => {
   formData.insurence_detail.insurence_card = image;
 };
 
-const handleContinue = () => {
+const handleSave = () => {
   formRef.value.validate(async (valid) => {
     if (valid && !isUploaded.value) {
       try {
         console.log(JSON.stringify(formData));
-        flashNotification("success", "Phase three successfully");
+        flashNotification("success", "Phase three added successfully");
         router.push('/distributor/approval-distributor-onboarding');
       } catch (error) {
         flashNotification("error", "An error occurred. Please try again.");
@@ -199,5 +199,4 @@ definePageMeta({
   layout: "default",
 });
 
-// Your methods or other logic...
 </script>
