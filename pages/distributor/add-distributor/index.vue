@@ -87,7 +87,7 @@ function handleCancel() {
   if (form.first_name.length || form.last_name.length || form.phone_number || form.email || form.role.length) {
     flashNotification('warning', 'Entered data for new distributor is lost.');
   }
-  router.push("/")
+  router.push("/distributor")
 }
 const newDistributorFormRoles = reactive({
   first_name: [{ required: true, message: 'Please provide first name.', trigger: ['blur', 'change'] }],
