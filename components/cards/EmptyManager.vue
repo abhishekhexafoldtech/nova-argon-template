@@ -1,6 +1,6 @@
 <template>
-    <div class="main-container">
-        <div style="text-align: center;width:350px" >
+    <el-card class="main-container d-flex justify-content-center">
+        <div style="text-align: center;width:350px" class="mt-10">
             <img :src="icon" alt="">
             <h4 class="mt-2">{{ heading }}</h4>
             <small>{{ description }}</small>
@@ -9,7 +9,7 @@
                 {{ button }}
             </el-button>
         </div>
-    </div>
+    </el-card>
 </template>
 
 <script setup>
@@ -41,11 +41,7 @@ function doSomething(){
 .main-container {
     width: 98%;
     height:100vh;
-    top: 118px;
-    margin-left: auto;
-    margin-right: auto;
     margin: 20px;
-    padding: 278.3203125px 623px 306px 609px;
     background-color: #ffffff
 }
 </style>
