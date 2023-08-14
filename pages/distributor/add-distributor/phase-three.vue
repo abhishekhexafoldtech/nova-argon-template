@@ -174,13 +174,12 @@ const getInsurenceCard = (image) => {
 };
 
 const handleContinue = () => {
-  let r = "phase-three";
-  router.push(`${r}`);
   formRef.value.validate(async (valid) => {
     if (valid && !isUploaded.value) {
       try {
         console.log(JSON.stringify(formData));
         flashNotification("success", "Phase three successfully");
+        router.push('/distributor/approval-distributor-onboarding');
       } catch (error) {
         flashNotification("error", "An error occurred. Please try again.");
       }
