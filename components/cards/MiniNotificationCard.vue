@@ -27,7 +27,14 @@
                 </div>
               </div>
             </div>
-            <div class="box_item active">
+            <div class="box_item active" style="cursor: pointer" @click="handleVerificationOutlet">
+              <img class="user_img" src="../../assets/img/team-2.jpg" alt="">
+              <div class="box_con">
+                <p>Verify distributor outlet</p>
+                <span>2 hrs ago</span>
+              </div>
+            </div>
+            <div class="box_item active" >
               <img class="user_img" src="../../assets/img/team-2.jpg" alt="">
               <div class="box_con">
                 <p><a href="#">Yaw graham</a> require new stock.</p>
@@ -155,6 +162,12 @@ function handleAllNotification() {
 function handleViewDialog() {
   const router = useRouter();
   router.push("/onboarding/approval-onboarding")
+  navStore.miniNotification = !navStore.miniNotification
+}
+
+function handleVerificationOutlet() {
+  const router = useRouter();
+  router.push("/distributor/verify-outlet")
   navStore.miniNotification = !navStore.miniNotification
 }
 
