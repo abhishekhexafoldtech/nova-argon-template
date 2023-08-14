@@ -4,15 +4,15 @@
       <el-dialog
         v-model="props.dialogVisible"
         @close="closeDialog"
-        :title="dialogTitle"
         center
         class="rounded-3 shadow fw-bold w-75 w-md-30 text-danger"
         :style="`max-width:${width == 'md' ? '396' : ''}px;`"
       >
+      <header style="font-weight:bold;width:100%;text-align: center;margin-bottom: 20px;" :style="`font-size:${dialogTitleSize}px`" >{{ dialogTitle }}</header>
         <div class="d-flex justify-content-center" :style="width ? 'padding-bottom: 30px;' : ''">
-          <img :src="dialogImage" alt="Mail" />
+          <img :src="dialogImage" alt="Image" />
         </div>
-        <div style="text-align: center;"> 
+        <div style="text-align: center;" :style="`font-size:${dialogTextSize}px`"> 
           {{ dialogText }}
         </div>
   
@@ -66,6 +66,14 @@
       type: String,
       required: true,
     },
+    dialogTextSize: {
+      type: Number,
+      required: false
+    },
+    dialogTitleSize: {
+      type: Number,
+      required: false
+    }
   });
 
 
