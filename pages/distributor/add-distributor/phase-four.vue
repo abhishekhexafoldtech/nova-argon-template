@@ -15,7 +15,6 @@
                                 :show-file-list="false" :on-success="handleUploadSuccess"
                                 :before-upload="handleBeforeUpload" :multiple="false" accept="image/*"
                                 :on-error="handleOnError" @click="setGetId(file.p_no)" :on-progress="hanldeOnProgress" 
-                               
                                 >
                                 <div >
                                     <img v-if="file.file" :src="file.file" class="avatar" />
@@ -94,6 +93,17 @@ function handleApprove() {
         }
     });
     console.log("result : ", JSON.stringify(result) + "\n" + "checked : " + dcUploadForm.checkedStatus)
+}
+function handleBeforeUpload(rawFile){
+    if(disable.value){
+        flashNotification("warning", "Weight for the file to upload.")
+        return false
+    }
+    if(rawFile.size / 1024 / 1024 > 2){
+        flashNotification("warning", "File size is too large.")
+        return false
+    }
+    return true
 }
 function hanldeOnProgress(evt) {
     try{
