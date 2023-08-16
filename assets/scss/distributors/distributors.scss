@@ -10,79 +10,114 @@
                 font-weight: normal;
                 color: var(--black);
             }
-
-            .phase_det {
-                display: flex;
-                gap: 30px;
-                margin-top: 30px;
-
-                .phase_det_item {
-                    position: relative;
-                    display: block;
-                    text-align: center;
-                    padding: 15px;
-                    padding-top: 20px;
-                    font-size: 15px;
-                    font-weight: 600;
-                    color: #172B4D;
-                    border-radius: 5px;
-                    border: solid 1px #efefef;
-                    cursor: pointer;
-                    width: 100%;
-                    max-width: 165px;
-                    box-shadow: 0px 3px 10px rgb(0 0 0 / 5%);
-                    transition: all 250ms ease-in-out;
-
-                    .ph_status {
-                        background-color: #ddd;
-                        width: 20px;
-                        height: 20px;
-                        position: absolute;
-                        top: 10px;
-                        left: 10px;
-                        border-radius: 50%;
-
-                        i {
-                            display: none;
-                            color: var(--white);
-                            font-weight: normal;
-                            line-height: 21px;
-                        }
-
-                        &.active {
-                            background-color: green;
-
-                            i {
-                                display: block;
-                            }
-                        }
-                    }
-
-                    figure {
-                        display: block;
-                        background-color: #172B4D;
-                        color: var(--white);
-                        font-weight: normal;
-                        font-size: 22px;
-                        width: 50px;
-                        height: 50px;
-                        line-height: 48px;
-                        border-radius: 12px;
-                        margin: 0 auto;
-                        margin-bottom: 10px;
-                    }
-
-                    &:hover {
-                        border-color: var(--violet);
-                        color: var(--violet);
-                        transform: translateY(-1px);
-                    }
-                }
-            }
         }
 
         .prof_footer {
             padding: 45px;
+        }
+    }
+}
+
+.phase_det {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+
+    .phase_det_item {
+        position: relative;
+        display: block;
+        text-align: center;
+        padding: 15px;
+        padding-top: 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #172B4D;
+        border-radius: 5px;
+        border: solid 1px #efefef;
+        cursor: pointer;
+        width: 100%;
+        max-width: 165px;
+        box-shadow: 0px 3px 10px rgb(0 0 0 / 5%);
+        transition: all 250ms ease-in-out;
+
+        .ph_status {
+            background-color: #ddd;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 50%;
+
+            i {
+                display: none;
+                color: var(--white);
+                font-weight: normal;
+                line-height: 21px;
+            }
+
+            &.active {
+                background-color: green;
+
+                i {
+                    display: block;
+                }
+            }
+        }
+
+        figure {
+            display: block;
+            background-color: #172B4D;
+            color: var(--white);
+            font-weight: normal;
+            font-size: 22px;
+            width: 50px;
+            height: 50px;
+            line-height: 48px;
+            border-radius: 12px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        &:hover {
+            border-color: var(--violet);
+            color: var(--violet);
+            transform: translateY(-1px);
+        }
+    }
+}
+
+.ver_outlet {
+    width: 100%;
+    max-width: 1100px;
+    padding-top: 50px;
+
+    h3 {
+        color: var(--black);
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 27px;
+        margin: 0;
+        padding: 15px 25px;
+        background-color: rgba(131, 146, 171, 0.20);
+        ;
+    }
+
+    .prof_info {
+        span {
+            display: block;
+            color: var(--black);
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 16px !important;
+            line-height: 26px !important;
+            font-weight: normal !important;
+            margin-bottom: 25px !important;
         }
     }
 }
@@ -97,15 +132,34 @@
                 p {
                     font-size: 15px;
                 }
-
-                .phase_det {
-                    display: flex;
-                    gap: 20px;
-                }
             }
 
             .prof_footer {
                 padding: 30px;
+            }
+        }
+    }
+
+    .phase_det {
+        display: flex;
+        gap: 20px;
+    }
+    .ver_outlet {    
+        h3 {
+            font-size: 18px;
+            line-height: 26px;
+            ;
+        }
+    
+        .prof_info {
+            span {
+                margin-bottom: 20px;
+            }
+    
+            p {
+                font-size: 15px !important;
+                line-height: 25px !important;
+                margin-bottom: 20px !important;
             }
         }
     }
