@@ -1,15 +1,12 @@
 <template>
-    <el-card class="main-container d-flex justify-content-center">
-        <div style="text-align: center;width:350px" class="mt-10">
-            <img :src="icon" alt="">
-            <h4 class="mt-2">{{ heading }}</h4>
-            <small>{{ description }}</small>
-            <br/>
-            <el-button class="mt-4" type="primary" @click="doSomething">
-                {{ button }}
-            </el-button>
-        </div>
-    </el-card>
+    <div class="blank_box">
+        <img :src="icon" alt="">
+        <h4>{{ heading }}</h4>
+        <p>{{ description }}</p>
+        <button class="btn btn-primary" @click="doSomething">
+            {{ button }}
+        </button>
+    </div>
 </template>
 
 <script setup>
@@ -17,31 +14,24 @@ const emit = defineEmits();
 defineProps({
     heading: {
         type: String,
-        required:  true
+        required: true
     },
-    description:{
+    description: {
         type: String,
         required: true
     },
-    button:{
+    button: {
         type: String,
-         required: true
+        required: true
     },
-    icon:{
+    icon: {
         type: String,
         required: true
     }
 });
-function doSomething(){
+function doSomething() {
     emit("doSomething")
 }
 </script>
 
-<style scoped>
-.main-container {
-    width: 98%;
-    height:100vh;
-    margin: 20px;
-    background-color: #ffffff
-}
-</style>
+<style scoped></style>
