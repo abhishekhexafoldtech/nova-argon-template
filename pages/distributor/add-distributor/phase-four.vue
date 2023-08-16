@@ -101,7 +101,7 @@ function hanldeOnProgress(evt) {
         console.log("progress", evt.percent);
         disable.value = true;
         filesList.value[getId.value].percentage = true;
-        filesList.value[getId.value].progress = evt.percent;
+        filesList.value[getId.value].progress = Math.floor(evt.percent);
     }catch(err){
         console.log("progress error")
     }
