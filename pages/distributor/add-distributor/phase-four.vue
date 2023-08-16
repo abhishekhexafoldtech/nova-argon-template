@@ -12,16 +12,18 @@
                         <div class="p-2">Image {{ file.p_no + 1 }}</div>
                         <div class="file-upload">
                             <el-upload class="upload-demo bg-light rounded-3" style="height:200px;text-align: center;"
-                                :show-file-list="false" :on-success="handleUploadSuccess"
+                                :show-file-list="true" :on-success="handleUploadSuccess"
                                 :before-upload="handleBeforeUpload" :multiple="false" accept="image/*"
-                                :on-error="handleOnError" @click="getId = file.p_no" :on-progress="hanldeOnProgress" :disabled="getId==p_no">
+                                :on-error="handleOnError" @click="getId = file.p_no" :on-progress="hanldeOnProgress" 
+                                :disabled="(!file.percentage && disabled)"
+                                >
                                 <img v-if="file.file" :src="file.file" class="avatar" />
-                                <el-icon v-else class="el-icon--upload" style="min-width:70px" @click="getId = file.p_no">
+                                <el-icon v-else class="el-icon--upload" style="min-width:70px" @click="getId = file.p_no" :disabled="(!file.percentage && disabled)">
                                     <UploadFilled style="font-size: 70px;margin-top:180px;" />
                                 </el-icon>
                             </el-upload>
-                            <el-progress v-if="file.percentage" :percentage="file.progress" :stroke-width="5"  striped striped-flow
-                                :duration="10" class="mt-1"/>
+                            <!-- <el-progress v-if="file.percentage" :percentage="file.progress" :stroke-width="5"  striped striped-flow
+                                :duration="10" class="mt-1"/> -->
                         </div>
                     </div>
                 </div>
@@ -48,7 +50,8 @@ const dcUploadForm = reactive({
 });
 const filesList = ref([]);
 const getId = ref(0);
-const progress = ref(0)
+const disabled = ref(false);
+
 // on each file upload it will form an array of files
 function handleUploadSuccess(res, uploadFile) {
     try {
@@ -65,7 +68,7 @@ function handleUploadSuccess(res, uploadFile) {
                 percentage:false,
                 progress:0
             };
-            console.log(filesList.value)
+            disabled.value = false;
         };
         reader.readAsDataURL(uploadFile.raw);
     } catch (err) {
@@ -91,7 +94,7 @@ function handleApprove() {
 }
 function hanldeOnProgress(evt) {
     console.log("progress", evt.percent);
-    progress.value = evt.percent;
+    disabled.value = true;
     filesList.value[getId.value].percentage = true;
     filesList.value[getId.value].progress = evt.percent;
 }
@@ -99,8 +102,10 @@ function handleCancel() {
     console.log("cancel")
 }
 function handleOnError() {
-    flashNotification("warning", "File size is too large and select only image formats.");
     filesList.value[getId.value].percentage = false;
+    filesList.value[getId.value].progress = 0;
+    disabled.value = false;
+    flashNotification("warning", "File size is too large and select only image formats.");
 }
 onMounted(() => {
     for (let i = 0; i < dcUploadForm.noOfFiles; i++) {
