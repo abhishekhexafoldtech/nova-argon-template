@@ -1,5 +1,5 @@
 <template>
-    <el-card class="rounded-3 mx-4">
+    <el-card class="rounded-3 mx-4 mt-5">
         <div class="bg-light text-center" style="height:70px;border-radius:0px 0px 7px 7px;">
             <h3 style="position:relative;top:15px">Phase 4 form</h3>
         </div>
@@ -11,19 +11,17 @@
                     <div v-for="file in filesList" :key="file">
                         <div class="p-2">Image {{ file.p_no + 1 }}</div>
                         <div class="file-upload">
-                            <el-upload class="upload-demo bg-light rounded-3" style="height:200px;text-align: center;" :show-file-list="false" :on-success="handleUploadSuccess"
-                                :before-upload="handleBeforeUpload" 
-                                :multiple="false"
-                                accept="image/*"
-                                :on-error="handleOnError"
-                                @click="getId = file.p_no"
-                                >
+                            <el-upload class="upload-demo bg-light rounded-3" style="height:200px;text-align: center;"
+                                :show-file-list="false" :on-success="handleUploadSuccess"
+                                :before-upload="handleBeforeUpload" :multiple="false" accept="image/*"
+                                :on-error="handleOnError" @click="getId = file.p_no" :on-progress="hanldeOnProgress" :disabled="getId==p_no">
                                 <img v-if="file.file" :src="file.file" class="avatar" />
                                 <el-icon v-else class="el-icon--upload" style="min-width:70px" @click="getId = file.p_no">
-                                    <UploadFilled style="font-size: 70px;margin-top:180px;"/>
+                                    <UploadFilled style="font-size: 70px;margin-top:180px;" />
                                 </el-icon>
-    
                             </el-upload>
+                            <el-progress v-if="file.percentage" :percentage="file.progress" :stroke-width="5"  striped striped-flow
+                                :duration="10" class="mt-1"/>
                         </div>
                     </div>
                 </div>
@@ -50,9 +48,10 @@ const dcUploadForm = reactive({
 });
 const filesList = ref([]);
 const getId = ref(0);
+const progress = ref(0)
 // on each file upload it will form an array of files
 function handleUploadSuccess(res, uploadFile) {
-    try{
+    try {
         const id = uploadFile.raw.uid;
         const reader = new FileReader();
         console.log(getId.value)
@@ -62,13 +61,15 @@ function handleUploadSuccess(res, uploadFile) {
                 id: id,
                 file: base64Image,
                 name: uploadFile.raw.name,
-                p_no: getId.value
+                p_no: getId.value,
+                percentage:false,
+                progress:0
             };
             console.log(filesList.value)
         };
         reader.readAsDataURL(uploadFile.raw);
-    }catch(err){
-       console.log("error")
+    } catch (err) {
+        console.log("error")
     }
 };
 // removing the selected or uploaded file
@@ -81,23 +82,31 @@ function handleUploadSuccess(res, uploadFile) {
 //     });
 // };
 function handleApprove() {
-  const result = filesList.value.filter(e => {
-  if ( Object.keys(e).length != 1) {
-    return e
-  }
-});
-    console.log("result : ",JSON.stringify(result) + "\n" + "checked : " + dcUploadForm.checkedStatus)
+    const result = filesList.value.filter(e => {
+        if (Object.keys(e).length != 1) {
+            return e
+        }
+    });
+    console.log("result : ", JSON.stringify(result) + "\n" + "checked : " + dcUploadForm.checkedStatus)
+}
+function hanldeOnProgress(evt) {
+    console.log("progress", evt.percent);
+    progress.value = evt.percent;
+    filesList.value[getId.value].percentage = true;
+    filesList.value[getId.value].progress = evt.percent;
 }
 function handleCancel() {
     console.log("cancel")
 }
-function handleOnError(){
-    flashNotification("warning","File size is too large and select only image formats.")
+function handleOnError() {
+    flashNotification("warning", "File size is too large and select only image formats.");
+    filesList.value[getId.value].percentage = false;
 }
-onMounted(()=>{
-    for(let i=0;i<dcUploadForm.noOfFiles;i++){
+onMounted(() => {
+    for (let i = 0; i < dcUploadForm.noOfFiles; i++) {
         filesList.value.push({
-            p_no:i
+            p_no: i,
+            percent:0
         })
     }
 })
@@ -113,8 +122,9 @@ definePageMeta({
     box-shadow: 0px 0px 8px 0px #00000017;
     padding: 25px;
 }
-.avatar{
-    height:200px;
-    width:300px;
+
+.avatar {
+    height: 200px;
+    width: 300px;
 }
 </style>
