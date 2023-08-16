@@ -1,40 +1,42 @@
 <template>
-    <div class="bg-light text-center" style="height:70px;border-radius:0px 0px 7px 7px;">
-        <h3 style="position:relative;top:15px">Phase 4 form</h3>
-    </div>
-    <div class="container mt-3">
-        <div class="text-lg text-bold text-dark">Please upload images or pdf's of distributor outlet</div>
-        <el-form>
-            <div style="display:flex;flex-wrap: wrap;gap:25px;justify-content: space-around;" class="mt-4">
-                <!-- file upload loop -->
-                <div v-for="file in filesList" :key="file">
-                    <div class="p-2">Image {{ file.p_no + 1 }}</div>
-                    <div class="file-upload">
-                        <el-upload class="upload-demo bg-light rounded-3" style="height:200px;text-align: center;" :show-file-list="false" :on-success="handleUploadSuccess"
-                            :before-upload="handleBeforeUpload" 
-                            :multiple="false"
-                            accept="image/*"
-                            :on-error="handleOnError"
-                            @click="getId = file.p_no"
-                            >
-                            <img v-if="file.file" :src="file.file" class="avatar" />
-                            <el-icon v-else class="el-icon--upload" style="min-width:70px" @click="getId = file.p_no">
-                                <UploadFilled style="font-size: 67px;margin-top:150px;"/>
-                            </el-icon>
-
-                        </el-upload>
+    <el-card class="rounded-3 mx-4">
+        <div class="bg-light text-center" style="height:70px;border-radius:0px 0px 7px 7px;">
+            <h3 style="position:relative;top:15px">Phase 4 form</h3>
+        </div>
+        <div class="container mt-3">
+            <div class="text-lg text-bold text-dark">Please upload images or pdf's of distributor outlet</div>
+            <el-form>
+                <div style="display:flex;flex-wrap: wrap;gap:25px;justify-content: space-around;" class="mt-4">
+                    <!-- file upload loop -->
+                    <div v-for="file in filesList" :key="file">
+                        <div class="p-2">Image {{ file.p_no + 1 }}</div>
+                        <div class="file-upload">
+                            <el-upload class="upload-demo bg-light rounded-3" style="height:200px;text-align: center;" :show-file-list="false" :on-success="handleUploadSuccess"
+                                :before-upload="handleBeforeUpload" 
+                                :multiple="false"
+                                accept="image/*"
+                                :on-error="handleOnError"
+                                @click="getId = file.p_no"
+                                >
+                                <img v-if="file.file" :src="file.file" class="avatar" />
+                                <el-icon v-else class="el-icon--upload" style="min-width:70px" @click="getId = file.p_no">
+                                    <UploadFilled style="font-size: 70px;margin-top:180px;"/>
+                                </el-icon>
+    
+                            </el-upload>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-4 mx-2">
-                <el-checkbox v-model="dcUploadForm.checkedStatus" :label="dcUploadForm.checkDescription" size="large" />
-            </div>
-            <div class="px-5" style="text-align: right;">
-                <el-button class="btn btn-default" @click="handleCancel">Decline</el-button>
-                <el-button class="btn btn-primary" type="primary" @click="handleApprove">Approve</el-button>
-            </div>
-        </el-form>
-    </div>
+                <div class="mt-4 mx-2">
+                    <el-checkbox v-model="dcUploadForm.checkedStatus" :label="dcUploadForm.checkDescription" size="large" />
+                </div>
+                <div class="px-5" style="text-align: right;">
+                    <el-button class="btn btn-default" @click="handleCancel">Decline</el-button>
+                    <el-button class="btn btn-primary" type="primary" @click="handleApprove">Approve</el-button>
+                </div>
+            </el-form>
+        </div>
+    </el-card>
 </template>
 
 <script setup>
@@ -100,7 +102,7 @@ onMounted(()=>{
     }
 })
 definePageMeta({
-    layout: "",
+    layout: "default",
 });
 </script>
 
