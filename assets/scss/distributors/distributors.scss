@@ -348,3 +348,23 @@
         }
     }
 }
+
+.comp_inner .comp_form_box.phase3_upload {
+    .el-upload {
+        max-width: 185px;
+        padding: 12px;
+
+        .el-icon.avatar-uploader-icon {
+            height: 122px;
+            border-radius: 12px;
+        }
+
+        .avatar {
+            height: 100px;
+        }
+    }
+
+    .el-radio__label {
+        font-size: 14px;
+    }
+}

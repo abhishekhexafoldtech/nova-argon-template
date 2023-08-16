@@ -5,7 +5,7 @@
       <el-form label-position="top" label-width="100px" :model="formData" :rules="formValidationRules" ref="formRef">
         <el-row :gutter="30">
           <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <div class="form_inner_half mb-4">
+            <div class="form_inner_half">
               <h5 class="half_subtitle">Insurance details</h5>
               <div class="fieldrow">
                 <el-form-item label="Name of Insurance Company" prop="insurence_detail.name_of_insurence_company">
@@ -23,7 +23,7 @@
                   <el-input v-model="formData.insurence_detail.expiry_of_insurence" placeholder="Expiry of insurance" />
                 </el-form-item>
               </div>
-              <div class="comp_form_box w355 m-0">
+              <div class="comp_form_box phase3_upload m-0">
                 <div class="fieldrow m-0">
                   <p class="frm_label">Insurance Card</p>
                   <SingleFileUpload iconClass="iconClass" @getImage="getInsurenceCard" />
