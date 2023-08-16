@@ -27,7 +27,7 @@
             </div>
             <div class="prof_footer">
                 <button class="btn btn-default" @click="handleDeclineDialog">Decline</button>
-                <el-button type="primary" @click="handleApprove" size="large" style="background-color: #5e72e4;" :disabled="!phaseOneRead && !phaseTwoRead"><b>Approve</b></el-button>
+                <el-button type="primary" @click="handleApprove" size="large" style="background-color: #5e72e4;" :disabled="phaseOneRead === false && phaseTwoRead === false"><b>Approve</b></el-button>
             </div>
         </div>
 
@@ -74,8 +74,7 @@ var router = useRouter();
 var detailsDialogVisible = ref(false)
 var declineDialgoVisible = ref(false)
 var successDialogVisible = ref(false);
-var phaseOne = ref(false)
-var phaseTwo = ref(false)
+
 var phaseOneRead = ref(false)
 var phaseTwoRead = ref(false)
 
