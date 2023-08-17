@@ -21,7 +21,7 @@
               @keydown="onEmailOtpKeyDown(index, $event)"
             ></el-input>
           </div>
-
+         <p class="text-danger">Error! Incorrect OTP entered</p>
           <p class="form_text">
             <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
             {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}
