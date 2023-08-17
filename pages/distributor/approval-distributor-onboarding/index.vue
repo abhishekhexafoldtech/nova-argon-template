@@ -98,6 +98,7 @@ let formData = reactive({
 // open details dialog
 function handleDetailsDialog(type) {
   dialogType.value = type;
+  formData.name = type;
   detailsDialogVisible.value = true;
 }
 
@@ -145,5 +146,14 @@ function handleMarkAsRead(data) {
     phaseTwoRead.value = true;
   }
   detailsDialogVisible.value = false;
+}
+
+function handleChildFormData(data) {
+  console.log(data);
+  if (data.name === "phaseOne") {
+    router.push("/distributor/add-distributor/phase-two");
+  } else if (data.name === "phaseTwo") {
+    router.push("/distributor/add-distributor/phase-three");
+  }
 }
 </script>
