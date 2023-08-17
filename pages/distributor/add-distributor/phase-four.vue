@@ -15,6 +15,7 @@
                                 :show-file-list="false" :on-success="handleUploadSuccess"
                                 :before-upload="handleBeforeUpload" :multiple="false" accept="image/*"
                                 :on-error="handleOnError" @click="setGetId(file.p_no)" :on-progress="hanldeOnProgress" 
+                                :disabled=disabled
                                 >
                                 <div >
                                     <img v-if="file.file" :src="file.file" class="avatar" />
@@ -38,10 +39,12 @@
                 </div>
             </el-form>
         </div>
+        <DialogStatus :dialogVisible="dialogVisible" width="md" dialogTitle="Distributor onboarded successfully" dialogTitleSize="22" :dialogImage="success" @dialogVisible="handleCloseDialog"/>
     </el-card>
 </template>
 
 <script setup>
+import success from "@/assets/svg/success.svg"
 import { UploadFilled } from '@element-plus/icons-vue';
 import { flashNotification } from "@/composables/useNotification.js";
 // import { Plus } from '@element-plus/icons-vue'
@@ -53,6 +56,7 @@ const dcUploadForm = reactive({
 const filesList = ref([]);
 const getId = ref(0);
 const disable = ref(false);
+const dialogVisible = ref(false);
 
 // on each file upload it will form an array of files
 function handleUploadSuccess(res, uploadFile) {
@@ -92,7 +96,8 @@ function handleApprove() {
             return e
         }
     });
-    console.log("result : ", JSON.stringify(result) + "\n" + "checked : " + dcUploadForm.checkedStatus)
+    console.log("result : ", JSON.stringify(result) + "\n" + "checked : " + dcUploadForm.checkedStatus);
+    dialogVisible.value = true;
 }
 function handleBeforeUpload(rawFile){
     if(disable.value){
@@ -107,7 +112,6 @@ function handleBeforeUpload(rawFile){
 }
 function hanldeOnProgress(evt) {
     try{
-
         console.log("progress", evt.percent);
         disable.value = true;
         filesList.value[getId.value].percentage = true;
@@ -128,7 +132,9 @@ function handleOnError() {
 function setGetId(id){
     getId.value = id
 }
-
+function handleCloseDialog(){
+    dialogVisible.value = false;
+}
 const disabled = computed(()=>{
     if(disable.value){
         return true
@@ -141,7 +147,7 @@ onMounted(() => {
             p_no: i,
             percent:0
         })
-    }
+    };
 })
 definePageMeta({
     layout: "default",
