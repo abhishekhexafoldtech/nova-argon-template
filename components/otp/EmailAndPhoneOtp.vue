@@ -31,7 +31,7 @@
               >Resend</span
             >
           </p>
-          <p class="text-danger">Error! Incorrect OTP entered</p>
+          <p v-if="isOtpNotCurrected" class="text-danger">Error! Incorrect OTP entered</p>
           <p class="form_text">
             Please enter the 6-digit OTP sent to your email
           </p>
@@ -92,6 +92,10 @@ const props = defineProps({
     default: "OTP Verification",
     type: String,
   },
+  isOtpNotCurrected:{
+    type: Boolean,
+    default: false,
+  }
 });
 
 //here checks all 

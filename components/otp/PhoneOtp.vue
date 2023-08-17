@@ -20,7 +20,7 @@
               @keydown="onMobileOtpKeyDown(index, $event)"
             ></el-input>
           </div>
-          <p class="text-danger">Error! Incorrect OTP entered</p>
+          <p v-if="isOtpNotCurrected" class="text-danger">Error! Incorrect OTP entered</p>
           <p class="form_text">
             <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
             {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}
@@ -62,6 +62,10 @@ const props = defineProps({
     default: "OTP Verification",
     type: String,
   },
+  isOtpNotCurrected:{
+    type: Boolean,
+    default: false,
+  }
 });
 
 const isOtpComplete = computed(() => {
