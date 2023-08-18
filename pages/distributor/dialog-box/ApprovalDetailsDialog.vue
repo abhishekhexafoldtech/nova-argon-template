@@ -1,5 +1,12 @@
 <template>
-  <el-dialog class="dd_modal"  v-model="props.dialogVisible" :title="dialogType == 'phaseOne' ? 'Phase Two Details' : 'Phase Three Details'" @close="handleCloseDialog()">
+  <el-dialog
+    class="dd_modal"
+    v-model="props.dialogVisible"
+    :title="
+      dialogType == 'phaseOne' ? 'Phase Two Details' : 'Phase Three Details'
+    "
+    @close="handleCloseDialog()"
+  >
     <!-- Phase 2 Details -->
     <div class="dd_body" v-if="props.dialogType == 'phaseOne'">
       <el-row>
@@ -16,7 +23,9 @@
             </div>
             <div class="dd_item">
               <span>House No. / Street</span>
-              <p>Nikolaus Burg, 61470 Christiansen Crest, New Mexico, Kilbackland</p>
+              <p>
+                Nikolaus Burg, 61470 Christiansen Crest, New Mexico, Kilbackland
+              </p>
             </div>
             <div class="dd_item">
               <span>GPS Code</span>
@@ -40,7 +49,9 @@
             </div>
             <div class="dd_item">
               <span>GPS Address</span>
-              <p>Nikolaus Burg, 61470 Christiansen Crest, New Mexico, Kilbackland</p>
+              <p>
+                Nikolaus Burg, 61470 Christiansen Crest, New Mexico, Kilbackland
+              </p>
             </div>
           </div>
         </el-col>
@@ -48,34 +59,42 @@
           <h4 class="dd_title">Details of National ID</h4>
           <div class="dd_img">
             <div class="dd_item">
-              <img src="@/assets/img/vr-bg.jpg" alt="">
+              <img src="@/assets/img/vr-bg.jpg" alt="" />
               <p>Id Type <span>Ghana Card</span></p>
             </div>
             <div class="dd_item">
-              <img src="@/assets/img/vr-bg.jpg" alt="">
+              <img src="@/assets/img/vr-bg.jpg" alt="" />
               <p>Certificate of Registration</p>
             </div>
           </div>
           <h4 class="dd_title mt-3">Proof of ownership of property</h4>
           <div class="dd_img">
             <div class="dd_item">
-              <img src="@/assets/img/vr-bg.jpg" alt="">
+              <img src="@/assets/img/vr-bg.jpg" alt="" />
               <p>Uploaded Certificates <span>Owned Property</span></p>
             </div>
             <div class="dd_item">
-              <img src="@/assets/img/vr-bg.jpg" alt="">
+              <img src="@/assets/img/vr-bg.jpg" alt="" />
               <p>Certificate of Commencement</p>
             </div>
             <div class="dd_item">
-              <img src="@/assets/img/vr-bg.jpg" alt="">
+              <img src="@/assets/img/vr-bg.jpg" alt="" />
               <p>Fire Proof/safety Protocol Certificate</p>
             </div>
           </div>
         </el-col>
       </el-row>
       <div class="dd_footer">
-        <button class="btn btn-default" type="" @click="handleMarkAsRead(props.dialogType)">Mark as Checked</button>
-        <button class="btn btn-primary" @click="handleFormSubmit">Edit Details</button>
+        <button
+          class="btn btn-default"
+          type=""
+          @click="handleMarkAsRead(props.dialogType)"
+        >
+          Mark as Checked
+        </button>
+        <button class="btn btn-primary" @click="handleFormSubmit">
+          Edit Details
+        </button>
       </div>
     </div>
 
@@ -100,7 +119,7 @@
           </div>
           <div class="dd_img mt-3">
             <div class="dd_item">
-              <img src="@/assets/img/vr-bg.jpg" alt="">
+              <img src="@/assets/img/vr-bg.jpg" alt="" />
               <p>Insurance Card</p>
             </div>
           </div>
@@ -132,37 +151,45 @@
         </el-col>
       </el-row>
       <div class="dd_footer">
-        <button class="btn btn-default" type="" @click="handleMarkAsRead(props.dialogType)">Mark as Checked</button>
-        <button class="btn btn-primary" @click="handleFormSubmit">Edit Details</button>
+        <button
+          class="btn btn-default"
+          type=""
+          @click="handleMarkAsRead(props.dialogType)"
+        >
+          Mark as Checked
+        </button>
+        <button class="btn btn-primary" @click="handleFormSubmit">
+          Edit Details
+        </button>
       </div>
     </div>
   </el-dialog>
 </template>
-  
-<script setup>
 
-let emit = defineEmits()
+<script setup>
+let emit = defineEmits();
 
 let props = defineProps({
   dialogVisible: Boolean,
   dialogTitle: String,
   dialogType: String,
   formData: {
-    name: String
-  }
-})
+    name: String,
+  },
+});
 
-// close dialog 
+// close dialog
 function handleCloseDialog() {
-  emit('childClose')
+  emit("childClose");
 }
 
 function handleMarkAsRead(type) {
-  emit('markAsRead', type)
+  emit("markAsRead", type);
 }
 
-// submit data 
+// submit data
 function handleFormSubmit() {
-  emit('getChildFormData', props.formData)
+  emit("getChildFormData", props.formData);
 }
+
 </script>
