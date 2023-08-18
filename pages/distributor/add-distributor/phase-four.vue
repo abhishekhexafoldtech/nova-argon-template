@@ -1,5 +1,43 @@
 <template>
-    <el-card class="rounded-3 mx-4 mt-5">
+    <section class="edit_mang_wrap">
+        <div class="mang_inner comp_inner">
+            <div class="mang_title mb-3">
+                <h3>Phase 4 form</h3>
+                <p>Please upload images or pdf's of distributor outlet</p>
+            </div>
+            <el-form class="phase_four_upload">
+                <el-row>
+                    <el-col :xs="12" :sm="8" :md="8" :lg="8" v-for="file in filesList" :key="file">
+                        <p class="form_label">Image {{ file.p_no + 1 }}</p>
+                        <div>
+                            <el-upload :show-file-list="false" :on-success="handleUploadSuccess"
+                                :before-upload="handleBeforeUpload" :multiple="false" accept="image/*"
+                                :on-error="handleOnError" @click="setGetId(file.p_no)" :on-progress="hanldeOnProgress"
+                                :disabled=disabled>
+                                <img v-if="file.file" :src="file.file" />
+                                <el-icon v-else class="el-icon--upload">
+                                    <UploadFilled />
+                                </el-icon>
+                            </el-upload>
+                            <el-progress v-if="getId === file.p_no && file.percentage && disable"
+                                :percentage="file.progress" :stroke-width="5" striped striped-flow :duration="10"
+                                class="mt-1" />
+                        </div>
+                    </el-col>
+                </el-row>
+                <div class="confirm_check">
+                    <el-checkbox v-model="dcUploadForm.checkedStatus" :label="dcUploadForm.checkDescription" />
+                </div>
+                <div class="comp_footer">
+                    <button class="btn btn-default" @click="handleCancel">Decline</button>
+                    <button class="btn btn-primary" type="primary" @click="handleApprove">Approve</button>
+                </div>
+            </el-form>
+        </div>
+    </section>
+    <DialogStatus :dialogVisible="dialogVisible" width="md" dialogTitle="Distributor onboarded successfully"
+        dialogTitleSize="22" :dialogImage="success" @dialogVisible="handleCloseDialog" />
+    <!-- <el-card class="rounded-3 mx-4 mt-5">
         <div class="bg-light text-center" style="height:70px;border-radius:0px 0px 7px 7px;">
             <h3 style="position:relative;top:15px">Phase 4 form</h3>
         </div>
@@ -7,26 +45,25 @@
             <div class="text-lg text-bold text-dark">Please upload images or pdf's of distributor outlet</div>
             <el-form>
                 <div style="display:flex;flex-wrap: wrap;gap:25px;justify-content: space-around;" class="mt-4">
-                    <!-- file upload loop -->
-                    <div v-for="file in filesList" :key="file" >
+                    <div v-for="file in filesList" :key="file">
                         <div class="p-2">Image {{ file.p_no + 1 }}</div>
-                        <div class="file-upload" >
+                        <div class="file-upload">
                             <el-upload class="upload-demo bg-light rounded-3" style="height:200px;text-align: center;"
                                 :show-file-list="false" :on-success="handleUploadSuccess"
                                 :before-upload="handleBeforeUpload" :multiple="false" accept="image/*"
-                                :on-error="handleOnError" @click="setGetId(file.p_no)" :on-progress="hanldeOnProgress" 
-                                :disabled=disabled
-                                >
-                                <div >
+                                :on-error="handleOnError" @click="setGetId(file.p_no)" :on-progress="hanldeOnProgress"
+                                :disabled=disabled>
+                                <div>
                                     <img v-if="file.file" :src="file.file" class="avatar" />
 
-                                    <el-icon v-else class="el-icon--upload" style="min-width:70px" >
+                                    <el-icon v-else class="el-icon--upload" style="min-width:70px">
                                         <UploadFilled style="font-size: 70px;margin-top:180px;" />
                                     </el-icon>
                                 </div>
                             </el-upload>
-                            <el-progress v-if="getId === file.p_no && file.percentage && disable" :percentage="file.progress" :stroke-width="5"  striped striped-flow
-                                :duration="10" class="mt-1"/>
+                            <el-progress v-if="getId === file.p_no && file.percentage && disable"
+                                :percentage="file.progress" :stroke-width="5" striped striped-flow :duration="10"
+                                class="mt-1" />
                         </div>
                     </div>
                 </div>
@@ -39,8 +76,7 @@
                 </div>
             </el-form>
         </div>
-        <DialogStatus :dialogVisible="dialogVisible" width="md" dialogTitle="Distributor onboarded successfully" dialogTitleSize="22" :dialogImage="success" @dialogVisible="handleCloseDialog"/>
-    </el-card>
+    </el-card> -->
 </template>
 
 <script setup>
@@ -71,8 +107,8 @@ function handleUploadSuccess(res, uploadFile) {
                 file: base64Image,
                 name: uploadFile.raw.name,
                 p_no: getId.value,
-                percentage:false,
-                progress:0
+                percentage: false,
+                progress: 0
             };
             disable.value = false;
         };
@@ -99,24 +135,24 @@ function handleApprove() {
     console.log("result : ", JSON.stringify(result) + "\n" + "checked : " + dcUploadForm.checkedStatus);
     dialogVisible.value = true;
 }
-function handleBeforeUpload(rawFile){
-    if(disable.value){
+function handleBeforeUpload(rawFile) {
+    if (disable.value) {
         flashNotification("warning", "Weight for the file to upload.")
         return false
     }
-    if(rawFile.size / 1024 / 1024 > 2){
+    if (rawFile.size / 1024 / 1024 > 2) {
         flashNotification("warning", "File size is too large.")
         return false
     }
     return true
 }
 function hanldeOnProgress(evt) {
-    try{
+    try {
         console.log("progress", evt.percent);
         disable.value = true;
         filesList.value[getId.value].percentage = true;
         filesList.value[getId.value].progress = Math.floor(evt.percent);
-    }catch(err){
+    } catch (err) {
         console.log("progress error")
     }
 }
@@ -129,14 +165,14 @@ function handleOnError() {
     disable.value = false;
     flashNotification("warning", "File size is too large and select only image formats.");
 }
-function setGetId(id){
+function setGetId(id) {
     getId.value = id
 }
-function handleCloseDialog(){
+function handleCloseDialog() {
     dialogVisible.value = false;
 }
-const disabled = computed(()=>{
-    if(disable.value){
+const disabled = computed(() => {
+    if (disable.value) {
         return true
     }
     return false
@@ -145,7 +181,7 @@ onMounted(() => {
     for (let i = 0; i < dcUploadForm.noOfFiles; i++) {
         filesList.value.push({
             p_no: i,
-            percent:0
+            percent: 0
         })
     };
 })
@@ -154,16 +190,4 @@ definePageMeta({
 });
 </script>
 
-<style scoped>
-.file-upload {
-    min-width: 350px;
-    height: 247px;
-    box-shadow: 0px 0px 8px 0px #00000017;
-    padding: 25px;
-}
-
-.avatar {
-    height: 200px;
-    width: 300px;
-}
-</style>
+<style scoped></style>

@@ -10,114 +10,79 @@
                 font-weight: normal;
                 color: var(--black);
             }
-        }
 
-        .prof_footer {
-            padding: 45px;
-        }
-    }
-}
+            .phase_det {
+                display: flex;
+                gap: 30px;
+                margin-top: 30px;
 
-.phase_det {
-    display: flex;
-    gap: 30px;
-    margin-top: 30px;
-
-    .phase_det_item {
-        position: relative;
-        display: block;
-        text-align: center;
-        padding: 15px;
-        padding-top: 20px;
-        font-size: 15px;
-        font-weight: 600;
-        color: #172B4D;
-        border-radius: 5px;
-        border: solid 1px #efefef;
-        cursor: pointer;
-        width: 100%;
-        max-width: 165px;
-        box-shadow: 0px 3px 10px rgb(0 0 0 / 5%);
-        transition: all 250ms ease-in-out;
-
-        .ph_status {
-            background-color: #ddd;
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            border-radius: 50%;
-
-            i {
-                display: none;
-                color: var(--white);
-                font-weight: normal;
-                line-height: 21px;
-            }
-
-            &.active {
-                background-color: green;
-
-                i {
+                .phase_det_item {
+                    position: relative;
                     display: block;
+                    text-align: center;
+                    padding: 15px;
+                    padding-top: 20px;
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: #172B4D;
+                    border-radius: 5px;
+                    border: solid 1px #efefef;
+                    cursor: pointer;
+                    width: 100%;
+                    max-width: 165px;
+                    box-shadow: 0px 3px 10px rgb(0 0 0 / 5%);
+                    transition: all 250ms ease-in-out;
+
+                    .ph_status {
+                        background-color: #ddd;
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        border-radius: 50%;
+
+                        i {
+                            display: none;
+                            color: var(--white);
+                            font-weight: normal;
+                            line-height: 21px;
+                        }
+
+                        &.active {
+                            background-color: green;
+
+                            i {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    figure {
+                        display: block;
+                        background-color: #172B4D;
+                        color: var(--white);
+                        font-weight: normal;
+                        font-size: 22px;
+                        width: 50px;
+                        height: 50px;
+                        line-height: 48px;
+                        border-radius: 12px;
+                        margin: 0 auto;
+                        margin-bottom: 10px;
+                    }
+
+                    &:hover {
+                        border-color: var(--violet);
+                        color: var(--violet);
+                        transform: translateY(-1px);
+                    }
                 }
             }
         }
 
-        figure {
-            display: block;
-            background-color: #172B4D;
-            color: var(--white);
-            font-weight: normal;
-            font-size: 22px;
-            width: 50px;
-            height: 50px;
-            line-height: 48px;
-            border-radius: 12px;
-            margin: 0 auto;
-            margin-bottom: 10px;
-        }
-
-        &:hover {
-            border-color: var(--violet);
-            color: var(--violet);
-            transform: translateY(-1px);
-        }
-    }
-}
-
-.ver_outlet {
-    width: 100%;
-    max-width: 1100px;
-    padding-top: 50px;
-
-    h3 {
-        color: var(--black);
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 27px;
-        margin: 0;
-        padding: 15px 25px;
-        background-color: rgba(131, 146, 171, 0.20);
-        ;
-    }
-
-    .prof_info {
-        span {
-            display: block;
-            color: var(--black);
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 17px;
-            margin-bottom: 25px;
-        }
-
-        p {
-            font-size: 16px !important;
-            line-height: 26px !important;
-            font-weight: normal !important;
-            margin-bottom: 25px !important;
+        .prof_footer {
+            padding: 45px;
         }
     }
 }
@@ -132,35 +97,15 @@
                 p {
                     font-size: 15px;
                 }
+
+                .phase_det {
+                    display: flex;
+                    gap: 20px;
+                }
             }
 
             .prof_footer {
                 padding: 30px;
-            }
-        }
-    }
-
-    .phase_det {
-        display: flex;
-        gap: 20px;
-    }
-
-    .ver_outlet {
-        h3 {
-            font-size: 18px;
-            line-height: 26px;
-            ;
-        }
-
-        .prof_info {
-            span {
-                margin-bottom: 20px;
-            }
-
-            p {
-                font-size: 15px !important;
-                line-height: 25px !important;
-                margin-bottom: 20px !important;
             }
         }
     }
@@ -350,89 +295,129 @@
     }
 }
 
+.phase_four_upload {
+    .el-row {
+        margin: 10px -20px;
 
-/**** Design for Blank Distributor ****/
-.blank_dist {
-    padding: 50px 25px;
-    padding-bottom: 30px;
+        .el-col {
+            padding: 15px 20px;
+        }
+    }
 
-    .blank_inner {
-        background-color: var(--white);
-        border-radius: 0;
-        overflow: hidden;
-        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
-        padding: 25px;
-        min-height: calc(100vh - 145px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .form_label {
+        color: var(--black);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        margin: 0;
+        margin-bottom: 20px;
+    }
 
-        .blank_box {
-            text-align: center;
+    .el-upload {
+        width: 100%;
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.09);
+        padding: 20px;
+
+        .el-icon {
             width: 100%;
-            max-width: 345px;
-            padding: 15px;
-
-            img {
-                width: 100%;
-                max-width: 175px;
-                object-fit: contain;
-                object-position: center;
-                display: block;
-                margin: 0 auto;
-                margin-bottom: 30px;
-            }
-
-            h4 {
-                color: var(--black);
-                font-size: 26px;
-                font-weight: 700;
-                line-height: 36px;
-                margin: 0;
-                margin-bottom: 10px;
-            }
-
-            p {
-                color: #7B809A;
-                font-size: 16px;
-                font-weight: normal;
-                line-height: 26px;
-                margin: 0;
-                margin-bottom: 35px;
-            }
-
-            button {
-                width: 231px;
-                padding: 10px 16px;
-                border-radius: 8px;
-                box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 21px;
-                margin: 0;
-            }
+            height: 200px;
+            background-color: #F8F8F8;
+            border-radius: 12px;
+            font-size: 50px;
+            color: #8392AB;
         }
 
+        img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+    }
+
+    .confirm_check {
+        margin-bottom: 30px;
+
+        .el-checkbox {
+            margin: 0;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            margin-top: 5px;
+        }
+
+        .el-checkbox__inner {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .el-checkbox__input.is-checked .el-checkbox__inner {
+            background-color: #5E72E4;
+            border-color: #5E72E4;
+        }
+
+        .el-checkbox__inner::after {
+            border-width: 2px;
+            left: 6px;
+            top: 2px;
+            height: 9px;
+            width: 4px;
+        }
+
+        .el-checkbox__label {
+            color: var(--black);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 17px;
+            margin: 0;
+        }
     }
 }
 
-.comp_inner .comp_form_box.phase3_upload {
-    .el-upload {
-        max-width: 185px;
-        padding: 12px;
+@media (max-width: 1500px) {
+    .phase_four_upload {
+        .el-row {
+            margin: -10px -15px;
+            margin-bottom: 10px;
 
-        .el-icon.avatar-uploader-icon {
-            height: 122px;
-            border-radius: 12px;
+            .el-col {
+                padding: 15px;
+            }
         }
 
-        .avatar {
-            height: 100px;
+        .form_label {
+            margin-bottom: 15px;
+        }
+
+        .el-upload {
+            padding: 15px;
+
+            .el-icon {
+                height: 175px;
+            }
+
+            img {
+                height: 175px;
+            }
         }
     }
+}
 
-    .el-radio__label {
-        font-size: 14px;
+@media (max-width: 992px) {
+    .phase_four_upload {
+        .el-upload {
+            .el-icon {
+                height: 150px;
+            }
+
+            img {
+                height: 150px;
+            }
+        }
     }
 }
