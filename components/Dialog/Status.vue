@@ -22,12 +22,13 @@
               <button
                 class="btn border border-primary w-75"
                 @click="handleLeftButton"
+                v-if="props.leftButtonName"
               >
                 {{ leftButtonName }}
               </button>
             </div>
             <div class="col-6">
-              <button class="btn btn-primary w-100" @click="handleRightButton">
+              <button class="btn btn-primary w-100" @click="handleRightButton" v-if="props.rightButtonName">
                 {{ rightButtonName }}
               </button>
             </div>
