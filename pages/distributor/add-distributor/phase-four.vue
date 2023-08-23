@@ -29,14 +29,15 @@
                     <el-checkbox v-model="dcUploadForm.checkedStatus" :label="dcUploadForm.checkDescription" />
                 </div>
                 <div class="comp_footer">
-                    <button class="btn btn-default" @click="handleCancel">Decline</button>
-                    <button class="btn btn-primary" type="primary" @click="handleApprove">Approve</button>
+                    <button class="btn btn-default" @click.prevent="handleCancel">Decline</button>
+                    <button class="btn btn-primary" type="primary" @click.prevent="handleApprove">Approve</button>
                 </div>
             </el-form>
         </div>
-    </section>
+    </section>dialogTitleSize
     <DialogStatus :dialogVisible="dialogVisible" width="md" dialogTitle="Distributor onboarded successfully"
-        dialogTitleSize="22" :dialogImage="success" @dialogVisible="handleCloseDialog" />
+        dialogTitleSize="22" :dialogImage="success" @dialogVisible="handleCloseDialog" dialog-text="Yaw graham onboarded successfully"/>
+    <DialogStatus :dialog-visible="declineDialogVisible" width="md" dialogTitle="Decline" dialogTitleSize="25" :dialogImage="decline" dialogText="Are you sure, you want to go back?" :dialog-text-width="80" left-button-name="No" right-button-name="Yes" @handleLeftButton="declineDialogVisible=false" @handleRightButton="handleDecline" @dialog-visible="declineDialogVisible = false"/>
     <!-- <el-card class="rounded-3 mx-4 mt-5">
         <div class="bg-light text-center" style="height:70px;border-radius:0px 0px 7px 7px;">
             <h3 style="position:relative;top:15px">Phase 4 form</h3>
@@ -80,9 +81,12 @@
 </template>
 
 <script setup>
+import decline from "@/assets/svg/delete-vector.svg"
 import success from "@/assets/svg/success.svg"
 import { UploadFilled } from '@element-plus/icons-vue';
 import { flashNotification } from "@/composables/useNotification.js";
+import DeclineDialgo from "../dialog-box/DeclineDialgo.vue";
+const router = useRouter();
 // import { Plus } from '@element-plus/icons-vue'
 const dcUploadForm = reactive({
     noOfFiles: 6,
@@ -93,7 +97,7 @@ const filesList = ref([]);
 const getId = ref(0);
 const disable = ref(false);
 const dialogVisible = ref(false);
-
+const declineDialogVisible = ref(false)
 // on each file upload it will form an array of files
 function handleUploadSuccess(res, uploadFile) {
     try {
@@ -134,6 +138,9 @@ function handleApprove() {
     });
     console.log("result : ", JSON.stringify(result) + "\n" + "checked : " + dcUploadForm.checkedStatus);
     dialogVisible.value = true;
+    setTimeout(() => {
+        router.push("/distributor");
+    }, 3000)
 }
 function handleBeforeUpload(rawFile) {
     if (disable.value) {
@@ -157,7 +164,12 @@ function hanldeOnProgress(evt) {
     }
 }
 function handleCancel() {
-    console.log("cancel")
+    console.log("cancel");
+    declineDialogVisible.value = true;
+}
+function handleDecline(){
+    declineDialogVisible.value = false;
+    router.push("/distributor")
 }
 function handleOnError() {
     filesList.value[getId.value].percentage = false;
@@ -170,6 +182,7 @@ function setGetId(id) {
 }
 function handleCloseDialog() {
     dialogVisible.value = false;
+    router.push("/distributor");
 }
 const disabled = computed(() => {
     if (disable.value) {
