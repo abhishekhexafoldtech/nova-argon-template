@@ -30,8 +30,7 @@ import { useRouter } from "vue-router";
 var router = useRouter();
 
 function handlePhaseFourForm() {
-    console.log('asdfasf')
-    router.push("/distributor/verify-outlet")
+    router.push("/distributor/add-distributor/phase-four")
 }
 
 </script>
