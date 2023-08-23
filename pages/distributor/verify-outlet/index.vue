@@ -1,6 +1,6 @@
 <template>
     <section class="onboarding_wrap ver_outlet">
-        <div class="ob_box">
+        <div class="ob_box approval_distributor">
             <h3>Verify the distributor outlet</h3>
             <div class="prof_info">
                 <span>Verify Yaw graham outlet</span>
@@ -35,4 +35,14 @@ function handlePhaseFourForm() {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.onboarding_wrap .ob_box.approval_distributor .prof_info {
+    padding-bottom: 45px;
+}
+
+@media (max-width: 992px) {
+    .onboarding_wrap .ob_box.approval_distributor .prof_info {
+        padding-bottom: 30px;
+    }
+}
+</style>
