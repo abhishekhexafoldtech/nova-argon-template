@@ -50,14 +50,24 @@
 
 <script setup>
 import SidenavList from "./SidenavList.vue";
+import { useAuthStore } from "@/stores/authStore"
+import { useNavStore } from "@/stores/NavStore";
 import { useRouter } from "vue-router";
 const router = useRouter();
-import { useNavStore } from "@/stores/NavStore";
 const navStore = useNavStore();
+const AuthStore = useAuthStore()
 
 function logout() {
-    navigateTo('/login')
-  }
+    AuthStore.LogOut().then(() => {
+      navigateTo('/login')
+    })
+    .catch(error => {
+      console.log(error)
+    })
+    .finally(() => {
+
+    })
+}
 
 
 </script>

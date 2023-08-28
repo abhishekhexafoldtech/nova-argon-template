@@ -10,7 +10,7 @@ export function loginByWeb(data) {
   })
 }
 
-export function logout(data) {
+export function logoutByWeb(data) {
   return request({
     url: '/logout',
     method: 'post',

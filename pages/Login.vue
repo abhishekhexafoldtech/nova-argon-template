@@ -12,8 +12,8 @@
                 <div class="fieldrow">
                   <input 
                     type="text" 
-                    class="form_input" :class="form.email ?  'has_value' : ''" 
-                    v-model="form.email" 
+                    class="form_input" :class="formData.email ?  'has_value' : ''" 
+                    v-model="formData.email" 
                     required />
                   <label class="form_label">Email / Phone Number</label>
                 </div>
@@ -21,8 +21,8 @@
                   <input 
                     :type="eyePassword == 'true' ? 'text' : 'password'" 
                     class="form_input password" 
-                    :class="form.password ?  'has_value' : ''"
-                    v-model="form.password" 
+                    :class="formData.password ?  'has_value' : ''"
+                    v-model="formData.password" 
                     required 
                     />
                   <label class="form_label">Password</label>
@@ -56,19 +56,27 @@
 import IconsEye from "@/components/icons/Eye.vue";
 import { useAuthStore } from "@/stores/authStore"
 const AuthStore = useAuthStore()
-const form = reactive({
+
+const formData = reactive({
   email: null,
   password: null
 })
+
 const error = ref(false)
 const eyePassword = ref("false");
-const handleSubmit = () => {
-  if (form.email && form.password) {
-    AuthStore.Login({...form})
-   
 
-    // const router = useRouter();
-    // router.push("/dashboards")
+const handleSubmit = () => {
+  if (formData.email && formData.password) {
+    AuthStore.Login({...formData}).then(() => {
+        const router = useRouter();
+        router.push("/dashboards")
+    })
+    .catch(error => {
+					console.log(error)
+    })
+    .finally(() => {
+
+    })
   }
 }
 definePageMeta({
