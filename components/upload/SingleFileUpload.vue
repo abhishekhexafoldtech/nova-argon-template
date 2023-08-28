@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fileupload_with_close">
     <el-upload
       :class="class"
       :show-file-list="true"

@@ -52,7 +52,7 @@
                     font-size: 20px;
                     font-weight: 600;
                     line-height: 27px;
-                    color: #172B4D;
+                    color: #172b4d;
                     margin: 0;
                     margin-bottom: 5px;
                 }
@@ -89,7 +89,7 @@
 
                 li {
                     display: block;
-                    color: #172B4D;
+                    color: #172b4d;
                     font-size: 14px;
                     font-weight: normal;
                     line-height: 22px;
@@ -103,7 +103,7 @@
             }
 
             p {
-                color: #172B4D;
+                color: #172b4d;
                 font-size: 14px;
                 font-weight: 700;
                 line-height: 22px;
@@ -117,7 +117,7 @@
                 object-fit: contain;
                 object-position: center;
                 border-radius: 10px;
-                border: 1px solid #8392AB;
+                border: 1px solid #8392ab;
             }
         }
 
@@ -233,7 +233,6 @@
     }
 }
 
-
 /**** Style for Add New Role ****/
 .edit_mang_wrap {
     padding: 35px 25px;
@@ -289,22 +288,22 @@
                     margin: 0;
                     border-radius: 15px;
                     box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.25);
-                    border-color: #DEE2E6;
+                    border-color: #dee2e6;
 
                     thead {
                         tr {
-                            border-bottom: solid 2px #DEE2E6;
+                            border-bottom: solid 2px #dee2e6;
 
                             th {
                                 padding: 17px 50px;
-                                color: #7B809A;
+                                color: #7b809a;
                                 font-size: 14px;
                                 font-weight: 700;
                                 line-height: 21px;
                                 text-transform: uppercase;
 
                                 &:nth-child(2) {
-                                    border-left: solid 1px #DEE2E6;
+                                    border-left: solid 1px #dee2e6;
                                 }
                             }
                         }
@@ -313,7 +312,7 @@
                     tbody {
                         tr {
                             &.border_bottom {
-                                border-bottom: solid 2px #DEE2E6;
+                                border-bottom: solid 2px #dee2e6;
 
                                 &:last-child {
                                     border: none;
@@ -329,7 +328,7 @@
                                 line-height: 21px;
 
                                 &.border_left {
-                                    border-left: solid 1px #DEE2E6;
+                                    border-left: solid 1px #dee2e6;
                                 }
 
                                 .el-checkbox {
@@ -347,8 +346,8 @@
                                 }
 
                                 .el-checkbox__input.is-checked .el-checkbox__inner {
-                                    background-color: #5E72E4;
-                                    border-color: #5E72E4;
+                                    background-color: #5e72e4;
+                                    border-color: #5e72e4;
                                 }
 
                                 .el-checkbox__inner::after {
@@ -504,7 +503,9 @@
         background-color: transparent;
         appearance: none;
         border-radius: 0.5rem;
-        transition: box-shadow 0.15s ease, border-color 0.15s ease;
+        transition:
+            box-shadow 0.15s ease,
+            border-color 0.15s ease;
         outline: none !important;
         position: relative;
         z-index: 1;
@@ -561,7 +562,7 @@
         margin-bottom: 15px;
 
         a {
-            color: #8392AB;
+            color: #8392ab;
             cursor: pointer;
         }
     }
@@ -589,13 +590,11 @@
         font-size: 14px;
         font-weight: 700;
         letter-spacing: 0;
-
     }
 }
 
 /*** Style for Complete Onboarding ***/
 .comp_inner {
-
     .el-form--large.el-form--label-top .el-form-item .el-form-item__label,
     .el-form--default.el-form--label-top .el-form-item .el-form-item__label {
         margin: 0;
@@ -683,7 +682,7 @@
             font-weight: 400;
         }
 
-        .el-radio__input.is-checked+.el-radio__label {
+        .el-radio__input.is-checked + .el-radio__label {
             color: var(--black);
         }
 
@@ -699,14 +698,14 @@
         .el-upload {
             width: 100%;
             border-radius: 15px;
-            background: #FFF;
+            background: #fff;
             box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.09);
             padding: 20px;
 
             .el-icon.avatar-uploader-icon {
                 width: 100%;
                 height: 200px;
-                border: 1px solid #8392AB;
+                border: 1px solid #8392ab;
                 border-radius: 15px;
             }
 
@@ -764,8 +763,6 @@
     }
 }
 
-
-
 @media (max-width: 1200px) {
     .edit_mang_wrap {
         padding: 25px 15px;
@@ -789,5 +786,53 @@
                 gap: 12px;
             }
         }
+    }
+}
+
+.fileupload_with_close {
+    position: relative;
+    .el-upload-list {
+        width: 100%;
+        max-width: 165px;
+        margin-top: 5px;
+    }
+    .el-upload-list__item {
+        padding: 0;
+        margin: 0;
+    }
+    .el-upload-list__item .el-upload-list__item-info{
+        margin: 0;
+    }
+    .el-upload-list__item-name {
+        background-color: var(--white) !important;
+        color: var(--black) !important;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        cursor: text;
+        padding: 0;
+        justify-content: center;
+    }
+    .el-upload-list__item-file-name{
+        background-color: transparent !important;
+    }
+    .el-upload-list__item.is-success .el-upload-list__item-status-label {
+        display: none;
+    }
+    .el-upload-list__item-name .el-icon {
+        display: none;
+    }
+    .el-upload-list__item .el-icon--close {
+        font-size: 14px;
+        display: block;
+        background-color: var(--violet);
+        color: white !important;
+        opacity: 1;
+        width: 22px;
+        height: 22px;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 50%;
+        vertical-align: middle;
     }
 }
