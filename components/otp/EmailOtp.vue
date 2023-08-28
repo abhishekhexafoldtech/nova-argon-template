@@ -57,6 +57,7 @@ const seconds = ref(0); // Remaining seconds
 let resendIntervalId = null; // Interval ID for the resend timer
 const emailOtpInput = ref();
 const emit = defineEmits();
+const CallParentResendOtpFun=inject('resendOtp')
 
 //props
 const props = defineProps({
@@ -114,6 +115,7 @@ const resendOtp = (event) => {
   }
 
   startResendTimer();
+  CallParentResendOtpFun()
 };
 
 //varify otp

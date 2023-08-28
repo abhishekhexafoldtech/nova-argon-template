@@ -56,6 +56,7 @@ const minutes = ref(0); // Remaining minutes
 const seconds = ref(0); // Remaining seconds
 let resendIntervalId = null; // Interval ID for the resend timer
 const mobileOtpInput = ref();
+const CallParentResendOtpFun=inject('resendOtp')
 
 const props = defineProps({
   title: {
@@ -110,6 +111,7 @@ const resendOtp = (event) => {
   }
 
   startResendTimer();
+  CallParentResendOtpFun()
 };
 
 //varify otp

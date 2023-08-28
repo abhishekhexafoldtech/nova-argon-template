@@ -85,6 +85,7 @@ let resendIntervalId = null; // Interval ID for the resend timer
 const mobileOtpInput = ref();
 const emailOtpInput = ref();
 const emit = defineEmits();
+const CallParentResendOtpFun=inject('resendOtp')
 
 //props
 const props = defineProps({
@@ -175,6 +176,9 @@ const resendOtp = (event) => {
   }
 
   startResendTimer();
+
+  CallParentResendOtpFun()
+  
 };
 
 //post data child to parent component using emmits

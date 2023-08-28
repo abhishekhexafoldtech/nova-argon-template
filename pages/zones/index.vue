@@ -20,4 +20,10 @@ function emailAndPhoneOtp(mobile,email){
     console.log("Mobile OTP:",mobile)
     console.log("Email OTP:",email)
 }
+
+function resendOtp(){
+    console.log("Resend OTP:",)
+}
+
+provide('resendOtp',resendOtp)
 </script>
