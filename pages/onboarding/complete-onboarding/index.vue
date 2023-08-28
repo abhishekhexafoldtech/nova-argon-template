@@ -101,7 +101,7 @@
 
     <div class="row">
       <!-- Dialog box code -->
-      <SuccessDialog leftButtonName="Cancel" rightButtonName="Send email" dialogTitle="Admin added successfully"
+      <SuccessDialog leftButtonName="Cancel" rightButtonName="Send email" dialogTitle="Send login credentials"
         :dialogImage="admin_mail" dialogText="Send temporary logic credentials to admin" @handleLeftButton="handleCancel"
         @handleRightButton="handleWithEmail" @dialogVisible="dialogVisible" :dialogVisible="centerDialogVisible" />
     </div>
