@@ -4,13 +4,13 @@ import request from '@/utils/request'
 
 export function loginByWeb(data) {
   return request({
-    url: '/login',
+    url: '/admin/login',
     method: 'post',
     data
   })
 }
 
-export function logout(data) {
+export function logoutByWeb(data) {
   return request({
     url: '/logout',
     method: 'post',
