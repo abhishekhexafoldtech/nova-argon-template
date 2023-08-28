@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export function loginByWeb(data) {
   return request({
-    url: '/login',
+    url: '/admin/login',
     method: 'post',
     data
   })

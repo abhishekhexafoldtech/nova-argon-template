@@ -12,8 +12,8 @@
                 <div class="fieldrow">
                   <input 
                     type="text" 
-                    class="form_input" :class="form.userId ?  'has_value' : ''" 
-                    v-model="form.userId" 
+                    class="form_input" :class="form.email ?  'has_value' : ''" 
+                    v-model="form.email" 
                     required />
                   <label class="form_label">Email / Phone Number</label>
                 </div>
@@ -54,17 +54,21 @@
   
 <script setup>
 import IconsEye from "@/components/icons/Eye.vue";
+import { useAuthStore } from "@/stores/authStore"
+const AuthStore = useAuthStore()
 const form = reactive({
-  userId: null,
+  email: null,
   password: null
 })
 const error = ref(false)
 const eyePassword = ref("false");
 const handleSubmit = () => {
-  if (form.userId && form.password) {
+  if (form.email && form.password) {
+    AuthStore.Login({...form})
+   
 
-    const router = useRouter();
-    router.push("/dashboards")
+    // const router = useRouter();
+    // router.push("/dashboards")
   }
 }
 definePageMeta({

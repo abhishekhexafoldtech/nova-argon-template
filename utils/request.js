@@ -6,7 +6,8 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.API_BASE_URL, // api of base_url
+  // baseURL: process.env.API_BASE_URL, // api of base_url
+  baseURL: "https://auth.newgas.online/nova_auth", // api of base_url
   timeout: 1000000 // request timeout
 })
 
@@ -14,11 +15,11 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // Do something before request is sent
-    if (useAuthStore().getLoginToken) {
-      config.headers['Authorization'] = 'Bearer ' + getToken()
-      // config.headers['Access-Control-Allow-Origin'] = '*'
-      config.headers['Access-Control-Allow-Headers'] = 'Authorization'
-    }
+    // if (useAuthStore().getLoginToken) {
+    //   config.headers['Authorization'] = 'Bearer ' + getToken()
+    //   // config.headers['Access-Control-Allow-Origin'] = '*'
+    //   config.headers['Access-Control-Allow-Headers'] = 'Authorization'
+    // }
 
     return config
   },

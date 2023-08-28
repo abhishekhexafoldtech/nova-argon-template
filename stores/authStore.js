@@ -22,35 +22,37 @@ export const useAuthStore = defineStore("auth", {
    // Login
 		Login(userInfo) {
 
-			const username = userInfo.username.trim()
-			const role = userInfo.role.trim()
+			console.log('point1', userInfo)
+			
+			// const username = userInfo.username.trim()
+			// const role = userInfo.role.trim()
 
 			return new Promise((resolve, reject) => {
 				
 				// make login data set
 				let data = {
-					username: username,
+					email: userInfo.email,
+					phone: userInfo.phone,
 					password: userInfo.password,
-					role: role
 				}
 			
 				// Lets fire login with info
 				loginByWeb(data).then(response => {
-					if (response.data.success === true) {
-						let responseData = response.data.data
-						let go = true
+					console.log('res', response)
+					// if (response.data.success === true) {
+					// 	let responseData = response.data.data
+					// 	let go = true
 
-						if (go) {
-							// SITE TOKEN
-              this.token = responseData.access_token
-							setToken(responseData.access_token)
-						
-							resolve()
-						}
-					} else {
-            alert('Something went wrong!')
-						reject()
-					}
+					// 	if (go) {
+					// 		// SITE TOKEN
+              		// 		this.token = responseData.access_token
+					// 		setToken(responseData.access_token)
+					// 		resolve()
+					// 	}
+					// } else {
+            		// 	alert('Something went wrong!')
+					// 	reject()
+					// }
 				}).catch(error => {
 					reject(error)
 				})
