@@ -72,36 +72,31 @@ const formData = reactive({
 });
 
 const handleSubmit = async() => {
-
-  // try{
-  //   const res = await axios.post("https://auth.newgas.online/nova_auth/admin",
-  //   {
-  //     "first_name": "mahsh",
-  //     "last_name": "polav",
-  //     "email": "mahsp@gmail.com",
-  //     "phone": "+233546546510",
-  //     "role_id": "c6e5d330-a71e-41f9-9b81-50b9967ba2ef"
-  //   }
-  //   );
-  //   console.log(res)
-  // }catch(err){
-  //   console.log({error: err.message})
-  // }
-
-  
-
-
-  addNewAdmin({
-    "first_name": "mhsh",
-    "last_name": "polaav",
-    "email": "mahhp@gmail.com",
-    "phone": "+233546546510",
-    "role_id": "c6e5d330-a71e-41f9-9b81-50b9967ba2ef"
-  }).then(response => {
-    console.log("responce.1",response)
-  }).catch(error =>{
-    console.log(error.message)
-  })
+  try{
+    const res = await axios.post("https://auth.newgas.online/nova_auth/admin",
+    {
+      "first_name": "mahsh",
+      "last_name": "polav",
+      "email": "mahsp@gmail.com",
+      "phone": "+233546546510",
+      "role_id": "c6e5d330-a71e-41f9-9b81-50b9967ba2ef"
+    }
+    );
+    console.log(res)
+  }catch(err){
+    console.log({error: err.message})
+  }
+  // addNewAdmin({
+  //   "first_name": "mhsh",
+  //   "last_name": "polaav",
+  //   "email": "mahhp@gmail.com",
+  //   "phone": "+233546546510",
+  //   "role_id": "c6e5d330-a71e-41f9-9b81-50b9967ba2ef"
+  // }).then(response => {
+  //   console.log("responce.1",response)
+  // }).catch(error =>{
+  //   console.log(error.message)
+  // })
   // form.value.validate((valid) => {
   //   if (valid) {
   //     console.log(JSON.stringify(formData));
