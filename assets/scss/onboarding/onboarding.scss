@@ -794,14 +794,16 @@
     .el-upload-list {
         width: 100%;
         max-width: 165px;
-        margin-top: 5px;
+        margin-top: 10px;
     }
     .el-upload-list__item {
         padding: 0;
         margin: 0;
+        background-color: transparent !important;
     }
     .el-upload-list__item .el-upload-list__item-info{
         margin: 0;
+        margin-left: 30px;
     }
     .el-upload-list__item-name {
         background-color: var(--white) !important;
@@ -811,7 +813,6 @@
         line-height: 18px;
         cursor: text;
         padding: 0;
-        justify-content: center;
     }
     .el-upload-list__item-file-name{
         background-color: transparent !important;
@@ -830,9 +831,10 @@
         opacity: 1;
         width: 22px;
         height: 22px;
-        line-height: 18px;
+        line-height: 19px;
         text-align: center;
         border-radius: 50%;
-        vertical-align: middle;
+        position: absolute;
+        left: 0;
     }
 }
