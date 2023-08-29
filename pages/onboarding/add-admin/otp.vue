@@ -1,42 +1,6 @@
 <template>
   <div>
-  <section class="edit_mang_wrap">
-    <div class="mang_inner">
-      <div class="mang_title">
-        <h3>OTP Verification</h3>
-      </div>
-      <div class="otp_wrap">
-        <p class="form_text">Please enter the 6-digit OTP sent to the phone number</p>
-        <div class="fieldrow">
-          <el-input v-for="(value, index) in mobileOtp" :key="index" ref="mobileOtpInput" v-model="mobileOtp[index]"
-            maxlength="1" @input="onMobileOtpInput(index)" @keydown="onMobileOtpKeyDown(index, $event)"></el-input>
-        </div>
-
-        <p class="form_text mb-5">
-          <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
-          {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }}</p>
-
-            <p class="form_text">Please enter the 6-digit OTP sent to your email</p>
-
-            <div class="fieldrow">
-              <el-input v-for="(value, index) in emailOtp" :key="index" ref="emailOtpInput" v-model="emailOtp[index]"
-                maxlength="1" @input="onEmailOtpInput(index)" @keydown="onEmailOtpKeyDown(index, $event)"></el-input>
-            </div>
-
-            <p class="form_text">
-              <nuxt-link to="/">Didn't receive OTP code?</nuxt-link> Resend in
-              {{ minutes }}:{{ seconds < 10 ? "0" + seconds : seconds }} <nuxt-link class="text-danger"
-                v-show="resendTimer === 0" to="/other">Resend</nuxt-link>
-            </p>
-      </div>
-      <div class="otp_footer">
-        <el-button :disabled="!isOtpComplete" type="primary" @click="handleVerifyData">
-          Verify & Proceed
-        </el-button>
-      </div>
-    </div>
-  </section>
-
+    <EmailAndPhoneOtp @emailAndPhoneOtp="emailAndPhoneOtp" :isOtpNotCurrected="isOtpNotCurrected"/>
   <div class="row">
     <SuccessDialog :dialogVisible="centerDialogVisible" leftButtonName="Send email" rightButtonName="Continue onboarding"
       dialogTitle="Admin added successfully" :dialogImage="admin_mail"
@@ -48,26 +12,14 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onBeforeUnmount, nextTick, } from "vue";
+import { ref} from "vue";
 import admin_mail from "@/assets/svg/admin_mail.svg"
 import { useRouter } from "vue-router";
 import SuccessDialog from "../dialog-box/SuccessDialog.vue";
 const router = useRouter();
-const mobileOtp = reactive(["", "", "", "", "", ""]); // Array to hold mobile OTP values
-const emailOtp = reactive(["", "", "", "", "", ""]); // Array to hold email OTP values
-const resendTimer = ref(60); // Timer for OTP resend (initially set to 60 seconds)
-const minutes = ref(0); // Remaining minutes
-const seconds = ref(0); // Remaining seconds
-let resendIntervalId = null; // Interval ID for the resend timer
+import EmailAndPhoneOtp from '~/components/otp/EmailAndPhoneOtp.vue';
 const centerDialogVisible = ref(false);
-const mobileOtpInput = ref()
-const emailOtpInput = ref()
-const isOtpComplete = computed(() => {
-  return (
-    mobileOtp.every((value) => value !== "") &&
-    emailOtp.every((value) => value !== "")
-  );
-});
+const isOtpNotCurrected=ref(false) //if otp not currect in that case we can show their error message
 
 const handleWithOnboarding = () => {
   centerDialogVisible.value = false;
@@ -84,90 +36,19 @@ const dialogVisible = () => {
   centerDialogVisible.value = false;
 };
 
-const onMobileOtpInput = (index) => {
-  if (mobileOtp[index] !== "") {
-    if (index < 5) {
-      // const nextInputField = $refs[`mobileOtpInput${index + 1}`][0];
-      nextTick(() => {
-        // nextInputField.focus();
-        mobileOtpInput.value[index + 1].input.focus()
-      });
-    }
-  }
-};
+//get otp data
+function emailAndPhoneOtp(mobile,email){
+    console.log("Mobile OTP:",mobile)
+    console.log("Email OTP:",email)
+    centerDialogVisible.value = true;
+    // isOtpNotCurrected.value=true  //incase otp is wrong we set value true and show error their
+}
 
-const onMobileOtpKeyDown = (index, event) => {
-  if (event.key === "Backspace" && index >= 0) {
-    if (index > 0 && mobileOtp[index] === "") {
-      // Clear the previous OTP value
-      mobileOtp[index - 1] = "";
-      // const previousInputField = $refs[`mobileOtpInput${index - 1}`][0];
-      nextTick(() => {
-        // previousInputField.focus();
-        mobileOtpInput.value[index - 1].input.focus()
+function resendOtp(){  //call here resend otp api
+    console.log("Resend OTP:",)
+}
 
-      });
-    }
-  }
-};
-
-const onEmailOtpInput = (index) => {
-  if (emailOtp[index] !== "") {
-    if (index < 5) {
-      // const nextInputField = $refs[`emailOtpInput${index + 1}`][0];
-      nextTick(() => {
-        // nextInputField.focus();
-        emailOtpInput.value[index + 1].input.focus()
-      });
-    }
-  }
-};
-
-const onEmailOtpKeyDown = (index, event) => {
-  if (event.key === "Backspace" && index >= 0) {
-    if (index > 0 && emailOtp[index] === "") {
-      // Clear the previous OTP value
-      emailOtp[index - 1] = "";
-      // const previousInputField = $refs[`emailOtpInput${index - 1}`][0];
-      nextTick(() => {
-        // previousInputField.focus();
-        emailOtpInput.value[index - 1].input.focus()
-      });
-    }
-  }
-};
-
-const handleVerifyData = () => {
-  const mobileOtpValue = mobileOtp.join("");
-  const emailOtpValue = emailOtp.join("");
-  console.log("Mobile OTP:", mobileOtpValue);
-  console.log("Email OTP:", emailOtpValue);
-  centerDialogVisible.value = true;
-};
-
-const startResendTimer = () => {
-  resendTimer.value = 60;
-  minutes.value = Math.floor(resendTimer.value / 60);
-  seconds.value = resendTimer.value % 60;
-
-  resendIntervalId = setInterval(() => {
-    resendTimer.value--;
-    minutes.value = Math.floor(resendTimer.value / 60);
-    seconds.value = resendTimer.value % 60;
-
-    if (resendTimer.value === 0) {
-      clearInterval(resendIntervalId);
-    }
-  }, 1000);
-};
-
-onMounted(() => {
-  startResendTimer();
-});
-
-onBeforeUnmount(() => {
-  clearInterval(resendIntervalId);
-});
+provide('resendOtp',resendOtp) //provide child component function from the parent component
 
 </script>
 
