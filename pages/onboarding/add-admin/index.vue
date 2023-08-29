@@ -9,22 +9,22 @@
         <el-row>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455 mar15">
-              <el-form-item label="First Name" prop="firstName">
-                <el-input class="form_input" v-model="formData.firstName" placeholder="First name" />
+              <el-form-item label="First Name" prop="first_name">
+                <el-input class="form_input" v-model="formData.first_name" placeholder="First name" />
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455 mar15">
-              <el-form-item label="Last Name" prop="lastName">
-                <el-input class="form_input" v-model="formData.lastName" placeholder="Last name" />
+              <el-form-item label="Last Name" prop="last_name">
+                <el-input class="form_input" v-model="formData.last_name" placeholder="Last name" />
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455 mar15">
-              <el-form-item label="Phone Number" prop="phone_number">
-                <el-input class="form_input" v-model="formData.phone_number" placeholder="Phone number" />
+              <el-form-item label="Phone Number" prop="phone">
+                <el-input type="number" class="form_input" v-model="formData.phone" placeholder="Phone number" />
               </el-form-item>
             </div>
           </el-col>
@@ -37,10 +37,10 @@
           </el-col>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455">
-              <el-form-item label="Role" prop="role">
-                <el-select class="form_input" v-model="formData.role" placeholder="Plese select role">
-                  <el-option label="Admin role" value="admin_role" />
-                  <el-option label="Super Admin Role" value="super_admin" />
+              <el-form-item label="Role" prop="role_id">
+                <el-select class="form_input" v-model="formData.role_id" placeholder="Plese select role">
+                  <el-option label="Admin role" :value="roles[0]?.id" />
+                  <el-option label="Super Admin Role" :value="roles[1]?.id" />
                 </el-select>
               </el-form-item>
             </div>
@@ -60,62 +60,80 @@ import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { flashNotification } from "@/composables/useNotification.js";
 import { addNewAdmin } from "@/api/admin";
+import { getRoleDropdownList } from "@/api/role"
 
 const form = ref(null);
 const router = useRouter();
+const roles = ref([])
 const formData = reactive({
-  firstName: "",
-  lastName: "",
-  phone_number: "",
+  first_name: "",
+  last_name: "",
+  phone: "",
   email: "",
-  role: "",
+  role_id: "",
 });
 
-const handleSubmit = async() => {
-  try{
-    const res = await axios.post("https://auth.newgas.online/nova_auth/admin",
-    {
-      "first_name": "mahsh",
-      "last_name": "polav",
-      "email": "mahsp@gmail.com",
-      "phone": "+233546546510",
-      "role_id": "c6e5d330-a71e-41f9-9b81-50b9967ba2ef"
+const handleSubmit = async () => {
+  form.value.validate((valid) => {
+    if (valid) {
+      const phone = formData.phone;
+      formData.phone = `+233${phone}`
+      addNewAdmin({...formData}).then(response => {
+        if(response.status == 201 ){
+          flashNotification("success","New Admin added.");
+          router.push("/onboarding/add-admin/otp");
+        }else if(response.status == 400){
+          flashNotification("warning","User may already exists please check the input fileds again..");
+        }
+      }).catch(error => {
+        if(error.response.data.error_message.split("Key")[1].split("(")[1].split(")")[0]==="email")
+        {
+         flashNotification("warning", `${formData.email} already exists`);
+        }
+        else if(error.response.data.error_message.split("Key")[1].split("(")[1].split(")")[0]==="phone")
+        {
+          flashNotification("warning", `${formData.phone} already exists`);
+        }
+        else{
+          flashNotification("warning", `Something went wrong please try again.`);
+        }
+      })
+    } else {
+      flashNotification("warning", "Please fill required fields");
     }
-    );
-    console.log(res)
-  }catch(err){
-    console.log({error: err.message})
-  }
-  // addNewAdmin({
-  //   "first_name": "mhsh",
-  //   "last_name": "polaav",
-  //   "email": "mahhp@gmail.com",
-  //   "phone": "+233546546510",
-  //   "role_id": "c6e5d330-a71e-41f9-9b81-50b9967ba2ef"
-  // }).then(response => {
-  //   console.log("responce.1",response)
-  // }).catch(error =>{
-  //   console.log(error.message)
-  // })
-  // form.value.validate((valid) => {
-  //   if (valid) {
-  //     console.log(JSON.stringify(formData));
-  //   } else {
-  //     flashNotification("warning", "Please fill required fields");
-  //   }
-  // });
+  });
 };
+function getAdminRoles(token) {
+  getRoleDropdownList({
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then(res => {
+    const result = res.data;
+    const data = result.data;
+    roles.value = data;
+  }).catch(err => {
+    console.log(err)
+    flashNotification("warning", "User Not Verified!");
+    router.push("/login")
+  })
+}
+onMounted(() => {
+  let tokenName = "Site-Token"
+  const token = document.cookie.split(`${tokenName}=`)[1];
+  getAdminRoles(token)
+})
 const handleCancel = () => {
   router.push("/onboarding");
 };
 const formRules = {
-  firstName: [
+  first_name: [
     { required: true, message: "Please enter your firstName", trigger: "blur" },
   ],
-  lastName: [
+  last_name: [
     { required: true, message: "Please enter your lastName", trigger: "blur" },
   ],
-  phone_number: [
+  phone: [
     {
       required: true,
       message: "Please enter your phone number",
@@ -130,7 +148,7 @@ const formRules = {
       trigger: "blur",
     },
   ],
-  role: [
+  role_id: [
     {
       required: true,
       message: "Please select role",
