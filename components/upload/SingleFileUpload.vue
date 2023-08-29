@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div class="fileupload_with_close">
     <el-upload
       :class="class"
-      :show-file-list="false"
+      :show-file-list="true"
+      :limit="1"
+      :on-remove="handleRemove"
       :on-success="handleAvatarSuccess"
       :before-upload="beforeAvatarUpload"
       @change="clearValidationError"
     >
-      <img v-if="pre_img" :src="pre_img" :class="iconClass" class="avatar img-fluid" />
+      <img v-if="avtar" :src="avtar" :class="iconClass" class="avatar img-fluid" />
       <el-icon v-else class="avatar-uploader-icon" :class="iconClass">
         <Plus />
       </el-icon>
@@ -26,7 +28,7 @@ const props = defineProps({
   reactivePropertyName: [String, null],
   value: [String, null]
 });
-const pre_img = ref("");
+const avtar = ref(null);
 const validationError = ref('');
 
 const emit = defineEmits(['getImage']);
@@ -35,7 +37,7 @@ const handleAvatarSuccess = (response, uploadFile) => {
   const reader = new FileReader();
   reader.onload = (event) => {
     const base64Image = event.target.result;
-    pre_img.value = base64Image;
+    avtar.value = base64Image;
     emit('getImage', base64Image);
   };
   reader.readAsDataURL(uploadFile.raw);
@@ -56,37 +58,11 @@ const beforeAvatarUpload = (rawFile) => {
 const clearValidationError = () => {
   validationError.value = '';
 };
+
+// <!-- remove uploaded avtar -->
+
+const handleRemove = () => {
+  avtar.value = null;
+  emit("getImage", avtar.value);
+};
 </script>
-
-<style scoped>
-.avatar-uploader .avatar {
-  /* width: 320px;
-  height: 320px; */
-  display: block;
-  border: none;
-}
-</style>
-
-<style>
-.avatar-uploader .el-upload {
-  border: 1px dashed var(--el-border-color);
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--el-transition-duration-fast);
-}
-
-.avatar-uploader .el-upload:hover {
-  border-color: var(--el-color-primary);
-}
-
-.el-icon.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  text-align: center;
-  border: 1px solid rgb(249, 247, 247);
-  border-radius: 12px;
-}
-</style>
-
