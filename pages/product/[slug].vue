@@ -74,7 +74,11 @@
         <el-col :xs="24" :sm="24" :md="12" :lg="14" :xl="14">
           <div class="pr_img_up">
             <h5 class="form_title mb-4">Product Image</h5>
-            <MultiFileUpload @image-uploaded="handleImageUploaded" :imageUrls="formData.imageUrls" />
+            <MultiFileUpload 
+             @image-uploaded="handleImageUploaded"
+             @removeAvtar="removeAvatar"
+             :imageUrls="formData.imageUrls"
+              />
             <span v-if="showErrorMessage" class="error-message">
               Please upload all images before submitting the form.
             </span>
@@ -104,7 +108,7 @@ const currentRouteName = computed(() => {
 });
 
 const formData = reactive({
-  imageUrls: [],
+  imageUrls: ['','','',''],
   productName: "",
   productType: "",
   productCategory: "",
@@ -114,14 +118,29 @@ const formData = reactive({
   minimumOrderUnit: "",
   offerDate: "",
 });
-const showErrorMessage = ref(false);
+const showErrorMessage = ref(true);
 const formRef = ref(null);
 
 const handleImageUploaded = (boxes) => {
   // Access the updated data from the child component
   // You can update the imageUrls array here with the updated data
-  formData.imageUrls = boxes.map((box) => box.image);
+  formData.imageUrls = boxes.map((box) =>box.image);
 };
+
+//remove avatar from parent compoenent
+const removeAvatar =(box)=>{
+  const index=formData.imageUrls.indexOf(box)
+  // formData.imageUrls.splice(index,1)
+ delete formData.imageUrls[index]
+ const isAllImagesUploaded = formData.imageUrls.every((url) => !url);
+    if (isAllImagesUploaded) {
+      // All images have been uploaded
+      showErrorMessage.value = false;
+    } else {
+      // At least one image is missing
+      showErrorMessage.value = true;
+    }
+}
 
 // validation
 const formValidationRules = reactive({
@@ -187,10 +206,10 @@ const formValidationRules = reactive({
 const handleSave = () => {
   formRef.value.validate((valid) => {
     let val = showErrorMessage.value;
-    console.log(val);
+    console.log("Form submitted:", JSON.stringify(formData));
     if (valid && val === false) {
       // Form is valid, do something with the data
-      console.log("Form submitted:", JSON.stringify(formData));
+    console.log("Form submitted:", JSON.stringify(formData));
       if (true) {
         flashNotification('success', 'Add Successfully')
         const router = useRouter();
@@ -224,6 +243,6 @@ watch(
       // At least one image is missing
       showErrorMessage.value = true;
     }
-  }
+  },
 );
 </script>
