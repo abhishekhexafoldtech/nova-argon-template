@@ -75,7 +75,7 @@
               <h5 class="cf_title">Details of national ID</h5>
               <div class="fieldrow">
                 <p>Select ID type</p>
-                <el-radio-group v-model="radio">
+                <el-radio-group v-model="selectedIdType">
                   <el-radio :label="3">Ghana card</el-radio>
                   <el-radio :label="6">Voter's ID</el-radio>
                 </el-radio-group>
@@ -119,8 +119,8 @@ import SuccessDialog from "@/pages/onboarding/dialog-box/SuccessDialog.vue";
 import ghanapost from "@/assets/svg/ghanapost.svg"
 const router = useRouter();
 const centerDialogVisible = ref(false);
-//radio button
-const radio = ref(3);
+//select id type button
+const selectedIdType = ref(3);
 
 
 const formData = reactive({
@@ -148,7 +148,13 @@ const formRef = ref(null);
 
 //get id and face
 const getId = (image) => {
-  formData.id.voterId = image;
+  if(selectedIdType.value===3){
+    formData.id.voterId = "";
+    formData.id.ghanaCard = image;
+  }else if(selectedIdType.value===6){
+    formData.id.ghanaCard = "";
+    formData.id.voterId = image;
+  }
 };
 
 const getFace = (image) => {
@@ -246,17 +252,23 @@ const formValidationRules = reactive({
 
 //handle save
 const handleContinue = () => {
+  // Check if the required fields are not empty
+  if ((!formData.id.ghanaCard && !formData.id.voterId) || !formData.id.face_recognition) {
+    flashNotification('warning', 'Please fill all required fields');
+    return; // Stop the submission process
+  }
+
   formRef.value.validate((valid) => {
     if (valid) {
       console.log(JSON.stringify(formData));
       centerDialogVisible.value = true;
-      flashNotification('success', 'Admin Added successfully')
+      flashNotification('success', 'Admin Added successfully');
     } else {
-      flashNotification('warning', 'Please fill required fields')
-
+      flashNotification('warning', 'Please correct any validation errors');
     }
   });
 };
+
 
 const handleWithEmail = () => {
   router.push("/onboarding");
