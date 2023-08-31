@@ -79,8 +79,10 @@
                   <el-radio :label="3">Ghana card</el-radio>
                   <el-radio :label="6">Voter's ID</el-radio>
                 </el-radio-group>
-                <SingleFileUpload iconClass="iconClass" @getImage="getId" :reactivePropertyfirstName="formData.id.voterId"
+                <SingleFileUpload v-if="selectedIdType===3" iconClass="iconClass" @getImage="getId" :reactivePropertyfirstName="formData.id.ghanaCard"
                   :value="formData.id.ghanaCard" />
+                <SingleFileUpload v-if="selectedIdType===6" iconClass="iconClass" @getImage="getId" :reactivePropertyfirstName="formData.id.voterId"
+                  :value="formData.id.v" />
               </div>
             </div>
             <div class="comp_form_box w355">
