@@ -1,11 +1,7 @@
 <template>
-  <div class="blank_dist">
-    <div class="blank_inner">
       <empty-manager heading="No distributor added yet"
         description="You haven't added any distributor. Start by adding first distributor" button="+ Add distributor"
         :icon="emptySection" @doSomething="handleCreate" />
-    </div>
-  </div>
 </template>
 
 <script setup>
@@ -18,8 +14,6 @@ function handleCreate() {
   let r = "add-distributor";
   router.push(`distributor/${r}`);
 }
-
-
 definePageMeta({
   layout: "default",
 });
