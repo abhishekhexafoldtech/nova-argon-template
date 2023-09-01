@@ -26,21 +26,23 @@
 
 @import "distributors/distributors.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import "customer/customer.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 strong {
-    color: blue
+    color: blue;
 }
 
 :root {
-    --grey-bg: #F5F7F8;
-    --white: #FFF;
+    --grey-bg: #f5f7f8;
+    --white: #fff;
     --black: #000;
-    --grey: #8392AB;
-    --violet: #5E72E4;
-    --sidemenu-bg: linear-gradient(180deg, #1C2437 0%, #1B3B4E 100%);
-    --menu-grey: #B8B8B8;
-    --primary-font: 'Montserrat', sans-serif;
+    --grey: #8392ab;
+    --violet: #5e72e4;
+    --sidemenu-bg: linear-gradient(180deg, #1c2437 0%, #1b3b4e 100%);
+    --menu-grey: #b8b8b8;
+    --primary-font: "Montserrat", sans-serif;
     --hover-bg: #384552;
 }
 
@@ -64,7 +66,7 @@ input[type="number"] {
 }
 
 .btn-default {
-    border: 1px solid #5E72E4 !important;
+    border: 1px solid #5e72e4 !important;
     color: var(--violet) !important;
 }
 
