@@ -237,8 +237,8 @@ function handlePagination() {
   emit("pagination");
 }
 
-function handleView() {
-  emit("view");
+function handleView(row) {
+  emit("view",row);
 }
 
 function handleAdd() {
