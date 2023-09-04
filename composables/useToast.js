@@ -5,9 +5,9 @@ export default async () => {
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: "warning",
+            customClass: 'swal_theme',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            showCloseButton: true,
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {

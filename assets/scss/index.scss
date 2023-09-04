@@ -81,6 +81,7 @@ input[type="number"] {
     margin: auto !important;
 }
 
+/**** Style for Success Dialogue ****/
 .theme_modal {
     .el-overlay-dialog {
         background-color: rgb(33 37 41 / 35%);
@@ -105,20 +106,20 @@ input[type="number"] {
             letter-spacing: -0.8px;
         }
 
-        .el-dialog__headerbtn{
+        .el-dialog__headerbtn {
             width: 30px;
             height: 30px;
             line-height: 30px;
             top: 15px;
             right: 15px;
             color: var(--hover-bg);
-            
-            .el-dialog__close{
+
+            .el-dialog__close {
                 font-size: 24px;
                 color: inherit;
             }
 
-            &:hover{
+            &:hover {
                 color: var(--violet);
             }
         }
@@ -165,6 +166,110 @@ input[type="number"] {
             letter-spacing: 0px;
             border: solid 1px;
             height: 40px;
+        }
+    }
+}
+
+/**** Style for Sweet Alert Dialogue ****/
+.swal2-container.swal2-backdrop-show,
+.swal2-container.swal2-noanimation {
+    background-color: rgb(33 37 41 / 35%);
+}
+.swal_theme {
+    width: 100%;
+    max-width: 445px;
+    gap: 20px;
+    padding: 45px;
+    position: relative;
+    background-color: var(--white);
+
+    .swal2-close{
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        color: transparent;
+
+        &::after{
+            content: "\eb99";
+            font-family: remixicon !important;
+            font-weight: normal;
+            color: var(--hover-bg);
+            font-size: 30px;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            line-height: 32px;
+        }
+    }
+
+    .swal2-title {
+        order: 1;
+        color: #172b4d;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 32px;
+        letter-spacing: -0.8px;
+        margin: 0;
+        margin-bottom: 5px;
+        padding: 0;
+    }
+
+    .swal2-icon {
+        width: 85px;
+        height: 85px;
+        order: 2;
+    }
+    .swal2-icon.swal2-warning {
+        color: #fb1e1e;
+        border-color: #fb1e1e;
+        margin: 0 auto;
+    }
+    .swal2-html-container {
+        order: 3;
+        color: var(--grey);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin: 0;
+    }
+    .swal2-actions {
+        order: 4;
+        margin: 0;
+        gap: 10px;
+        flex-direction: row-reverse;
+        margin-top: 15px;
+
+        button {
+            box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15) !important;
+            outline: none;
+            margin: 0;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 13px;
+            background: none;
+            background-image: none !important;
+            background-color: var(--white) !important;
+            color: var(--violet);
+            border: solid 1px var(--violet);
+            min-width: 100px;
+            height: 35px;
+            border-radius: 8px;
+            transition: all 100ms ease-in-out;
+
+            &.swal2-styled.swal2-confirm{
+                background-image: none !important;
+                background-color: var(--violet) !important;
+                color: var(--white);
+            }
+
+            &:hover{
+                box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08) !important;
+                transform: translateY(-1px);
+                background-image: none !important;
+            }
         }
     }
 }
