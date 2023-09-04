@@ -1,36 +1,20 @@
 <template>
-  <div>
+  <div class="theme_modal">
     <!-- Dialog box code -->
-    <el-dialog
-      v-model="props.dialogVisible"
-      @close="closeDialog"
-      :title="dialogTitle"
-      center
-      class="rounded-3 shadow fw-bold w-75 w-md-30"
-    >
-      <div class="d-flex justify-content-center">
-        <img :src="dialogImage" alt="Mail" />
-      </div>
-      <span>
+    <el-dialog v-model="props.dialogVisible" @close="closeDialog" :title="dialogTitle" center>
+
+      <img :src="dialogImage" alt="Mail" />
+      <p>
         {{ dialogText }}
-      </span>
+      </p>
 
       <template #footer>
-        <span class="dialog-footer d-flex">
-          <div class="col-6">
-            <button
-              class="btn border border-primary w-75"
-              @click="handleLeftButton"
-            >
-              {{ leftButtonName }}
-            </button>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-primary w-100" @click="handleRightButton">
-              {{ rightButtonName }}
-            </button>
-          </div>
-        </span>
+        <button class="btn btn-default" @click="handleLeftButton">
+          {{ leftButtonName }}
+        </button>
+        <button class="btn btn-primary" @click="handleRightButton">
+          {{ rightButtonName }}
+        </button>
       </template>
     </el-dialog>
   </div>
@@ -63,10 +47,10 @@ let props = defineProps({
     required: true,
   },
 });
-const handleLeftButton=()=> {
+const handleLeftButton = () => {
   emit("handleLeftButton");
 }
-const handleRightButton=()=> {
+const handleRightButton = () => {
   emit("handleRightButton");
 }
 
@@ -74,6 +58,6 @@ const closeDialog = () => {
   emit("dialogVisible");
 };
 </script>
-<style>
-
+<style scoped lang="scss">
+  
 </style>
