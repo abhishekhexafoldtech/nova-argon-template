@@ -2,38 +2,6 @@
   <el-card>
     <el-skeleton :throttle="100" :loading="tableLoadingStatus" :rows="10" animated />
     <div v-show="!tableLoadingStatus" class="table-component">
-
-      <!-- Active this for Filter Table Only -->
-      <el-row class="table_filter">
-        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
-          <input class="filter_search" placeholder="Search..." />
-        </el-col>
-        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
-          <div class="filter_right">
-            <ul>
-              <li>
-                <button class="btn_filter"><i class="exp_icon ri-upload-2-line"></i>Export</button>
-              </li>
-              <li>
-                <div class="dropdown">
-                  <button class="btn_filter dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Filter
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="upcomingHolidayDrop">
-                    <li><a class="dropdown-item" href="#">Add Holidays</a></li>
-                    <li><a class="dropdown-item" href="#">View All</a></li>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <button><i class="sync_icon ri-loop-right-fill"></i></button>
-              </li>
-            </ul>
-          </div>
-        </el-col>
-      </el-row>
-
       <!-- Top heading  -->
       <el-row class="table-top-header">
         <el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
@@ -59,6 +27,7 @@
             <!-- FOR IMAGE  -->
             <span v-if="typeof scope.row[config.prop] === 'object'">
               <span v-for="(item, index) in scope.row[config.prop]" :key="index">
+                <!-- for image and name -->
                 <span v-if="scope.row[config.prop] &&
                   scope.row[config.prop].length &&
                   'url' in scope.row[config.prop][0]
@@ -66,8 +35,36 @@
                   <span v-if="scope.row[config.prop][0].url">
                     <span v-for="(item, index) in scope.row[config.prop]" :key="index">
                       <el-image style="width: 35px; height: 35px; border-radius:10px" :src="item.url"
-                        :preview-src-list="[item.url]">
+                        :preview-src-list="[item.url]" :class="item.content ? 'rounded-circle' : 'rounded-3'">
                       </el-image>
+                      <span>{{ item?.content ? item.content : "" }}</span>
+                    </span>
+                  </span>
+                </span>
+                <!-- for active and inactive status -->
+                <span v-if="scope.row[config.prop] &&
+                  scope.row[config.prop].length &&
+                  'status' in scope.row[config.prop][0]
+                  ">
+                  <span v-if="scope.row[config.prop][0].content">
+                    <span v-for="(item, index) in scope.row[config.prop]" :key="index">
+                      <span><i :class="item.status ? 'fa fa-circle text-success' : 'fa fa-circle text-warning'"
+                          aria-hidden="true"></i>
+                      </span>
+                      <span>{{ item?.content ? item.content : "" }}</span>
+                    </span>
+                  </span>
+                </span>
+                <!-- customer order status -->
+                <span v-if="scope.row[config.prop] &&
+                  scope.row[config.prop].length &&
+                  'order_status' in scope.row[config.prop][0]
+                  ">
+                  <span v-if="scope.row[config.prop][0]">
+                    <span v-for="(item, index) in scope.row[config.prop]" :key="index">
+                      <span v-if="item.order_status" class="text-success">Delivered</span>
+                      <span v-if="!item.order_status" class="text-warning">Pending</span>
+                      <!-- <span>{{ item?.content ? item.content : "" }}</span>   -->
                     </span>
                   </span>
                 </span>
@@ -81,7 +78,7 @@
         </el-table-column>
 
         <!-- ACTIONS -->
-        <el-table-column v-if="actionVisibility" label="Actions">
+        <el-table-column v-if="actionVisibility" label="Actions" :width="100">
           <template #default="scope">
             <span class="table-icon" v-if="viewButtonVisibility" @click="handleView(scope.row)"><i class="fa fa-eye"
                 aria-hidden="true"></i></span>
@@ -223,8 +220,8 @@ function handlePagination() {
   emit("pagination");
 }
 
-function handleView(row) {
-  emit("view",row);
+function handleView(data) {
+  emit("view",data);
 }
 
 function handleAdd() {
