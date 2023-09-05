@@ -43,7 +43,7 @@
         <el-col :xs="24" :sm="12" :md="6" :lg="6">
           <!-- <div  class="active-button px-4 mt-4" type=""> <span v-if="isActive"  class="dot"></span>Active</div> -->
           <!-- active button -->
-          <ActiveButton class="mt-4" :isActive="isActive" />
+          <ActiveButton class="mb-4 mb-md-0  mt-md-4" :isActive="isActive" />
         </el-col>
       </el-row>
       <el-row>
@@ -67,11 +67,15 @@
         </el-col>
       </el-row>
     </div>
+    <div class="mt-4">
+      <CustomerDetail />
+    </div>
   </div>
-</template>
+</template> 
 <script setup>
 import { ref } from "vue";
 import ActiveButton from "~/components/buttons/ActiveButton.vue";
+import CustomerDetail from "~/components/Customer/CustomerDetail.vue";
 const isActive = ref(true);
 const activeName = ref("p_detail");
 

@@ -100,7 +100,7 @@ const complaints = ref({
   },
 });
 
-const tableName = ref("Customers");
+const tableName = ref("All customers");
 
 // Table Data
 
