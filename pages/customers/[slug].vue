@@ -68,7 +68,8 @@
       </el-row>
     </div>
     <div class="mt-4">
-      <CustomerDetail />
+      <CustomerDetail v-if="activeName==='p_detail'" />
+      <LatestOrder v-if="activeName==='l_order'"/>
     </div>
   </div>
 </template> 
@@ -76,6 +77,7 @@
 import { ref } from "vue";
 import ActiveButton from "~/components/buttons/ActiveButton.vue";
 import CustomerDetail from "~/components/Customer/CustomerDetail.vue";
+import LatestOrder from "~/components/Customer/LatestOrder.vue"
 const isActive = ref(true);
 const activeName = ref("p_detail");
 

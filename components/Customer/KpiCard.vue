@@ -13,7 +13,7 @@
               v-if="Math.sign(parseFloat(percentage)) === -1"
               class="text-sm text-danger font-weight-bolder"
             >
-              <el-icon><BottomRight /></el-icon> -{{ percentage }}
+              <el-icon><BottomRight /></el-icon> {{ percentage }}
             </span>
             <span
               v-if="Math.sign(parseFloat(percentage)) === 0"
