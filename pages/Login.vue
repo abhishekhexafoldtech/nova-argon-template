@@ -12,8 +12,8 @@
                 <div class="fieldrow">
                   <input 
                     type="text" 
-                    class="form_input" :class="formData.email ?  'has_value' : ''" 
-                    v-model="formData.email" 
+                    class="form_input" :class="formData.id ?  'has_value' : ''" 
+                    v-model="formData.id" 
                     required />
                   <label class="form_label">Email / Phone Number</label>
                 </div>
@@ -58,7 +58,7 @@ import { useAuthStore } from "@/stores/authStore"
 const AuthStore = useAuthStore()
 
 const formData = reactive({
-  email: null,
+  id: null,
   password: null
 })
 
@@ -66,10 +66,19 @@ const error = ref(false)
 const eyePassword = ref("false");
 
 const handleSubmit = () => {
-  if (formData.email && formData.password) {
-    AuthStore.Login({...formData}).then(() => {
+  if (formData.id && formData.password) {
+    const loginObj = {}
+    const phonePattern =  /^\d{9}$/;
+    if(phonePattern.test(formData.id)){
+      loginObj.phone = `+233${formData.id}`
+    }else{
+      loginObj.email = formData.id;
+    }
+    loginObj.password = formData.password;
+    AuthStore.Login({...loginObj}).then(() => {
         const router = useRouter();
-        router.push("/dashboards")
+        router.push("/dashboards");
+        loginObj = {};
     })
     .catch(error => {
 					console.log(error)
