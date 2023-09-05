@@ -46,8 +46,8 @@ import CustomerEmptyImage from "@/assets/svg/customers_empty.svg"
 import Table from "@/components/tables/Table.vue";
 import CustomerKpiCard from "@/components/Customer/KpiCard.vue";
 import CustomerIcon from "@/assets/svg/customer.svg";
-import OrderIcon from "@/assets/svg/orders.svg";
-import ComplaintIcon from "@/assets/svg/complaints.svg";
+import OrderIcon from "@/assets/svg/order.svg";
+import ComplaintIcon from "@/assets/svg/complaint.svg";
 import { onBeforeMount, onUnmounted, ref } from "vue";
 
 const customerTableConfig = ref([]);
