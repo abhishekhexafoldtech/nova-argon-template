@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export function addNewAdmin(data) {
   return request({
-    url: '/nova_auth/admin/',
+    url: '/admin/',
     method: 'post',
     data
   })
