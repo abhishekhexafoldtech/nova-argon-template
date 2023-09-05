@@ -34,7 +34,7 @@
                 </div>
             </el-form>
         </div>
-    </section>dialogTitleSize
+    </section>
     <DialogStatus :dialogVisible="dialogVisible" width="md" dialogTitle="Distributor onboarded successfully"
         dialogTitleSize="22" :dialogImage="success" @dialogVisible="handleCloseDialog" dialog-text="Yaw graham onboarded successfully"/>
     <DialogStatus :dialog-visible="declineDialogVisible" width="md" dialogTitle="Decline" dialogTitleSize="25" :dialogImage="decline" dialogText="Are you sure, you want to go back?" :dialog-text-width="80" left-button-name="No" right-button-name="Yes" @handleLeftButton="declineDialogVisible=false" @handleRightButton="handleDecline" @dialog-visible="declineDialogVisible = false"/>
