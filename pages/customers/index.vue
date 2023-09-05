@@ -7,35 +7,34 @@
   <div class="container-area" v-if="customerTableData.length">
     <CustomerEditForm @handleUpdateCustomerDetails="handleEditedUserUpdate"
       @handleCloseCustomerEditForm="handleEditUserClose" :visible="customerEdit" />
-    <el-row>
-      <el-col>
-        <h4 class="mb-4">Customers</h4>
-      </el-col>
-      <el-col class="cards" :xs="24" :sm="10" :md="7" :lg="7">
+
+    <h4 class="page_heading mb-3">Customers</h4>
+    <el-row class="cus_kpi_card">
+      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="5">
         <CustomerKpiCard @click="fetchApiData('customers')" :class="[selectedApi === 'customers' ? 'active-card' : '']"
-          title="All customers" :percentage="customersKpi.customers.percentage" :value="customersKpi.customers.value" :icon="CustomerIcon" />
+          title="All customers" :percentage="customersKpi.customers.percentage" :value="customersKpi.customers.value"
+          :icon="CustomerIcon" />
       </el-col>
-
-      <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
+      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="5">
         <CustomerKpiCard @click="fetchApiData('orders')" :class="[selectedApi === 'orders' ? 'active-card' : '']"
-          title="Latest order" :percentage="customersKpi.latestOrders.percentage" :value="customersKpi.latestOrders.value" :icon="OrderIcon" />
+          title="Latest order" :percentage="customersKpi.latestOrders.percentage" :value="customersKpi.latestOrders.value"
+          :icon="OrderIcon" />
       </el-col>
-
-      <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
+      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="5">
         <CustomerKpiCard @click="fetchApiData('complaints')" :class="[selectedApi === 'complaints' ? 'active-card' : '']"
-          title="Complaints" :percentage="customersKpi.complaints.percentage" :value="customersKpi.complaints.value" :icon="ComplaintIcon" />
-      </el-col>
-      <el-col>
-        <h4 class="mt-4 mb-4">{{ tableName }}</h4>
-
-        <div class="table-area">
-          <Table style="border-radius: 20px" tableSubHeading="" viewButtonVisibility="true" :addButtonVisibility="false"
-            :tableConfig="customerTableConfig" :tableData="customerTableData" :tableQuery="listQuery"
-            @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)" @view="handleView"
-            :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)" :editButtonVisibility="tableEditButtonVisibility"/>
-        </div>
+          title="Complaints" :percentage="customersKpi.complaints.percentage" :value="customersKpi.complaints.value"
+          :icon="ComplaintIcon" />
       </el-col>
     </el-row>
+
+    <h4 class="page_heading mb-3">{{ tableName }}</h4>
+    <div class="table-area">
+      <Table class="table_cus" tableSubHeading="" viewButtonVisibility="true" :addButtonVisibility="false"
+        :tableConfig="customerTableConfig" :tableData="customerTableData" :tableQuery="listQuery"
+        @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)" @view="handleView"
+        :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)"
+        :editButtonVisibility="tableEditButtonVisibility" />
+    </div>
   </div>
 </template>
 <script setup>
@@ -114,7 +113,7 @@ const tableName = ref("Customers");
 const selectedApi = ref(null); // Track the selected API
 
 //fetch the table data
-const fetchApiData = async(apiName) => {
+const fetchApiData = async (apiName) => {
   selectedApi.value = apiName;
   await getCustomersTableData(apiName);
   if (apiName === "customers") {
@@ -144,10 +143,10 @@ const fetchApiData = async(apiName) => {
   selectedApi.value = apiName;
 };
 
-onBeforeMount(async()=>{
+onBeforeMount(async () => {
   await fetchApiData("customers")
 })
-onUnmounted(()=>{
+onUnmounted(() => {
   sessionStorage.clear("customers_data");
   sessionStorage.clear("customers_orders_data");
 })
@@ -209,13 +208,18 @@ definePageMeta({
 
 
 </script>
-<style scoped>
-.cards {
-  width: 40% !important;
+<style scoped lang="scss">
+.cus_kpi_card {
+  margin: -15px;
+  margin-bottom: 30px;
+
+  .el-col{
+    padding: 15px;
+  }
 }
 
-.active-card {
-  background-color: rgb(228, 228, 228);
+.table_cus {
+  border-radius: 15px;
 }
 </style>
   

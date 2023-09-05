@@ -2,8 +2,41 @@
   <el-card>
     <el-skeleton :throttle="100" :loading="tableLoadingStatus" :rows="10" animated />
     <div v-show="!tableLoadingStatus" class="table-component">
+
+      <!-- Active this for Filter Table Only -->
+      <!-- Please remove the class "reverse_filter" for swapping the search & Filter -->
+      <el-row class="table_filter reverse_filter">
+        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+          <input class="filter_search" v-if="tableSearchVisibility" v-model="search" placeholder="Search..." />
+        </el-col>
+        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+          <div class="filter_right">
+            <ul>
+              <li>
+                <button class="btn_filter"><i class="exp_icon ri-upload-2-line"></i>Export</button>
+              </li>
+              <li>
+                <div class="dropdown">
+                  <button class="btn_filter dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Filter
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="upcomingHolidayDrop">
+                    <li><a class="dropdown-item" href="#">Add Holidays</a></li>
+                    <li><a class="dropdown-item" href="#">View All</a></li>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <button><i class="sync_icon ri-loop-right-fill"></i></button>
+              </li>
+            </ul>
+          </div>
+        </el-col>
+      </el-row>
+
       <!-- Top heading  -->
-      <el-row class="table-top-header">
+      <!-- <el-row class="table-top-header">
         <el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
           <h5>{{ tableHeading }}</h5>
           <p>{{ tableSubHeading }}</p>
@@ -11,11 +44,11 @@
         <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
           <el-input v-if="tableSearchVisibility" v-model="search" placeholder="Search..." />
         </el-col>
-      </el-row>
+      </el-row> -->
 
 
       <!-- Table -->
-      <el-table :data="tableDataItems" @selection-change="handleMultipleSelectionChange">
+      <el-table class="theme_table" :data="tableDataItems" @selection-change="handleMultipleSelectionChange">
         <!-- CHECKBOX  -->
         <el-table-column v-if="tableCheckBoxVisibility" type="selection" :selectable="isTableCheckBoxVisibilityRowWise">
         </el-table-column>
@@ -34,7 +67,7 @@
                   ">
                   <span v-if="scope.row[config.prop][0].url">
                     <span v-for="(item, index) in scope.row[config.prop]" :key="index">
-                      <el-image style="width: 35px; height: 35px; border-radius:10px" :src="item.url"
+                      <el-image :src="item.url"
                         :preview-src-list="[item.url]" :class="item.content ? 'rounded-circle' : 'rounded-3'">
                       </el-image>
                       <span>{{ item?.content ? item.content : "" }}</span>
@@ -48,7 +81,7 @@
                   ">
                   <span v-if="scope.row[config.prop][0].content">
                     <span v-for="(item, index) in scope.row[config.prop]" :key="index">
-                      <span><i :class="item.status ? 'fa fa-circle text-success' : 'fa fa-circle text-warning'"
+                      <span class="act_status"><i :class="item.status ? 'fa fa-circle text-success' : 'fa fa-circle text-warning'"
                           aria-hidden="true"></i>
                       </span>
                       <span>{{ item?.content ? item.content : "" }}</span>
@@ -80,12 +113,16 @@
         <!-- ACTIONS -->
         <el-table-column v-if="actionVisibility" label="Actions" :width="100">
           <template #default="scope">
-            <span class="table-icon" v-if="viewButtonVisibility" @click="handleView(scope.row)"><i class="fa fa-eye"
-                aria-hidden="true"></i></span>
-            <span class="table-icon" v-if="editButtonVisibility" @click="handleEdit(scope.row)"><i
-                class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+            <span class="table-icon" v-if="viewButtonVisibility" @click="handleView(scope.row)">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+              </span>
+            <span class="table-icon edit_btn" v-if="editButtonVisibility" @click="handleEdit(scope.row)">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              </span>
             <span class="table-icon delete_btn" v-if="deleteButtonVisibility"
-              @click="handleDelete(scope.$index, scope.row)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+              @click="handleDelete(scope.$index, scope.row)">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </span>
             <el-dropdown class="table-icon more_btn" v-if="moreActionsVisibility">
               <span class="el-dropdown-link">
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
@@ -240,3 +277,6 @@ function handleMultipleSelectionChange(val) {
   emit("multipleSelection", multipleSelection);
 }
 </script>
+
+<style scoped lang="scss">
+</style>
