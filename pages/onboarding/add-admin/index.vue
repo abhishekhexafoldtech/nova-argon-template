@@ -78,30 +78,30 @@ const handleSubmit = async () => {
     if (valid) {
       const phone = formData.phone;
       formData.phone = `+233${phone}`
-      // addNewAdmin({...formData}).then(response => {
-        // if(response.status == 201 ){
-        //   flashNotification("success","New Admin added.");
+      addNewAdmin({...formData}).then(response => {
+        if(response.status == 201 ){
+          flashNotification("success","New Admin added.");
           router.admin_data = {
             phone : formData.phone,
             email : formData.email
           }
           router.push("/onboarding/add-admin/otp");
-      //   }else if(response.status == 400){
-      //     flashNotification("warning","User may already exists please check the input fileds again..");
-      //   }
-      // }).catch(error => {
-      //   if(error.response.data.error_message.split("Key")[1].split("(")[1].split(")")[0]==="email")
-      //   {
-      //    flashNotification("warning", `${formData.email} already exists`);
-      //   }
-      //   else if(error.response.data.error_message.split("Key")[1].split("(")[1].split(")")[0]==="phone")
-      //   {
-      //     flashNotification("warning", `${formData.phone} already exists`);
-      //   }
-      //   else{
-      //     flashNotification("warning", `Something went wrong please try again.`);
-      //   }
-      // })
+        }else if(response.status == 400){
+          flashNotification("warning","User may already exists please check the input fileds again..");
+        }
+      }).catch(error => {
+        if(error.response.data.error_message.split("Key")[1].split("(")[1].split(")")[0]==="email")
+        {
+         flashNotification("warning", `${formData.email} already exists`);
+        }
+        else if(error.response.data.error_message.split("Key")[1].split("(")[1].split(")")[0]==="phone")
+        {
+          flashNotification("warning", `${formData.phone} already exists`);
+        }
+        else{
+          flashNotification("warning", `Something went wrong please try again.`);
+        }
+      })
     } else {
       flashNotification("warning", "Please fill required fields");
     }
