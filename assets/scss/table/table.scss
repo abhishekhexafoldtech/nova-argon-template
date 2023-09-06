@@ -202,23 +202,18 @@
     transition: all 250ms ease-in-out;
     outline: none;
 
-    &:hover {
+    &.edit_btn {
       color: var(--violet);
     }
 
     &.delete_btn {
-      &:hover {
-        color: #fb1e1e;
-      }
+      color: #fb1e1e;
     }
 
     &.more_btn {
       line-height: 27px;
       font-size: 14px;
-
-      &:hover {
-        color: #333;
-      }
+      color: #333;
     }
   }
 }
@@ -237,6 +232,19 @@
 /**** Style for Table Filter ****/
 .table_filter {
   margin-bottom: 20px;
+
+  &.reverse_filter {
+    .el-col:nth-child(1) {
+      order: 2;
+      text-align: right;
+    }
+
+    .filter_right {
+      ul {
+        justify-content: flex-start;
+      }
+    }
+  }
 
   .filter_search {
     color: var(--black);
@@ -296,16 +304,16 @@
             }
           }
 
-          .sync_icon{
+          .sync_icon {
             display: block;
             transition: all 300ms ease-in-out;
           }
 
-          &:hover{
+          &:hover {
             background-color: var(--violet);
             color: var(--white);
 
-            .sync_icon{
+            .sync_icon {
               transform: rotate(360deg);
             }
           }
@@ -319,4 +327,71 @@
       }
     }
   }
+}
+
+.el-table th .cell {
+  color: var(--grey);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: var(--violet);
+    border-color: var(--violet);
+  }
+}
+.el-table td .cell {
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 21px;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  .el-image {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .act_status {
+    i {
+      font-size: 10px;
+      margin-right: 8px;
+    }
+  }
+
+  .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: var(--violet);
+    border-color: var(--violet);
+  }
+}
+.el-table__header-wrapper .el-table-column--selection .el-checkbox {
+  margin: 0;
+  padding: 0;
+}
+.el-pagination.is-background .el-pager li.is-active {
+  background-color: var(--violet) !important;
+}
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev {
+  border: solid 1px var(--grey) !important;
+  background-color: transparent !important;
+}
+.el-pagination.is-background .btn-next:hover,
+.el-pagination.is-background .btn-prev:hover {
+  border-color: var(--violet) !important;
+  color: var(--violet) !important;
+}
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.08)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.08));
 }
