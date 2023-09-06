@@ -12,7 +12,7 @@
     data-scroll="true"
   >
     <div class="px-3 py-1 container-fluid">
-      <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none">
+      <div class="sidenav-toggler sidenav-toggler-inner d-xl-block">
         <a
           href="#"
           class="p-0 nav-link text-body"
@@ -23,13 +23,12 @@
           </div>
         </a>
       </div>
-       &nbsp; &nbsp;
       <Breadcrumbs />
 
       
       <div
         id="navbar"
-        class="mt-2 collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4"
+        class="mt-2 mt-sm-0 me-md-0 me-sm-4"
       >
         <div class="pe-md-3 d-flex align-items-center ms-md-auto">
           <!-- <div class="input-group">
@@ -43,7 +42,7 @@
             />
           </div> -->
         </div>
-        <ul class="navbar-nav justify-content-end">
+        <ul class="d-flex m-0 p-0">
           <li class="nav-item dropdown d-flex align-items-center pe-2">
             <a
               id="dropdownMenuButton"
