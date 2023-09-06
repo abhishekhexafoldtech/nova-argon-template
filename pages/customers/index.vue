@@ -77,29 +77,14 @@ const customersKpi = reactive({
   customers: {
     value: "+500",
     percentage: "11.2%",
-    icon: {
-      component: "ni ni-money-coins",
-      background: "bg-gradient-primary",
-      shape: "",
-    },
   },
   latestOrders: {
     value: "+100",
     percentage: "11.2%",
-    icon: {
-      component: "ni ni-world",
-      background: "bg-gradient-danger",
-      shape: "",
-    },
   },
   complaints: {
     value: "+3,462",
     percentage: "11.2%",
-    icon: {
-      component: "ni ni-paper-diploma",
-      background: "bg-gradient-success",
-      shape: "",
-    },
   }
 
 });
@@ -157,7 +142,7 @@ function handlePagination(data) {
 
 //handle view
 function handleView(data) {
-  let r = "customers list";
+  let r = "customers";
   router.push(`customers/${r}-${data.id}`);
 }
 
