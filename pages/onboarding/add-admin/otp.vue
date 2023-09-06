@@ -122,7 +122,13 @@ function handleGetOtp() {
 
 
 onMounted(() => {
-  handleGetOtp()
+  const dataPost = {}
+  if(router.admin_data){
+    dataPost.phone =  router.admin_data.phone,
+    dataPost.email =  router.admin_data.email
+    delete router.admin_data
+  }
+  handleGetOtp(dataPost);
 })
 
 </script>

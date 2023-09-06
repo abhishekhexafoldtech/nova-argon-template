@@ -81,6 +81,10 @@ const handleSubmit = async () => {
       addNewAdmin({...formData}).then(response => {
         if(response.status == 201 ){
           flashNotification("success","New Admin added.");
+          router.admin_data = {
+            phone : formData.phone,
+            email : formData.email
+          }
           router.push("/onboarding/add-admin/otp");
         }else if(response.status == 400){
           flashNotification("warning","User may already exists please check the input fileds again..");
