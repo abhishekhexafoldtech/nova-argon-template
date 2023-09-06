@@ -5,18 +5,23 @@
 
       <!-- Active this for Filter Table Only -->
       <!-- Please remove the class "reverse_filter" for swapping the search & Filter -->
+      <!-- <el-row :class="headerRow ?   'table_filter' : 'table_filter reverse_filter'"> -->
       <el-row class="table_filter reverse_filter">
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
           <input class="filter_search" v-if="tableSearchVisibility" v-model="search" placeholder="Search..." />
         </el-col>
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+          <div style="margin-right:20px">
+            <h5 v-if="tableHeading">{{ tableHeading }}</h5>
+            <p v-if="tableSubHeading">{{ tableSubHeading }}</p>
+          </div>
           <div class="filter_right">
             <ul>
               <li>
-                <button class="btn_filter"><i class="exp_icon ri-upload-2-line"></i>Export</button>
+                <button class="btn_filter" v-if="export" @click="handleExport"><i class="exp_icon ri-upload-2-line"></i>Export</button>
               </li>
               <li>
-                <div class="dropdown">
+                <div class="dropdown" v-if="filter">
                   <button class="btn_filter dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Filter
@@ -28,7 +33,7 @@
                 </div>
               </li>
               <li>
-                <button><i class="sync_icon ri-loop-right-fill"></i></button>
+                <button v-if="refresh"><i class="sync_icon ri-loop-right-fill"></i></button>
               </li>
             </ul>
           </div>
@@ -151,7 +156,7 @@
 
 
 <script setup >
-
+import { downloadCSVFromJson } from "@/composables/useDownloadCsv"
 
 let emit = defineEmits();
 
@@ -159,12 +164,28 @@ let multipleSelection = reactive([]);
 
 let search = ref("");
 
+const headerRow = ref(false)
+
+onMounted(()=>{
+  if(props.export || props.refresh || props.filter){
+    headerRow.value = true;
+  }else{
+    headerRow.value = false;
+  }
+})
+
+
 watch(search, () => {
   handleSearch();
 });
 
 function handleSearch() {
   emit("search", search)
+}
+
+
+function handleExport(){
+  downloadCSVFromJson("name.csv",props.tableData)
 }
 
 let props = defineProps({
@@ -235,6 +256,18 @@ let props = defineProps({
     type: Boolean,
     default: true,
   },
+  export: {
+    type: Boolean,
+    default: false
+  },
+  refresh: {
+    type: Boolean,
+    default: false
+  },
+  filter: {
+    type: Boolean,
+    default: false
+  }
 });
 
 let tableDataItems = computed(() => {

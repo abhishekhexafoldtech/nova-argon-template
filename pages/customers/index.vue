@@ -32,7 +32,7 @@
           <Table style="border-radius: 20px" tableSubHeading="" viewButtonVisibility="true" :addButtonVisibility="false"
             :tableConfig="customerTableConfig" :tableData="customerTableData" :tableQuery="listQuery"
             @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)" @view="handleView"
-            :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)" :editButtonVisibility="tableEditButtonVisibility"/>
+            :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)" :editButtonVisibility="tableEditButtonVisibility"  :export="true" :refresh="true" :filter="true"/>
         </div>
       </el-col>
     </el-row>
