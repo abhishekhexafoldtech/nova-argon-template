@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" class="ms-2">
     <h6
       class="text-dark"
     >

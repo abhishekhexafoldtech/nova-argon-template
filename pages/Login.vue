@@ -55,6 +55,7 @@
 <script setup>
 import IconsEye from "@/components/icons/Eye.vue";
 import { useAuthStore } from "@/stores/authStore"
+import { flashNotification } from "@/composables/useNotification.js";
 const AuthStore = useAuthStore()
 
 const formData = reactive({
@@ -78,10 +79,11 @@ const handleSubmit = () => {
     AuthStore.Login({...loginObj}).then(() => {
         const router = useRouter();
         router.push("/dashboards");
-        loginObj = {};
+        // loginObj = {};
     })
     .catch(error => {
 					console.log(error)
+          flashNotification("warning","Invalid credentials");
     })
     .finally(() => {
 

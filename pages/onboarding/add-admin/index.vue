@@ -82,7 +82,7 @@ const handleSubmit = async () => {
         if(response.status == 201 ){
           flashNotification("success","New Admin added.");
           router.admin_data = {
-            phone : formData.phone,
+            phone : phone,
             email : formData.email
           }
           router.push("/onboarding/add-admin/otp");
