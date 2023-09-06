@@ -33,7 +33,7 @@
         :tableConfig="customerTableConfig" :tableData="customerTableData" :tableQuery="listQuery"
         @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)" @view="handleView"
         :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)"
-        :editButtonVisibility="tableEditButtonVisibility" />
+        :editButtonVisibility="tableEditButtonVisibility" :export="true" :refresh="true"/>
     </div>
   </div>
 </template>
