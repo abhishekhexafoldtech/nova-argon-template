@@ -7,34 +7,35 @@
   <div class="container-area" v-if="customerTableData.length">
     <CustomerEditForm @handleUpdateCustomerDetails="handleEditedUserUpdate"
       @handleCloseCustomerEditForm="handleEditUserClose" :visible="customerEdit" />
-
-    <h4 class="page_heading mb-3">Customers</h4>
-    <el-row class="cus_kpi_card">
-      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="5">
+    <el-row>
+      <el-col>
+        <h4 class="mb-4">Customers</h4>
+      </el-col>
+      <el-col class="cards" :xs="24" :sm="10" :md="7" :lg="7">
         <CustomerKpiCard @click="fetchApiData('customers')" :class="[selectedApi === 'customers' ? 'active-card' : '']"
-          title="All customers" :percentage="customersKpi.customers.percentage" :value="customersKpi.customers.value"
-          :icon="CustomerIcon" />
+          title="All customers" :percentage="customersKpi.customers.percentage" :value="customersKpi.customers.value" :icon="CustomerIcon" />
       </el-col>
-      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="5">
+
+      <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
         <CustomerKpiCard @click="fetchApiData('orders')" :class="[selectedApi === 'orders' ? 'active-card' : '']"
-          title="Latest order" :percentage="customersKpi.latestOrders.percentage" :value="customersKpi.latestOrders.value"
-          :icon="OrderIcon" />
+          title="Latest order" :percentage="customersKpi.latestOrders.percentage" :value="customersKpi.latestOrders.value" :icon="OrderIcon" />
       </el-col>
-      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="5">
+
+      <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
         <CustomerKpiCard @click="fetchApiData('complaints')" :class="[selectedApi === 'complaints' ? 'active-card' : '']"
-          title="Complaints" :percentage="customersKpi.complaints.percentage" :value="customersKpi.complaints.value"
-          :icon="ComplaintIcon" />
+          title="Complaints" :percentage="customersKpi.complaints.percentage" :value="customersKpi.complaints.value" :icon="ComplaintIcon" />
+      </el-col>
+      <el-col>
+        <h4 class="mt-4 mb-4">{{ tableName }}</h4>
+
+        <div class="table-area">
+          <Table style="border-radius: 20px" tableSubHeading="" viewButtonVisibility="true" :addButtonVisibility="false"
+            :tableConfig="customerTableConfig" :tableData="customerTableData" :tableQuery="listQuery"
+            @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)" @view="handleView"
+            :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)" :editButtonVisibility="tableEditButtonVisibility"/>
+        </div>
       </el-col>
     </el-row>
-
-    <h4 class="page_heading mb-3">{{ tableName }}</h4>
-    <div class="table-area">
-      <Table class="table_cus" tableSubHeading="" viewButtonVisibility="true" :addButtonVisibility="false"
-        :tableConfig="customerTableConfig" :tableData="customerTableData" :tableQuery="listQuery"
-        @pagination="handlePagination()" @edit="handleEdit($event)" @delete="handleDelete($event)" @view="handleView"
-        :tableCheckBoxVisibility="true" @multipleSelection="handleMultipleSelection($event)"
-        :editButtonVisibility="tableEditButtonVisibility" />
-    </div>
   </div>
 </template>
 <script setup>
@@ -77,29 +78,14 @@ const customersKpi = reactive({
   customers: {
     value: "+500",
     percentage: "11.2%",
-    icon: {
-      component: "ni ni-money-coins",
-      background: "bg-gradient-primary",
-      shape: "",
-    },
   },
   latestOrders: {
     value: "+100",
     percentage: "11.2%",
-    icon: {
-      component: "ni ni-world",
-      background: "bg-gradient-danger",
-      shape: "",
-    },
   },
   complaints: {
     value: "+3,462",
     percentage: "11.2%",
-    icon: {
-      component: "ni ni-paper-diploma",
-      background: "bg-gradient-success",
-      shape: "",
-    },
   }
 
 });
@@ -113,7 +99,7 @@ const tableName = ref("Customers");
 const selectedApi = ref(null); // Track the selected API
 
 //fetch the table data
-const fetchApiData = async (apiName) => {
+const fetchApiData = async(apiName) => {
   selectedApi.value = apiName;
   await getCustomersTableData(apiName);
   if (apiName === "customers") {
@@ -143,10 +129,10 @@ const fetchApiData = async (apiName) => {
   selectedApi.value = apiName;
 };
 
-onBeforeMount(async () => {
+onBeforeMount(async()=>{
   await fetchApiData("customers")
 })
-onUnmounted(() => {
+onUnmounted(()=>{
   sessionStorage.clear("customers_data");
   sessionStorage.clear("customers_orders_data");
 })
@@ -157,7 +143,7 @@ function handlePagination(data) {
 
 //handle view
 function handleView(data) {
-  let r = "customers list";
+  let r = "customers";
   router.push(`customers/${r}-${data.id}`);
 }
 
@@ -208,18 +194,13 @@ definePageMeta({
 
 
 </script>
-<style scoped lang="scss">
-.cus_kpi_card {
-  margin: -15px;
-  margin-bottom: 30px;
-
-  .el-col{
-    padding: 15px;
-  }
+<style scoped>
+.cards {
+  width: 40% !important;
 }
 
-.table_cus {
-  border-radius: 15px;
+.active-card {
+  background-color: rgb(228, 228, 228);
 }
 </style>
   
