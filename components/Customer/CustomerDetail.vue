@@ -1,50 +1,61 @@
 <template>
-    <el-row>
-        <el-col class="border rounded-1 shadow-lg p-4" :xs="24" :sm="24" :md="12" :lg="12">
-        <h5>Personal details</h5>
-        <el-row :gutter="20" >
-            <el-col class="p-3" :xs="24" :sm="24" :md="12" :lg="12">
-            <span class="fs-6 text-bold"><img :src="Calender" alt="icon"> <span class="ms-1">Joining date</span></span>
-            <p class="ms-4 text-dark fw-bolder ps-1">2020/12/15</p>
-            <br/>
-            <span class="fs-6 text-bold"><img :src="Phone" alt="icon"> <span class="ms-1">Phone number</span></span>
-            <p class="ms-4 text-dark fw-bolder ps-1">0277400000</p>
-            <br/>
-            <span class="fs-6 text-bold"><img :src="Email" alt="icon"> <span class="ms-1">Email</span></span>
-            <p class="ms-4 text-dark fw-bolder ps-1">yawboafo@gmail.com</p>
-            <br/>
-            <span class="fs-6 text-bold"><img :src="Zone" alt="icon"> <span class="ms-1">Zone</span></span>
-            <p class="ms-4 text-dark fw-bolder ps-1">Northern</p>
+    <div>
+        <el-row :gutter="30">
+            <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                <div class="cd_box">
+                    <h4 class="cd_heading">Personal Details</h4>
+                    <div class="cd_list">
+                        <div class="cd_item">
+                            <img :src="Calender" alt="icon">
+                            <h4>Joining Date<span>2020/12/15</span></h4>
+                        </div>
+                        <div class="cd_item">
+                            <img :src="Phone" alt="icon">
+                            <h4>Phone number<span>0277400000</span></h4>
+                        </div>
+                        <div class="cd_item">
+                            <img :src="Email" alt="icon">
+                            <h4>Email<span>yawboafo@gmail.com</span></h4>
+                        </div>
+                        <div class="cd_item">
+                            <img :src="Zone" alt="icon">
+                            <h4>Zone<span>Northern</span></h4>
+                        </div>
+                        <div class="cd_item">
+                            <img :src="Location" alt="icon">
+                            <h4>Address:<span>Agbogba-ashongman road</span></h4>
+                        </div>
+                        <div class="cd_item">
+                            <img :src="District" alt="icon">
+                            <h4>District<span>Ghana</span></h4>
+                        </div>
+                        <div class="cd_item">
+                            <img :src="Region" alt="icon">
+                            <h4>Region<span>Accra</span></h4>
+                        </div>
+                    </div>
+                </div>
             </el-col>
-
-
-            <el-col class="p-3" :xs="24" :sm="24" :md="12" :lg="12">
-            <span class="fs-6 text-bold"> <img :src="Location" alt="icon"> <span class="ms-1">Address:</span></span>
-            <p class="ms-4 text-dark fw-bolder ps-1">Agbogba-ashongman road</p>
-            <br/>
-            <span class="fs-6 text-bold"><img :src="District" alt="icon"> <span class="ms-1">District</span></span>
-            <p class="ms-4 text-dark fw-bolder ps-1">Ghana</p>
-            <br/>
-            <span class="fs-6 text-bold"><img :src="Region" alt="icon"> <span class="ms-1">Region</span></span>
-            <p class="ms-4 text-dark fw-bolder ps-1">Accra</p>
+            <el-col :xs="24" :sm="24" :md="12" :lg="12">
+                <div class="cd_box">
+                    <h4 class="cd_heading">Uploaded Documents</h4>
+                    <div class="up_doc">
+                        <div class="doc_item">
+                            <img src="@/assets/img/card-visa.jpg" alt="image">
+                            <h4>
+                                <span>Voter ID</span>
+                                Uploaded on 11/08/2023
+                            </h4>
+                        </div>
+                    </div>
+                </div>
             </el-col>
         </el-row>
-        </el-col>
-
-        <el-col :offset="1" class="border rounded-1 shadow-lg p-4" :xs="24" :sm="24" :md="11" :lg="11">
-       <div>
-        <h5 class="mb-5">Uploaded documents</h5>
-           <img class="rounded img-fluid" width="300"  src="@/assets/img/card-visa.jpg" alt="image">
-           <p class=" text-dark fs-5 fw-bolder mt-2">Voter ID</p>
-           <p class="fs-5 text-boldtext-dark">Uploaded on 11/08/2023</p>
-           
-       </div>
-        </el-col>
-    </el-row>
+    </div>
 </template>
 <script setup>
 
-import { Calendar,PhoneFilled,MapLocation,ChatDotSquare,Place, } from '@element-plus/icons-vue';
+import { Calendar, PhoneFilled, MapLocation, ChatDotSquare, Place, } from '@element-plus/icons-vue';
 import District from '@/assets/svg/district.svg'
 import Email from '@/assets/svg/email.svg'
 import Location from '@/assets/svg/location.svg'
@@ -54,5 +65,4 @@ import Calender from '@/assets/svg/calender.svg'
 import Phone from '@/assets/svg/phone.svg'
 
 </script>
-<style scoped>
-</style>
+<style scoped></style>
