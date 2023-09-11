@@ -27,7 +27,8 @@
                     Filter
                   </button>
                   <div class="dropdown-menu" aria-labelledby="upcomingHolidayDrop">
-                    <Filter/>
+                    <li><a class="dropdown-item" href="#">Add Holidays</a></li>
+                    <li><a class="dropdown-item" href="#">View All</a></li>
                   </div>
                 </div>
               </li>
@@ -99,7 +100,7 @@
                   ">
                   <span v-if="scope.row[config.prop][0]">
                     <span v-for="(item, index) in scope.row[config.prop]" :key="index">
-                      <span v-if="item.order_status" class="text-success">Delivered <p style="font-size: 10px;">on 2020/12/16</p></span>
+                      <span v-if="item.order_status" class="text-success">Delivered</span>
                       <span v-if="!item.order_status" class="text-warning">Pending</span>
                       <!-- <span>{{ item?.content ? item.content : "" }}</span>   -->
                     </span>
@@ -126,14 +127,6 @@
             <span class="table-icon delete_btn" v-if="deleteButtonVisibility"
               @click="handleDelete(scope.$index, scope.row)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </span>
-            <span class="table-icon delete_btn" v-if="downloadLinkContent"
-              @click="handleDownlod(scope.$index, scope.row)">
-              {{ downloadLinkContent }}
-            </span>
-            <span class="table-icon delete_btn" v-if="downloadVisibility"
-              @click="handleDownlod(scope.$index, scope.row)">
-              <i class="fa fa-download" aria-hidden="true"></i>
             </span>
             <el-dropdown class="table-icon more_btn" v-if="moreActionsVisibility">
               <span class="el-dropdown-link">
@@ -163,7 +156,6 @@
 
 
 <script setup >
-import Filter from "./Filter.vue";
 import { downloadCSVFromJson } from "@/composables/useDownloadCsv"
 
 let emit = defineEmits();
@@ -275,15 +267,6 @@ let props = defineProps({
   filter: {
     type: Boolean,
     default: false
-  },
-  downloadVisibility: {
-    type: Boolean,
-    default: false
-  },
-  downloadLinkContent: {
-    type: String,
-    required: false,
-    default: ""
   }
 });
 
@@ -295,9 +278,6 @@ let tableDataTotal = computed(() => {
   return props.tableData ? props.tableData.length : 0;
 });
 
-function handleDownlod(row){
-  emit("handleDownload", row)
-}
 function handleResetPassword(row) {
   emit("resetPassword", row)
 }
