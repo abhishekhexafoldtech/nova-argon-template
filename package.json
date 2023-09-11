@@ -50,6 +50,7 @@
     "jsona": "^1.11.0",
     "leaflet": "1.9.2",
     "nuxt-leaflet": "0.0.27",
+    "pdfmake": "^0.2.7",
     "photoswipe": "5.3.3",
     "postcss": "^8.4.19",
     "prettier": "2.7.1",

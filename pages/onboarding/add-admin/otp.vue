@@ -30,6 +30,8 @@ import SuccessDialog from "../dialog-box/SuccessDialog.vue";
 const router = useRouter();
 const centerDialogVisible = ref(false);
 const isOtpNotCurrected=ref(false) //if otp not currect in that case we can show their error message
+let adminPhone = "";
+let adminEmail = "";
 
 let senCred = reactive({
   "id": null,
@@ -82,9 +84,11 @@ function handleOtpSubmit(mobile,email) {
   console.log('point 2')
   let dataPost = {
     "country_code": "+233",
-    "phone": "547123491",
+    // "phone": "547123491",
+    "phone": adminPhone,
     "phone_otp": mobile,
-    "email": "testuser002@gmail.com",
+    // "email": "testuser002@gmail.com",
+    "email": adminEmail,
     "email_otp": email
     }
   console.log('point 3', dataPost)
@@ -111,9 +115,15 @@ function handleOtpSubmit(mobile,email) {
 function handleGetOtp() {
   let dataPost = {
     "country_code": "+233",
-    "phone_number": "547123491",
-    "email": "testuser002@gmail.com"
+    // "phone_number": "547123491",
+    // "email": "testuser002@gmail.com"
+    "phone_number": adminPhone,
+    "email": adminEmail
   }
+  console.log(adminPhone)
+  console.log(adminEmail)
+  console.log(dataPost)
+
   getOtp(dataPost).then(() => {
     console.log('point 1')
   })
@@ -122,13 +132,15 @@ function handleGetOtp() {
 
 
 onMounted(() => {
-  const dataPost = {}
+  // const dataPost = {}
   if(router.admin_data){
-    dataPost.phone =  router.admin_data.phone,
-    dataPost.email =  router.admin_data.email
-    delete router.admin_data
+    adminPhone =  router.admin_data.phone,
+    adminEmail =  router.admin_data.email
+    // dataPost.phone =  router.admin_data.phone,
+    // dataPost.email =  router.admin_data.email
+    // delete router.admin_data
   }
-  handleGetOtp(dataPost);
+  handleGetOtp();
 })
 
 </script>

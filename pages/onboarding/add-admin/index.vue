@@ -39,8 +39,7 @@
             <div class="fieldrow w455">
               <el-form-item label="Role" prop="role_id">
                 <el-select class="form_input" v-model="formData.role_id" placeholder="Plese select role">
-                  <el-option label="Admin role" :value="roles[0]?.id" />
-                  <el-option label="Super Admin Role" :value="roles[1]?.id" />
+                  <el-option v-for="item in roles" :key="item.value" :label="item.name" :value="item.id" />
                 </el-select>
               </el-form-item>
             </div>
@@ -55,8 +54,7 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { reactive, ref } from "vue";
+import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { flashNotification } from "@/composables/useNotification.js";
 import { addNewAdmin } from "@/api/admin";
@@ -64,7 +62,7 @@ import { getRoleDropdownList } from "@/api/role"
 
 const form = ref(null);
 const router = useRouter();
-const roles = ref([])
+const roles = ref({})
 const formData = reactive({
   first_name: "",
   last_name: "",
@@ -73,6 +71,7 @@ const formData = reactive({
   role_id: "",
 });
 
+// submit form data
 const handleSubmit = async () => {
   form.value.validate((valid) => {
     if (valid) {
@@ -80,9 +79,9 @@ const handleSubmit = async () => {
       formData.phone = `+233${phone}`
       addNewAdmin({...formData}).then(response => {
         if(response.status == 201 ){
-          flashNotification("success","New Admin added.");
+          flashNotification("success","Admin added successfully.");
           router.admin_data = {
-            phone : formData.phone,
+            phone : phone,
             email : formData.email
           }
           router.push("/onboarding/add-admin/otp");
@@ -107,29 +106,23 @@ const handleSubmit = async () => {
     }
   });
 };
-function getAdminRoles(token) {
-  getRoleDropdownList({
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).then(res => {
-    const result = res.data;
-    const data = result.data;
-    roles.value = data;
+
+// get all roles for select role dropdown
+function getAdminRoles() {
+  getRoleDropdownList().then(response => {
+    roles.value = response.data.data;
   }).catch(err => {
     console.log(err)
-    flashNotification("warning", "User Not Verified!");
-    router.push("/login")
   })
 }
-onMounted(() => {
-  let tokenName = "Site-Token"
-  const token = document.cookie.split(`${tokenName}=`)[1];
-  getAdminRoles(token)
-})
+
+
 const handleCancel = () => {
   router.push("/onboarding");
 };
+
+
+// rules for validation
 const formRules = {
   first_name: [
     { required: true, message: "Please enter your firstName", trigger: "blur" },
@@ -160,6 +153,12 @@ const formRules = {
     },
   ],
 };
+
+
+onMounted(() => {
+  getAdminRoles()
+})
+
 
 </script>
 

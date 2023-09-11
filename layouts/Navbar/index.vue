@@ -12,6 +12,7 @@
     data-scroll="true"
   >
     <div class="px-3 py-1 container-fluid">
+      <div class="d-flex align-items-center">
       <div class="sidenav-toggler sidenav-toggler-inner d-xl-block">
         <a
           href="#"
@@ -24,6 +25,7 @@
         </a>
       </div>
       <Breadcrumbs />
+    </div>
 
       
       <div
