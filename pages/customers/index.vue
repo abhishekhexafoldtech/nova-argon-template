@@ -185,7 +185,7 @@ function handlePagination(data) {
 
 //handle view
 function handleView(data) {
-  let r = "customer";
+  let r = "customers";
   router.push(`customers/${r}-${data.id}`);
 }
 
