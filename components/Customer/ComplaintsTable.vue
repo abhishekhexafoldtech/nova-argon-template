@@ -1,6 +1,6 @@
 <template>
     <div>
-       <Table :table-config="customerComplaintsConfig" :table-data="customerComplaints" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :editButtonVisibility="false" :deleteButtonVisibility="true" :viewButtonVisibility="true" :tableCheckBoxVisibility="true"/>
+       <Table :table-config="customerComplaintsConfig" :table-data="customerComplaints" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :editButtonVisibility="false" :deleteButtonVisibility="true" :viewButtonVisibility="true" :tableCheckBoxVisibility="true" :heading-row-reverse="true"/>
     </div>
 </template>
 

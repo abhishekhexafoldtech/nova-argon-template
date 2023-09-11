@@ -1,6 +1,6 @@
 <template>
     <div>
-       <Table :table-config="customerAllOrdersConfig" :table-data="customerAllOrders" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :editButtonVisibility="false" :deleteButtonVisibility="false" download-link-content="View receipt" :download-visibility="true"/>
+       <Table :table-config="customerAllOrdersConfig" :table-data="customerAllOrders" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :editButtonVisibility="false" :deleteButtonVisibility="false" download-link-content="View receipt" :download-visibility="true" :heading-row-reverse="true"/>
     </div>
 </template>
 

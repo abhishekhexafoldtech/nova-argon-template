@@ -1,6 +1,6 @@
 <template>
     <div>
-       <Table :table-config="customerDepositsConfig" :table-data="customerDeposits" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :actionVisibility="false"/>
+       <Table :table-config="customerDepositsConfig" :table-data="customerDeposits" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :actionVisibility="false" :heading-row-reverse="true"/>
     </div>
 </template>
 
