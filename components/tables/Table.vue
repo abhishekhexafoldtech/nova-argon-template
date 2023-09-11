@@ -72,7 +72,7 @@
                   <span v-if="scope.row[config.prop][0].url">
                     <span v-for="(item, index) in scope.row[config.prop]" :key="index">
                       <el-image :src="item.url"
-                        :preview-src-list="[item.url]" :class="item.content ? 'rounded-circle' : 'rounded-3'">
+                        :preview-src-list="[item.url]" :class="item.content ? 'circle_img' : 'square_img'">
                       </el-image>
                       <span>{{ item?.content ? item.content : "" }}</span>
                     </span>
@@ -98,8 +98,10 @@
                   'order_status' in scope.row[config.prop][0]
                   ">
                   <span v-if="scope.row[config.prop][0]">
-                    <span v-for="(item, index) in scope.row[config.prop]" :key="index">
-                      <span v-if="item.order_status" class="text-success">Delivered <p style="font-size: 10px;">on 2020/12/16</p></span>
+                    <span v-for="(item, index) in scope.row[config.prop]" :key="index" class="order_status">
+                      <span v-if="item.order_status" class="text-success">Delivered 
+                        <p class="del_date">on 2020/12/16</p>
+                      </span>
                       <span v-if="!item.order_status" class="text-warning">Pending</span>
                       <!-- <span>{{ item?.content ? item.content : "" }}</span>   -->
                     </span>
@@ -107,7 +109,7 @@
                 </span>
               </span>
             </span>
-
+ 
             <span v-else>
               {{ scope.row[config.prop] }}
             </span>
@@ -115,7 +117,7 @@
         </el-table-column>
 
         <!-- ACTIONS -->
-        <el-table-column v-if="actionVisibility" label="Actions" :width="100">
+        <el-table-column v-if="actionVisibility" label="Actions">
           <template #default="scope">
             <span class="table-icon" v-if="viewButtonVisibility" @click="handleView(scope.row)">
               <i class="fa fa-eye" aria-hidden="true"></i>
@@ -128,14 +130,14 @@
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </span>
             <!-- view receipt  -->
-            <span class="table-icon delete_btn" v-if="downloadLinkContent"
+            <span class="table-icon view_rec" v-if="downloadLinkContent"
               @click="handleDownlod(scope.$index, scope.row)">
               {{ downloadLinkContent }}
             </span>
             <!-- download icon -->
-            <span class="table-icon delete_btn" v-if="downloadVisibility"
+            <span class="table-icon dnld_btn" v-if="downloadVisibility"
               @click="handleDownlod(scope.$index, scope.row)">
-              <i class="fa fa-download" aria-hidden="true"></i>
+              <i class="ri-download-2-line"></i>
             </span>
             <el-dropdown class="table-icon more_btn" v-if="moreActionsVisibility">
               <span class="el-dropdown-link">

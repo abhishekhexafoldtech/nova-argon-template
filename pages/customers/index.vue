@@ -2,86 +2,46 @@
 <template>
   <section>
     <!-- when no data -->
-  <div v-if="!customerTableData.length">
-    <EmptyManager 
-      :icon="CustomerEmptyImage" 
-      heading="No customer added yet"
-      description="List of customers not added yet." 
-    />
-  </div>
+    <div v-if="!customerTableData.length">
+      <EmptyManager :icon="CustomerEmptyImage" heading="No customer added yet"
+        description="List of customers not added yet." />
+    </div>
 
-  <div class="container-area" v-if="customerTableData.length">
-    <CustomerEditForm 
-      :visible="customerEdit" 
-      @handleUpdateCustomerDetails="handleEditedUserUpdate"
-      @handleCloseCustomerEditForm="handleEditUserClose" 
-    />
+    <div class="container-area" v-if="customerTableData.length">
+      <CustomerEditForm :visible="customerEdit" @handleUpdateCustomerDetails="handleEditedUserUpdate"
+        @handleCloseCustomerEditForm="handleEditUserClose" />
 
-    <el-row>
-      <el-col>
-        <!-- <h4 class="mb-4">Customers</h4> -->
-        <h4 class="mb-4">{{ tableName }}</h4>
-      </el-col>
-      
-      <el-col class="cards" :xs="24" :sm="10" :md="7" :lg="7">
-        <CustomerKpiCard 
-          @click="fetchApiData('customers')" 
-          :class="[selectedApi === 'customers' ? 'active-card' : '']"
-          title="All customers" 
-          :percentage="customersKpi.customers.percentage" 
-          :value="customersKpi.customers.value" 
-          :icon="CustomerIcon" 
-        />
-      </el-col>
+      <h4 class="page_heading mb-3">Customer</h4>
+      <el-row>
+        <el-col class="cards" :xs="24" :sm="10" :md="7" :lg="7">
+          <CustomerKpiCard @click="fetchApiData('customers')" :class="[selectedApi === 'customers' ? 'active-card' : '']"
+            title="All customers" :percentage="customersKpi.customers.percentage" :value="customersKpi.customers.value"
+            :icon="CustomerIcon" />
+        </el-col>
 
-      <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
-        <CustomerKpiCard 
-          @click="fetchApiData('orders')" 
-          :class="[selectedApi === 'orders' ? 'active-card' : '']"
-          title="Latest order" 
-          :percentage="customersKpi.latestOrders.percentage" 
-          :value="customersKpi.latestOrders.value" 
-          :icon="OrderIcon" 
-        />
-      </el-col>
+        <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
+          <CustomerKpiCard @click="fetchApiData('orders')" :class="[selectedApi === 'orders' ? 'active-card' : '']"
+            title="Latest order" :percentage="customersKpi.latestOrders.percentage"
+            :value="customersKpi.latestOrders.value" :icon="OrderIcon" />
+        </el-col>
 
-      <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
-        <CustomerKpiCard 
-          @click="fetchApiData('complaints')" 
-          :class="[selectedApi === 'complaints' ? 'active-card' : '']"
-          title="Complaints" 
-          :percentage="customersKpi.complaints.percentage" 
-          :value="customersKpi.complaints.value" 
-          :icon="ComplaintIcon" 
-        />
-      </el-col>
-      <el-col>
-        <br>
-        <br>
-        <div class="table-area">
-          <Table 
-            style="border-radius: 20px" 
-            viewButtonVisibility="true" 
-            :addButtonVisibility="false"
-            :tableCheckBoxVisibility="true" 
-            :export="true" 
-            :filter="true"
-            :refresh="true" 
-            :tableConfig="customerTableConfig" 
-            :tableData="customerTableData" 
-            :tableQuery="listQuery"
-            @view="handleView"
-            @pagination="handlePagination()" 
-            :editButtonVisibility="tableEditButtonVisibility"  
-            @edit="handleEdit($event)" 
-            @delete="handleDelete($event)" 
-            @multipleSelection="handleMultipleSelection($event)" 
-            :heading-row-reverse="true"
-          />
-        </div>
-      </el-col>
-    </el-row>
-  </div>
+        <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
+          <CustomerKpiCard @click="fetchApiData('complaints')"
+            :class="[selectedApi === 'complaints' ? 'active-card' : '']" title="Complaints"
+            :percentage="customersKpi.complaints.percentage" :value="customersKpi.complaints.value"
+            :icon="ComplaintIcon" />
+        </el-col>
+      </el-row>
+
+      <h4 class="page_heading mt-5 mb-3">{{ tableName }}</h4>
+      <div class="table-area">
+        <Table style="border-radius: 20px" viewButtonVisibility="true" :addButtonVisibility="false"
+          :tableCheckBoxVisibility="true" :export="true" :filter="true" :refresh="true" :tableConfig="customerTableConfig"
+          :tableData="customerTableData" :tableQuery="listQuery" @view="handleView" @pagination="handlePagination()"
+          :editButtonVisibility="tableEditButtonVisibility" @edit="handleEdit($event)" @delete="handleDelete($event)"
+          @multipleSelection="handleMultipleSelection($event)" :heading-row-reverse="true" />
+      </div>
+    </div>
   </section>
 </template>
 <script setup>
@@ -117,7 +77,7 @@ const customersKpi = reactive({
 
 });
 const tableName = ref("Customers");
-const selectedApi = ref(null); 
+const selectedApi = ref(null);
 let listQuery = reactive({
   page: 1,
   limit: 10,
@@ -145,7 +105,7 @@ function handleEditUserClose(data) {
   }
 }
 //fetch the table data
-const fetchApiData = async(apiName) => {
+const fetchApiData = async (apiName) => {
   selectedApi.value = apiName;
   await getCustomersTableData(apiName);
   if (apiName === "customers") {
@@ -213,11 +173,11 @@ function handleMultipleSelection(data) {
 }
 
 
-onBeforeMount(async()=>{
+onBeforeMount(async () => {
   await fetchApiData("customers")
 })
 
-onUnmounted(()=>{
+onUnmounted(() => {
   sessionStorage.clear("customers_data");
   sessionStorage.clear("customers_orders_data");
 })
@@ -225,16 +185,5 @@ onUnmounted(()=>{
 definePageMeta({
   layout: "default",
 });
-
-
 </script>
-<style scoped>
-.cards {
-  width: 40% !important;
-}
-
-.active-card {
-  background-color: rgb(228, 228, 228);
-}
-</style>
   
