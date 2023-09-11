@@ -186,6 +186,14 @@
         }
     }
 }
+@media (max-width: 992px){
+    .cd_header .cd_header_tabs .el-tabs .el-tabs__header{
+        overflow: auto;
+    }
+    .cd_header .cd_header_tabs .el-tabs .el-tabs__item{
+        padding: 10px 15px !important;
+    }
+}
 
 .cd_box {
     background-color: var(--white);
