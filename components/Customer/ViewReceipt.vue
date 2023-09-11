@@ -90,8 +90,8 @@ import { ElMessageBox } from "element-plus";
 import Email from "@/assets/svg/email.svg";
 import Download from "@/assets/svg/download.svg";
 import Newgas from "@/assets/svg/newgas.png";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from "pdfmake/build/vfs_fonts"
 
 const dialogVisible = ref(false);
 
