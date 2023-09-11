@@ -328,7 +328,7 @@
             margin-bottom: 15px;
             border-bottom: solid 1px #e1e1e1;
 
-            &:last-child{
+            &:last-child {
                 padding: 0;
                 margin: 0;
                 border: none;
@@ -480,6 +480,227 @@
                         padding: 5px 20px;
                         margin-bottom: 10px;
                     }
+                }
+            }
+        }
+    }
+}
+
+/**** Style for Customer View Receipt ****/
+.view_receipt_modal.el-dialog.is-align-center {
+    width: 100%;
+    max-width: 992px;
+    background-color: var(--white);
+    border-radius: 15px;
+
+    .el-dialog__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0;
+        padding: 20px 30px;
+        padding-bottom: 30px;
+        position: relative;
+
+        &::after {
+            content: "";
+            width: 85%;
+            height: 1px;
+            background-color: var(--grey);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        h4 {
+            color: var(--black);
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 50px;
+            letter-spacing: -0.8px;
+            margin: 0;
+        }
+
+        p {
+            color: var(--black);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            letter-spacing: -0.8px;
+            margin: 0;
+        }
+
+        figure {
+            width: 155px;
+            height: 70px;
+            margin: 0;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: right;
+            }
+        }
+    }
+
+    .el-dialog__body {
+        padding: 30px;
+        padding-bottom: 0;
+
+        .vr_info {
+            margin: 0 -15px;
+
+            .el-col {
+                padding: 0 15px;
+            }
+            p {
+                color: var(--black);
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 24px;
+                margin: 0;
+
+                span {
+                    display: block;
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+
+        .vr_table {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+
+            .el-table {
+                margin-bottom: 20px;
+            }
+            .el-table th.el-table__cell {
+                padding: 15px 10px;
+                background: rgba(248, 248, 250, 0.8);
+            }
+            .el-table th .cell {
+                padding: 0;
+                color: var(--grey);
+                font-size: 10px;
+                font-weight: 700;
+                line-height: 15px;
+            }
+            .el-table td.el-table__cell {
+                padding: 0;
+            }
+            .el-table td.el-table__cell div {
+                padding: 15px 10px;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px;
+                color: var(--black);
+            }
+            .el-table__footer-wrapper tbody td.el-table__cell,
+            .el-table__header-wrapper tbody td.el-table__cell {
+                background: rgba(94, 114, 228, 0.1);
+            }
+            .el-table__footer-wrapper tbody td.el-table__cell div,
+            .el-table__header-wrapper tbody td.el-table__cell div {
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 27px;
+                letter-spacing: -0.8px;
+                color: var(--black);
+                padding: 7px 10px;
+            }
+
+            p {
+                color: var(--grey);
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 21px;
+                margin: 0;
+
+                span {
+                    color: var(--black);
+                    font-weight: 500;
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+    .el-dialog__footer {
+        padding: 0 30px;
+        padding-bottom: 35px;
+
+        .el-row {
+            align-items: flex-end;
+        }
+
+        .vr_f_info {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            h4 {
+                color: var(--black);
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 28px;
+                letter-spacing: -0.8px;
+                margin: 0;
+            }
+            p {
+                color: var(--grey);
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 21px;
+                margin: 0;
+            }
+            h5 {
+                color: var(--grey);
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 26px;
+                letter-spacing: -0.8px;
+                margin: 0;
+
+                span {
+                    color: var(--black);
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        .vr_action {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+
+            button {
+                margin: 0;
+                font-size: 13px;
+                line-height: 14px;
+                font-style: normal;
+                font-weight: 600;
+                min-width: 145px;
+                height: 35px;
+                padding: 8px;
+
+                i{
+                    font-size: 18px;
+                    margin-right: 5px;
+                    font-weight: normal;
+                    vertical-align: middle;
+                }
+
+                &.btn_email{
+                    color: var(--violet);
                 }
             }
         }
