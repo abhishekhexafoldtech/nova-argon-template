@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-button type="success" @click="dialogVisible = true">View Receipt</el-button>
-    <el-dialog v-model="dialogVisible" :before-close="handleClose" :show-close="false" align-center
+    <!-- <el-button type="success" @click="dialogVisible = true">View Receipt</el-button> -->
+    <el-dialog v-model="props.dialogVisible" :before-close="handleClose" :show-close="false" align-center
       class="view_receipt_modal">
       <template #header>
         <div>
@@ -68,7 +68,7 @@
           </el-col>
           <el-col :xs="24" :sm="24" :md="14" :lg="14">
             <div class="vr_action">
-              <button class="btn btn_email" @click="dialogVisible = false">
+              <button class="btn btn_email" @click="handleSendEmail">
                 <i class="ri-mail-line"></i>
                 Send as Email
               </button>
@@ -91,9 +91,18 @@ import Email from "@/assets/svg/email.svg";
 import Download from "@/assets/svg/download.svg";
 import Newgas from "@/assets/svg/newgas.png";
 import * as pdfMake from "pdfmake/build/pdfmake";
-import * as pdfFonts from "pdfmake/build/vfs_fonts"
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
 
-const dialogVisible = ref(false);
+const props = defineProps({
+  dialogVisible : {
+    type: Boolean,
+    required: false,
+    default: false
+  }
+});
+
+const emit = defineEmits();
+
 
 // Define your dynamic content
 const dynamicContent = {
@@ -301,6 +310,8 @@ const generatePDF = async () => {
 
   const pdfDoc = pdfMake.createPdf(pdfDefinition);
   pdfDoc.open();
+
+  emit("handleReceiptClose")
 };
 
 const getSummaries = (param) => {
@@ -334,8 +345,11 @@ const getSummaries = (param) => {
 };
 
 const handleClose = (done) => {
-  done();
+  emit("handleReceiptClose")
 };
+const handleSendEmail = () =>{
+  emit("handleSendReceiptEmail");
+}
 </script>
 
 <style scoped lang="scss"></style>

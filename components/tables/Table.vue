@@ -131,12 +131,12 @@
             </span>
             <!-- view receipt  -->
             <span class="table-icon view_rec" v-if="downloadLinkContent"
-              @click="handleDownlod(scope.$index, scope.row)">
+              @click="handleViewReceipt(scope.$index, scope.row)">
               {{ downloadLinkContent }}
             </span>
             <!-- download icon -->
             <span class="table-icon dnld_btn" v-if="downloadVisibility"
-              @click="handleDownlod(scope.$index, scope.row)">
+              @click="handleDownload(scope.$index, scope.row)">
               <i class="ri-download-2-line"></i>
             </span>
             <el-dropdown class="table-icon more_btn" v-if="moreActionsVisibility">
@@ -299,8 +299,11 @@ let tableDataTotal = computed(() => {
   return props.tableData ? props.tableData.length : 0;
 });
 
-function handleDownlod(row){
+function handleDownload(index,row){
   emit("handleDownload", row)
+}
+function handleViewReceipt(row){
+  emit("handleViewReceipt",row)
 }
 function handleResetPassword(row) {
   emit("resetPassword", row)
