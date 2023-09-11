@@ -149,7 +149,406 @@ export const tableConfig = {
             prop: "case_priority"
         },
     ]
-}
+};
+
+export const customerAllOrdersConfig = [
+    {
+        label : "Order ID",
+        sortable : true,
+        prop : "order_id"
+    },
+    {
+        label : "Order Date",
+        sortable : true,
+        prop : "order_date"
+    },
+    {
+        label : "Product",
+        sortable : true,
+        prop : "product"
+    },
+    {
+        label : "Status",
+        sortable : true,
+        prop : "status"
+    },
+    {
+        label : "Order Total",
+        sortable : true,
+        prop : "order_total"
+    },
+    {
+        label : "Payment Type",
+        sortable : true,
+        prop : "payment_type"
+    }
+];
+export const customerCancelledOrderConfig = [
+    {
+        label : "Order ID",
+        sortable : true,
+        prop : "order_id"
+    },
+    {
+        label : "Order Date",
+        sortable : true,
+        prop : "order_date"
+    },
+    {
+        label : "Product",
+        sortable : true,
+        prop : "product"
+    },
+    {
+        label : "Cancel Reason",
+        sortable : true,
+        prop : "cancel_reason"
+    },
+    {
+        label : "Initiated By",
+        sortable : true,
+        prop : "initiated_by"
+    },
+    {
+        label : "Penalty Amount",
+        sortable : true,
+        prop : "penalty_amount"
+    }
+];
+export const customerComplaintsConfig = [
+    {
+        label : "Complaint No.",
+        sortable: true,
+        prop: "complaint_no"
+    },
+    {
+        label : "Date",
+        sortable: true,
+        prop: "date"
+    },
+    {
+        label : "Order ID",
+        sortable: true,
+        prop: "order_id"
+    },
+    {
+        label : "Product",
+        sortable: true,
+        prop: "product"
+    },
+    {
+        label : "Type Of Complaint",
+        sortable: true,
+        prop: "complaint_type"
+    },
+    {
+        label : "Status",
+        sortable: true,
+        prop: "status"
+    },
+    {
+        label : "Case Priority",
+        sortable: true,
+        prop: "case_priority"
+    }
+]
+
+export const customerRefundBalanceConfig = [
+   
+    {
+        label : "Order ID",
+        sortable: true,
+        prop: "order_id"
+    },
+    {
+        label : "Product Return",
+        sortable: true,
+        prop: "product_return"
+    },
+    {
+        label : "Product ID",
+        sortable: true,
+        prop: "product_id"
+    },
+    {
+        label : "Return Date",
+        sortable: true,
+        prop: "return_date"
+    },
+    {
+        label : "Return Amount",
+        sortable: true,
+        prop: "return_amount"
+    },
+    {
+        label : "Total Balance",
+        sortable: true,
+        prop: "total_balance"
+    }
+]
+export const customerDepositsConfig = [
+   
+    {
+        label : "Cylinder No.",
+        sortable: true,
+        prop: "cylinder_no"
+    },
+    {
+        label : "Cylinder Name",
+        sortable: true,
+        prop: "cylinder_name"
+    },
+    {
+        label : "Deposit Method",
+        sortable: true,
+        prop: "deposit_method"
+    },
+    {
+        label : "Deposit Date",
+        sortable: true,
+        prop: "deposit_date"
+    },
+    {
+        label : "Deposit Amount",
+        sortable: true,
+        prop: "deposit_amount"
+    },
+    {
+        label : "End Date",
+        sortable: true,
+        prop: "end_date"
+    },
+    {
+        label : "Status",
+        sortable: true,
+        prop: "status"
+    },
+    {
+        label : "Upgrade To",
+        sortable: true,
+        prop: "upgrade_to"
+    },
+    {
+        label : "Upgrade_date",
+        sortable: true,
+        prop: "upgrade_date"
+    }
+]
+export const customerDeposits = [
+    {
+        cylinder_no: "01",
+        cylinder_name : "3kg|steel",
+        deposit_method:"Cash",
+        deposit_amount : "GHs 10",
+        deposit_date : "2023/12/15",
+        end_date : "2024/12/15",
+        status : [
+            {
+            status : true,
+            content : "Active"
+            },
+        ],
+        upgrade_to : "6kg|Steel",
+        upgrade_date : "2024/01/20"
+    },
+    {
+        cylinder_no: "02",
+        cylinder_name : "12kg|comp",
+        deposit_method:"Cylinder",
+        deposit_amount : "GHs 75",
+        deposit_date : "2023/12/20",
+        end_date : "2024/12/20",
+        status : [
+            {
+            status : true,
+            content : "Active"
+            },
+        ],
+        upgrade_to : "",
+        upgrade_date : ""
+    },
+    {
+        cylinder_no: "03",
+        cylinder_name : "6kg|comp",
+        deposit_method:"Cash",
+        deposit_amount : "GHs 60",
+        deposit_date : "2023/12/15",
+        end_date : "2024/12/15",
+        status : [
+            {
+            status : false,
+            content : "Inactive"
+            },
+        ],
+        upgrade_to : "",
+        upgrade_date : ""
+    }
+]
+export const customerRefundBalance = [
+    {
+        order_id:'C101',
+        product_return : "LPG regular",
+        product_id:"P01",
+        return_date:"2023/12/15",
+        return_amount : "GHS 35",
+        total_balance: "GHS 35"
+    },
+    {
+        order_id:'C102',
+        product_return : "2 burner gas cooker",
+        product_id:"P02",
+        return_date:"2023/12/20",
+        return_amount : "GHS 175",
+        total_balance: "GHS 210"
+    },
+    {
+        order_id:'C102',
+        product_return : "LPG hose",
+        product_id:"P03",
+        return_date:"2023/12/15",
+        return_amount : "GHS 95",
+        total_balance: "GHS 305"
+    }
+]
+
+export const customerComplaints = [
+    {
+        complaint_no : "C101",
+        date : "2020/12/15",
+        order_id:"C1234",
+        product:"3Kg|Steel",
+        complaint_type : "Cylonder damage",
+        status : "Resolved",
+        case_priority : "High"
+    },
+    {
+        complaint_no : "C102",
+        date : "2020/12/15",
+        order_id:"C1234",
+        product:"6Kg|Steel",
+        complaint_type : "Deley delivery",
+        status : "Unresolved",
+        case_priority : "Medium"
+    },
+    {
+        complaint_no : "C103",
+        date : "2020/12/15",
+        order_id:"C1234",
+        product:"3Kg|Steel",
+        complaint_type : "Refund issue",
+        status : "Unresolved",
+        case_priority : "Loe"
+    }
+]
+export const customerCancelledOrder = [
+    {
+        order_id: "101",
+        order_date: "2023/12/15",
+        product:"3kg|steel,6kg|steel(2)",
+        cancel_reason:"Chnaged my mind",
+        initiated_by:"Customer",
+        penalty_amount:"Ghs 60"
+    },
+    {
+        order_id: "102",
+        order_date: "2023/12/15",
+        product:"3kg|steel,6kg|steel(2)",
+        cancel_reason:"Chnaged my mind",
+        initiated_by:"Customer",
+        penalty_amount:"Ghs 60"
+    },
+    {
+        order_id: "103",
+        order_date: "2023/12/15",
+        product:"3kg|steel,6kg|steel(2)",
+        cancel_reason:"Chnaged my mind",
+        initiated_by:"Customer",
+        penalty_amount:"Ghs 60"
+    },
+    {
+        order_id: "104",
+        order_date: "2023/12/15",
+        product:"3kg|steel,6kg|steel(2)",
+        cancel_reason:"Chnaged my mind",
+        initiated_by:"Customer",
+        penalty_amount:"Ghs 60"
+    },
+    {
+        order_id: "105",
+        order_date: "2023/12/15",
+        product:"3kg|steel,6kg|steel(2)",
+        cancel_reason:"Chnaged my mind",
+        initiated_by:"Customer",
+        penalty_amount:"Ghs 60"
+    },
+]
+export const customerAllOrders = [
+    {
+        order_id: 101,
+        order_date: "2023/12/15",
+        product: "3kg|steel,6kg|steel(2)",
+        status:[
+            {
+                order_status: false,
+                content: "Pending"
+            }
+        ],
+        order_total : "GHs 190",
+        payment_type : "Bank card"
+    },
+    {
+        order_id: 102,
+        order_date: "2023/12/15",
+        product: "3kg|steel,6kg|steel(2)",
+        status:[
+            {
+                order_status: false,
+                content: "Pending"
+            }
+        ],
+        order_total : "GHs 190",
+        payment_type : "Mobile money"
+    },
+    {
+        order_id: 103,
+        order_date: "2023/12/15",
+        product: "3kg|steel,6kg|steel(2)",
+        status:[
+            {
+                order_status: true,
+                content: "Delivered"
+            }
+        ],
+        order_total : "GHs 190",
+        payment_type : "Bank card"
+    },
+    {
+        order_id: 104,
+        order_date: "2023/12/15",
+        product: "3kg|steel,6kg|steel(2)",
+        status:[
+            {
+                order_status: true,
+                content: "Delivered"
+            }
+        ],
+        order_total : "GHs 190",
+        payment_type : "Bank card"
+    },
+    {
+        order_id: 105,
+        order_date: "2023/12/15",
+        product: "3kg|steel,6kg|steel(2)",
+        status:[
+            {
+                order_status: true,
+                content: "Delivered"
+            }
+        ],
+        order_total : "GHs 190",
+        payment_type : "Bank card"
+    }
+]
 
 export const complaints = [
     {
@@ -157,7 +556,7 @@ export const complaints = [
         name: [
             {
                 content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -179,7 +578,7 @@ export const complaints = [
         name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -195,7 +594,7 @@ export const complaints = [
         name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/5/d/7/f/713e2adb889ba0288eaeaf6870ffb74a362c332eb5b39565b2f117080184/16726594728082.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AjIh95FjQ16kdytndf_4eiLbIVnCDGtPFWvxrwxS8jgydMUyBGnqTeNNt5pB1zXp7RwFLd2zm5FIrhmjSPsK9Sw"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Western",
@@ -211,7 +610,7 @@ export const complaints = [
         name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/1/0/d/1/1c44b04b9bd7fe88fdd8805a74ab15eef6a39cdd13231d06a5eff65ff83e/passport_photo_priyanka_adik.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AxEqle-pWp5TB7zVhmJuWdaryTkGssxAJomZq1E6C2Ydodvi0eTApmRjPN9oFEFeqqy0y0Mp6DhO6wHLhkdbROg"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -229,7 +628,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -237,7 +636,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         status: [
@@ -251,8 +650,8 @@ export const latestOrders = [
         order_id: "AA1234",
         order_status: [
             {
-                order_status: false,
-                content: "Pending",
+                order_status: true,
+                content: "Delivered",
             }
         ],
     },
@@ -261,7 +660,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -269,7 +668,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/08/05",
@@ -277,8 +676,8 @@ export const latestOrders = [
         order_id: "AA1234",
         order_status: [
             {
-                order_status: false,
-                content: "Pending",
+                order_status: true,
+                content: "Delivered",
             }
         ],
     },
@@ -287,7 +686,7 @@ export const latestOrders = [
         name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/5/d/7/f/713e2adb889ba0288eaeaf6870ffb74a362c332eb5b39565b2f117080184/16726594728082.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AjIh95FjQ16kdytndf_4eiLbIVnCDGtPFWvxrwxS8jgydMUyBGnqTeNNt5pB1zXp7RwFLd2zm5FIrhmjSPsK9Sw"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Western",
@@ -295,7 +694,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/5/d/7/f/713e2adb889ba0288eaeaf6870ffb74a362c332eb5b39565b2f117080184/16726594728082.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AjIh95FjQ16kdytndf_4eiLbIVnCDGtPFWvxrwxS8jgydMUyBGnqTeNNt5pB1zXp7RwFLd2zm5FIrhmjSPsK9Sw"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/08/05",
@@ -313,7 +712,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/1/0/d/1/1c44b04b9bd7fe88fdd8805a74ab15eef6a39cdd13231d06a5eff65ff83e/passport_photo_priyanka_adik.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AxEqle-pWp5TB7zVhmJuWdaryTkGssxAJomZq1E6C2Ydodvi0eTApmRjPN9oFEFeqqy0y0Mp6DhO6wHLhkdbROg"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -321,7 +720,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/1/0/d/1/1c44b04b9bd7fe88fdd8805a74ab15eef6a39cdd13231d06a5eff65ff83e/passport_photo_priyanka_adik.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AxEqle-pWp5TB7zVhmJuWdaryTkGssxAJomZq1E6C2Ydodvi0eTApmRjPN9oFEFeqqy0y0Mp6DhO6wHLhkdbROg"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/12/05",
@@ -339,7 +738,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Dziedzorm Doe",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -347,7 +746,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Dziedzorm Doe",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/08/05",
@@ -365,7 +764,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/5/b/3/a/4a4afa6630ec7fbb4e3382dd8893131c3dfdaed06c450c16fbb5b1f65455/employee_logo_352e9deb1f444b65bcff41f0f287e78e787311.png.80x80_q85_crop.png?token=ZPWduw%3AainT12BQkbIqpNf5Sx-tCAKa9Ft7uXR4vTxX3dbajsy9rFJRnTOjK-KfiVGtHisTNVsMWpEY5wYnNeJUObQIWQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Western",
@@ -373,7 +772,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/5/b/3/a/4a4afa6630ec7fbb4e3382dd8893131c3dfdaed06c450c16fbb5b1f65455/employee_logo_352e9deb1f444b65bcff41f0f287e78e787311.png.80x80_q85_crop.png?token=ZPWduw%3AainT12BQkbIqpNf5Sx-tCAKa9Ft7uXR4vTxX3dbajsy9rFJRnTOjK-KfiVGtHisTNVsMWpEY5wYnNeJUObQIWQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/08/05",
@@ -391,7 +790,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/0/f/f/5/7bad725ed2e262fa802a6fdac45b73b8056d069a01e8eb47a58715cc8594/2c2edf69-9877-43cc-9cd8-2ad6f878dffe.jpg.80x80_q85_crop.jpg?token=ZPWduw%3Ascco_CtW0jX1X6dtk2lVNdLp8jClr0fKFNQxkwg199W29WleKc5mk5E6bHu5c5r_2vkMqIQFxyhmeEuQ8cWrsg"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -399,7 +798,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/0/f/f/5/7bad725ed2e262fa802a6fdac45b73b8056d069a01e8eb47a58715cc8594/2c2edf69-9877-43cc-9cd8-2ad6f878dffe.jpg.80x80_q85_crop.jpg?token=ZPWduw%3Ascco_CtW0jX1X6dtk2lVNdLp8jClr0fKFNQxkwg199W29WleKc5mk5E6bHu5c5r_2vkMqIQFxyhmeEuQ8cWrsg"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/12/05",
@@ -417,7 +816,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -425,7 +824,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/08/05",
@@ -443,7 +842,7 @@ export const latestOrders = [
         name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/f/0/c/f/44310b7f150ee54b3ead22f4c0e2f3ec1a74ad415152ef32d132e3412506/vishal_image.jpg.80x80_q85_crop.jpg?token=ZPWduw%3A2-WfirFBTncQe_L1fDVXraFDMaEK4AxM3Kh8TyYE1Qv5RxHOEZH-S4yp0tTWLykusLqsGAGMxO082noDnSXtRQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Western",
@@ -451,7 +850,7 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/f/0/c/f/44310b7f150ee54b3ead22f4c0e2f3ec1a74ad415152ef32d132e3412506/vishal_image.jpg.80x80_q85_crop.jpg?token=ZPWduw%3A2-WfirFBTncQe_L1fDVXraFDMaEK4AxM3Kh8TyYE1Qv5RxHOEZH-S4yp0tTWLykusLqsGAGMxO082noDnSXtRQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/08/05",
@@ -469,7 +868,7 @@ export const latestOrders = [
         name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -477,374 +876,10 @@ export const latestOrders = [
         distributor_name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         order_date: "2023/12/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "111",
-        name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
-            }
-        ],
-        zone: "Northen",
-        product_order: "12kg|comp,6kg|comp(2)",
-        distributor_name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "112",
-        name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        zone: "Western",
-        product_order: "3kg|steel(2),6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "101",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        zone: "Northen",
-        product_order: "3kg|steel,6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        order_date: "2023/12/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "102",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/b/e/f/c/226ce6fcd199b2126cbe61cd896e2e0064863694614230f95ee5fcf9af44/abhijeet-photo.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6xdEY8rT0zBiToA-0blOpH6YD5pE1DBuIyhWtbSr33Ig5_XzLotLsw_qU3AyTuMLpwMCqPfOb6m8y7k_5Wq6Q"
-            }
-        ],
-        zone: "Northen",
-        product_order: "12kg|comp,6kg|comp(2)",
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/b/e/f/c/226ce6fcd199b2126cbe61cd896e2e0064863694614230f95ee5fcf9af44/abhijeet-photo.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6xdEY8rT0zBiToA-0blOpH6YD5pE1DBuIyhWtbSr33Ig5_XzLotLsw_qU3AyTuMLpwMCqPfOb6m8y7k_5Wq6Q"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "103",
-        name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/c/5/5/f/3912cb3cfa54175d0ac606d99fa1057a8e054ac3d8c8f562f9d45c5ec400/a.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Ahr6j73-aaDqwxGqoAQNwmRKu8wM1bVbHmgzGVxMEvwIJptvGIyLal5dJ-eVOk0JjDN1cGM4WODTXBaCZyIblDQ"
-            }
-        ],
-        zone: "Western",
-        product_order: "3kg|steel(2),6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/c/5/5/f/3912cb3cfa54175d0ac606d99fa1057a8e054ac3d8c8f562f9d45c5ec400/a.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Ahr6j73-aaDqwxGqoAQNwmRKu8wM1bVbHmgzGVxMEvwIJptvGIyLal5dJ-eVOk0JjDN1cGM4WODTXBaCZyIblDQ"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "104",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/a/5/f/76f25406a66154a892596753a6906fc50f32a406caa7234d45e82a7345af/img-20210327-wa0012.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Af9w82i2-OIPsxJCeCMkpa-2y4macn6Tlddk8FCdpUWOzt6zVNCW8FsiVqqcmLHAy7ofhVH_8wPrBPJ8aIXllLw"
-            }
-        ],
-        zone: "Northen",
-        product_order: "3kg|steel,6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/a/5/f/76f25406a66154a892596753a6906fc50f32a406caa7234d45e82a7345af/img-20210327-wa0012.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Af9w82i2-OIPsxJCeCMkpa-2y4macn6Tlddk8FCdpUWOzt6zVNCW8FsiVqqcmLHAy7ofhVH_8wPrBPJ8aIXllLw"
-            }
-        ],
-        order_date: "2023/12/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "105",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/8/f/f/0/f0b49a33a08c236c95fffe37211ad517b72930e68e4d62b27b25adce6517/whatsapp-image-2023-06-12-at-123114-pm.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3ATjZypHmLc9cHRilfT63126oxugufBrKpS-IZKJCrnb2cVpk3x5N7IOkSJ8D71p_Dmg3Pdx5rrK77hEngdZaQWQ"
-            }
-        ],
-        zone: "Northen",
-        product_order: "12kg|comp,6kg|comp(2)",
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/8/f/f/0/f0b49a33a08c236c95fffe37211ad517b72930e68e4d62b27b25adce6517/whatsapp-image-2023-06-12-at-123114-pm.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3ATjZypHmLc9cHRilfT63126oxugufBrKpS-IZKJCrnb2cVpk3x5N7IOkSJ8D71p_Dmg3Pdx5rrK77hEngdZaQWQ"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "106",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/0/a/4/7/2c6eb52dc3bfc0115a6052a24e3e539428a0a26686d37d91bf6921aa44f1/dg.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AjSgRgZGlSceUMCadMERsQFrXBk4Xsr7XmQSCW1TKXjnYuUfPMTgESPC7TtIEMY0cAARlt1UUNNXhIFm9eyRMhA"
-            }
-        ],
-        zone: "Western",
-        product_order: "3kg|steel(2),6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/0/a/4/7/2c6eb52dc3bfc0115a6052a24e3e539428a0a26686d37d91bf6921aa44f1/dg.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AjSgRgZGlSceUMCadMERsQFrXBk4Xsr7XmQSCW1TKXjnYuUfPMTgESPC7TtIEMY0cAARlt1UUNNXhIFm9eyRMhA"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "107",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/d/0/2/7/1a449599e41648a881dc6b7029256ee8f22af67b429bf73016ccb47cf5eb/img_20230331_222150.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3AS9UqrXwww-Z6Q_XRBLR4vu-xUiZjAPOPz9jbnss3IZkEfmgOVPGaGwjLcKItfTeiYowKGR6HcGiVPNEhFgJQ9w"
-            }
-        ],
-        zone: "Northen",
-        product_order: "3kg|steel,6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/d/0/2/7/1a449599e41648a881dc6b7029256ee8f22af67b429bf73016ccb47cf5eb/img_20230331_222150.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3AS9UqrXwww-Z6Q_XRBLR4vu-xUiZjAPOPz9jbnss3IZkEfmgOVPGaGwjLcKItfTeiYowKGR6HcGiVPNEhFgJQ9w"
-            }
-        ],
-        order_date: "2023/12/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "108",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/c/9/f/4/e4c59b9760bf0d52cff38b481db3b740038f1cfa6bbfe508c0f676125bb8/harshit.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6FXpLri3LWgSvwMBqYzC3yMJc7nhQpgvHt4Sojn4_BDdBU8NgAkL5BskiKw9Ki1kgxOVo6m59bwxPYFTJO0SQ"
-            }
-        ],
-        zone: "Northen",
-        product_order: "12kg|comp,6kg|comp(2)",
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/c/9/f/4/e4c59b9760bf0d52cff38b481db3b740038f1cfa6bbfe508c0f676125bb8/harshit.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6FXpLri3LWgSvwMBqYzC3yMJc7nhQpgvHt4Sojn4_BDdBU8NgAkL5BskiKw9Ki1kgxOVo6m59bwxPYFTJO0SQ"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "109",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
-            }
-        ],
-        zone: "Western",
-        product_order: "3kg|steel(2),6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "110",
-        name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/e/4/e/e/b7af1d4f626e88108591d1c640b33e4ada38eb7dffa571cd6bea20c9f875/70866732_10206628315942161_1006551475880460288_n.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3A9yRyy5SV6HUwj-ImTT2_LuNpv3LczyWToMrlFtkZI5bqxxbatCBjWIna3xFRSz5nykMt7eSnB_dumxTucnOArw"
-            }
-        ],
-        zone: "Northen",
-        product_order: "3kg|steel,6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/e/4/e/e/b7af1d4f626e88108591d1c640b33e4ada38eb7dffa571cd6bea20c9f875/70866732_10206628315942161_1006551475880460288_n.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3A9yRyy5SV6HUwj-ImTT2_LuNpv3LczyWToMrlFtkZI5bqxxbatCBjWIna3xFRSz5nykMt7eSnB_dumxTucnOArw"
-            }
-        ],
-        order_date: "2023/12/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "111",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/7/8/d/d1df548c8c8f29436a2ca914243629fc75393f589facfd579c8f15efc2db/p.jfif.80x80_q85_crop.jpg?token=ZPWduw%3Ar3ZwPsK_glLrrz0ZB0r3Mlqi8u88tEbIiwM697-nrrcnNbUPREv2I7URwlIqY1QFem1buRhsg_8IpOmGC1JV5w"
-            }
-        ],
-        zone: "Northen",
-        product_order: "12kg|comp,6kg|comp(2)",
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/7/8/d/d1df548c8c8f29436a2ca914243629fc75393f589facfd579c8f15efc2db/p.jfif.80x80_q85_crop.jpg?token=ZPWduw%3Ar3ZwPsK_glLrrz0ZB0r3Mlqi8u88tEbIiwM697-nrrcnNbUPREv2I7URwlIqY1QFem1buRhsg_8IpOmGC1JV5w"
-            }
-        ],
-        order_date: "2023/08/05",
-        total_amount: "GHS 556",
-        order_id: "AA1234",
-        order_status: [
-            {
-                order_status: false,
-                content: "Pending",
-            }
-        ],
-    },
-    {
-        id: "112",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZPWduw%3AYKD6fbUV5-JC8A9-lDLaKjOuiEde-XevDayGtiJ-R2Psuxvrp0EB6tdY3Oz5BxdYs11xiDM0A_PS2Im-LO3QFA"
-            }
-        ],
-        zone: "Western",
-        product_order: "3kg|steel(2),6kg|steel(2)",
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZPWduw%3AYKD6fbUV5-JC8A9-lDLaKjOuiEde-XevDayGtiJ-R2Psuxvrp0EB6tdY3Oz5BxdYs11xiDM0A_PS2Im-LO3QFA"
-            }
-        ],
-        order_date: "2023/08/05",
         total_amount: "GHS 556",
         order_id: "AA1234",
         order_status: [
@@ -862,7 +897,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -878,7 +913,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/12/05",
@@ -888,7 +923,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -904,7 +939,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/08/05",
@@ -914,7 +949,7 @@ export const allCustomers = [
         name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/5/d/7/f/713e2adb889ba0288eaeaf6870ffb74a362c332eb5b39565b2f117080184/16726594728082.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AjIh95FjQ16kdytndf_4eiLbIVnCDGtPFWvxrwxS8jgydMUyBGnqTeNNt5pB1zXp7RwFLd2zm5FIrhmjSPsK9Sw"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Western",
@@ -930,7 +965,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/5/d/7/f/713e2adb889ba0288eaeaf6870ffb74a362c332eb5b39565b2f117080184/16726594728082.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AjIh95FjQ16kdytndf_4eiLbIVnCDGtPFWvxrwxS8jgydMUyBGnqTeNNt5pB1zXp7RwFLd2zm5FIrhmjSPsK9Sw"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/08/05",
@@ -940,7 +975,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/1/0/d/1/1c44b04b9bd7fe88fdd8805a74ab15eef6a39cdd13231d06a5eff65ff83e/passport_photo_priyanka_adik.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AxEqle-pWp5TB7zVhmJuWdaryTkGssxAJomZq1E6C2Ydodvi0eTApmRjPN9oFEFeqqy0y0Mp6DhO6wHLhkdbROg"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -956,7 +991,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/1/0/d/1/1c44b04b9bd7fe88fdd8805a74ab15eef6a39cdd13231d06a5eff65ff83e/passport_photo_priyanka_adik.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AxEqle-pWp5TB7zVhmJuWdaryTkGssxAJomZq1E6C2Ydodvi0eTApmRjPN9oFEFeqqy0y0Mp6DhO6wHLhkdbROg"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/12/05",
@@ -966,7 +1001,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Dziedzorm Doe",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -982,7 +1017,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Dziedzorm Doe",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/08/05",
@@ -992,7 +1027,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/5/b/3/a/4a4afa6630ec7fbb4e3382dd8893131c3dfdaed06c450c16fbb5b1f65455/employee_logo_352e9deb1f444b65bcff41f0f287e78e787311.png.80x80_q85_crop.png?token=ZPWduw%3AainT12BQkbIqpNf5Sx-tCAKa9Ft7uXR4vTxX3dbajsy9rFJRnTOjK-KfiVGtHisTNVsMWpEY5wYnNeJUObQIWQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Western",
@@ -1008,7 +1043,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Yaw Boafo",
-                url: "https://media-protected.taiga.io/user/5/b/3/a/4a4afa6630ec7fbb4e3382dd8893131c3dfdaed06c450c16fbb5b1f65455/employee_logo_352e9deb1f444b65bcff41f0f287e78e787311.png.80x80_q85_crop.png?token=ZPWduw%3AainT12BQkbIqpNf5Sx-tCAKa9Ft7uXR4vTxX3dbajsy9rFJRnTOjK-KfiVGtHisTNVsMWpEY5wYnNeJUObQIWQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/08/05",
@@ -1018,7 +1053,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/0/f/f/5/7bad725ed2e262fa802a6fdac45b73b8056d069a01e8eb47a58715cc8594/2c2edf69-9877-43cc-9cd8-2ad6f878dffe.jpg.80x80_q85_crop.jpg?token=ZPWduw%3Ascco_CtW0jX1X6dtk2lVNdLp8jClr0fKFNQxkwg199W29WleKc5mk5E6bHu5c5r_2vkMqIQFxyhmeEuQ8cWrsg"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -1034,7 +1069,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/0/f/f/5/7bad725ed2e262fa802a6fdac45b73b8056d069a01e8eb47a58715cc8594/2c2edf69-9877-43cc-9cd8-2ad6f878dffe.jpg.80x80_q85_crop.jpg?token=ZPWduw%3Ascco_CtW0jX1X6dtk2lVNdLp8jClr0fKFNQxkwg199W29WleKc5mk5E6bHu5c5r_2vkMqIQFxyhmeEuQ8cWrsg"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/12/05",
@@ -1044,7 +1079,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -1060,7 +1095,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/08/05",
@@ -1070,7 +1105,7 @@ export const allCustomers = [
         name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/f/0/c/f/44310b7f150ee54b3ead22f4c0e2f3ec1a74ad415152ef32d132e3412506/vishal_image.jpg.80x80_q85_crop.jpg?token=ZPWduw%3A2-WfirFBTncQe_L1fDVXraFDMaEK4AxM3Kh8TyYE1Qv5RxHOEZH-S4yp0tTWLykusLqsGAGMxO082noDnSXtRQ"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Western",
@@ -1086,7 +1121,7 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/f/0/c/f/44310b7f150ee54b3ead22f4c0e2f3ec1a74ad415152ef32d132e3412506/vishal_image.jpg.80x80_q85_crop.jpg?token=ZPWduw%3A2-WfirFBTncQe_L1fDVXraFDMaEK4AxM3Kh8TyYE1Qv5RxHOEZH-S4yp0tTWLykusLqsGAGMxO082noDnSXtRQ"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/08/05",
@@ -1096,7 +1131,7 @@ export const allCustomers = [
         name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url: "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         zone: "Northen",
@@ -1112,374 +1147,10 @@ export const allCustomers = [
         distributor_name: [
             {
                 content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
+                url : "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
             }
         ],
         join_date: "2023/12/05",
-    },
-    {
-        id: "111",
-        name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
-            }
-        ],
-        zone: "Northen",
-        email: "derricknwafor@gmail.com",
-        phone: "0244400555",
-        latest_order: "12kg|comp,6kg|comp(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/1/f/b/5/06c64256092272a9e02af953f7bcda0e97a01a73d84cf252f29300464ecd/img_20230109_100352_149.jpg.80x80_q85_crop.jpg?token=ZPWduw%3AU7UZVLykf9m8cXnTXY7-FbvQYDFH-ioFAD6FZ1KtS_KZJy1hkd4jLVW7qgG1FnVZKf_PqEeBt10uZ_N6mCiesA"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "112",
-        name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        zone: "Western",
-        email: "kamaldeen@gmail.com",
-        phone: "0266404400",
-        latest_order: "3kg|steel(2),6kg|steel(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Kamal Deen",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "101",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        zone: "Northen",
-        email: "yawboafo@gmail.com",
-        phone: "0277400000",
-        latest_order: "3kg|steel,6kg|steel(2)",
-        status: [
-            {
-                status: true,
-                content: "Active",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/4/c/d/a/ac26fb36644c6ec80b1087044c4bc7e1413dd7e52cc85402c553fb6732dd/20230302-150121__01.jpg.80x80_q85_crop.jpg?token=ZPA1Hg%3AjXRLPPMtdgE6o9p1Iwf-JI416zt0CGJZPRwaT09gy6UKmdUZQ3lHoJZY-g7KL5c49hNX14-1f0wDF55CGwGlYQ"
-            }
-        ],
-        join_date: "2023/12/05",
-    },
-    {
-        id: "102",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/b/e/f/c/226ce6fcd199b2126cbe61cd896e2e0064863694614230f95ee5fcf9af44/abhijeet-photo.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6xdEY8rT0zBiToA-0blOpH6YD5pE1DBuIyhWtbSr33Ig5_XzLotLsw_qU3AyTuMLpwMCqPfOb6m8y7k_5Wq6Q"
-            }
-        ],
-        zone: "Northen",
-        email: "derricknwafor@gmail.com",
-        phone: "0244400555",
-        latest_order: "12kg|comp,6kg|comp(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/b/e/f/c/226ce6fcd199b2126cbe61cd896e2e0064863694614230f95ee5fcf9af44/abhijeet-photo.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6xdEY8rT0zBiToA-0blOpH6YD5pE1DBuIyhWtbSr33Ig5_XzLotLsw_qU3AyTuMLpwMCqPfOb6m8y7k_5Wq6Q"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "103",
-        name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/c/5/5/f/3912cb3cfa54175d0ac606d99fa1057a8e054ac3d8c8f562f9d45c5ec400/a.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Ahr6j73-aaDqwxGqoAQNwmRKu8wM1bVbHmgzGVxMEvwIJptvGIyLal5dJ-eVOk0JjDN1cGM4WODTXBaCZyIblDQ"
-            }
-        ],
-        zone: "Western",
-        email: "kamaldeen@gmail.com",
-        phone: "0266404400",
-        latest_order: "3kg|steel(2),6kg|steel(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/c/5/5/f/3912cb3cfa54175d0ac606d99fa1057a8e054ac3d8c8f562f9d45c5ec400/a.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Ahr6j73-aaDqwxGqoAQNwmRKu8wM1bVbHmgzGVxMEvwIJptvGIyLal5dJ-eVOk0JjDN1cGM4WODTXBaCZyIblDQ"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "104",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/a/5/f/76f25406a66154a892596753a6906fc50f32a406caa7234d45e82a7345af/img-20210327-wa0012.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Af9w82i2-OIPsxJCeCMkpa-2y4macn6Tlddk8FCdpUWOzt6zVNCW8FsiVqqcmLHAy7ofhVH_8wPrBPJ8aIXllLw"
-            }
-        ],
-        zone: "Northen",
-        email: "yawboafo@gmail.com",
-        phone: "0277400000",
-        latest_order: "3kg|steel,6kg|steel(2)",
-        status: [
-            {
-                status: true,
-                content: "Active",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/a/5/f/76f25406a66154a892596753a6906fc50f32a406caa7234d45e82a7345af/img-20210327-wa0012.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3Af9w82i2-OIPsxJCeCMkpa-2y4macn6Tlddk8FCdpUWOzt6zVNCW8FsiVqqcmLHAy7ofhVH_8wPrBPJ8aIXllLw"
-            }
-        ],
-        join_date: "2023/12/05",
-    },
-    {
-        id: "105",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/8/f/f/0/f0b49a33a08c236c95fffe37211ad517b72930e68e4d62b27b25adce6517/whatsapp-image-2023-06-12-at-123114-pm.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3ATjZypHmLc9cHRilfT63126oxugufBrKpS-IZKJCrnb2cVpk3x5N7IOkSJ8D71p_Dmg3Pdx5rrK77hEngdZaQWQ"
-            }
-        ],
-        zone: "Northen",
-        email: "derricknwafor@gmail.com",
-        phone: "0244400555",
-        latest_order: "12kg|comp,6kg|comp(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/8/f/f/0/f0b49a33a08c236c95fffe37211ad517b72930e68e4d62b27b25adce6517/whatsapp-image-2023-06-12-at-123114-pm.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3ATjZypHmLc9cHRilfT63126oxugufBrKpS-IZKJCrnb2cVpk3x5N7IOkSJ8D71p_Dmg3Pdx5rrK77hEngdZaQWQ"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "106",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/0/a/4/7/2c6eb52dc3bfc0115a6052a24e3e539428a0a26686d37d91bf6921aa44f1/dg.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AjSgRgZGlSceUMCadMERsQFrXBk4Xsr7XmQSCW1TKXjnYuUfPMTgESPC7TtIEMY0cAARlt1UUNNXhIFm9eyRMhA"
-            }
-        ],
-        zone: "Western",
-        email: "kamaldeen@gmail.com",
-        phone: "0266404400",
-        latest_order: "3kg|steel(2),6kg|steel(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/0/a/4/7/2c6eb52dc3bfc0115a6052a24e3e539428a0a26686d37d91bf6921aa44f1/dg.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AjSgRgZGlSceUMCadMERsQFrXBk4Xsr7XmQSCW1TKXjnYuUfPMTgESPC7TtIEMY0cAARlt1UUNNXhIFm9eyRMhA"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "107",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/d/0/2/7/1a449599e41648a881dc6b7029256ee8f22af67b429bf73016ccb47cf5eb/img_20230331_222150.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3AS9UqrXwww-Z6Q_XRBLR4vu-xUiZjAPOPz9jbnss3IZkEfmgOVPGaGwjLcKItfTeiYowKGR6HcGiVPNEhFgJQ9w"
-            }
-        ],
-        zone: "Northen",
-        email: "yawboafo@gmail.com",
-        phone: "0277400000",
-        latest_order: "3kg|steel,6kg|steel(2)",
-        status: [
-            {
-                status: true,
-                content: "Active",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/d/0/2/7/1a449599e41648a881dc6b7029256ee8f22af67b429bf73016ccb47cf5eb/img_20230331_222150.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3AS9UqrXwww-Z6Q_XRBLR4vu-xUiZjAPOPz9jbnss3IZkEfmgOVPGaGwjLcKItfTeiYowKGR6HcGiVPNEhFgJQ9w"
-            }
-        ],
-        join_date: "2023/12/05",
-    },
-    {
-        id: "108",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/c/9/f/4/e4c59b9760bf0d52cff38b481db3b740038f1cfa6bbfe508c0f676125bb8/harshit.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6FXpLri3LWgSvwMBqYzC3yMJc7nhQpgvHt4Sojn4_BDdBU8NgAkL5BskiKw9Ki1kgxOVo6m59bwxPYFTJO0SQ"
-            }
-        ],
-        zone: "Northen",
-        email: "derricknwafor@gmail.com",
-        phone: "0244400555",
-        latest_order: "12kg|comp,6kg|comp(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/c/9/f/4/e4c59b9760bf0d52cff38b481db3b740038f1cfa6bbfe508c0f676125bb8/harshit.jpeg.80x80_q85_crop.jpg?token=ZPWdQA%3AJ6FXpLri3LWgSvwMBqYzC3yMJc7nhQpgvHt4Sojn4_BDdBU8NgAkL5BskiKw9Ki1kgxOVo6m59bwxPYFTJO0SQ"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "109",
-        name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
-            }
-        ],
-        zone: "Western",
-        email: "kamaldeen@gmail.com",
-        phone: "0266404400",
-        latest_order: "3kg|steel(2),6kg|steel(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Derric Nwafor",
-                url: "https://media-protected.taiga.io/user/7/2/b/4/9c555ae1e899ce44226fe047f35b335c8b9a5eb2f4a9f2a88b7e11f7f94f/screenshot-from-2023-08-01-13-09-06.png.80x80_q85_crop.png?token=ZPWduw%3AHt2c_-zicEBW4lR8ax6HwyRMAdL7j3gAu8rkYBRGPDNhUVJt-065NN6zeGBr7LbgdkhIWIaSo26B6uF6qIrR4A"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "110",
-        name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/e/4/e/e/b7af1d4f626e88108591d1c640b33e4ada38eb7dffa571cd6bea20c9f875/70866732_10206628315942161_1006551475880460288_n.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3A9yRyy5SV6HUwj-ImTT2_LuNpv3LczyWToMrlFtkZI5bqxxbatCBjWIna3xFRSz5nykMt7eSnB_dumxTucnOArw"
-            }
-        ],
-        zone: "Northen",
-        email: "yawboafo@gmail.com",
-        phone: "0277400000",
-        latest_order: "3kg|steel,6kg|steel(2)",
-        status: [
-            {
-                status: true,
-                content: "Active",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "KamalDev Sulley Graham",
-                url: "https://media-protected.taiga.io/user/e/4/e/e/b7af1d4f626e88108591d1c640b33e4ada38eb7dffa571cd6bea20c9f875/70866732_10206628315942161_1006551475880460288_n.jpg.80x80_q85_crop.jpg?token=ZPWdQA%3A9yRyy5SV6HUwj-ImTT2_LuNpv3LczyWToMrlFtkZI5bqxxbatCBjWIna3xFRSz5nykMt7eSnB_dumxTucnOArw"
-            }
-        ],
-        join_date: "2023/12/05",
-    },
-    {
-        id: "111",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/7/8/d/d1df548c8c8f29436a2ca914243629fc75393f589facfd579c8f15efc2db/p.jfif.80x80_q85_crop.jpg?token=ZPWduw%3Ar3ZwPsK_glLrrz0ZB0r3Mlqi8u88tEbIiwM697-nrrcnNbUPREv2I7URwlIqY1QFem1buRhsg_8IpOmGC1JV5w"
-            }
-        ],
-        zone: "Northen",
-        email: "derricknwafor@gmail.com",
-        phone: "0244400555",
-        latest_order: "12kg|comp,6kg|comp(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/e/7/8/d/d1df548c8c8f29436a2ca914243629fc75393f589facfd579c8f15efc2db/p.jfif.80x80_q85_crop.jpg?token=ZPWduw%3Ar3ZwPsK_glLrrz0ZB0r3Mlqi8u88tEbIiwM697-nrrcnNbUPREv2I7URwlIqY1QFem1buRhsg_8IpOmGC1JV5w"
-            }
-        ],
-        join_date: "2023/08/05",
-    },
-    {
-        id: "112",
-        name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZPWduw%3AYKD6fbUV5-JC8A9-lDLaKjOuiEde-XevDayGtiJ-R2Psuxvrp0EB6tdY3Oz5BxdYs11xiDM0A_PS2Im-LO3QFA"
-            }
-        ],
-        zone: "Western",
-        email: "kamaldeen@gmail.com",
-        phone: "0266404400",
-        latest_order: "3kg|steel(2),6kg|steel(2)",
-        status: [
-            {
-                status: false,
-                content: "Inactive",
-            }
-        ],
-        distributor_name: [
-            {
-                content: "Yaw Graham",
-                url: "https://media-protected.taiga.io/user/3/7/8/1/763ad6fd69d24fe8be4038aae2728c686460584a83300aae73ab3b99b61b/whatsapp-image-2022-02-22-at-134707.jpeg.80x80_q85_crop.jpg?token=ZPWduw%3AYKD6fbUV5-JC8A9-lDLaKjOuiEde-XevDayGtiJ-R2Psuxvrp0EB6tdY3Oz5BxdYs11xiDM0A_PS2Im-LO3QFA"
-            }
-        ],
-        join_date: "2023/08/05",
     }
 ]
 
