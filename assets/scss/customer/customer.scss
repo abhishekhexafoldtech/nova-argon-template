@@ -486,6 +486,35 @@
     }
 }
 
+.theme_table{
+    &.el-table .el-table__cell{
+        padding: 0;
+    }
+    &.el-table th .cell{
+        padding: 12px 15px;
+        background: rgba(248, 248, 250, 0.80);
+        text-transform: uppercase;
+    }
+    &.el-table td.el-table__cell div{
+        padding: 10px 15px;
+
+        .order_status{
+            .text-warning{
+                color: #F33F22 !important;
+            }
+            .text-success{
+                color: #0A7B37 !important;
+            }
+            .del_date{
+                display: block;
+                font-size: 10px;
+                color: var(--black);
+                margin: 0;
+            }
+        }
+    }
+}
+
 /**** Style for Customer View Receipt ****/
 .view_receipt_modal.el-dialog.is-align-center {
     width: 100%;
@@ -706,3 +735,4 @@
         }
     }
 }
+

@@ -35,10 +35,9 @@
       </div>
     </div>
     <!-- table heading -->
+
+    <h4 class="page_heading mt-4 mb-3">{{ tableName }}</h4>
     <div>
-     {{ tableName }}
-    </div>
-    <div class="mt-4">
       <LazyCustomerDetail v-if="activeName==='p_detail'" />
       <LazyCustomerLatestOrder v-if="activeName==='l_order'"/>
       <LazyCustomerAllOrders v-if="activeName === 'all_orders'"/>
