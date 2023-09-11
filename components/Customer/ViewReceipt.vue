@@ -1,168 +1,84 @@
 <template>
   <div>
-    <el-button type="success" @click="dialogVisible = true"
-      >View Receipt</el-button
-    >
-    <el-dialog
-      style="border: 1px; border-radius: 15px"
-      v-model="dialogVisible"
-      width="57%"
-      close-icon
-      :before-close="handleClose"
-    >
+    <el-button type="success" @click="dialogVisible = true">View Receipt</el-button>
+    <el-dialog v-model="dialogVisible" :before-close="handleClose" :show-close="false" align-center
+      class="view_receipt_modal">
       <template #header>
-        <div class="main-section m-auto">
-          <div class="top-section d-flex justify-content-between">
-            <div>
-              <div class="header-text">Hi, {{ dynamicContent.name }}</div>
-              <div class="header-text-small">Thanks for your order!</div>
-            </div>
-            <div class="logo">
-              <img class="img-fluid" width="100" :src="Newgas" alt="logo" />
-            </div>
-          </div>
-          <hr class="mt-4 mb-4 w-85 m-auto" />
-          <el-row>
-            <el-col :xs="4" :sm="4" :md="4" :lg="4">
-              <div class="info-text ms-2">
-                <div class="info-label">Invoice number</div>
-                <div class="info-value">#{{ dynamicContent.orderNumber }}</div>
-              </div>
-            </el-col>
-            <el-col :xs="4" :sm="4" :md="3" :lg="3">
-              <div class="info-text">
-                <div class="info-label">Order ID</div>
-                <div class="info-value">{{ dynamicContent.orderID }}</div>
-              </div>
-            </el-col>
-            <el-col :xs="4" :sm="4" :md="4" :lg="4">
-              <div class="info-text">
-                <div class="info-label">Order date</div>
-                <div class="info-value">{{ dynamicContent.orderDate }}</div>
-              </div>
-            </el-col>
-            <el-col :xs="4" :sm="4" :md="7" :lg="7">
-              <div class="info-text">
-                <div class="info-label">
-                  Billed from: {{ dynamicContent.billedFrom.name }}
-                </div>
-                <div class="info-value">
-                  {{ dynamicContent.billedFrom.address }}
-                </div>
-              </div>
-            </el-col>
-            <el-col :xs="4" :sm="4" :md="6" :lg="6">
-              <div class="info-text ms-2">
-                <div class="info-label">
-                  Billed to: {{ dynamicContent.billedTo.name }}
-                </div>
-                <div class="info-value">
-                  {{ dynamicContent.billedTo.address }}
-                </div>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col class="m-auto mt-5" :xs="20" :sm="20" :md="20" :lg="20">
-              <el-table
-                :data="dynamicContent.tableData"
-                height="180"
-                :summary-method="getSummaries"
-                show-summary
-                style="width: 100%; margin-top: 20px"
-              >
-                <el-table-column prop="item" label="ITEM" width="400" />
-                <el-table-column prop="quantity" label="QUANTITY" />
-                <el-table-column prop="price" label="PRODUCT/PRICE" />
-              </el-table>
-            </el-col>
-            <el-col>
-              <div class="bank">
-                <span class="p_type"> Payment type: </span
-                ><span class="bank_card">{{ dynamicContent.paymentType }}</span>
-              </div>
-            </el-col>
-          </el-row>
+        <div>
+          <h4>Hi, {{ dynamicContent.name }}</h4>
+          <p>Thanks for your order!</p>
         </div>
+        <figure>
+          <img :src="Newgas" alt="logo" />
+        </figure>
       </template>
+      <el-row class="vr_info">
+        <el-col :xs="6" :sm="6" :md="4" :lg="4">
+          <p>
+            <span>Invoice number</span>
+            #{{ dynamicContent.orderNumber }}
+          </p>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="4" :lg="4">
+          <p>
+            <span>Order ID</span>
+            {{ dynamicContent.orderID }}
+          </p>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="4" :lg="4">
+          <p>
+            <span>Order date</span>
+            {{ dynamicContent.orderDate }}
+          </p>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="6" :lg="6">
+          <p>
+            <span>
+              Billed from: {{ dynamicContent.billedFrom.name }}
+            </span>
+            {{ dynamicContent.billedFrom.address }}
+          </p>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="6" :lg="6">
+          <p>
+            <span>
+              Billed to: {{ dynamicContent.billedTo.name }}
+            </span>
+            {{ dynamicContent.billedTo.address }}
+          </p>
+        </el-col>
+      </el-row>
+      <div class="vr_table">
+        <el-table :data="dynamicContent.tableData" :summary-method="getSummaries" show-summary>
+          <el-table-column prop="item" width="500" label="ITEM" />
+          <el-table-column prop="quantity" label="QUANTITY" />
+          <el-table-column prop="price" label="PRODUCT/PRICE" />
+        </el-table>
+        <p>Payment type:<span>{{ dynamicContent.paymentType }}</span></p>
+      </div>
 
       <template #footer>
-        <div class="ms-6">
-          <div
-            style="
-              width: 100%;
-              text-align: left;
-              color: black;
-              font-size: 20px;
-              font-family: Montserrat;
-              font-weight: 600;
-              line-height: 27.4px;
-              word-wrap: break-word;
-            "
-          >
-            Thank you!
-          </div>
-          <div
-            style="
-              width: 100%;
-              text-align: left;
-              color: #7b809a;
-              font-size: 14px;
-              font-family: Montserrat;
-              font-weight: 400;
-              line-height: 21px;
-              word-wrap: break-word;
-            "
-          >
-            If you encounter any issues related to the invoice you can contact
-            us at:
-          </div>
-          <div style="width: 100%; text-align: left">
-            <span
-              style="
-                color: #7b809a;
-                font-size: 16px;
-                font-family: Montserrat;
-                font-weight: 600;
-                line-height: 26px;
-                word-wrap: break-word;
-              "
-              >email:</span
-            ><span
-              style="
-                color: #172b4d;
-                font-size: 16px;
-                font-family: Montserrat;
-                font-weight: 600;
-                line-height: 26px;
-                word-wrap: break-word;
-              "
-            >
-            </span
-            ><span
-              style="
-                color: black;
-                font-size: 16px;
-                font-family: Montserrat;
-                font-weight: 600;
-                line-height: 26px;
-                word-wrap: break-word;
-              "
-              >support@nova.com</span
-            >
-          </div>
-        </div>
-        <span class="dialog-footer">
-          <el-button class="btn" @click="dialogVisible = false">
-            <img :src="Email" alt="email" />
-            <span class="ms-1">Send as Email</span>
-          </el-button>
-          <el-button class="btn bg-success text-white" @click="generatePDF"
-            ><img :src="Download" alt="img" /><span class="ms-1"
-              >Download</span
-            ></el-button
-          >
-        </span>
+        <el-row>
+          <el-col :xs="24" :sm="24" :md="10" :lg="10">
+            <div class="vr_f_info">
+              <h4>Thank you!</h4>
+              <p>If you encounter any issues related to the invoice you can contact us at:</p>
+              <h5>email:<span>support@nova.com</span></h5>
+            </div>
+          </el-col>
+          <el-col :xs="24" :sm="24" :md="14" :lg="14">
+            <div class="vr_action">
+              <button class="btn btn_email" @click="dialogVisible = false">
+                <i class="ri-mail-line"></i>
+                Send as Email
+              </button>
+              <button class="btn btn-primary" @click="generatePDF">
+                <i class="ri-download-2-line"></i>
+                Download
+              </button>
+            </div>
+          </el-col>
+        </el-row>
       </template>
     </el-dialog>
   </div>
@@ -205,7 +121,27 @@ const dynamicContent = {
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const generatePDF = () => {
+//convert image into base6
+const loadImageAndConvertToDataUrl = async (imagePath) => {
+  try {
+    const response = await fetch(imagePath);
+    const blob = await response.blob();
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  } catch (error) {
+    console.error("Error loading image:", error);
+    return null;
+  }
+};
+
+//generate pdf function
+const generatePDF = async () => {
   const pdfStyles = {
     header: {
       fontSize: "20",
@@ -216,19 +152,30 @@ const generatePDF = () => {
     infoValue: {},
     // Add more styles as needed
   };
+  const logoImageDataUrl = await loadImageAndConvertToDataUrl(Newgas);
 
+  // Check if the image loaded successfully
+  if (!logoImageDataUrl) {
+    console.error("Image loading failed.");
+    return;
+  }
   const billingContent = [
     {
-      text: `Invoice for ${dynamicContent.name}`,
-      style: "header",
+      columns: [
+        {
+          text: `Invoice for ${dynamicContent.name}`,
+          style: "header",
+        },
+        {
+          image: logoImageDataUrl, // Replace with the path to your logo image
+          width: 50, // Adjust the width of the image as needed
+          height: 50, // Adjust the height of the image as needed
+          alignment: "right",
+          margin: [0, 10, 0, 0], // Adjust margins as needed
+        },
+      ],
     },
-    {
-      // image:Newgas, // Replace with the path to your logo image
-      // width: 100, // Adjust the width of the image as needed
-      // height: 100, // Adjust the height of the image as needed
-      // alignment: "right",
-      // margin: [0, 10, 0, 0], // Adjust margins as needed
-    },
+
     {
       columns: [
         {
@@ -282,6 +229,7 @@ const generatePDF = () => {
     //   style: "infoLabel",
     //   margin: [0, 15, 0, 0],
     // },
+    //here is table of contents
     {
       table: {
         widths: ["*", "*", "*"], // Adjust the column widths as needed
@@ -300,6 +248,7 @@ const generatePDF = () => {
       },
       layout: "lightHorizontalLines", // You can adjust the table layout as needed
     },
+    //here is seperate table of booter
     {
       columns: [
         {
@@ -389,87 +338,4 @@ const handleClose = (done) => {
 };
 </script>
 
-<style scoped>
-/* Global styles for the entire component */
-.dialog-footer button:first-child {
-  margin-right: 10px;
-}
-
-/* Header styles */
-.header-text {
-  text-align: right;
-  color: black;
-  font-size: 30px;
-  font-family: Montserrat;
-  font-weight: 600;
-  line-height: 48.75px;
-  word-wrap: break-word;
-}
-
-.header-text-small {
-  text-align: left;
-  color: black;
-  font-size: 16px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 26px;
-  word-wrap: break-word;
-}
-
-/* Info styles */
-.info-text {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 11px;
-  display: inline-flex;
-}
-
-.info-label {
-  color: black;
-  font-size: 14px;
-  font-family: Montserrat;
-  font-weight: 600;
-  line-height: 26px;
-  word-wrap: break-word;
-}
-
-.info-value {
-  color: black;
-  font-size: 12px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 17px;
-  word-wrap: break-word;
-}
-
-/* Add more styles for other elements as needed */
-.top-section {
-  display: flex;
-  justify-content: space-between;
-}
-
-.logo img {
-  width: 100px;
-}
-.bank {
-  margin-top: 40px;
-  margin-left: 68px;
-}
-.p_type {
-  color: #7b809a;
-  font-size: 14px;
-  font-family: Montserrat;
-  font-weight: 400;
-  line-height: 21px;
-  word-wrap: " break-word";
-}
-.bank_card {
-  color: black;
-  font-size: 14px;
-  font-family: Montserrat;
-  font-weight: 500;
-  line-height: 21px;
-  word-wrap: "break-word";
-}
-</style>
+<style scoped lang="scss"></style>
