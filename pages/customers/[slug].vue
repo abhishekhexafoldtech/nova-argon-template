@@ -38,7 +38,6 @@
      {{ tableName }}
     </div>
     <div class="mt-4">
-
       <LazyCustomerDetail v-if="activeName==='p_detail'" />
       <LazyCustomerLatestOrder v-if="activeName==='l_order'"/>
       <LazyCustomerAllOrders v-if="activeName === 'all_orders'"/>
@@ -46,8 +45,6 @@
       <LazyCustomerDepositsTable v-if="activeName === 'deposits'"/>
       <LazyCustomerRefundBalanceTable v-if="activeName === 'r_balance'"/>
       <LazyCustomerComplaintsTable v-if="activeName === 'complaints'"/>
-
-
     </div>
   </div>
 </template> 
