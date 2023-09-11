@@ -51,7 +51,6 @@
 <script setup>
 import { ref,watch } from "vue";
 import ActiveButton from "~/components/buttons/ActiveButton.vue";
-
 // import CustomerDetail from "~/components/Customer/CustomerDetail.vue";
 // import CustomerLatestOrder from "~/components/Customer/LatestOrder.vue"
 
