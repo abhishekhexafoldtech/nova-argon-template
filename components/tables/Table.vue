@@ -6,7 +6,7 @@
       <!-- Active this for Filter Table Only -->
       <!-- Please remove the class "reverse_filter" for swapping the search & Filter -->
       <!-- <el-row :class="headerRow ?   'table_filter' : 'table_filter reverse_filter'"> -->
-      <el-row class="table_filter reverse_filter">
+      <el-row :class="headingRowReverse  ? 'table_filter' : 'table_filter reverse_filter'">
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
           <input class="filter_search" v-if="tableSearchVisibility" v-model="search" placeholder="Search..." />
         </el-col>
@@ -92,7 +92,7 @@
                     </span>
                   </span>
                 </span>
-                <!-- customer order status -->
+                <!-- customer order status delivery pending -->
                 <span v-if="scope.row[config.prop] &&
                   scope.row[config.prop].length &&
                   'order_status' in scope.row[config.prop][0]
@@ -127,10 +127,12 @@
               @click="handleDelete(scope.$index, scope.row)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </span>
+            <!-- view receipt  -->
             <span class="table-icon delete_btn" v-if="downloadLinkContent"
               @click="handleDownlod(scope.$index, scope.row)">
               {{ downloadLinkContent }}
             </span>
+            <!-- download icon -->
             <span class="table-icon delete_btn" v-if="downloadVisibility"
               @click="handleDownlod(scope.$index, scope.row)">
               <i class="fa fa-download" aria-hidden="true"></i>
@@ -172,14 +174,9 @@ let multipleSelection = reactive([]);
 
 let search = ref("");
 
-const headerRow = ref(false)
 
 onMounted(()=>{
-  if(props.export || props.refresh || props.filter){
-    headerRow.value = true;
-  }else{
-    headerRow.value = false;
-  }
+  // do something
 })
 
 
@@ -206,6 +203,11 @@ let props = defineProps({
     default: "",
   },
 
+  headingRowReverse:{
+    type : Boolean,
+    required: false,
+    default : false
+  },
   tableLoadingStatus: {
     type: Boolean,
     default: false,

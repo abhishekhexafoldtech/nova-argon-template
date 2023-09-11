@@ -1,6 +1,6 @@
 <template>
   <div>
-     <Table :table-config="customerRefundBalanceConfig" :table-data="customerRefundBalance" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :actionVisibility="false" />
+     <Table :table-config="customerRefundBalanceConfig" :table-data="customerRefundBalance" :table-query="listQuery" :export="true" :filter="true" :refresh="true" :actionVisibility="false" :heading-row-reverse="true"/>
   </div>
 </template>
 

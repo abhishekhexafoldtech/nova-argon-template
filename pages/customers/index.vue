@@ -76,6 +76,7 @@
             @edit="handleEdit($event)" 
             @delete="handleDelete($event)" 
             @multipleSelection="handleMultipleSelection($event)" 
+            :heading-row-reverse="true"
           />
         </div>
       </el-col>
@@ -143,8 +144,6 @@ function handleEditUserClose(data) {
     customerEdit.value = false;
   }
 }
-
-
 //fetch the table data
 const fetchApiData = async(apiName) => {
   selectedApi.value = apiName;

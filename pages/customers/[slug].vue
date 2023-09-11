@@ -34,6 +34,7 @@
           </el-tabs>
       </div>
     </div>
+    <!-- table heading -->
     <div>
      {{ tableName }}
     </div>

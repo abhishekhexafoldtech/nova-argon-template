@@ -12,6 +12,7 @@
     "@element-plus/nuxt": "^1.0.5",
     "@nuxt/devtools": "latest",
     "@types/node": "^18",
+    "@vue/test-utils": "^2.4.1",
     "element-plus": "^2.3.7",
     "nuxt": "^3.5.2",
     "sass": "^1.56.1",
