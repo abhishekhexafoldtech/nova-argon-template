@@ -34,10 +34,10 @@
           </el-tabs>
       </div>
     </div>
-
     <div class="mt-4">
-      <CustomerDetail v-if="activeName === 'p_detail'" />
-      <LatestOrder v-if="activeName === 'l_order'" />
+      <CustomerDetail v-if="activeName==='p_detail'" />
+      <LatestOrder v-if="activeName==='l_order'"/>
+      <ViewReceipt v-if="activeName==='all_orders'"/>
     </div>
   </div>
 </template> 
@@ -46,6 +46,7 @@ import { ref } from "vue";
 import ActiveButton from "~/components/buttons/ActiveButton.vue";
 import CustomerDetail from "~/components/Customer/CustomerDetail.vue";
 import LatestOrder from "~/components/Customer/LatestOrder.vue"
+import ViewReceipt from "~/components/Customer/ViewReceipt.vue"
 const isActive = ref(true);
 const activeName = ref("p_detail");
 
