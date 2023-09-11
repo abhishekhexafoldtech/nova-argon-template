@@ -168,7 +168,7 @@ const generatePDF = async () => {
         },
         {
           image: logoImageDataUrl, // Replace with the path to your logo image
-          width: 50, // Adjust the width of the image as needed
+          width: 80, // Adjust the width of the image as needed
           height: 50, // Adjust the height of the image as needed
           alignment: "right",
           margin: [0, 10, 0, 0], // Adjust margins as needed
