@@ -30,15 +30,18 @@
       </div>
     </div>
     <div class="ftree_action">
-      <button class="btn btn-default">Clear</button>
-      <button class="btn btn-primary">Apply</button>
+      <button @click="uiStore.updateStateValue('showFilterBar',false)" class="btn btn-default">Clear</button>
+      <button @click="uiStore.updateStateValue('showFilterBar',false)" class="btn btn-primary">Apply</button>
     </div>
   </div>
 </template>
 
 
 <script setup>
+import { useUIStore } from "@/stores/uiStore";
 import TreeList from './TreeList.vue';
+const uiStore = useUIStore();
+
 const activeTree = ref(0);
 const active = ref(false);
 const halfActiveTree = ref([]);
