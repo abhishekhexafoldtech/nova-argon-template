@@ -208,6 +208,7 @@
     transition: all 250ms ease-in-out;
     outline: none;
     margin: 0 3px;
+    outline: none;
 
     &.edit_btn {
       color: var(--violet);
@@ -218,9 +219,10 @@
     }
 
     &.more_btn {
-      line-height: 27px;
+      line-height: 25px;
       font-size: 14px;
-      color: #333;
+      color: var(--grey);
+      padding: 0;
     }
 
     &.view_rec {
@@ -230,6 +232,10 @@
     }
     &.dnld_btn {
       font-size: 18px;
+    }
+
+    .el-tooltip__trigger{
+      outline: none !important;
     }
   }
 }
