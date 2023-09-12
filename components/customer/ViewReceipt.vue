@@ -1,8 +1,12 @@
 <template>
   <div>
-    <!-- <el-button type="success" @click="dialogVisible = true">View Receipt</el-button> -->
-    <el-dialog v-model="props.dialogVisible" :before-close="handleClose" :show-close="false" align-center
-      class="view_receipt_modal">
+    <el-dialog
+      v-model="props.dialogVisible"
+      :before-close="handleClose"
+      :show-close="false"
+      align-center
+      class="view_receipt_modal"
+    >
       <template #header>
         <div>
           <h4>Hi, {{ dynamicContent.name }}</h4>
@@ -33,28 +37,30 @@
         </el-col>
         <el-col :xs="6" :sm="6" :md="6" :lg="6">
           <p>
-            <span>
-              Billed from: {{ dynamicContent.billedFrom.name }}
-            </span>
+            <span> Billed from: {{ dynamicContent.billedFrom.name }} </span>
             {{ dynamicContent.billedFrom.address }}
           </p>
         </el-col>
         <el-col :xs="6" :sm="6" :md="6" :lg="6">
           <p>
-            <span>
-              Billed to: {{ dynamicContent.billedTo.name }}
-            </span>
+            <span> Billed to: {{ dynamicContent.billedTo.name }} </span>
             {{ dynamicContent.billedTo.address }}
           </p>
         </el-col>
       </el-row>
       <div class="vr_table">
-        <el-table :data="dynamicContent.tableData" :summary-method="getSummaries" show-summary>
+        <el-table
+          :data="dynamicContent.tableData"
+          :summary-method="getSummaries"
+          show-summary
+        >
           <el-table-column prop="item" width="500" label="ITEM" />
           <el-table-column prop="quantity" label="QUANTITY" />
           <el-table-column prop="price" label="PRODUCT/PRICE" />
         </el-table>
-        <p>Payment type:<span>{{ dynamicContent.paymentType }}</span></p>
+        <p>
+          Payment type:<span>{{ dynamicContent.paymentType }}</span>
+        </p>
       </div>
 
       <template #footer>
@@ -62,7 +68,10 @@
           <el-col :xs="24" :sm="24" :md="10" :lg="10">
             <div class="vr_f_info">
               <h4>Thank you!</h4>
-              <p>If you encounter any issues related to the invoice you can contact us at:</p>
+              <p>
+                If you encounter any issues related to the invoice you can
+                contact us at:
+              </p>
               <h5>email:<span>support@nova.com</span></h5>
             </div>
           </el-col>
@@ -85,24 +94,19 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { ElMessageBox } from "element-plus";
-import Email from "@/assets/svg/email.svg";
-import Download from "@/assets/svg/download.svg";
 import Newgas from "@/assets/svg/newgas.png";
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 
 const props = defineProps({
-  dialogVisible : {
+  dialogVisible: {
     type: Boolean,
     required: false,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const emit = defineEmits();
-
 
 // Define your dynamic content
 const dynamicContent = {
@@ -308,10 +312,10 @@ const generatePDF = async () => {
     styles: pdfStyles,
   };
 
-  const pdfDoc = pdfMake.createPdf(pdfDefinition);
+  const pdfDoc = await pdfMake.createPdf(pdfDefinition);
   pdfDoc.open();
 
-  emit("handleReceiptClose")
+  emit("handleReceiptClose");
 };
 
 const getSummaries = (param) => {
@@ -345,11 +349,14 @@ const getSummaries = (param) => {
 };
 
 const handleClose = (done) => {
-  emit("handleReceiptClose")
+  emit("handleReceiptClose");
 };
-const handleSendEmail = () =>{
+const handleSendEmail = () => {
   emit("handleSendReceiptEmail");
-}
+};
+onMounted(() => {
+  console.log("receipt popup");
+});
 </script>
 
 <style scoped lang="scss"></style>

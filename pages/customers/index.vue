@@ -1,57 +1,94 @@
-
 <template>
   <section>
     <!-- when no data -->
     <div v-if="!customerTableData.length">
-      <EmptyManager :icon="CustomerEmptyImage" heading="No customer added yet"
-        description="List of customers not added yet." />
+      <EmptyManager
+        :icon="CustomerEmptyImage"
+        heading="No customer added yet"
+        description="List of customers not added yet."
+      />
     </div>
 
     <div class="container-area" v-if="customerTableData.length">
-      <CustomerEditForm :visible="customerEdit" @handleUpdateCustomerDetails="handleEditedUserUpdate"
-        @handleCloseCustomerEditForm="handleEditUserClose" />
+      <CustomerEditForm
+        :visible="customerEdit"
+        @handleUpdateCustomerDetails="handleEditedUserUpdate"
+        @handleCloseCustomerEditForm="handleEditUserClose"
+      />
 
       <h4 class="page_heading mb-3">Customer</h4>
       <el-row>
         <el-col class="cards" :xs="24" :sm="10" :md="7" :lg="7">
-          <CustomerKpiCard @click="fetchApiData('customers')" :class="[selectedApi === 'customers' ? 'active-card' : '']"
-            title="All customers" :percentage="customersKpi.customers.percentage" :value="customersKpi.customers.value"
-            :icon="CustomerIcon" />
+          <CustomerKpiCard
+            @click="fetchApiData('customers')"
+            :class="[selectedApi === 'customers' ? 'active-card' : '']"
+            title="All customers"
+            :percentage="customersKpi.customers.percentage"
+            :value="customersKpi.customers.value"
+            :icon="CustomerIcon"
+          />
         </el-col>
 
         <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
-          <CustomerKpiCard @click="fetchApiData('orders')" :class="[selectedApi === 'orders' ? 'active-card' : '']"
-            title="Latest order" :percentage="customersKpi.latestOrders.percentage"
-            :value="customersKpi.latestOrders.value" :icon="OrderIcon" />
+          <CustomerKpiCard
+            @click="fetchApiData('orders')"
+            :class="[selectedApi === 'orders' ? 'active-card' : '']"
+            title="Latest order"
+            :percentage="customersKpi.latestOrders.percentage"
+            :value="customersKpi.latestOrders.value"
+            :icon="OrderIcon"
+          />
         </el-col>
 
         <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
-          <CustomerKpiCard @click="fetchApiData('complaints')"
-            :class="[selectedApi === 'complaints' ? 'active-card' : '']" title="Complaints"
-            :percentage="customersKpi.complaints.percentage" :value="customersKpi.complaints.value"
-            :icon="ComplaintIcon" />
+          <CustomerKpiCard
+            @click="fetchApiData('complaints')"
+            :class="[selectedApi === 'complaints' ? 'active-card' : '']"
+            title="Complaints"
+            :percentage="customersKpi.complaints.percentage"
+            :value="customersKpi.complaints.value"
+            :icon="ComplaintIcon"
+          />
         </el-col>
       </el-row>
 
       <h4 class="page_heading mt-5 mb-3">{{ tableName }}</h4>
       <div class="table-area">
-        <Table style="border-radius: 20px" viewButtonVisibility="true" :addButtonVisibility="false"
-          :tableCheckBoxVisibility="true" :export="true" :filter="true" :refresh="true" :tableConfig="customerTableConfig"
-          :tableData="customerTableData" :tableQuery="listQuery" @view="handleView" @pagination="handlePagination()"
-          :editButtonVisibility="tableEditButtonVisibility" @edit="handleEdit($event)" @delete="handleDelete($event)"
-          @multipleSelection="handleMultipleSelection($event)" :heading-row-reverse="true" />
+        <Table
+          style="border-radius: 20px"
+          viewButtonVisibility="true"
+          :addButtonVisibility="false"
+          :tableCheckBoxVisibility="true"
+          :export="true"
+          :filter="true"
+          :refresh="true"
+          :tableConfig="customerTableConfig"
+          :tableData="customerTableData"
+          :tableQuery="listQuery"
+          @view="handleView"
+          @pagination="handlePagination()"
+          :editButtonVisibility="tableEditButtonVisibility"
+          @edit="handleEdit($event)"
+          @delete="handleDelete($event)"
+          @multipleSelection="handleMultipleSelection($event)"
+          :heading-row-reverse="true"
+        />
       </div>
     </div>
   </section>
 </template>
 <script setup>
 import { ref, onBeforeMount, onUnmounted } from "vue";
-import { tableConfig, allCustomers, getCustomersTableData } from "@/composables/useCustomerTable.js"
-import CustomerEditForm from "@/components/Customer/EditForm.vue";
+import {
+  tableConfig,
+  allCustomers,
+  getCustomersTableData,
+} from "@/composables/useCustomerTable.js";
+import CustomerEditForm from "@/components/customer/EditForm.vue";
 import EmptyManager from "@/components/cards/EmptyManager.vue";
-import CustomerEmptyImage from "@/assets/svg/customers_empty.svg"
+import CustomerEmptyImage from "@/assets/svg/customers_empty.svg";
 import Table from "@/components/tables/Table.vue";
-import CustomerKpiCard from "@/components/Customer/KpiCard.vue";
+import CustomerKpiCard from "@/components/customer/KpiCard.vue";
 import CustomerIcon from "@/assets/svg/customer.svg";
 import OrderIcon from "@/assets/svg/order.svg";
 import ComplaintIcon from "@/assets/svg/complaint.svg";
@@ -59,8 +96,8 @@ import ComplaintIcon from "@/assets/svg/complaint.svg";
 const customerTableConfig = ref([]);
 const customerTableData = ref([]);
 const tableEditButtonVisibility = ref(true);
-const customerEdit = ref(false)
-const router = useRouter()
+const customerEdit = ref(false);
+const router = useRouter();
 const customersKpi = reactive({
   customers: {
     value: "+500",
@@ -73,8 +110,7 @@ const customersKpi = reactive({
   complaints: {
     value: "+3,462",
     percentage: "11.2%",
-  }
-
+  },
 });
 const tableName = ref("Customers");
 const selectedApi = ref(null);
@@ -86,7 +122,6 @@ let listQuery = reactive({
   orderBy: "created_at",
   sortedBy: "desc",
 });
-
 
 // edit user
 function handleEditedUserUpdate(data) {
@@ -100,7 +135,7 @@ function handleEditUserClose(data) {
     customerEdit.value = false;
     console.log("Cancel");
   } else {
-    console.log("close")
+    console.log("close");
     customerEdit.value = false;
   }
 }
@@ -130,12 +165,10 @@ const fetchApiData = async (apiName) => {
 
   // if (apiDataCache.value[apiName]) {
   //   return; // Data is cached; no need to make the API request again
-  // };  
+  // };
   // Set the selected API
   selectedApi.value = apiName;
 };
-
-
 
 // pagination
 function handlePagination(data) {
@@ -147,7 +180,6 @@ function handleView(data) {
   let r = "customer";
   router.push(`customers/${r}-${data.id}`);
 }
-
 
 // edit
 function handleEdit(data) {
@@ -172,18 +204,16 @@ function handleMultipleSelection(data) {
   console.log(data);
 }
 
-
 onBeforeMount(async () => {
-  await fetchApiData("customers")
-})
+  await fetchApiData("customers");
+});
 
 onUnmounted(() => {
   sessionStorage.clear("customers_data");
   sessionStorage.clear("customers_orders_data");
-})
+});
 
 definePageMeta({
   layout: "default",
 });
 </script>
-  
