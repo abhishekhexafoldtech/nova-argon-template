@@ -117,7 +117,7 @@
         </el-table-column>
 
         <!-- ACTIONS -->
-        <el-table-column v-if="actionVisibility" label="Actions">
+        <el-table-column v-if="actionVisibility" width="150" label="Actions">
           <template #default="scope">
             <span class="table-icon" v-if="viewButtonVisibility" @click="handleView(scope.row)">
               <i class="fa fa-eye" aria-hidden="true"></i>
