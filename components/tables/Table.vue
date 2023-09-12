@@ -27,7 +27,7 @@
                     Filter
                   </button>
                   <div class="dropdown-menu" aria-labelledby="upcomingHolidayDrop">
-                    <Filter/>
+                    <Tree :data="filterData"/>
                   </div>
                 </div>
               </li>
@@ -38,7 +38,6 @@
           </div>
         </el-col>
       </el-row>
-
       <!-- Top heading  -->
       <!-- <el-row class="table-top-header">
         <el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
@@ -169,6 +168,7 @@
 <script setup >
 import Filter from "./Filter.vue";
 import { downloadCSVFromJson } from "@/composables/useDownloadCsv"
+import Tree from "./Tree.vue";
 
 let emit = defineEmits();
 
@@ -279,6 +279,11 @@ let props = defineProps({
   filter: {
     type: Boolean,
     default: false
+  },
+  filterData:{
+    type:Array,
+    default:[],
+    required:false
   },
   downloadVisibility: {
     type: Boolean,

@@ -61,6 +61,7 @@
           :tableCheckBoxVisibility="true"
           :export="true"
           :filter="true"
+          :filterData="filterAllCusomers"
           :refresh="true"
           :tableConfig="customerTableConfig"
           :tableData="customerTableData"
@@ -78,6 +79,7 @@
   </section>
 </template>
 <script setup>
+import { filterAllCusomers } from "@/composables/useCustomerTable.js";
 import { ref, onBeforeMount, onUnmounted } from "vue";
 import {
   tableConfig,
