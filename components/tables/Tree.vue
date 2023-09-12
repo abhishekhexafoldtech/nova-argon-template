@@ -29,6 +29,10 @@
           end-placeholder="End date" @change="handleDate('date')" v-if="date.active" />
       </div>
     </div>
+    <div class="ftree_action">
+      <button class="btn btn-default">Clear</button>
+      <button class="btn btn-primary">Apply</button>
+    </div>
   </div>
 </template>
 
