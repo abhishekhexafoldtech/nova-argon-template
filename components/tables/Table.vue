@@ -22,13 +22,22 @@
               </li>
               <li>
                 <div class="dropdown" v-if="filter">
-                  <button class="btn_filter dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
+                  <!-- <button class="btn_filter dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Filter
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="upcomingHolidayDrop">
+                  </button> -->
+                  <!-- <div class="dropdown-menu" aria-labelledby="upcomingHolidayDrop">
                     <Tree :data="filterData"/>
+                  </div> -->
+                  <button class="btn_filter dropdown-toggle" type="button" @click="uiStore.updateStateValue('showFilterBar',true)">
+                    Filter
+                  </button>
+                  <div v-if="uiStore.showFilterBar">
+                    <!-- <span @click="uiStore.updateStateValue('showFilterBar',false)"> -->
+                      <Tree :data="filterData"/>
+                    <!-- </span> -->
                   </div>
+             
                 </div>
               </li>
               <li>
@@ -166,9 +175,13 @@
 
 
 <script setup >
+import { useUIStore } from "@/stores/uiStore";
 import Filter from "./Filter.vue";
 import { downloadCSVFromJson } from "@/composables/useDownloadCsv"
 import Tree from "./Tree.vue";
+
+const uiStore = useUIStore();
+
 
 let emit = defineEmits();
 
