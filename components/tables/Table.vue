@@ -38,7 +38,6 @@
           </div>
         </el-col>
       </el-row>
-
       <!-- Top heading  -->
       <!-- <el-row class="table-top-header">
         <el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
