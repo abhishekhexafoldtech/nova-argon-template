@@ -10,25 +10,44 @@
     <div class="lo_body">
       <div class="lo_item" v-for="item in customer">
         <div class="item_top">
-          <p>Order delivered:<span>{{ item.order_delivered }}</span></p>
-          <button class="btn btn-primary" @click="viewRecept">View receipt</button>
+          <p>
+            Order delivered:<span>{{ item.order_delivered }}</span>
+          </p>
+          <button class="btn btn-primary" @click="viewRecept">
+            View receipt
+          </button>
         </div>
         <div class="item_main">
-          <img :src="item.cylinder_img" alt="Product Image">
+          <img :src="item.cylinder_img" alt="Product Image" />
           <div class="item_des">
             <h3>{{ item.cylinder_type }}</h3>
             <ul>
-              <li>Diposit Cost:<span>{{ item.deposit_cost }}</span></li>
-              <li>Cost:<span>{{ item.gas_cost }}</span></li>
-              <li>Quantity:<span>{{ item.quantity }}</span></li>
+              <li>
+                Diposit Cost:<span>{{ item.deposit_cost }}</span>
+              </li>
+              <li>
+                Cost:<span>{{ item.gas_cost }}</span>
+              </li>
+              <li>
+                Quantity:<span>{{ item.quantity }}</span>
+              </li>
             </ul>
-            <span class="status" :class="item.order_status === 'pending'
-              ? 'bg-danger'
-              : 'bg-success'
-              ">{{ item.order_status }}</span>
+            <span
+              class="status"
+              :class="
+                item.order_status === 'pending' ? 'bg-danger' : 'bg-success'
+              "
+              >{{ item.order_status }}</span
+            >
           </div>
           <div class="item_total">
-            <button class="btn" v-if="item.order_status === 'delivered'" @click="exchange">Exchange</button>
+            <button
+              class="btn"
+              v-if="item.order_status === 'delivered'"
+              @click="exchange"
+            >
+              Exchange
+            </button>
             <p>Order Total<span>GHs 75</span></p>
           </div>
         </div>

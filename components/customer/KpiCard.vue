@@ -3,25 +3,41 @@
     <div class="kpi_percentage">
       <img :src="icon" alt="icon" />
       <p>
-        <span v-if="Math.sign(parseFloat(percentage)) === 1" class="text-success">
+        <span
+          v-if="Math.sign(parseFloat(percentage)) === 1"
+          class="text-success"
+        >
           <el-icon>
             <TopRight />
-          </el-icon> +{{ percentage }}
+          </el-icon>
+          +{{ percentage }}
         </span>
-        <span v-if="Math.sign(parseFloat(percentage)) === -1" class="text-danger">
+        <span
+          v-if="Math.sign(parseFloat(percentage)) === -1"
+          class="text-danger"
+        >
           <el-icon>
             <BottomRight />
-          </el-icon> -{{ percentage }}
+          </el-icon>
+          -{{ percentage }}
         </span>
-        <span v-if="Math.sign(parseFloat(percentage)) === 0" class="text-danger">
+        <span
+          v-if="Math.sign(parseFloat(percentage)) === 0"
+          class="text-danger"
+        >
           <el-icon>
             <BottomRight />
-          </el-icon> {{ percentage }}
+          </el-icon>
+          {{ percentage }}
         </span>
         {{ time }}
       </p>
     </div>
-    <h4 :class="[Math.sign(parseFloat(percentage)) === -1 ? 'text-danger' : '',]">{{ value }}</h4>
+    <h4
+      :class="[Math.sign(parseFloat(percentage)) === -1 ? 'text-danger' : '']"
+    >
+      {{ value }}
+    </h4>
     <p class="kpi_det">{{ title }}</p>
   </div>
   <!-- <div class="mb-3 card">
@@ -65,7 +81,7 @@
     </div>
   </div> -->
 </template>
-  
+
 <script setup>
 import { TopRight, BottomRight } from "@element-plus/icons-vue";
 
@@ -189,4 +205,3 @@ defineProps({
   }
 }
 </style>
-  
