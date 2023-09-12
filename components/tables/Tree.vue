@@ -1,5 +1,5 @@
 <template>
-  <div class="ftree_box" :class="new_parent ? 'p-2' : 'p-3 bg-white'">
+  <div class="ftree_box" :class="new_parent ? '' : ''">
     <div class="ftree_item" v-if="props.data && props.data.length > 0" v-for="item in  props.data" :key="item.id">
       <i :class="activeTree == item.id && active ? 'ri-arrow-right-s-fill active' : 'ri-arrow-right-s-fill'"
         @click="handleOpenTree(item.id)" :key="item.id"></i>

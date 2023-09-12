@@ -6,7 +6,7 @@
       <!-- Active this for Filter Table Only -->
       <!-- Please remove the class "reverse_filter" for swapping the search & Filter -->
       <!-- <el-row :class="headerRow ?   'table_filter' : 'table_filter reverse_filter'"> -->
-      <el-row :class="headingRowReverse  ? 'table_filter' : 'table_filter reverse_filter'">
+      <el-row :class="headingRowReverse ? 'table_filter' : 'table_filter reverse_filter'">
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
           <input class="filter_search" v-if="tableSearchVisibility" v-model="search" placeholder="Search..." />
         </el-col>
@@ -18,10 +18,11 @@
           <div class="filter_right">
             <ul>
               <li>
-                <button class="btn_filter" v-if="export" @click="handleExport"><i class="exp_icon ri-upload-2-line"></i>Export</button>
+                <button class="btn_filter" v-if="export" @click=" handleExport "><i
+                    class="exp_icon ri-upload-2-line"></i>Export</button>
               </li>
               <li>
-                <div class="dropdown" v-if="filter">
+                <div class="filter_wrap" v-if=" filter ">
                   <!-- <button class="btn_filter dropdown-toggle" type="button" id="upcomingHolidayDrop" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Filter
@@ -29,19 +30,19 @@
                   <!-- <div class="dropdown-menu" aria-labelledby="upcomingHolidayDrop">
                     <Tree :data="filterData"/>
                   </div> -->
-                  <button class="btn_filter dropdown-toggle" type="button" @click="uiStore.updateStateValue('showFilterBar',true)">
+                  <button class="btn_filter dropdown-toggle" type="button"
+                    @click="uiStore.updateStateValue('showFilterBar',true)">
                     Filter
                   </button>
-                  <div v-if="uiStore.showFilterBar">
+                  <div v-if=" uiStore.showFilterBar ">
                     <!-- <span @click="uiStore.updateStateValue('showFilterBar',false)"> -->
-                      <Tree :data="filterData"/>
+                    <Tree :data=" filterData " />
                     <!-- </span> -->
                   </div>
-             
                 </div>
               </li>
               <li>
-                <button v-if="refresh"><i class="sync_icon ri-loop-right-fill"></i></button>
+                <button v-if=" refresh "><i class="sync_icon ri-loop-right-fill"></i></button>
               </li>
             </ul>
           </div>
@@ -60,40 +61,43 @@
 
 
       <!-- Table -->
-      <el-table class="theme_table" :data="tableDataItems" @selection-change="handleMultipleSelectionChange">
+      <el-table class="theme_table" :data=" tableDataItems " @selection-change=" handleMultipleSelectionChange ">
         <!-- CHECKBOX  -->
-        <el-table-column v-if="tableCheckBoxVisibility" type="selection" :selectable="isTableCheckBoxVisibilityRowWise">
+        <el-table-column v-if=" tableCheckBoxVisibility " type="selection" :selectable=" isTableCheckBoxVisibilityRowWise ">
         </el-table-column>
 
-        <el-table-column v-for="(config, key) in props.tableConfig" :label="config.label" :prop="config.prop"
-          :width="config.width" :sortable="config.sortable ? config.sortable : false" :class-name="config.className"
-          :key="key">
-          <template #default="scope">
+        <el-table-column v-for="( config, key ) in  props.tableConfig " :label=" config.label " :prop=" config.prop "
+          :width=" config.width " :sortable=" config.sortable ? config.sortable : false " :class-name=" config.className "
+          :key=" key ">
+          <template #default=" scope ">
             <!-- FOR IMAGE  -->
-            <span v-if="typeof scope.row[config.prop] === 'object'">
-              <span v-for="(item, index) in scope.row[config.prop]" :key="index">
+            <span v-if=" typeof scope.row[config.prop] === 'object' ">
+              <span v-for="( item, index ) in  scope.row[config.prop] " :key=" index ">
                 <!-- for image and name -->
-                <span v-if="scope.row[config.prop] &&
+                <span v-if="
+                  scope.row[config.prop] &&
                   scope.row[config.prop].length &&
                   'url' in scope.row[config.prop][0]
-                  ">
-                  <span v-if="scope.row[config.prop][0].url">
-                    <span v-for="(item, index) in scope.row[config.prop]" :key="index">
-                      <el-image :src="item.url"
-                        :preview-src-list="[item.url]" :class="item.content ? 'circle_img' : 'square_img'">
+                ">
+                  <span v-if=" scope.row[config.prop][0].url ">
+                    <span v-for="( item, index ) in  scope.row[config.prop] " :key=" index ">
+                      <el-image :src=" item.url " :preview-src-list=" [item.url] "
+                        :class=" item.content ? 'circle_img' : 'square_img' ">
                       </el-image>
                       <span>{{ item?.content ? item.content : "" }}</span>
                     </span>
                   </span>
                 </span>
                 <!-- for active and inactive status -->
-                <span v-if="scope.row[config.prop] &&
+                <span v-if="
+                  scope.row[config.prop] &&
                   scope.row[config.prop].length &&
                   'status' in scope.row[config.prop][0]
-                  ">
-                  <span v-if="scope.row[config.prop][0].content">
-                    <span v-for="(item, index) in scope.row[config.prop]" :key="index">
-                      <span class="act_status"><i :class="item.status ? 'fa fa-circle text-success' : 'fa fa-circle text-warning'"
+                ">
+                  <span v-if=" scope.row[config.prop][0].content ">
+                    <span v-for="( item, index ) in  scope.row[config.prop] " :key=" index ">
+                      <span class="act_status"><i
+                          :class=" item.status ? 'fa fa-circle text-success' : 'fa fa-circle text-warning' "
                           aria-hidden="true"></i>
                       </span>
                       <span>{{ item?.content ? item.content : "" }}</span>
@@ -101,23 +105,24 @@
                   </span>
                 </span>
                 <!-- customer order status delivery pending -->
-                <span v-if="scope.row[config.prop] &&
+                <span v-if="
+                  scope.row[config.prop] &&
                   scope.row[config.prop].length &&
                   'order_status' in scope.row[config.prop][0]
-                  ">
-                  <span v-if="scope.row[config.prop][0]">
-                    <span v-for="(item, index) in scope.row[config.prop]" :key="index" class="order_status">
-                      <span v-if="item.order_status" class="text-success">Delivered 
+                ">
+                  <span v-if=" scope.row[config.prop][0] ">
+                    <span v-for="( item, index ) in  scope.row[config.prop] " :key=" index " class="order_status">
+                      <span v-if=" item.order_status " class="text-success">Delivered
                         <p class="del_date">on 2020/12/16</p>
                       </span>
-                      <span v-if="!item.order_status" class="text-warning">Pending</span>
+                      <span v-if=" !item.order_status " class="text-warning">Pending</span>
                       <!-- <span>{{ item?.content ? item.content : "" }}</span>   -->
                     </span>
                   </span>
                 </span>
               </span>
             </span>
- 
+
             <span v-else>
               {{ scope.row[config.prop] }}
             </span>
@@ -125,37 +130,36 @@
         </el-table-column>
 
         <!-- ACTIONS -->
-        <el-table-column v-if="actionVisibility" width="150" label="Actions">
-          <template #default="scope">
-            <span class="table-icon" v-if="viewButtonVisibility" @click="handleView(scope.row)">
+        <el-table-column v-if=" actionVisibility " width="150" label="Actions">
+          <template #default=" scope ">
+            <span class="table-icon" v-if=" viewButtonVisibility " @click="handleView(scope.row)">
               <i class="fa fa-eye" aria-hidden="true"></i>
-              </span>
-            <span class="table-icon edit_btn" v-if="editButtonVisibility" @click="handleEdit(scope.row)">
+            </span>
+            <span class="table-icon edit_btn" v-if=" editButtonVisibility " @click="handleEdit(scope.row)">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-              </span>
-            <span class="table-icon delete_btn" v-if="deleteButtonVisibility"
+            </span>
+            <span class="table-icon delete_btn" v-if=" deleteButtonVisibility "
               @click="handleDelete(scope.$index, scope.row)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </span>
             <!-- view receipt  -->
-            <span class="table-icon view_rec" v-if="downloadLinkContent"
+            <span class="table-icon view_rec" v-if=" downloadLinkContent "
               @click="handleViewReceipt(scope.$index, scope.row)">
               {{ downloadLinkContent }}
             </span>
             <!-- download icon -->
-            <span class="table-icon dnld_btn" v-if="downloadVisibility"
-              @click="handleDownload(scope.$index, scope.row)">
+            <span class="table-icon dnld_btn" v-if=" downloadVisibility " @click="handleDownload(scope.$index, scope.row)">
               <i class="ri-download-2-line"></i>
             </span>
-            <el-dropdown class="table-icon more_btn" v-if="moreActionsVisibility">
+            <el-dropdown class="table-icon more_btn" v-if=" moreActionsVisibility ">
               <span class="el-dropdown-link">
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
               </span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item v-if="resetPasswordVisibility" @click="handleResetPassword(scope.row)">Reset
+                  <el-dropdown-item v-if=" resetPasswordVisibility " @click="handleResetPassword(scope.row)">Reset
                     password</el-dropdown-item>
-                  <el-dropdown-item v-if="roleAndPermissionVisibility"
+                  <el-dropdown-item v-if=" roleAndPermissionVisibility "
                     @click="handleAssignRolesAndPermissions(scope.row)">Assign roles & permissions</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
@@ -166,8 +170,8 @@
       </el-table>
 
       <!-- // PAGINATION -->
-      <el-pagination v-if="tableDataTotal" :total="tableDataTotal" :page-size="props.tableQuery.limit"
-        v-model:current-page="props.tableQuery.page" layout="prev, pager, next" @size-change="handlePagination()"
+      <el-pagination v-if=" tableDataTotal " :total=" tableDataTotal " :page-size=" props.tableQuery.limit "
+        v-model:current-page=" props.tableQuery.page " layout="prev, pager, next" @size-change="handlePagination()"
         @current-change="handlePagination()" background />
     </div>
   </el-card>
@@ -190,7 +194,7 @@ let multipleSelection = reactive([]);
 let search = ref("");
 
 
-onMounted(()=>{
+onMounted(() => {
   // do something
 })
 
@@ -204,8 +208,8 @@ function handleSearch() {
 }
 
 
-function handleExport(){
-  downloadCSVFromJson("name.csv",props.tableData)
+function handleExport() {
+  downloadCSVFromJson("name.csv", props.tableData)
 }
 
 let props = defineProps({
@@ -218,10 +222,10 @@ let props = defineProps({
     default: "",
   },
 
-  headingRowReverse:{
-    type : Boolean,
+  headingRowReverse: {
+    type: Boolean,
     required: false,
-    default : false
+    default: false
   },
   tableLoadingStatus: {
     type: Boolean,
@@ -293,10 +297,10 @@ let props = defineProps({
     type: Boolean,
     default: false
   },
-  filterData:{
-    type:Array,
-    default:[],
-    required:false
+  filterData: {
+    type: Array,
+    default: [],
+    required: false
   },
   downloadVisibility: {
     type: Boolean,
@@ -317,11 +321,11 @@ let tableDataTotal = computed(() => {
   return props.tableData ? props.tableData.length : 0;
 });
 
-function handleDownload(index,row){
+function handleDownload(index, row) {
   emit("handleDownload", row)
 }
-function handleViewReceipt(row){
-  emit("handleViewReceipt",row)
+function handleViewReceipt(row) {
+  emit("handleViewReceipt", row)
 }
 function handleResetPassword(row) {
   emit("resetPassword", row)
@@ -336,7 +340,7 @@ function handlePagination() {
 }
 
 function handleView(data) {
-  emit("view",data);
+  emit("view", data);
 }
 
 function handleAdd() {
@@ -357,4 +361,7 @@ function handleMultipleSelectionChange(val) {
 </script>
 
 <style scoped lang="scss">
+.filter_wrap {
+  position: relative;
+}
 </style>
