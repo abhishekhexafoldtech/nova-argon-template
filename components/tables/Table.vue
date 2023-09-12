@@ -27,7 +27,7 @@
                     Filter
                   </button>
                   <div class="dropdown-menu" aria-labelledby="upcomingHolidayDrop">
-                    <Filter/>
+                    <Tree :data="filterData"/>
                   </div>
                 </div>
               </li>
@@ -169,6 +169,7 @@
 <script setup >
 import Filter from "./Filter.vue";
 import { downloadCSVFromJson } from "@/composables/useDownloadCsv"
+import Tree from "./Tree.vue";
 
 let emit = defineEmits();
 
@@ -279,6 +280,11 @@ let props = defineProps({
   filter: {
     type: Boolean,
     default: false
+  },
+  filterData:{
+    type:Array,
+    default:[],
+    required:false
   },
   downloadVisibility: {
     type: Boolean,
