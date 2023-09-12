@@ -1,30 +1,32 @@
 <template>
-  <div :class="new_parent ? 'mx-3' : 'm-5 bg-white p-5'" style="width: max-content;">
-    <div v-if="props.data && props.data.length > 0" v-for="item in  props.data" :key="item.id">
-        <i :class="activeTree == item.id && active ? 'fa fa-caret-right active' : 'fa fa-caret-right'" style="font-size: 21px;" aria-hidden="true" @click="handleOpenTree(item.id)" :key="item.id"></i>
-        <span class="checkmark" v-if="halfActiveTree.includes(item.id)">-</span>
-      <input type="checkbox" v-if="props.checkBox"
-        :checked="(props.defaultCheckBox.includes(item.id) || parentId.includes(item.id)) ? true : false"
-        @click="handleParentInputCheckBox(item.id, item.children)">
-      {{ item.label }}
-      <div v-if="item.children && active && activeTree == item.id" >
+  <div class="ftree_box" :class="new_parent ? 'p-2' : 'p-3 bg-white'">
+    <div class="ftree_item" v-if="props.data && props.data.length > 0" v-for="item in  props.data" :key="item.id">
+      <i :class="activeTree == item.id && active ? 'ri-arrow-right-s-fill active' : 'ri-arrow-right-s-fill'"
+        @click="handleOpenTree(item.id)" :key="item.id"></i>
+      <div class="check_box">
+        <input type="checkbox" v-if="props.checkBox"
+          :checked="(props.defaultCheckBox.includes(item.id) || parentId.includes(item.id)) ? true : false"
+          @click="handleParentInputCheckBox(item.id, item.children)">
+        <span class="check_tick"></span>
+        <span class="half_tick" v-if="halfActiveTree.includes(item.id)"></span>
+      </div>
+      <span class="item_name">{{ item.label }}</span>
+      <div v-if="item.children && active && activeTree == item.id">
         <TreeList :treeList="item.children" :checkBox="props.checkBox" :defaultCheckBox="checkBoxData"
-          :parent_id="item.id" @handleParentCheckBox="handleParentCheckBox" @handleChildCheckBoxList="handleChildCheckBoxList"/>
+          :parent_id="item.id" @handleParentCheckBox="handleParentCheckBox"
+          @handleChildCheckBoxList="handleChildCheckBoxList" />
       </div>
     </div>
-    <div>
-      <i :class="date.active ? 'fa fa-caret-right active' : 'fa fa-caret-right'" style="font-size: 21px;" aria-hidden="true" @click="handleDate('act')"></i><input type="checkbox" @change="handleDate('check')" :checked="date.checked"> Date
+    <div class="ftree_item">
+      <i :class="date.active ? 'ri-arrow-right-s-fill active' : 'ri-arrow-right-s-fill'" @click="handleDate('act')"></i>
+      <div class="check_box">
+        <input type="checkbox" @change="handleDate('check')" :checked="date.checked">
+        <span class="check_tick"></span>
+      </div>
+      <span class="item_name">Date</span>
       <div>
-        <el-date-picker
-        v-model="date.value"
-        type="daterange"
-        range-separator="To"
-        start-placeholder="Start date"
-        end-placeholder="End date"
-        size="large"
-        @change="handleDate('date')"
-        v-if="date.active"
-      />
+        <el-date-picker v-model="date.value" type="daterange" range-separator="To" start-placeholder="Start date"
+          end-placeholder="End date" @change="handleDate('date')" v-if="date.active" />
       </div>
     </div>
   </div>
@@ -39,8 +41,8 @@ const halfActiveTree = ref([]);
 const parentId = ref([]);
 const checkBoxData = ref([]);
 const date = reactive({
-  checked : false,
-  value :"",
+  checked: false,
+  value: "",
   active: false
 })
 const props = defineProps({
@@ -63,39 +65,39 @@ const props = defineProps({
     default: []
   },
 });
-function handleChildCheckBoxList(data){
+function handleChildCheckBoxList(data) {
   //  console.log(checkBoxData.value)
   //  console.log("point1")
 }
-function handleDate(status){
-  if(status === "act"){
+function handleDate(status) {
+  if (status === "act") {
     date.active = !date.active
-    if(date.active){
+    if (date.active) {
       active.value = false;
     }
   }
-  if(status === 'check'){
+  if (status === 'check') {
     date.checked = !date.checked
   }
-  if(status === 'date'){
-    if(date.value){
+  if (status === 'date') {
+    if (date.value) {
       date.checked = true;
     }
   }
   handleParentInputCheckBox()
 }
-function handleOpenTree(id){
-  if(activeTree.value == id){
+function handleOpenTree(id) {
+  if (activeTree.value == id) {
     active.value = !active.value;
     date.active = false;
-  }else{
+  } else {
     activeTree.value = id;
     active.value = true;
     date.active = false;
-    if(halfActiveTree.value.includes(id)){
-        const index = halfActiveTree.value.indexOf(id);
-        halfActiveTree.value.splice(index,1)
-      }
+    if (halfActiveTree.value.includes(id)) {
+      const index = halfActiveTree.value.indexOf(id);
+      halfActiveTree.value.splice(index, 1)
+    }
   };
 
 }
@@ -113,10 +115,10 @@ function handleParentInputCheckBox(id, data) {
     };
   } else {
     parentId.value.push(id);
-    if(halfActiveTree.value.includes(id)){
-        const index = halfActiveTree.value.indexOf(id);
-        halfActiveTree.value.splice(index,1)
-      }
+    if (halfActiveTree.value.includes(id)) {
+      const index = halfActiveTree.value.indexOf(id);
+      halfActiveTree.value.splice(index, 1)
+    }
     if (data) {
       data.map((e) => {
         if (!checkBoxData.value.includes(e.id)) {
@@ -125,10 +127,10 @@ function handleParentInputCheckBox(id, data) {
       })
     }
   }
-  if(checkBoxData.value || date.checked){
+  if (checkBoxData.value || date.checked) {
     const data = {
-      date: date.checked ?  date.value : '',
-      filterList : checkBoxData.value
+      date: date.checked ? date.value : '',
+      filterList: checkBoxData.value
     }
     console.log(data)
   }
@@ -149,28 +151,28 @@ function handleParentCheckBox(data) {
     }
   };
   checkBoxData.value = data.defaultCheckBox
-  if(checkBoxData.value){
-    if(data.childList.length > 0 && data.childList.length < data.totalLength){
-      if(!halfActiveTree.value.includes(data.id)){
+  if (checkBoxData.value) {
+    if (data.childList.length > 0 && data.childList.length < data.totalLength) {
+      if (!halfActiveTree.value.includes(data.id)) {
         halfActiveTree.value.push(data.id)
       }
-    }else{
-      if(halfActiveTree.value.includes(data.id)){
+    } else {
+      if (halfActiveTree.value.includes(data.id)) {
         const index = halfActiveTree.value.indexOf(data.id);
-        halfActiveTree.value.splice(index,1)
+        halfActiveTree.value.splice(index, 1)
       }
     }
   }
-  if(checkBoxData.value || date.checked){
+  if (checkBoxData.value || date.checked) {
     const data = {
-      date: date.checked ?  date.value : '',
-      filterList : checkBoxData.value
+      date: date.checked ? date.value : '',
+      filterList: checkBoxData.value
     }
     console.log(data)
   }
   console.log("point3")
 }
-function handleDateActive(){
+function handleDateActive() {
   date.active = !date.active;
   console.log(date.active)
 }
@@ -181,12 +183,4 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
-.active{
-  transform: rotate(90deg) ;
-}
-.checkmark{
-  position: relative;
-  left:9px;
-}
-</style>
+<style scoped></style>
