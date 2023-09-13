@@ -124,7 +124,17 @@
             </span>
 
             <span v-else>
-              {{ scope.row[config.prop] }}
+              <!-- if popover is on for the column -->
+              <span v-if="config.popover">
+                <span>
+                  <el-link type="primary" @click="handleView(scope.row)" :underline="false">
+                    {{ scope.row[config.prop] }}
+                  </el-link>
+                </span>
+              </span>
+              <span v-else>
+                  {{ scope.row[config.prop] }}
+              </span>
             </span>
           </template>
         </el-table-column>

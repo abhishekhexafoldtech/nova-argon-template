@@ -4,7 +4,8 @@ export const tableConfig = {
             label: "ID",
             width: "70",
             sortable: true,
-            prop: "id"
+            prop: "id",
+            popover:true
         },
         {
             label: "Customer Name",
