@@ -1,22 +1,25 @@
 <template>
   <div class="ftree_box" :class="new_parent ? '' : ''">
-    <div class="ftree_item" v-if="props.data && props.data.length > 0" v-for="item in  props.data" :key="item.id">
-      <i :class="activeTree == item.id && active ? 'ri-arrow-right-s-fill active' : 'ri-arrow-right-s-fill'"
-        @click="handleOpenTree(item.id)" :key="item.id"></i>
-      <div class="check_box">
-        <input type="checkbox" v-if="props.checkBox"
-          :checked="(props.defaultCheckBox.includes(item.id) || parentId.includes(item.id)) ? true : false"
-          @click="handleParentInputCheckBox(item.id, item.children)">
-        <span class="check_tick"></span>
-        <span class="half_tick" v-if="halfActiveTree.includes(item.id)"></span>
-      </div>
-      <span class="item_name">{{ item.label }}</span>
-      <div v-if="item.children && active && activeTree == item.id">
-        <TreeList :treeList="item.children" :checkBox="props.checkBox" :defaultCheckBox="checkBoxData"
-          :parent_id="item.id" @handleParentCheckBox="handleParentCheckBox"
-          @handleChildCheckBoxList="handleChildCheckBoxList" />
+    <div v-if="props.data && props.data.length > 0">
+      <div class="ftree_item"  v-for="item in  props.data" :key="item.id">
+        <i :class="activeTree == item.id && active ? 'ri-arrow-right-s-fill active' : 'ri-arrow-right-s-fill'"
+          @click="handleOpenTree(item.id)" :key="item.id"></i>
+        <div class="check_box">
+          <input type="checkbox" v-if="props.checkBox"
+            :checked="(props.defaultCheckBox.includes(item.id) || parentId.includes(item.id)) ? true : false"
+            @click="handleParentInputCheckBox(item.id, item.children)">
+          <span class="check_tick"></span>
+          <span class="half_tick" v-if="halfActiveTree.includes(item.id)"></span>
+        </div>
+        <span class="item_name">{{ item.label }}</span>
+        <div v-if="item.children && active && activeTree == item.id">
+          <TreeList :treeList="item.children" :checkBox="props.checkBox" :defaultCheckBox="checkBoxData"
+            :parent_id="item.id" @handleParentCheckBox="handleParentCheckBox"
+            @handleChildCheckBoxList="handleChildCheckBoxList" />
+        </div>
       </div>
     </div>
+   
     <div class="ftree_item">
       <i :class="date.active ? 'ri-arrow-right-s-fill active' : 'ri-arrow-right-s-fill'" @click="handleDate('act')"></i>
       <div class="check_box">
