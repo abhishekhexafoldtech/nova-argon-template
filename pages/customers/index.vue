@@ -56,7 +56,6 @@
       <div class="table-area">
         <Table
           style="border-radius: 20px"
-          viewButtonVisibility="true"
           :addButtonVisibility="false"
           :tableCheckBoxVisibility="true"
           :export="true"
