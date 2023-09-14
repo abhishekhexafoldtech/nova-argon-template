@@ -270,7 +270,7 @@ const generatePDF = async () => {
     },
     {
       table: {
-        widths: ["*", "*", "*"],
+        widths: ["55%", "*", "*"],
         body: [
           [
             { text: "Item", style: "tableHeader" },
@@ -290,7 +290,7 @@ const generatePDF = async () => {
       columns: [
         {
           table: {
-            widths: ["*", "*", "*"],
+            widths: ["55%", "*", "*"],
             body: [
               [
                 { text: "Total", style: "table_footer" },
