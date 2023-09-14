@@ -60,7 +60,8 @@ export const tableConfig = {
         {
             label: "ID",
             sortable: true,
-            prop: "id"
+            prop: "id",
+            popover:true
         },
         {
             label: "Customer Name",
@@ -107,7 +108,8 @@ export const tableConfig = {
         {
             label: "Complaint No",
             sortable: true,
-            prop: "complaint_no"
+            prop: "complaint_no",
+            popover:true
         },
         {
             label: "Date",
