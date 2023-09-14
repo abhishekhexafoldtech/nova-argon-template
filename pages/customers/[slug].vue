@@ -9,7 +9,14 @@
         <div class="h_right">
           <div class="h_name">
             <h4>Yaw Boafo</h4>
-            <ActiveButton :isActive="isActive" />
+            <el-switch
+            v-model="value5"
+            class="ml-2"
+            inline-prompt
+            style="--el-switch-on-color: #0A7B37; --el-switch-off-color: #ff4949"
+            active-text="Active"
+            inactive-text="In-active"
+          />
           </div>
           <div class="h_info">
             <div>
@@ -51,7 +58,6 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import ActiveButton from "~/components/buttons/ActiveButton.vue";
 import CustomerDetail from "@/components/customer/CustomerDetail.vue";
 import CustomerLatestOrder from "@/components/customer/LatestOrder.vue";
 import CustomerAllOrders from "@/components/customer/AllOrders.vue";
@@ -59,9 +65,9 @@ import CustomerCancelledOrder from "@/components/customer/CancelledOrder.vue";
 import CustomerDepositsTable from "@/components/customer/DepositsTable.vue";
 import CustomerRefundBalanceTable from "@/components/customer/RefundBalanceTable.vue";
 import CustomerComplaintsTable from "@/components/customer/ComplaintsTable.vue";
-const isActive = ref(true);
 const activeName = ref("p_detail");
 const tableName = ref("");
+const value5 = ref(true)
 watch(activeName, () => {
   if (activeName.value === "all_orders") {
     tableName.value = "All Orders";

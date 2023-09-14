@@ -10,35 +10,37 @@
               <h4>Joining Date<span>2020/12/15</span></h4>
             </div>
             <div class="cd_item">
-              <img :src="Phone" alt="icon" />
-              <h4>Phone number<span>0277400000</span></h4>
-            </div>
-            <div class="cd_item">
-              <img :src="Email" alt="icon" />
-              <h4>Email<span>yawboafo@gmail.com</span></h4>
-            </div>
-            <div class="cd_item">
-              <img :src="Zone" alt="icon" />
-              <h4>Zone<span>Northern</span></h4>
-            </div>
-            <div class="cd_item">
               <img :src="Location" alt="icon" />
               <h4>Address:<span>Agbogba-ashongman road</span></h4>
+       
+            </div>
+            <div class="cd_item">
+              <img :src="Phone" alt="icon" />
+              <h4>Phone number<span>0277400000</span></h4>
             </div>
             <div class="cd_item">
               <img :src="District" alt="icon" />
               <h4>District<span>Ghana</span></h4>
             </div>
             <div class="cd_item">
+              <img :src="Email" alt="icon" />
+              <h4>Email<span>yawboafo@gmail.com</span></h4>
+            </div>
+            <div class="cd_item">
               <img :src="Region" alt="icon" />
               <h4>Region<span>Accra</span></h4>
+           
+            </div>
+            <div class="cd_item">
+              <img :src="Zone" alt="icon" />
+              <h4>Zone<span>Northern</span></h4>
             </div>
           </div>
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :md="12" :lg="12">
         <div class="cd_box">
-          <h4 class="cd_heading">Uploaded Documents</h4>
+          <h4 class="cd_heading">Uploaded documents</h4>
           <div class="up_doc">
             <div class="doc_item">
               <img src="@/assets/img/card-visa.jpg" alt="image" />

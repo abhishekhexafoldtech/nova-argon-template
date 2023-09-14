@@ -13,6 +13,7 @@
       :download-visibility="true"
       @handleDownload="handleDownload"
       @handleViewReceipt="handleViewReceipt"
+      :heading-row-reverse="true"
     />
     <ViewReceipt
       :dialogVisible="viewReceiptVisibility"

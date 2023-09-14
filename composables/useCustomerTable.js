@@ -15,25 +15,25 @@ export const tableConfig = {
         },
         {
             label: "Zone",
-            width: "90",
+            width: "200",
             sortable: true,
             prop: "zone"
         },
-        {
-            label: "Email",
-            width: "200",
-            sortable: true,
-            prop: "email"
-        },
-        {
-            label: "Phone Number",
-            width: "160",
-            sortable: true,
-            prop: "phone"
-        },
+        // {
+        //     label: "Email",
+        //     width: "200",
+        //     sortable: true,
+        //     prop: "email"
+        // },
+        // {
+        //     label: "Phone Number",
+        //     width: "160",
+        //     sortable: true,
+        //     prop: "phone"
+        // },
         {
             label: "Latest Order",
-            width: "200",
+            width: "350",
             sortable: true,
             prop: "latest_order"
         },
@@ -120,7 +120,7 @@ export const tableConfig = {
             prop: "id"
         },
         {
-            label: "Customer Name",
+            label: "Name",
             sortable: true,
             prop: "name"
         },
@@ -135,7 +135,7 @@ export const tableConfig = {
             prop: "order_id"
         },
         {
-            label: "Type Of Company",
+            label: "Type",
             sortable: true,
             prop: "type_of_complaint"
         },
@@ -330,7 +330,7 @@ export const customerDepositsConfig = [
         prop: "upgrade_to"
     },
     {
-        label : "Upgrade_date",
+        label : "Upgrade Date",
         sortable: true,
         prop: "upgrade_date"
     }

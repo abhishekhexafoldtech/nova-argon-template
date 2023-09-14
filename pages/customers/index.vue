@@ -68,6 +68,7 @@
           @view="handleView"
           @pagination="handlePagination()"
           :editButtonVisibility="tableEditButtonVisibility"
+          :viewButtonVisibility="tableViewButtonVisibility"
           @edit="handleEdit($event)"
           @delete="handleDelete($event)"
           @multipleSelection="handleMultipleSelection($event)"
@@ -97,6 +98,7 @@ import ComplaintIcon from "@/assets/svg/complaint.svg";
 const customerTableConfig = ref([]);
 const customerTableData = ref([]);
 const tableEditButtonVisibility = ref(true);
+const tableViewButtonVisibility = ref(false);
 const customerEdit = ref(false);
 const router = useRouter();
 const customersKpi = reactive({
@@ -156,9 +158,11 @@ const fetchApiData = async (apiName) => {
     customerTableConfig.value = tableConfig.latestOrders;
     customerTableData.value = data;
     tableEditButtonVisibility.value = true;
+    tableViewButtonVisibility.value = true;
   } else if (apiName === "complaints") {
     tableName.value = "Complaints";
     tableEditButtonVisibility.value = false;
+    tableViewButtonVisibility.value = true;
     const data = JSON.parse(sessionStorage.getItem("customer_complaints"));
     customerTableData.value = data;
     customerTableConfig.value = tableConfig.complaints;
