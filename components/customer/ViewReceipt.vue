@@ -1,12 +1,7 @@
 <template>
   <div>
-    <el-dialog
-      v-model="props.dialogVisible"
-      :before-close="handleClose"
-      :show-close="false"
-      align-center
-      class="view_receipt_modal"
-    >
+    <el-dialog v-model="props.dialogVisible" :before-close="handleClose" :show-close="false" align-center
+      class="view_receipt_modal">
       <template #header>
         <div>
           <h4>Hi, {{ dynamicContent.name }}</h4>
@@ -49,11 +44,7 @@
         </el-col>
       </el-row>
       <div class="vr_table">
-        <el-table
-          :data="dynamicContent.tableData"
-          :summary-method="getSummaries"
-          show-summary
-        >
+        <el-table :data="dynamicContent.tableData" :summary-method="getSummaries" show-summary>
           <el-table-column prop="item" width="500" label="ITEM" />
           <el-table-column prop="quantity" label="QUANTITY" />
           <el-table-column prop="price" label="PRODUCT/PRICE" />
@@ -116,11 +107,11 @@ const dynamicContent = {
   orderDate: "2023/12/15",
   billedFrom: {
     name: "Derrick Graham",
-    address: "Agbogba-ashongman\nroad, Ghana\nNorthern zone",
+    address: "Agbogba-as, hongman road,\nGhana Northern zone",
   },
   billedTo: {
     name: "Yaw Graham",
-    address: "Agbogba-ashongman\nroad, Ghana\nNorthern zone",
+    address: "Agbogba-as, hongman road,\nGhana Northern zone",
   },
   tableData: [
     { item: "3kg Steel cylinder", quantity: "01", price: " 50" },
@@ -157,13 +148,45 @@ const loadImageAndConvertToDataUrl = async (imagePath) => {
 const generatePDF = async () => {
   const pdfStyles = {
     header: {
-      fontSize: "20",
+      fontSize: "15",
+      bold: true,
+      margin: [0, 0, 0, 5],
     },
-    headerText: {},
-    headerTextSmall: {},
-    infoLabel: {},
-    infoValue: {},
-    // Add more styles as needed
+    tableHeader: {
+      fontSize: "11",
+      lineHeight: "1.5",
+      fillColor: "#eff1fc",
+      color: "#333",
+      margin: [5, 5, 0, 0],
+    },
+    table_footer: {
+      fontSize: "11",
+      lineHeight: "1.5",
+      fillColor: "#eff1fc",
+      color: "#333",
+      margin: [5, 5, 0, 0],
+    },
+    infoLabel: {
+      margin: [0, 10, 0, 30],
+      fontSize: "10",
+      color: "#666f80",
+    },
+    thankYou: {
+      margin: [0, 0, 0, 10],
+      fontSize: "15",
+      bold: true,
+      color: "#333",
+    },
+    contactInfoLabel: {
+      fontSize: "10",
+      lineHeight: "1.3",
+      color: "#666f80",
+    },
+    email_label:{
+      fontSize: "10",
+      lineHeight: "1.3",
+      color: "#333",
+    },
   };
   const logoImageDataUrl = await loadImageAndConvertToDataUrl(Newgas);
 
@@ -176,81 +199,83 @@ const generatePDF = async () => {
     {
       columns: [
         {
-          text: `Invoice for ${dynamicContent.name}`,
-          style: "header",
+          stack: [
+            {
+              text: `Invoice for ${dynamicContent.name}`,
+              style: "header",
+            },
+            {
+              text: `Invoice number: ${dynamicContent.orderNumber}`,
+              fontSize: "11",
+              lineHeight: "1.3",
+            },
+            {
+              text: `Order Id: ${dynamicContent.orderID}`,
+              fontSize: "11",
+              lineHeight: "1.3",
+            },
+            {
+              text: `Order Date: ${dynamicContent.orderDate}`,
+              fontSize: "11",
+              lineHeight: "1.3",
+            },
+          ]
         },
         {
           image: logoImageDataUrl, // Replace with the path to your logo image
-          width: 50, // Adjust the width of the image as needed
-          height: 50, // Adjust the height of the image as needed
           alignment: "right",
-          margin: [0, 10, 0, 0], // Adjust margins as needed
+          fit: [60, 80],
         },
       ],
+      margin: [0, 0, 0, 20],
     },
 
     {
       columns: [
         {
-          text: `Invoice number:`,
-          margin: [0, 0],
+          width: '*',
+          stack: [
+            {
+              text: `Billed from: ${dynamicContent.billedFrom.name}`,
+              fontSize: "11",
+              lineHeight: "1.3",
+              bold: true,
+            },
+            {
+              text: `${dynamicContent.orderDate}`,
+              fontSize: "11",
+              lineHeight: "1.3",
+            },
+          ]
         },
         {
-          text: `Order ID:`,
-          margin: [0, 0],
-        },
-        {
-          text: `Order Date:`,
-          margin: [0, 0],
-        },
-        {
-          text: `Billed from: ${dynamicContent.billedFrom.name}`,
-          margin: [0, 0],
-        },
-        {
-          text: `Billed To: ${dynamicContent.billedTo.name}`,
-          margin: [0, 5],
+          width: '*',
+          stack: [
+            {
+              text: `Billed To: ${dynamicContent.billedTo.name}`,
+              fontSize: "11",
+              lineHeight: "1.3",
+              bold: true,
+            },
+            {
+              text: dynamicContent.billedTo.address,
+              fontSize: "11",
+              lineHeight: "1.3",
+              width: '*',
+            },
+          ]
         },
       ],
+      margin: [0, 0, 0, 20],
     },
-    {
-      columns: [
-        {
-          text: ` ${dynamicContent.orderNumber}`,
-          margin: [0, 0],
-        },
-        {
-          text: ` ${dynamicContent.orderID}`,
-          margin: [0, 0],
-        },
-        {
-          text: `${dynamicContent.orderDate}`,
-          margin: [0, 0],
-        },
-        {
-          text: dynamicContent.billedFrom.address,
-          margin: [0, 0],
-        },
-        {
-          text: dynamicContent.billedTo.address,
-          margin: [0, 0],
-        },
-      ],
-    },
-    // {
-    //   text: "Items:",
-    //   style: "infoLabel",
-    //   margin: [0, 15, 0, 0],
-    // },
-    //here is table of contents
     {
       table: {
-        widths: ["*", "*", "*"], // Adjust the column widths as needed
+        widths: ["*", "*", "*"],
         body: [
           [
             { text: "Item", style: "tableHeader" },
             { text: "Quantity", style: "tableHeader" },
-            { text: "Price", style: "tableHeader" },
+            { text: "Price", style: "tableHeader", },
           ],
           ...dynamicContent.tableData.map((item) => [
             item.item,
@@ -259,9 +284,8 @@ const generatePDF = async () => {
           ]),
         ],
       },
-      layout: "lightHorizontalLines", // You can adjust the table layout as needed
+      layout: "lightHorizontalLines",
     },
-    //here is seperate table of booter
     {
       columns: [
         {
@@ -269,23 +293,23 @@ const generatePDF = async () => {
             widths: ["*", "*", "*"],
             body: [
               [
-                { text: "Total", style: "tablefoter" },
+                { text: "Total", style: "table_footer" },
                 {
                   text: `${dynamicContent.tableData
                     .reduce((total, item) => total + parseInt(item.quantity), 0)
                     .toString()}`,
-                  style: "tablefoter",
+                  style: "table_footer",
                 },
                 {
                   text: `GHs ${dynamicContent.tableData
                     .reduce((total, item) => total + parseFloat(item.price), 0)
                     .toFixed(2)}`,
-                  style: "tablefoter",
+                  style: "table_footer",
                 },
               ],
             ],
           },
-          // alignment: "center",
+          layout: "noBorders",
         },
       ],
     },
@@ -293,7 +317,6 @@ const generatePDF = async () => {
     {
       text: `Payment Type: ${dynamicContent.paymentType}`,
       style: "infoLabel",
-      margin: [0, 15, 0, 0],
     },
     {
       text: "Thank you!",
@@ -305,6 +328,7 @@ const generatePDF = async () => {
     },
     {
       text: "email: support@nova.com",
+      style: "email_label",
     },
   ];
   const pdfDefinition = {
