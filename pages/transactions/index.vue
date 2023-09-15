@@ -11,7 +11,7 @@
   
       <div class="container-area" v-if="customerTableData.length">
         <h4 class="page_heading mb-3">Transactions</h4>
-        <el-row>
+        <el-row class="kpi_card_wrap">
           <el-col class="cards" :xs="24" :sm="10" :md="7" :lg="7">
             <TransactionKpiCard
               @click="fetchApiData('customers')"
@@ -19,7 +19,7 @@
               title="customers transactions"
               :percentage="customersKpi.customers.percentage"
               :value="customersKpi.customers.value"
-              :icon="CustomerIcon"
+              :icon="transactionIcon"
             />
           </el-col>
           <el-col class="cards ms-md-4" :xs="24" :sm="10" :md="7" :lg="7">
@@ -29,7 +29,7 @@
               title="Distributor transactions"
               :percentage="customersKpi.latestOrders.percentage"
               :value="customersKpi.latestOrders.value"
-              :icon="OrderIcon"
+              :icon="transactionIcon"
             />
           </el-col>
         </el-row>
