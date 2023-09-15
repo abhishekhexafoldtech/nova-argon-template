@@ -161,7 +161,6 @@ const generatePDF = async () => {
       fontSize: "15",
       bold: true,
       margin: [0, 0, 0, 5],
-      color: "red",
     },
     tableHeader: {
       fontSize: "11",
@@ -214,26 +213,22 @@ const generatePDF = async () => {
         {
           stack: [
             {
-              text: `Order Cancelled for ${dynamicContent.name}`,
+              text: `Invoice for ${dynamicContent.name}`,
               style: "header",
             },
             {
-              text: `Order number: ${dynamicContent.orderNumber}`,
+              text: `Invoice number: ${dynamicContent.orderNumber}`,
               fontSize: "11",
               lineHeight: "1.3",
             },
-            // {
-            //   text: `Order Id: ${dynamicContent.orderID}`,
-            //   fontSize: "11",
-            //   lineHeight: "1.3",
-            // },
+            {
+              text: `Order Id: ${dynamicContent.orderID}`,
+
+              fontSize: "11",
+              lineHeight: "1.3",
+            },
             {
               text: `Order Date: ${dynamicContent.orderDate}`,
-              fontSize: "11",
-              lineHeight: "1.3",
-            },
-            {
-              text: `Order Cancel Date: ${dynamicContent.orderDate}`,
               fontSize: "11",
               lineHeight: "1.3",
             },

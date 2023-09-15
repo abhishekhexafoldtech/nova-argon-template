@@ -6,6 +6,7 @@
         background: var(--white);
         box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.05);
     }
+
     .el-dialog__header {
         background-color: #f9f9fb;
         margin: 0;
@@ -19,6 +20,7 @@
             line-height: 27px;
             margin: 0;
         }
+
         .el-dialog__headerbtn {
             top: 12px;
             right: 20px;
@@ -38,9 +40,11 @@
             }
         }
     }
+
     .el-dialog__body {
         padding: 20px 35px;
     }
+
     .el-dialog__footer {
         padding: 35px;
         display: flex;
@@ -58,6 +62,7 @@
             border-radius: 5px;
         }
     }
+
     .el-form--default.el-form--label-top .el-form-item .el-form-item__label {
         margin: 0;
         padding: 0;
@@ -67,6 +72,7 @@
         display: block;
         margin-bottom: 5px;
     }
+
     .el-select .el-input__wrapper {
         display: flex;
     }
@@ -181,6 +187,7 @@
                 font-weight: 600;
             }
         }
+
         .el-tabs__nav-wrap::after {
             content: none;
         }
@@ -217,6 +224,7 @@
                 vertical-align: top;
                 margin-top: 4px;
             }
+
             h4 {
                 display: inline-block;
                 vertical-align: top;
@@ -292,6 +300,7 @@
         padding-bottom: 15px;
         margin-bottom: 15px;
         border-bottom: solid 1px #e1e1e1;
+
         h3 {
             color: var(--black);
             font-size: 20px;
@@ -301,6 +310,7 @@
             margin-bottom: 8px;
             letter-spacing: 0;
         }
+
         ul {
             padding-inline-start: 0;
             margin: 0;
@@ -354,6 +364,7 @@
                         text-transform: capitalize;
                     }
                 }
+
                 button {
                     font-size: 13px;
                     font-weight: 700;
@@ -375,6 +386,7 @@
                     display: inline-block;
                     vertical-align: middle;
                 }
+
                 .item_des {
                     display: inline-block;
                     vertical-align: middle;
@@ -411,6 +423,7 @@
                             &:first-child {
                                 padding-right: 10px;
                                 margin-right: 10px;
+
                                 &::after {
                                     content: "";
                                     width: 1px;
@@ -469,6 +482,7 @@
                             display: block;
                         }
                     }
+
                     button {
                         border-radius: 5px;
                         background-color: #fec905;
@@ -486,26 +500,30 @@
     }
 }
 
-.theme_table{
-    &.el-table .el-table__cell{
+.theme_table {
+    &.el-table .el-table__cell {
         padding: 0;
     }
-    &.el-table th .cell{
+
+    &.el-table th .cell {
         padding: 12px 15px;
         background: rgba(248, 248, 250, 0.80);
         text-transform: uppercase;
     }
-    &.el-table td.el-table__cell div{
+
+    &.el-table td.el-table__cell div {
         padding: 10px 15px;
 
-        .order_status{
-            .text-warning{
+        .order_status {
+            .text-warning {
                 color: #F33F22 !important;
             }
-            .text-success{
+
+            .text-success {
                 color: #0A7B37 !important;
             }
-            .del_date{
+
+            .del_date {
                 display: block;
                 font-size: 10px;
                 color: var(--black);
@@ -584,6 +602,7 @@
             .el-col {
                 padding: 0 15px;
             }
+
             p {
                 color: var(--black);
                 font-size: 14px;
@@ -608,10 +627,12 @@
             .el-table {
                 margin-bottom: 20px;
             }
+
             .el-table th.el-table__cell {
                 padding: 15px 10px;
                 background: rgba(248, 248, 250, 0.8);
             }
+
             .el-table th .cell {
                 padding: 0;
                 color: var(--grey);
@@ -619,9 +640,11 @@
                 font-weight: 700;
                 line-height: 15px;
             }
+
             .el-table td.el-table__cell {
                 padding: 0;
             }
+
             .el-table td.el-table__cell div {
                 padding: 15px 10px;
                 font-size: 14px;
@@ -630,10 +653,12 @@
                 line-height: 20px;
                 color: var(--black);
             }
+
             .el-table__footer-wrapper tbody td.el-table__cell,
             .el-table__header-wrapper tbody td.el-table__cell {
                 background: rgba(94, 114, 228, 0.1);
             }
+
             .el-table__footer-wrapper tbody td.el-table__cell div,
             .el-table__header-wrapper tbody td.el-table__cell div {
                 font-size: 20px;
@@ -661,6 +686,7 @@
             }
         }
     }
+
     .el-dialog__footer {
         padding: 0 30px;
         padding-bottom: 35px;
@@ -683,6 +709,7 @@
                 letter-spacing: -0.8px;
                 margin: 0;
             }
+
             p {
                 color: var(--grey);
                 font-size: 14px;
@@ -690,6 +717,7 @@
                 line-height: 21px;
                 margin: 0;
             }
+
             h5 {
                 color: var(--grey);
                 font-size: 16px;
@@ -721,14 +749,14 @@
                 height: 35px;
                 padding: 8px;
 
-                i{
+                i {
                     font-size: 18px;
                     margin-right: 5px;
                     font-weight: normal;
                     vertical-align: middle;
                 }
 
-                &.btn_email{
+                &.btn_email {
                     color: var(--violet);
                 }
             }
@@ -736,3 +764,113 @@
     }
 }
 
+/***** Style for Customer KPI Card ****/
+.cus_kpi_item {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+    padding: 15px;
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        background: rgba(94, 114, 228, 0.1);
+        border-radius: 5px;
+        content: "";
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: 0.5s;
+        width: 0;
+    }
+
+    &.active-card {
+        &::before {
+            left: 0;
+            width: 100%;
+        }
+    }
+
+    .kpi_percentage {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 18px;
+
+        figure {
+            width: 55px;
+            height: 55px;
+            margin: 0;
+            border-radius: 10px;
+            background: linear-gradient(180deg, #7588F4 0%, #6041B5 100%);
+            overflow: hidden;
+            padding: 10px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+
+        p {
+            margin: 0;
+            color: var(--grey);
+            font-size: 12px;
+            font-weight: 400;
+
+            span {
+                display: block;
+                font-size: 14px;
+                font-weight: 700;
+
+                .el-icon {
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+
+    h4 {
+        color: var(--black);
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 8px;
+    }
+
+    p {
+        color: var(--grey);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        margin: 0;
+    }
+}
+
+.kpi_card_wrap {
+    .el-col:nth-child(2) {
+        .cus_kpi_item {
+            .kpi_percentage {
+                figure {
+                    background: linear-gradient(180deg, #4FDBE3 0%, #219FA7 100%);
+                }
+            }
+        }
+    }
+
+    .el-col:nth-child(3) {
+        .cus_kpi_item {
+            .kpi_percentage {
+                figure {
+                    background: linear-gradient(180deg, #F5553F 0%, #F5464D 100%);
+                }
+            }
+        }
+    }
+}
