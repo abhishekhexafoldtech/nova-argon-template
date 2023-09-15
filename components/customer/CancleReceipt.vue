@@ -1,12 +1,7 @@
 <template>
   <div>
-    <el-dialog
-      v-model="props.dialogVisible"
-      :before-close="handleClose"
-      :show-close="false"
-      align-center
-      class="view_receipt_modal"
-    >
+    <el-dialog v-model="props.dialogVisible" :before-close="handleClose" :show-close="false" align-center
+      class="view_receipt_modal">
       <template #header>
         <div>
           <h4 style="color:red">Order Cancelled</h4>
@@ -50,11 +45,7 @@
         </el-col>
       </el-row>
       <div class="vr_table">
-        <el-table
-          :data="dynamicContent.tableData"
-          :summary-method="getSummaries"
-          show-summary
-        >
+        <el-table :data="dynamicContent.tableData" :summary-method="getSummaries" show-summary>
           <el-table-column prop="item" width="500" label="ITEM" />
           <el-table-column prop="quantity" label="QUANTITY" />
           <el-table-column prop="price" label="PRODUCT/PRICE" />
@@ -161,6 +152,7 @@ const generatePDF = async () => {
       fontSize: "15",
       bold: true,
       margin: [0, 0, 0, 5],
+      color: "red",
     },
     tableHeader: {
       fontSize: "11",
@@ -213,7 +205,7 @@ const generatePDF = async () => {
         {
           stack: [
             {
-              text: `Invoice for ${dynamicContent.name}`,
+              text: `Order Cancelled for ${dynamicContent.name}`,
               style: "header",
             },
             {
@@ -221,14 +213,19 @@ const generatePDF = async () => {
               fontSize: "11",
               lineHeight: "1.3",
             },
-            {
-              text: `Order Id: ${dynamicContent.orderID}`,
+            // {
+            //   text: `Order Id: ${dynamicContent.orderID}`,
 
-              fontSize: "11",
-              lineHeight: "1.3",
-            },
+            //   fontSize: "11",
+            //   lineHeight: "1.3",
+            // },
             {
               text: `Order Date: ${dynamicContent.orderDate}`,
+              fontSize: "11",
+              lineHeight: "1.3",
+            }, 
+            {
+              text: `Order Cancel date: ${dynamicContent.orderDate}`,
               fontSize: "11",
               lineHeight: "1.3",
             },
