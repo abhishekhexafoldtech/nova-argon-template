@@ -168,6 +168,12 @@ const generatePDF = async () => {
       color: "#333",
       margin: [5, 5, 0, 0],
     },
+    tableBody: {
+      fontSize: "11",
+      lineHeight: "1.5",
+      color: "#333",
+      margin: [5, 5, 0, 0],
+    },
     table_footer: {
       fontSize: "11",
       lineHeight: "1.5",
@@ -195,9 +201,6 @@ const generatePDF = async () => {
       fontSize: "10",
       lineHeight: "1.3",
       color: "#333",
-    },
-    tableBody: {
-      // color:"red"  //add table body style
     },
   };
   const logoImageDataUrl = await loadImageAndConvertToDataUrl(Newgas);
