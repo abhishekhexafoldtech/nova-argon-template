@@ -1,12 +1,7 @@
 <template>
   <div>
-    <el-dialog
-      v-model="props.dialogVisible"
-      :before-close="handleClose"
-      :show-close="false"
-      align-center
-      class="view_receipt_modal"
-    >
+    <el-dialog v-model="props.dialogVisible" :before-close="handleClose" :show-close="false" align-center
+      class="view_receipt_modal">
       <template #header>
         <div>
           <h4>Hi, {{ dynamicContent.name }}</h4>
@@ -49,11 +44,7 @@
         </el-col>
       </el-row>
       <div class="vr_table">
-        <el-table
-          :data="dynamicContent.tableData"
-          :summary-method="getSummaries"
-          show-summary
-        >
+        <el-table :data="dynamicContent.tableData" :summary-method="getSummaries" show-summary>
           <el-table-column prop="item" width="500" label="ITEM" />
           <el-table-column prop="quantity" label="QUANTITY" />
           <el-table-column prop="price" label="PRODUCT/PRICE" />
@@ -165,6 +156,12 @@ const generatePDF = async () => {
       fontSize: "11",
       lineHeight: "1.5",
       fillColor: "#eff1fc",
+      color: "#333",
+      margin: [5, 5, 0, 0],
+    },
+    tableBody: {
+      fontSize: "11",
+      lineHeight: "1.5",
       color: "#333",
       margin: [5, 5, 0, 0],
     },
@@ -287,9 +284,9 @@ const generatePDF = async () => {
             { text: "Price", style: "tableHeader" },
           ],
           ...dynamicContent.tableData.map((item) => [
-            item.item,
-            item.quantity,
-            item.price,
+            { text: item.item, style: "tableBody" },
+            { text: item.quantity, style: "tableBody" },
+            { text: item.price, style: "tableBody" },
           ]),
         ],
       },
@@ -307,13 +304,15 @@ const generatePDF = async () => {
                 {
                   text: `${dynamicContent.tableData
                     .reduce((total, item) => total + parseInt(item.quantity), 0)
-                    .toString()}`,
+                    .toString()
+                    .padStart(2, "0")}`,
                   style: "table_footer",
                 },
                 {
                   text: `GHs ${dynamicContent.tableData
                     .reduce((total, item) => total + parseFloat(item.price), 0)
-                    .toFixed(2)}`,
+                    .toString()
+                    .padStart(2, "0")}`,
                   style: "table_footer",
                 },
               ],

@@ -162,6 +162,12 @@ const generatePDF = async () => {
       color: "#333",
       margin: [5, 5, 0, 0],
     },
+    tableBody: {
+      fontSize: "11",
+      lineHeight: "1.5",
+      color: "#333",
+      margin: [5, 5, 0, 0],
+    },
     table_footer: {
       fontSize: "11",
       lineHeight: "1.5",
@@ -223,7 +229,7 @@ const generatePDF = async () => {
               text: `Order Date: ${dynamicContent.orderDate}`,
               fontSize: "11",
               lineHeight: "1.3",
-            }, 
+            },
             {
               text: `Order Cancel date: ${dynamicContent.orderDate}`,
               fontSize: "11",
@@ -289,9 +295,9 @@ const generatePDF = async () => {
             { text: "Price", style: "tableHeader" },
           ],
           ...dynamicContent.tableData.map((item) => [
-            item.item,
-            item.quantity,
-            item.price,
+            { text: item.item, style: "tableBody" },
+            { text: item.quantity, style: "tableBody" },
+            { text: item.price, style: "tableBody" },
           ]),
         ],
       },
@@ -309,13 +315,15 @@ const generatePDF = async () => {
                 {
                   text: `${dynamicContent.tableData
                     .reduce((total, item) => total + parseInt(item.quantity), 0)
-                    .toString()}`,
+                    .toString()
+                    .padStart(2, "0")}`,
                   style: "table_footer",
                 },
                 {
                   text: `GHs ${dynamicContent.tableData
                     .reduce((total, item) => total + parseFloat(item.price), 0)
-                    .toFixed(2)}`,
+                    .toString()
+                    .padStart(2, "0")}`,
                   style: "table_footer",
                 },
               ],

@@ -1,7 +1,12 @@
 <template>
   <div>
-    <el-dialog v-model="props.dialogVisible" :before-close="handleClose" :show-close="false" align-center
-      class="view_receipt_modal">
+    <el-dialog
+      v-model="props.dialogVisible"
+      :before-close="handleClose"
+      :show-close="false"
+      align-center
+      class="view_receipt_modal"
+    >
       <template #header>
         <div>
           <h4>Hi, {{ dynamicContent.name }}</h4>
@@ -44,7 +49,11 @@
         </el-col>
       </el-row>
       <div class="vr_table">
-        <el-table :data="dynamicContent.tableData" :summary-method="getSummaries" show-summary>
+        <el-table
+          :data="dynamicContent.tableData"
+          :summary-method="getSummaries"
+          show-summary
+        >
           <el-table-column prop="item" width="500" label="ITEM" />
           <el-table-column prop="quantity" label="QUANTITY" />
           <el-table-column prop="price" label="PRODUCT/PRICE" />
@@ -159,6 +168,12 @@ const generatePDF = async () => {
       color: "#333",
       margin: [5, 5, 0, 0],
     },
+    tableBody: {
+      fontSize: "11",
+      lineHeight: "1.5",
+      color: "#333",
+      margin: [5, 5, 0, 0],
+    },
     table_footer: {
       fontSize: "11",
       lineHeight: "1.5",
@@ -182,7 +197,7 @@ const generatePDF = async () => {
       lineHeight: "1.3",
       color: "#666f80",
     },
-    email_label:{
+    email_label: {
       fontSize: "10",
       lineHeight: "1.3",
       color: "#333",
@@ -219,7 +234,7 @@ const generatePDF = async () => {
               fontSize: "11",
               lineHeight: "1.3",
             },
-          ]
+          ],
         },
         {
           image: logoImageDataUrl, // Replace with the path to your logo image
@@ -233,7 +248,7 @@ const generatePDF = async () => {
     {
       columns: [
         {
-          width: '*',
+          width: "*",
           stack: [
             {
               text: `Billed from: ${dynamicContent.billedFrom.name}`,
@@ -246,10 +261,10 @@ const generatePDF = async () => {
               fontSize: "11",
               lineHeight: "1.3",
             },
-          ]
+          ],
         },
         {
-          width: '*',
+          width: "*",
           stack: [
             {
               text: `Billed To: ${dynamicContent.billedTo.name}`,
@@ -261,9 +276,9 @@ const generatePDF = async () => {
               text: dynamicContent.billedTo.address,
               fontSize: "11",
               lineHeight: "1.3",
-              width: '*',
+              width: "*",
             },
-          ]
+          ],
         },
       ],
       margin: [0, 0, 0, 20],
@@ -275,12 +290,12 @@ const generatePDF = async () => {
           [
             { text: "Item", style: "tableHeader" },
             { text: "Quantity", style: "tableHeader" },
-            { text: "Price", style: "tableHeader", },
+            { text: "Price", style: "tableHeader" },
           ],
           ...dynamicContent.tableData.map((item) => [
-            item.item,
-            item.quantity,
-            item.price,
+            { text: item.item, style: "tableBody" },
+            { text: item.quantity, style: "tableBody" },
+            { text: item.price, style: "tableBody" },
           ]),
         ],
       },
@@ -296,14 +311,19 @@ const generatePDF = async () => {
                 { text: "Total", style: "table_footer" },
                 {
                   text: `${dynamicContent.tableData
-                    .reduce((total, item) => total + parseInt(item.quantity), 0)
-                    .toString()}`,
+                    .reduce(
+                      (total, item) => total + parseFloat(item.quantity),
+                      0
+                    )
+                    .toString()
+                    .padStart(2, "0")}`, // Add '0' prefix if less than 10
                   style: "table_footer",
                 },
                 {
                   text: `GHs ${dynamicContent.tableData
                     .reduce((total, item) => total + parseFloat(item.price), 0)
-                    .toFixed(2)}`,
+                    .toString()
+                    .padStart(2, "0")}`,
                   style: "table_footer",
                 },
               ],
@@ -313,7 +333,6 @@ const generatePDF = async () => {
         },
       ],
     },
-
     {
       text: `Payment Type: ${dynamicContent.paymentType}`,
       style: "infoLabel",
