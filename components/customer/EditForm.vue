@@ -18,7 +18,7 @@
             <div class="form_sec">
               <p class="text-bold">Photo</p>
               <img
-                src="https://media-protected.taiga.io/user/5/d/7/f/713e2adb889ba0288eaeaf6870ffb74a362c332eb5b39565b2f117080184/16726594728082.jpg.300x300_q85_crop.jpg?token=ZPGAWQ%3A_-o03Lk4w8OhdTShl2m4kKS99NKIjw6ZWUPRCDFVa-guzG2I3_z15N1s0ZlHNdEgXpS4gLLyIFUrljkk59tQzg"
+                src="@/assets/img/img-2.jpg"
               />
             </div>
           </el-col>
