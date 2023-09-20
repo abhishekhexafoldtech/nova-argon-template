@@ -9,35 +9,35 @@
         <el-row>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455 mar15">
-              <el-form-item label="First Name" prop="first_name">
+              <el-form-item v-if="formData" label="First Name" prop="first_name">
                 <el-input class="form_input" v-model="formData.first_name" placeholder="First name" />
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455 mar15">
-              <el-form-item label="Last Name" prop="last_name">
+              <el-form-item v-if="formData" label="Last Name" prop="last_name">
                 <el-input class="form_input" v-model="formData.last_name" placeholder="Last name" />
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455 mar15">
-              <el-form-item label="Phone Number" prop="phone">
+              <el-form-item v-if="formData" label="Phone Number" prop="phone">
                 <el-input type="number" class="form_input" v-model="formData.phone" placeholder="Phone number" />
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455 mar15">
-              <el-form-item label="Email" prop="email">
+              <el-form-item v-if="formData" label="Email" prop="email">
                 <el-input class="form_input" v-model="formData.email" placeholder="Email" />
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="fieldrow w455">
-              <el-form-item label="Role" prop="role_id">
+              <el-form-item v-if="roles" label="Role" prop="role_id">
                 <el-select class="form_input" v-model="formData.role_id" placeholder="Plese select role">
                   <el-option v-for="item in roles" :key="item.value" :label="item.name" :value="item.id" />
                 </el-select>
@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive,onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { flashNotification } from "@/composables/useNotification.js";
 import { addNewAdmin } from "@/api/admin";
