@@ -5,7 +5,6 @@ export const tableConfig = {
             width: "120",
             sortable: true,
             prop: "id",
-            popover:true
         },
         {
             label: "Order Id",
@@ -58,7 +57,6 @@ export const tableConfig = {
             sortable: true,
             width: "120",
             prop: "id",
-            popover:true
         },
         {
             label: "Order Id",
