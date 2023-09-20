@@ -321,7 +321,7 @@ const generatePDF = async () => {
                 },
                 {
                   text: `GHs ${dynamicContent.tableData
-                    .reduce((total, item) => total + parseFloat(1), 0)
+                    .reduce((total, item) => total + parseFloat(item.price), 0)
                     .toString()
                     .padStart(2, "0")}`,
                   style: "table_footer",
